@@ -29,7 +29,7 @@ public class AuthController : ApiControllerBase
         //TODO: validation
         var request = new LoginCommand()
         {
-            Email = requestModel.Email,
+            Username = requestModel.Username,
             Password = requestModel.Password
         };
 

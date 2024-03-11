@@ -9,8 +9,8 @@ public class LoginCommandValidator : AbstractValidator<LoginCommand>
 {
     public LoginCommandValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(c => c.Email)
-            .Length(4, 99)
+        RuleFor(c => c.Username)
+            .Length(4, 20)
             .DependentRules(() =>
             {
                 RuleFor(c => c.Password)
@@ -21,17 +21,17 @@ public class LoginCommandValidator : AbstractValidator<LoginCommand>
                             .MustAsync(async (c, cancellationToken) =>
                             {
                                 var userCredentials = await dbContext.Users
-                                    .Where(user => user.Email == c.Email)
+                                    .Where(user => user.Username == c.Username)
                                     .Select(user => new
                                     {
-                                        user.Email,
+                                        user.Username,
                                         user.PasswordHash
                                     })
                                     .FirstOrDefaultAsync(cancellationToken);
                                 return userCredentials is not null &&
                                        BCrypt.Net.BCrypt.EnhancedVerify(c.Password, userCredentials.PasswordHash, HashType.SHA512);
                             })
-                            .WithMessage("error_invalid_login_or_password")
+                            .WithMessage("Invalid username or/and password")
                             .WithName("Authorization");
                     });
             });

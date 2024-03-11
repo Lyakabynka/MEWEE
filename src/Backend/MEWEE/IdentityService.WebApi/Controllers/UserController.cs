@@ -53,10 +53,7 @@ public class UserController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> GetUsersProfile()
     {
-        var request = new GetUserProfileQuery()
-        {
-            UserId = UserId
-        };
+        var request = new GetUserProfileQuery();
 
         return await Mediator.Send(request);
     }
