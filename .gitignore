@@ -485,3 +485,5 @@ $RECYCLE.BIN/
 # temp db files
 *.db-shm
 *.db-wal
+
+MEWEE.bat
