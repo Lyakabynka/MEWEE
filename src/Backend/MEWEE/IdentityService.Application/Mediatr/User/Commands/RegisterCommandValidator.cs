@@ -29,7 +29,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
                     return false;
                 }
             })
-            .WithMessage("Email is not in valid format");
+            .WithMessage("error_invalid_email");
 
         RuleFor(c => c.Username)
             .MustAsync(async (username, cancellationToken) =>
@@ -38,7 +38,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
                     .Where(user => user.Username == username)
                     .AnyAsync(cancellationToken);
             })
-            .WithMessage("User with this username already exists");
+            .WithMessage("error_username_exists");
         
         RuleFor(c => c.Email)
             .MustAsync(async (email, cancellationToken) =>
@@ -47,6 +47,6 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
                     .Where(user => user.Email == email)
                     .AnyAsync(cancellationToken);
             })
-            .WithMessage("User with this email already exists");
+            .WithMessage("error_email_exists");
     }
 }
