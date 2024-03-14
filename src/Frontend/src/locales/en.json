@@ -1,0 +1,37 @@
+{
+    "hello": "Hello, World!",
+    "toggleTheme":"Switch Theme",
+    "title-description": "social platform brings people together from around the world, allowing them to exchange thoughts, ideas, and experiences. Our network fosters connections between users, helping them find friends, colleagues, and other professional contacts.",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "E-Mail",
+    "password": "Password",
+    "repeat-password": " Repeat password",
+    "registration": "Registration",
+    "login": "Login",
+    "register-me": "Register me",
+    "agree-with-policy":"I agree to all terms and privacy policy.",
+    "or":"or",
+
+
+    
+    "error_username_required": "Name is required.",
+    "error_surname_required": "Surname is required.",
+    "error_email_required": "Email is required.",
+    "error_invalid_email": "Invalid email address.",
+    "error_password_required": "Password is required.",
+    "error_short_password": "Password should be at least 8 characters long.",
+    "error_nomatch_password": "Passwords do not match.",
+    "error_agree_policy_required": "You must agree to the terms and privacy policy.",
+    "unknown_error":"Uknown Error",
+    
+    "registration_sucess": "Registration sucess!",
+    "login_sucess": "Login sucess!",
+
+    "error_username_exists": "User with this username already exists",
+    "error_email_exists": "User with this E-mail already exists",
+    "error_invalid_login_or_password": "Invalid login and/or password"
+    
+    
+}
+  
