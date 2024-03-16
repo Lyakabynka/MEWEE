@@ -1,0 +1,64 @@
+.auth-page-container
+{
+    display: flex;
+}
+@font-face {
+    font-family: 'LogoFont';
+    src: url('../../../assets/fonts/logofont.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('../../../assets/fonts/Geometria.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Geometria-Bold';
+    src: url('../../../assets/fonts/Geometria-Bold.ttf') format('truetype');
+  }
+  
+
+
+.auth-main-container
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: max-content;
+}
+.auth-top-content
+{
+    display: flex;
+}
+.auth-content-holder
+{
+    width: 100%;
+    margin: 20px;
+}
+.auth-title-holder
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+
+
+.auth-title-text
+{
+    font-family: 'LogoFont', sans-serif;
+    color: #25005C;
+    font-size: 5vw;
+
+}
+.auth-sub-title-text
+{
+    font-family: 'Geometria', sans-serif;
+    color: gray;
+    font-size: 0.8vw;
+}
+
+@media (max-width:900px) {
+    .auth-page-container
+    {
+        flex-direction: column;
+  }
+}
