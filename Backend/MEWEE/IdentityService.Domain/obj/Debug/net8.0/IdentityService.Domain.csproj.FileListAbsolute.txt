@@ -1,0 +1,12 @@
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\bin\Debug\net8.0\IdentityService.Domain.deps.json
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\bin\Debug\net8.0\IdentityService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\bin\Debug\net8.0\IdentityService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.AssemblyInfoInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.AssemblyInfo.cs
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.sourcelink.json
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\refint\IdentityService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\IdentityService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Domain\obj\Debug\net8.0\ref\IdentityService.Domain.dll

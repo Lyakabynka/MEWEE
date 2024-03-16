@@ -1,0 +1,16 @@
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\bin\Debug\net8.0\IdentityService.Application.deps.json
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\bin\Debug\net8.0\IdentityService.Application.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\bin\Debug\net8.0\IdentityService.Application.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\bin\Debug\net8.0\IdentityService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\bin\Debug\net8.0\IdentityService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.csproj.AssemblyReference.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.AssemblyInfoInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.AssemblyInfo.cs
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.csproj.CoreCompileInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.sourcelink.json
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\Identity.52144512.Up2Date
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\refint\IdentityService.Application.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\IdentityService.Application.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\IdentityService.Application\obj\Debug\net8.0\ref\IdentityService.Application.dll

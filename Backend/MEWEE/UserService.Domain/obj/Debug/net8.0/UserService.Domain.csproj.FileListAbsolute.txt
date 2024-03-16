@@ -1,0 +1,12 @@
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\bin\Debug\net8.0\UserService.Domain.deps.json
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\bin\Debug\net8.0\UserService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\bin\Debug\net8.0\UserService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.AssemblyInfoInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.AssemblyInfo.cs
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.sourcelink.json
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\refint\UserService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\UserService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\UserService.Domain\obj\Debug\net8.0\ref\UserService.Domain.dll

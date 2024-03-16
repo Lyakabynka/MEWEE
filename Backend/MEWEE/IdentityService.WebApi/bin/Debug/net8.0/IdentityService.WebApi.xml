@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentityService.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:IdentityService.WebApi.Controllers.AuthController.Login(IdentityService.WebApi.Models.LoginRequestModel)">
+            <summary>
+            Authorizes User
+            </summary>
+            <remarks>
+            Sample request:
+            GET /auth/login
+            </remarks>
+            <param name="requestModel">LoginRequestModel with necessary fields</param>
+            <response code="200">Success</response>
+            <response code="401">Invalid username or/and password</response>
+            <response code="400">Invalid parameters</response>
+        </member>
+        <member name="M:IdentityService.WebApi.Controllers.AuthController.Refresh">
+            <summary>
+            Refreshes User's JWT Token
+            </summary>
+            <remarks>
+            Sample request:
+            PUT /auth/refresh
+            </remarks>
+            <response code="200">Success</response>
+            <response code="401">Unauthorized</response>
+            <response code="400">Invalid parameters</response>
+        </member>
+        <member name="M:IdentityService.WebApi.Controllers.AuthController.Logout">
+            <summary>
+            Log outs User
+            </summary>
+            <remarks>
+            Sample request:
+            DELETE /auth/logout
+            </remarks>
+            <response code="200">Success</response>
+            <response code="401">Unauthorized</response>
+            <response code="400">Invalid parameters</response>
+        </member>
+        <member name="M:IdentityService.WebApi.Controllers.UserController.Register(IdentityService.WebApi.Models.RegisterRequestModel)">
+            <summary>
+            Register a User
+            </summary>
+            <remarks>
+            Sample request:
+            POST /user/register
+            </remarks>
+            <param name="requestModel">RegisterRequestModel with necessary fields</param>
+            <response code="200">Success</response>
+            <response code="409">User with provided credentials already exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="400">Invalid parameters</response>
+        </member>
+        <member name="M:IdentityService.WebApi.Controllers.UserController.GetUsersProfile">
+            <summary>
+            Get the User profile
+            </summary>
+            <remarks>
+            Sample request:
+            POST /user/profile
+            </remarks>
+            <response code="200">Success</response>
+            <response code="401">Unauthorized</response>
+            <response code="400">Invalid parameters</response>
+        </member>
+    </members>
+</doc>

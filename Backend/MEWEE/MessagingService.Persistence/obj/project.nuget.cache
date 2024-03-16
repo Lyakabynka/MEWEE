@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "RqQciaUKNyTsFOrsR9jACvUxlvwDlnz3YQd5pEpikZ/9QXllQmWlxJ8jo9NG6mB2CfBW7b708XJ9UwnvLEmC9g==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\skyba\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\skyba\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\skyba\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

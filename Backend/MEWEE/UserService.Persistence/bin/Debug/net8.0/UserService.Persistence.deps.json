@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "UserService.Persistence/1.0.0": {
+        "dependencies": {
+          "UserService.Application": "1.0.0",
+          "UserService.Domain": "1.0.0"
+        },
+        "runtime": {
+          "UserService.Persistence.dll": {}
+        }
+      },
+      "UserService.Application/1.0.0": {
+        "dependencies": {
+          "UserService.Domain": "1.0.0"
+        },
+        "runtime": {
+          "UserService.Application.dll": {}
+        }
+      },
+      "UserService.Domain/1.0.0": {
+        "runtime": {
+          "UserService.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UserService.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserService.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

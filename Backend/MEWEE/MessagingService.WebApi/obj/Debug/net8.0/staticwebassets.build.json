@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "eWx7fs8ZBjq2GU3S0p1165S1un0kV7ENyxgRR+kvofY=",
+  "Source": "MessagingService.WebApi",
+  "BasePath": "_content/MessagingService.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,12 @@
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\bin\Debug\net8.0\MessagingService.Domain.deps.json
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\bin\Debug\net8.0\MessagingService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\bin\Debug\net8.0\MessagingService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.AssemblyInfoInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.AssemblyInfo.cs
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.sourcelink.json
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\refint\MessagingService.Domain.dll
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\MessagingService.Domain.pdb
+D:\Projects\MEWEE\src\Backend\MEWEE\MessagingService.Domain\obj\Debug\net8.0\ref\MessagingService.Domain.dll

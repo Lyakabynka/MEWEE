@@ -1,0 +1,272 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.WebApi\\MessagingService.WebApi.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj",
+        "projectName": "MessagingService.Application",
+        "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj",
+        "packagesPath": "C:\\Users\\skyba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\skyba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj",
+        "projectName": "MessagingService.Domain",
+        "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj",
+        "packagesPath": "C:\\Users\\skyba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\skyba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj",
+        "projectName": "MessagingService.Persistence",
+        "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj",
+        "packagesPath": "C:\\Users\\skyba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\skyba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj"
+              },
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.WebApi\\MessagingService.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.WebApi\\MessagingService.WebApi.csproj",
+        "projectName": "MessagingService.WebApi",
+        "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.WebApi\\MessagingService.WebApi.csproj",
+        "packagesPath": "C:\\Users\\skyba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.WebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\skyba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Application\\MessagingService.Application.csproj"
+              },
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Domain\\MessagingService.Domain.csproj"
+              },
+              "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj": {
+                "projectPath": "D:\\Projects\\MEWEE\\src\\Backend\\MEWEE\\MessagingService.Persistence\\MessagingService.Persistence.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
