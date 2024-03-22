@@ -12,7 +12,7 @@ export const LoginPage = () => {
     if (isLoggedIn) {
         switch (role) {
             case EnumUserRole.user:
-                return <Navigate to='/user/profile' />
+                return <Navigate to='/feed' />
             case EnumUserRole.administrator:
                 return <Navigate to='/administrator' />
             default:

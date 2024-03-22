@@ -4,11 +4,13 @@ export const ENDPOINTS = {
     AUTH : {
         LOGIN: `${API_URL}/auth/login`,
         REFRESH: `${API_URL}/auth/refresh`,
-        LOGOUT: `${API_URL}/auth/logout`
+        LOGOUT: `${API_URL}/auth/logout`,
+        //CHECK_EMAIL: `https://65f7919db4f842e80885b525.mockapi.io/auth/check-email/check-email`,
     },
     USER :{
         REGISTER: `${API_URL}/user/register`,
-        GET_PROFILE_DATA: `${API_URL}/user/profile`
+        GET_PROFILE_DATA: `${API_URL}/user/profile`,
+        GET_EMAIL_CONFIRMED: `${API_URL}/user/email`
     },
     ADMINISTRATOR: {
        

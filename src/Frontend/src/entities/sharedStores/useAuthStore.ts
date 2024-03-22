@@ -1,6 +1,6 @@
 import { EnumUserRole, ILoginRequest, IRegisterRequest, IUserData } from "../index";
-import { create } from "zustand";
 import { $api, decodeJwtToken } from "../../shared";
+import { create } from "zustand";
 import ENDPOINTS from "../../shared/api/endpoints";
 import { persist } from "zustand/middleware";
 import { AES, enc } from 'crypto-js'

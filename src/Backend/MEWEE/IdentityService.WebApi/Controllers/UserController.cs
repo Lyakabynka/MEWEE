@@ -60,4 +60,27 @@ public class UserController : ApiControllerBase
 
         return await Mediator.Send(request);
     }
+    /// <summary>
+    /// Get the User email
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/email
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("email")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> GetEmailConfirmed()
+    {
+        var request = new GetEmailConfirmedQuery()
+        {
+            Email = Email
+        };
+
+        return await Mediator.Send(request);
+    }
 }

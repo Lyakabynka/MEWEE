@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.Application.Mediatr.User.Queries;
 
-public class GetEmailConfirmedQueryHandler : IRequestHandler<GetUserProfileQuery,Result>
+public class GetEmailConfirmedQueryHandler : IRequestHandler<GetEmailConfirmedQuery,Result>
 {
     private readonly IApplicationDbContext _dbContext;
 
@@ -15,19 +15,16 @@ public class GetEmailConfirmedQueryHandler : IRequestHandler<GetUserProfileQuery
         _dbContext = dbContext;
     }
 
-    public async Task<Result> Handle(GetUserProfileQuery request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(GetEmailConfirmedQuery request, CancellationToken cancellationToken)
     {
-        var userProfileVm = await _dbContext.Users
-            .Where(user => user.Id == request.UserId)
+        var emailConfirmed = await _dbContext.Users
+            .Where(user => user.Email == request.Email)
             .Select(user => new UserVm
             {
-                Username = user.Username,
-                Email = user.Email,
-                Role = user.Role,
                 IsEmailConfirmed = user.IsEmailConfirmed
             })
             .FirstAsync(cancellationToken);
 
-        return Result.Create(userProfileVm);
+        return Result.Create(emailConfirmed);
     }
 }

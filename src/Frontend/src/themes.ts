@@ -1,15 +1,15 @@
 // themes.ts
 
-import { createTheme } from '@mui/material/styles';
+import { Theme, createTheme } from '@mui/material/styles';
 
-export const themes = [
+export const themes: Theme[] = [
   createTheme({
     palette: {
       primary: {
         main: '#007bff',
       },
       secondary: {
-        main: '#6c757d',
+        main: '#E5E0FB',
       },
       background: {
         default: '#f8f9fa',
@@ -25,11 +25,12 @@ export const themes = [
         main: '#007bff',
       },
       secondary: {
-        main: '#6c757d',
+        main: '#4A227A',
       },
       background: {
-        default: '#343a40',
+        default: '#0B0414',
       },
+      
       text: {
         primary: '#f8f9fa',
       },

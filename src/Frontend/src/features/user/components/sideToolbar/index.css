@@ -1,0 +1,60 @@
+.toolbar-block-container, .toolbar-prof-block-container
+{
+    margin: 16px;
+    background-color: #8B98FF;
+    width: 100%;
+    border-radius: 20px;
+    padding: 30px;
+}
+.toolbar-block-container img
+{
+    width: 100%;
+}
+.toolbar-main-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 18%;
+}
+
+.toolbar-profile-main-container
+{
+    display: flex;
+    gap: 10px;
+}
+.toolbar-list
+{
+    display: flex;
+}
+.toolbar-prof-block-container
+{
+    margin-top: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.toolbar-profile-info-container
+{
+    font-size: 0.9vw;
+    display: flex;
+    flex-direction: column;
+}
+.toolbar-profile-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflow content */
+    background-color: red;
+}
+.toolbar-profile-image img {
+    width: 100%; /* Make the image fill its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default image spacing */
+}
+.toolbar-tools-container
+{
+    display: flex;
+    gap: 5px;
+}
