@@ -3,7 +3,7 @@ using IdentityService.Application.Response;
 
 namespace IdentityService.Application.Mediatr.User.Queries;
 
-public class GetUserProfileQuery : IValidatableRequest<Result>
+public class GetEmailConfirmedQuery : IValidatableRequest<Result>
 {
-    public Guid UserId { get; set; }
+    public string Email { get; set; }
 }

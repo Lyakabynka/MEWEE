@@ -12,7 +12,9 @@ public abstract class ApiControllerBase : ControllerBase
     protected IMediator Mediator =>
         _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
     
-    protected internal Guid UserId => User.Identity?.IsAuthenticated is true
+    protected Guid UserId => User.Identity?.IsAuthenticated is true
         ? Guid.Parse(User.FindFirstValue("userId")!)
         : Guid.Empty;
+
+    protected string Email => (User.FindFirstValue("isEmailConfirmed")!);
 }

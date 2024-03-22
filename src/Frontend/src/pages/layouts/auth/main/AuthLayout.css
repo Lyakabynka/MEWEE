@@ -4,15 +4,15 @@
 }
 @font-face {
     font-family: 'LogoFont';
-    src: url('../../../assets/fonts/logofont.otf') format('opentype');
+    src: url('../../../../assets/fonts/logofont.otf') format('opentype');
   }
   @font-face {
     font-family: 'Geometria';
-    src: url('../../../assets/fonts/Geometria.ttf') format('truetype');
+    src: url('../../../../assets/fonts/Geometria.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Geometria-Bold';
-    src: url('../../../assets/fonts/Geometria-Bold.ttf') format('truetype');
+    src: url('../../../../assets/fonts/Geometria-Bold.ttf') format('truetype');
   }
   
 

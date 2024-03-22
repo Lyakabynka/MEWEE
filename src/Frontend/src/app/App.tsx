@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Routing } from '../widgets';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { useSignalRStore } from '../entities/index';
+import { useSignalRStore, useThemeStore } from '../entities/index';
 import { useAuthStore } from '../entities';
 
 import { useTranslation } from 'react-i18next';
@@ -14,15 +14,12 @@ import backgroundImage from '../background.svg';
 const App: React.FC = () => {
 
   const { t, i18n } = useTranslation();
-  const [currentThemeIndex, setCurrentThemeIndex] = useState(0); 
-  const theme = themes[currentThemeIndex]; 
-
+  
   const { establishConnection, closeConnection } = useSignalRStore();
   const { id, isLoggedIn } = useAuthStore();
-
-
-  const cycleThemes = () => setCurrentThemeIndex((prevIndex) => (prevIndex + 1) % themes.length);
-
+  
+  const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme  } = useThemeStore();
+  const theme = getCurrentTheme() || themes[0];
 
   useEffect(() => {
     if (isLoggedIn && id !== null && isLoggedIn === true) establishConnection(id);

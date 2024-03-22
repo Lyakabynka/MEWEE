@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.Application.Mediatr.User.Queries;
 
-public class GetUserProfileQueryValidator : AbstractValidator<GetUserProfileQuery>
+public class GetEmailConfirmedQueryValidator : AbstractValidator<GetEmailConfirmedQuery>
 {
-    public GetUserProfileQueryValidator(IApplicationDbContext dbContext)
+    public GetEmailConfirmedQueryValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(query => query.UserId)
-            .NotEqual(Guid.Empty)
-            .MustAsync(async (userId, cancellationToken) => 
-                await dbContext.Users.Where(user=>user.Id == userId).AnyAsync(cancellationToken))
-            .WithMessage("User does not exist");
+        RuleFor(query => query.Email)
+            .NotEqual(string.Empty)
+            .MustAsync(async (email, cancellationToken) => 
+                await dbContext.Users.Where(user=>user.Email == email).AnyAsync(cancellationToken))
+            .WithMessage("error_email_not_exists");
     }
 }

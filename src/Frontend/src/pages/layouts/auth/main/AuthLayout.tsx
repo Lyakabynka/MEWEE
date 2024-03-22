@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation hook
-import { AuthHeaderForm } from "../../../features";
-import './AuthPage.css';
+import { AuthHeaderForm } from "../../../../features";
+import './AuthLayout.css';
 import { useNavigate } from 'react-router-dom';
 
-export const AuthPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { t } = useTranslation(); // Call useTranslation hook
   const navigate = useNavigate();
 
@@ -17,14 +17,6 @@ export const AuthPage: React.FC<{ children: React.ReactNode }> = ({ children }) 
           <span className='auth-sub-title-text'>{t('title-description')}</span>
         </div>
         <div className='auth-content-container'>
-        <div className="buttons-container">
-            <div onClick={() => navigate("/auth/login")} className="button-c">
-                <a >{t('login')}</a>
-            </div>
-            <div onClick={() => navigate("/auth/register")} className="button-c">
-                <a>{t('registration')}</a>
-            </div>
-        </div>
           {children}
         </div>
       </div>

@@ -1,9 +1,13 @@
+
 export {LoginPage} from './auth/LoginPage/LoginPage';
 export {RegisterPage} from './auth/RegisterPage'
 export {LogoutPage} from './auth/LogoutPage'
-export {ProfilePage} from './user/ProfilePage'
+export {HomePage} from './user/home'
 export {PlanPage} from './plan/PlanPage'
 export {PlanGroupPage} from './plangroup/PlanGroupPage'
 export {ManagePlanGroupPage} from './plangroup/ManagePlanGroupPage'
 export {MainPage} from './main/MainPage'
-export {AuthPage} from './auth/AuthPage/AuthPage'
+
+
+// Layouts //
+export {AuthLayout} from './layouts/auth/main/AuthLayout'

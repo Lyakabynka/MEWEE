@@ -13,7 +13,8 @@
     "agree-with-policy":"I agree to all terms and privacy policy.",
     "forgot_password":"Forgot password",
     "or":"or",
-
+    "send":"Send",
+    "password_change": "Change password",
 
     
     "error_username_required": "Name is required.",
@@ -38,6 +39,7 @@
     
     
     "error_email_exists": "User with this E-mail already exists",
+    "error_email_not_exists": "This E-mail not exists",
     "error_email_required": "Email is required.",
     "error_email_too_long": "Email is too long",
     "error_email_too_short": "Email is too long",

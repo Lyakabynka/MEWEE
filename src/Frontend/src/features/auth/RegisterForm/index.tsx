@@ -1,28 +1,14 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik'; // Import Formik library
-import * as Yup from 'yup'; // Import Yup for validation
 import { useAuthStore } from '../../../entities';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { REGISTER_SCHEMA } from '../../../shared';
 
 export const RegisterForm = () => {
   const {t} = useTranslation();
   const { register, resetErrorInfo, isLoading, errorMessage } = useAuthStore();
   const navigate = useNavigate();
-
-  const REGISTER_SCHEMA = Yup.object().shape({
-    username: Yup.string().min(3, 'error_username_too_short').max(99, 'error_username_too_long').required('error_username_required'),
-    surname: Yup.string().required('error_surname_required'),
-    email: Yup.string().max(60, 'error_email_too_long').required('error_email_required')
-      .test('email-match', 'error_invalid_email', function (value) {
-        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        return emailRegex.test(value);
-      }),
-    password: Yup.string().min(4, 'error_short_password').max(30, 'error_password_too_long').required('error_password_required'),
-    confirm_password: Yup.string().oneOf([Yup.ref('password')], 'error_nomatch_password').required('error_nomatch_password'), // Ensure it matches password
-    policyAgree: Yup.boolean().oneOf([true], 'error_agree_policy_required').required('error_agree_policy_required'), // Ensure it's checked
-  });
-  
   
 
   const formik = useFormik({
@@ -55,7 +41,14 @@ export const RegisterForm = () => {
 
   return (
     <div className="register-form-container">
-
+        <div className="buttons-container">
+            <div onClick={() => navigate("/auth/login")} className="button-c">
+                <a >{t('login')}</a>
+            </div>
+            <div onClick={() => navigate("/auth/register")} className="button-c">
+                <a>{t('registration')}</a>
+            </div>
+        </div>
       <div className='login-or-block'>
         <div></div>
         <span>{t('or')}</span>
