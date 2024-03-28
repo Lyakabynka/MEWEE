@@ -11,4 +11,8 @@ export {PlanGroupCard} from './plangroup/PlanGroupCard'
 export {ManagePlanGroupSaveButtonPlaceHolder} from './plangroup/ManagePlanGroupSaveButtonPlaceHolder'
 
 // Home Page components ///
+export {HomeNews} from './user/components/news'
 export {SideToolbar} from './user/components/sideToolbar'
+export {TopSearchBar} from './user/components/topSearchBar'
+export {FeedsContainer} from './user/components/feeds'
+export {FeedPost} from './user/components/feeds/components/post'

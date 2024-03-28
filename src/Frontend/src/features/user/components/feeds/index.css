@@ -1,0 +1,14 @@
+.feeds-generic-container
+{
+    margin-top: 1vw;
+ 
+    width: 100%;
+    flex: 60%;
+}
+.feeds-main-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+

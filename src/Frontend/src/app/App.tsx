@@ -13,12 +13,11 @@ import backgroundImage from '../background.svg';
 
 const App: React.FC = () => {
 
-  const { t, i18n } = useTranslation();
   
   const { establishConnection, closeConnection } = useSignalRStore();
   const { id, isLoggedIn } = useAuthStore();
   
-  const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme  } = useThemeStore();
+  const { getCurrentTheme  } = useThemeStore();
   const theme = getCurrentTheme() || themes[0];
 
   useEffect(() => {
@@ -29,16 +28,11 @@ const App: React.FC = () => {
   return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="auth-top-content">
-          <button onClick={cycleThemes}>Next Theme</button>
-          <button onClick={() => i18n.changeLanguage('ua')}>Ukranian</button>
-        </div>
         <div
           style={{
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
             backgroundAttachment: 'fixed',
-            minHeight: '100vh', 
             backgroundPosition: 'center top 0px',
           }}
         >

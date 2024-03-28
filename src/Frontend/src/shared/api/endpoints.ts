@@ -12,6 +12,9 @@ export const ENDPOINTS = {
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
         GET_EMAIL_CONFIRMED: `${API_URL}/user/email`
     },
+    FEEDS :{
+        GET_POSTS: `https://sparkling-article.com/posts.json`,
+    },
     ADMINISTRATOR: {
        
     },

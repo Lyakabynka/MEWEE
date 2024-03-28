@@ -1,0 +1,103 @@
+.feed-post-generic-container
+{
+    margin: 15px;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.feed-post-header-container
+{
+    width: 100%;
+}
+.feed-post-nav
+{
+    display: flex;
+    justify-content: space-between;
+}
+.feed-post-profile-main-container
+{
+
+    display: flex;
+    justify-content: space-between;
+}
+.feed-post-profile-main-section
+{
+    display: flex;
+}
+.feed-post-profile-info-container
+{
+    margin-left: 15px;
+    font-size: 0.9vw;
+    display: flex;
+    flex-direction: column;
+}
+.feed-post-profile-image {
+    width: 60px; /* Adjust the size as needed */
+    height: 60px; /* Adjust the size as needed */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflow content */
+    background-color: white;
+}
+.feed-post-profile-image img {
+    width: 100%; /* Make the image fill its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default image spacing */
+}
+.feed-post-profile-title
+{
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 1.2vw;
+}
+.feed-post-date
+{
+    font-family: 'Geometria', sans-serif;
+    font-size: 1vw;
+    color: gray;
+}
+.feed-post-location-container
+{
+    font-family: 'Geometria-Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.feed-post-button-more
+{
+    color: #B67AFE;
+    font-family: 'Geometria', sans-serif;
+    border: 1px solid #B67AFE;
+    border-radius: 20px;
+    padding: 15px;
+    width: 130px;
+    background-color: transparent;
+}
+.feed-post-content
+{
+    margin: 15px;
+    margin-left: 0;
+}
+.feed-post-content-title-text, .feed-post-content-description
+{
+    font-family: 'Geometria', sans-serif;
+}
+.feed-post-content-title-text
+{
+    font-weight: bold;
+}
+.feed-post-content-description
+{
+    color: gray;
+}
+.feed-post-video
+{
+    width: 100%;
+}
+.feed-post-tools
+{
+    display: flex;
+    gap: 15px;
+    margin-right: 15px;
+}

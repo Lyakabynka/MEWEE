@@ -29,6 +29,7 @@ export type { IUserData } from './responses/shared/IUserData'
 //////////// SHARED STORES /////////////
 ////////////////////////////////////
 
+export { usePostsStore } from './sharedStores/usePostsStore';
 export { useThemeStore } from './sharedStores/useThemeStore';
 export { useEmailStore } from './sharedStores/useEmailStore';
 export { useAuthStore } from './sharedStores/useAuthStore';

@@ -1,31 +1,63 @@
 .toolbar-block-container, .toolbar-prof-block-container
 {
-    margin: 16px;
     background-color: #8B98FF;
     width: 100%;
     border-radius: 20px;
     padding: 30px;
 }
+.toolbar-generic-content
+{
+    padding: 16px;
+    padding-left: 5vw;
+    width: min-content;
+}
 .toolbar-block-container img
 {
-    width: 100%;
+    width: 8vw;
 }
 .toolbar-main-content
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 18%;
+    width: 100%;
+    gap: 10px;
 }
+
+
+
+.toolbar-fio-title, .toolbar-fio-second
+{
+    font-family: 'Geometria', sans-serif;
+    font-weight: bold;
+}
+.toolbar-fio-second
+{
+    font-weight: normal;
+}
+
 
 .toolbar-profile-main-container
 {
     display: flex;
-    gap: 10px;
+
 }
 .toolbar-list
 {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.toolbar-list > div
+{
+    border-radius: 20px;
+    display: flex;
+    padding: 15px;
+    width: 100%;
+}
+.toolbar-list > div > span
+{
+    margin-left: 10px;
 }
 .toolbar-prof-block-container
 {
@@ -37,9 +69,14 @@
 }
 .toolbar-profile-info-container
 {
+    margin-left: 15px;
     font-size: 0.9vw;
     display: flex;
     flex-direction: column;
+}
+.toolbar-logo
+{
+    width: 100px;
 }
 .toolbar-profile-image {
     width: 50px; /* Adjust the size as needed */
