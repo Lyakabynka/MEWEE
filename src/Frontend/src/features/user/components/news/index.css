@@ -1,0 +1,14 @@
+.home-news-generic-container
+{
+    background-color: red;
+    width: 30%;
+    flex: 40%;
+
+    margin-top: 15px;
+    margin-right: 5vw;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}

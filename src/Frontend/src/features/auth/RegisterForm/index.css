@@ -11,28 +11,25 @@ input {
     border-radius: 10px;
     border: none;
     outline: none;
-    width: 100%;
-    height: 40px;
     padding-left: 5px;
 }
-.input::placeholder {
+input::placeholder {
     color: rgba(123, 123, 123, 1);
     text-align: justify;
     padding-left: 10px;
 }
 
-.link{
-    color: rgba(37, 0, 92, 1);
-    text-align: center;
+
+.input-short {
+    width: 100%;
+    height: 40px;
 }
-.link:hover{
-    color: rgba(182, 122, 254, 1);
-}
-.link:active{
-    color: rgba(251, 165, 0, 1);
+.input-long {
+    width: 100%;
+    height: 40px;
 }
 
-.login-style{
+.registration-style{
     position: relative;
     width: 45%;
     height: 48.19px;
@@ -42,20 +39,19 @@ input {
     cursor: pointer;
     margin: 10px;
 }
-.login-style:hover{
+.registration-style:hover{
     background: rgba(182, 122, 254, 1);
 }
 
-.authorize{
+.register-me{
     color: rgba(182, 122, 254, 1);
     position: relative;
     z-index: 1;
 }
-.login-style:hover .authorize{
+.registration-style:hover .register-me{
     color: rgba(37, 0, 92, 1);
 }
-
-.login-style:active::after {
+.registration-style:active::after {
     content: "";
     position: absolute;
     top: 0;
@@ -64,6 +60,29 @@ input {
     height: 100%;
     background: rgba(16, 16, 16, 0.2);
     border-radius: 10px;
+}
+
+.agree-with-policy-text{
+    color: rgba(123, 123, 123, 1);
+}
+
+input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(182, 122, 254, 1);
+    cursor: pointer;
+    appearance: none;
+    margin: 22px 10px 20px 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type="checkbox"]:hover{
+    border: 2px solid rgba(37, 0, 92, 1)
+}
+input[type="checkbox"]:checked {
+    background: rgba(182, 122, 254, 1);
+    border: 2px solid rgba(37, 0, 92, 1)
 }
 
 .label-error{
@@ -78,6 +97,11 @@ input {
 .input-error::placeholder {
     color: red;
 }
+
+
+
+
+
 
 
 

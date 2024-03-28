@@ -23,6 +23,10 @@
     flex-direction: row;
     width: 100%;
     height: max-content;
+    max-width: 1260px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 .auth-top-content
 {
@@ -31,29 +35,29 @@
 .auth-content-holder
 {
     width: 100%;
-    margin: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-right: 100px;
 }
 .auth-title-holder
 {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-bottom: 20px;
 }
-
-
 
 .auth-title-text
 {
     font-family: 'LogoFont', sans-serif;
     color: #25005C;
-    font-size: 5vw;
+    font-size: 48px;
 
 }
 .auth-sub-title-text
 {
     font-family: 'Geometria', sans-serif;
     color: gray;
-    font-size: 0.8vw;
+    font-size: 10px;
 }
 
 @media (max-width:900px) {

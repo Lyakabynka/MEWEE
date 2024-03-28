@@ -1,31 +1,31 @@
 .header-content
 {
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  margin-top:3vw;
-  padding: 50px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 50px;
 }
 .header-content > div
 {
-  width: 100%;
-  height: 80vh;
-  background-image: url("./images/main.png");
-  background-size:contain;
-  background-position:top;
-  background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+    background-image: url("./images/main.png");
+    background-size:contain;
+    background-position:top;
+    background-repeat: no-repeat;
 }
 .header-logo
 {
     width: 10vw;
     height: 10vw;
 }
-.login-form-container {
-    margin-top: 64px;
+
+.form-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    align-items: left;
+    margin-top: 10px;
 }
 
 .avatar-container {
@@ -37,24 +37,38 @@
     height: 48px;
 }
 
-
-.input-container {
-    margin-bottom: 16px;
+.input-group{
+    display: flex;
 }
 
+.input-container {
+    position: relative;
+    width: 100%;
+    margin: 5px 10px 10px 10px;
+}
+.agree-with-policy-container{
+    margin: 17px 10px 10px 0;
+    width: 40%;
+}
 .error {
     color: red;
+    font-family: Geometria;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 0.944em;
+    margin: 10px 0px 0px 5px;
 }
 
 .link-container {
     text-align: left;
-    margin-top: 8px;
+    margin-left: 15px;
 }
 .buttons-container
 {
     display: flex;
     gap:10px;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .link-container a {
@@ -84,15 +98,13 @@
     -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
 
-
-
 }
 .login-login-btn
 {
     flex: 4;
     margin-left: 15px;
-padding: 2px;
-clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
+    padding: 2px;
+    clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
 }
 .login-buttons-container
 {
@@ -114,10 +126,12 @@ clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
 {
     background-color: #512693;
 }
-.login-or-block 
+.login-or-block
 {
     display: flex;
     align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 .login-or-block > div
 {
@@ -158,4 +172,48 @@ clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
     width: 100%;
     display: flex;
     gap: 20px;
+}
+
+.password-input {
+    position: relative;
+    height: 40px;
+    padding-right: 35px;
+}
+.show-password-toggle {
+    position: absolute;
+    top: 23px;
+    right: 9px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    @media (max-width: 768px) {
+        top: calc(23px - 1px);
+        right: 6px;
+        width: 20px;
+        height: 20px;
+    }
+}
+.password-icon-default{
+    background-image: url("./images/icon_default.png");
+}
+.password-icon-active{
+    background-image: url("./images/icon_active.png");
+}
+/*.show-password-toggle:hover{*/
+/*    background-image: url("./images/icon_hover.png");*/
+/*}*/
+
+.text-style-1{
+    font-family: Geometria;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 0.944em;
+}
+.text-style-2{
+    font-family: Geometria;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1.10em;
 }

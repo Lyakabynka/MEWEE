@@ -15,7 +15,16 @@
     "or":"або",
     "send":"Надіслати",
     "password_change": "Зміна паролю",
+    "more": "Більше",
 
+    "main": "Головна",
+    "groups": "Групи",
+    "events": "Події",
+    "announcements": "Оголошення",
+    "jobs": "Вакансії",
+    "news": "Новини",
+    "settings": "Налаштування",
+    "search": "Пошук",
 
     "error_username_required": "Ім'я обов'язкове для заповнення.",
     "error_username_too_short": "Ім'я занадто коротке",

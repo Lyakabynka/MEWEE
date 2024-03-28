@@ -15,6 +15,16 @@
     "or":"or",
     "send":"Send",
     "password_change": "Change password",
+    "more": "More",
+    
+    "main": "Home",
+    "groups": "Groups",
+    "events": "Events",
+    "announcements": "Announcements",
+    "jobs": "Jobs",
+    "news": "News",
+    "settings": "Settings",
+    "search": "Search",
 
     
     "error_username_required": "Name is required.",
