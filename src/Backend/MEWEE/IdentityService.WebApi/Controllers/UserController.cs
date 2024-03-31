@@ -101,7 +101,7 @@ public class UserController : ApiControllerBase
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
     [Authorize]
-    [HttpGet("change-password")]
+    [HttpPost("change-password")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
