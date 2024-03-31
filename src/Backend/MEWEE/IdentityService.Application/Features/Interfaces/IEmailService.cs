@@ -2,5 +2,7 @@
 
 public interface IEmailService
 {
-    public Task SendVerifyEmail(string toEmail, string verificationCode);
+    public Task<string> SendVerifyEmailAsync(string toEmail);
+    
+    public Task<string> SendForgotPasswordEmailAsync(string toEmail);
 }

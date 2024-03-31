@@ -26,19 +26,19 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
             Username = request.Username,
             Email = request.Email,
             PasswordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password, HashType.SHA512),
-            ConfirmationCode = new ConfirmationCode()
-            {
-                Id = Guid.NewGuid(),
-                Code = RandomNumberGenerator.GetHexString(8),
-                ExpirationDateUtc = DateTime.UtcNow.AddMinutes(30)
-            }
+        };
+
+        var code = await _emailService.SendVerifyEmailAsync(user.Email);
+        user.ConfirmationCode = new ConfirmationCode()
+        {
+            Id = Guid.NewGuid(),
+            Code = code,
+            ExpirationDateUtc = DateTime.UtcNow.AddMinutes(30),
         };
         
         _dbContext.Users.Add(user);
         
         await _dbContext.SaveChangesAsync(cancellationToken);
-        
-        _ = _emailService.SendVerifyEmail(user.Email, user.ConfirmationCode.Code);
         
         return Result.Create(new { });
     }
