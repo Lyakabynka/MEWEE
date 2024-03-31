@@ -32,7 +32,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
         CancellationToken cancellationToken)
     {
         var user = await _dbContext.Users
-            .FirstAsync(user => user.Email == request.Email, cancellationToken);
+           .FirstAsync(user => user.Email == request.Email, cancellationToken);
 
         //determining user's platform
         var userAgent = _context

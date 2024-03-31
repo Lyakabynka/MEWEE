@@ -33,7 +33,7 @@ public class Result : ActionResult
         DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
         ReferenceHandler = ReferenceHandler.IgnoreCycles
     };
-    
+
     public static Result FormBadRequest(ValidationResult validationResult)
     {
         var problemDetails = new ProblemDetails()
@@ -43,7 +43,7 @@ public class Result : ActionResult
             Title = "Validation error",
             Detail = "One or more validation errors has occurred"
         };
-        
+
         if (validationResult.Errors is not null)
         {
             problemDetails.Extensions["errors"] = validationResult.ToDictionary();
@@ -52,6 +52,24 @@ public class Result : ActionResult
         return new Result(problemDetails, StatusCodes.Status406NotAcceptable);
     }
     
+    public static Result FormBadRequest(string detail, ValidationError error)
+    {
+        var problemDetails = new ProblemDetails()
+        {
+            Status = StatusCodes.Status406NotAcceptable,
+            Type = "BadRequest",
+            Title = "Bad Request",
+            Detail = detail,
+        };
+        
+        problemDetails.Extensions["errors"] = new Dictionary<string, string>()
+        {
+            { error.PropertyName, error.ErrorMessage }
+        };
+
+        return new Result(problemDetails, StatusCodes.Status400BadRequest);
+    }
+
     public static Result Create(object data, int statusCode = StatusCodes.Status200OK)
     {
         return new Result(data, statusCode);
@@ -69,7 +87,7 @@ public class Result : ActionResult
 
         return new Result(problemDetails, StatusCodes.Status404NotFound);
     }
-    
+
     public static Result FormUnauthorized()
     {
         var problemDetails = new ProblemDetails()
@@ -108,7 +126,10 @@ public class Result : ActionResult
 
         if (error is not null)
         {
-            problemDetails.Extensions["errors"] = new[] { error };
+            problemDetails.Extensions["errors"] = new Dictionary<string, string>()
+            {
+                { error.PropertyName, error.ErrorMessage }
+            };
         }
 
         return new Result(problemDetails, statusCode);

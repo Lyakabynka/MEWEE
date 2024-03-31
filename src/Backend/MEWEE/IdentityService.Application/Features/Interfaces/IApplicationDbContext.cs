@@ -9,5 +9,7 @@ public interface IApplicationDbContext
 
     DbSet<RefreshSession> RefreshSessions { get; set; }
 
+    DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
