@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using IdentityService.Application.Configurations;
 using IdentityService.Application.Features.Interfaces;
 
@@ -10,6 +11,7 @@ public class EmailService : IEmailService
     private readonly IApplicationDbContext _dbContext;
     private readonly SmtpClient _smtpClient;
     private readonly SmtpConfiguration _configuration;
+
     public EmailService(IApplicationDbContext dbContext, SmtpConfiguration configuration)
     {
         _configuration = configuration;
@@ -21,13 +23,32 @@ public class EmailService : IEmailService
             Credentials = new NetworkCredential(configuration.Email, configuration.Password),
         };
     }
-    
-    public async Task SendVerifyEmail(string toEmail, string verificationCode)
+
+    public async Task<string> SendVerifyEmailAsync(string toEmail)
     {
+        var code = RandomNumberGenerator.GetHexString(8);
+
         await _smtpClient.SendMailAsync(
-            new MailMessage(from: _configuration.Email,
-                            to: toEmail,
-                            subject: "Verify your account",
-                            body: $"Your verification code is: {verificationCode}"));
+            new MailMessage(
+                from: _configuration.Email,
+                to: toEmail,
+                subject: "Verify your account",
+                body: $"Your verification code is: {code}"));
+
+        return code;
+    }
+
+    public async Task<string> SendForgotPasswordEmailAsync(string toEmail)
+    {
+        var code = RandomNumberGenerator.GetHexString(8);
+
+        await _smtpClient.SendMailAsync(
+            new MailMessage(
+                from: _configuration.Email,
+                to: toEmail,
+                subject: "Verify your account",
+                body: $"Your restore password code is: {code}"));
+
+        return code;
     }
 }
