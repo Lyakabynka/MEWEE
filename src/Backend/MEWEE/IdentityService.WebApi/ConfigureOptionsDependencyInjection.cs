@@ -23,6 +23,12 @@ public static class ConfigureOptionsDependencyInjection
             configuration.GetRequiredSection(RefreshSessionConfiguration.RefreshSessionSection));
         services.AddSingleton(resolver =>
             resolver.GetRequiredService<IOptions<RefreshSessionConfiguration>>().Value);
+        //
+        services.Configure<SmtpConfiguration>(
+            configuration.GetRequiredSection(SmtpConfiguration.SmtpConfigurationSection));
+        services.AddSingleton(resolver =>
+            resolver.GetRequiredService<IOptions<SmtpConfiguration>>().Value);
+        //
         return services;
     }
 }

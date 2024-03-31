@@ -26,7 +26,6 @@ public class AuthController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromBody] LoginRequestModel requestModel)
     {
-        //TODO: validation
         var request = new LoginCommand()
         {
             Email = requestModel.Email,

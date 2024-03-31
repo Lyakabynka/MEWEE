@@ -4,7 +4,7 @@ using IdentityService.Application.Response;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.Application.Mediatr.User.Queries;
+namespace IdentityService.Application.Mediatr.User.Queries.Profile;
 
 public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Result>
 {
