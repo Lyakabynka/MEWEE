@@ -18,7 +18,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
     private readonly CookieProvider _cookieProvider;
 
     private readonly IEmailService _emailService;
-    
+
     public LoginCommandHandler(
         IApplicationDbContext dbContext,
         JwtProvider jwtProvider,
@@ -37,7 +37,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
     {
         var user = await _dbContext.Users
             .AsTracking()
-           .FirstAsync(user => user.Email == request.Email, cancellationToken);
+            .FirstAsync(user => user.Email == request.Email, cancellationToken);
 
         if (!user.IsEmailConfirmed)
         {
@@ -45,22 +45,22 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
 
             user.ConfirmationCode = new ConfirmationCode()
             {
-                Id = Guid.NewGuid(),
                 Code = code,
                 ExpirationDateUtc = DateTime.Now.AddMinutes(30),
             };
-            
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
             return Result.FormBadRequest(
-                "Email is not confirmed", 
+                "Email is not confirmed",
                 new ValidationError(nameof(user.Email), "email_not_confirmed"));
         }
 
         //determining user's platform
         var userAgent = _context
             .Request
-            .Headers["User-Agent"]
-            .ToString()
-            .ToLower();
+            .Headers
+            .UserAgent.ToString().ToLower();
 
         var session = new RefreshSession()
         {

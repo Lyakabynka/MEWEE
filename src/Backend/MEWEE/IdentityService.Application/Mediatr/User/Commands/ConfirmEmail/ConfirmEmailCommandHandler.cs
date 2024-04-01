@@ -20,8 +20,7 @@ public class ConfirmEmailCommandHandler : IRequestHandler<ConfirmEmailCommand, R
         var user = await _dbContext.Users
             .AsTracking()
             .Include(u => u.ConfirmationCode)
-            .FirstAsync(u => u.Id == request.UserId, cancellationToken);
-        
+            .FirstAsync(u => u.Email == request.Email, cancellationToken);
         
         if (user.ConfirmationCode is null)
         {

@@ -35,7 +35,7 @@ public class UserController : ApiControllerBase
         {
             Username = requestModel.Username,
             Password = requestModel.Password,
-            Email = requestModel.Email,
+            Email = requestModel.Email.ToLower(),
         };
         
         return await Mediator.Send(request);
@@ -84,7 +84,7 @@ public class UserController : ApiControllerBase
     {
         var request = new ConfirmEmailCommand()
         {
-            UserId = UserId,
+            Email = requestModel.Email.ToLower(),
             ConfirmationCode = requestModel.Code,
         };
 

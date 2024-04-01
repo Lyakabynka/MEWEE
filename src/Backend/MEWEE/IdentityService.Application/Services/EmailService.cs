@@ -8,14 +8,12 @@ namespace IdentityService.Application.Services;
 
 public class EmailService : IEmailService
 {
-    private readonly IApplicationDbContext _dbContext;
     private readonly SmtpClient _smtpClient;
     private readonly SmtpConfiguration _configuration;
 
-    public EmailService(IApplicationDbContext dbContext, SmtpConfiguration configuration)
+    public EmailService(SmtpConfiguration configuration)
     {
         _configuration = configuration;
-        _dbContext = dbContext;
 
         _smtpClient = new SmtpClient(configuration.Server, configuration.Port)
         {
