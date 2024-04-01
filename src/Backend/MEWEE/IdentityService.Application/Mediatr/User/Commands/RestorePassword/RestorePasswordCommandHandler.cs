@@ -51,6 +51,8 @@ public class RestorePasswordCommandHandler : IRequestHandler<RestorePasswordComm
         
         user.ForgotPasswordCode = null;
 
+        await _dbContext.SaveChangesAsync(cancellationToken);
+
         return Result.Create(new { });
     }
 }

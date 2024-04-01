@@ -33,6 +33,8 @@ public class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordComman
             ExpirationDateUtc = DateTime.UtcNow.AddMinutes(30)
         };
 
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        
         return Result.Create(new { });
     }
 }

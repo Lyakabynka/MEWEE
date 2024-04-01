@@ -11,5 +11,7 @@ public interface IApplicationDbContext
 
     DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
     
+    DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
