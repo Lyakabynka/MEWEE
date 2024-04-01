@@ -24,6 +24,7 @@ public class RestorePasswordCommandHandler : IRequestHandler<RestorePasswordComm
     {
         var user = await _dbContext.Users
             .AsTracking()
+            .Include(u => u.ForgotPasswordCode)
             .FirstAsync(u => u.Email == request.Email, cancellationToken);
 
         if (user.ForgotPasswordCode is null)
