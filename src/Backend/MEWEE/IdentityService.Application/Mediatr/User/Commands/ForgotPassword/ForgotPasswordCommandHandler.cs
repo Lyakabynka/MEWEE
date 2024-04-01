@@ -22,19 +22,19 @@ public class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordComman
     {
         var user = await _dbContext.Users
             .AsTracking()
+            .Include(u => u.ForgotPasswordCode)
             .FirstAsync(u => u.Email == request.Email, cancellationToken);
 
         var code = await _emailService.SendForgotPasswordEmailAsync(user.Email);
 
         user.ForgotPasswordCode = new ForgotPasswordCode()
         {
-            Id = Guid.NewGuid(),
             Code = code,
             ExpirationDateUtc = DateTime.UtcNow.AddMinutes(30)
         };
 
         await _dbContext.SaveChangesAsync(cancellationToken);
-        
+
         return Result.Create(new { });
     }
 }

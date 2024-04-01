@@ -31,7 +31,6 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
         var code = await _emailService.SendVerifyEmailAsync(user.Email);
         user.ConfirmationCode = new ConfirmationCode()
         {
-            Id = Guid.NewGuid(),
             Code = code,
             ExpirationDateUtc = DateTime.UtcNow.AddMinutes(30),
         };

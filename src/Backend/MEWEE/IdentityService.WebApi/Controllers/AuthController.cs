@@ -28,7 +28,7 @@ public class AuthController : ApiControllerBase
     {
         var request = new LoginCommand()
         {
-            Email = requestModel.Email,
+            Email = requestModel.Email.ToLower(),
             Password = requestModel.Password
         };
 

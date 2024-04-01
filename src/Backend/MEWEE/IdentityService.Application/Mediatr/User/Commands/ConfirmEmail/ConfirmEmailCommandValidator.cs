@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Net.Mail;
+using FluentValidation;
 using IdentityService.Application.Features.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,12 +9,21 @@ public class ConfirmEmailCommandValidator : AbstractValidator<ConfirmEmailComman
 {
     public ConfirmEmailCommandValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(x => x.UserId)
-            .NotEqual(Guid.Empty)
-            .WithMessage("invalid_user_id")
-            .MustAsync(async (userId, cancellationToken) =>
-                await dbContext.Users.Where(user => user.Id == userId).AnyAsync(cancellationToken))
-            .WithMessage("error_user_does_not_exist");
+        RuleFor(c => c.Email)
+            .Length(8, 80)
+            .Must((email) =>
+            {
+                try
+                {
+                    var mailAddress = new MailAddress(email);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            })
+            .WithMessage("error_invalid_email");
 
         RuleFor(x => x.ConfirmationCode)
             .NotEmpty()
