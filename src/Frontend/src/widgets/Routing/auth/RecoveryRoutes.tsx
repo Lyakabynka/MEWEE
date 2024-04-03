@@ -19,9 +19,10 @@ export const RecoveryRoutes = () => {
   }
 
   return (
-      <AuthLayout>
-        <span>{t('password_change')}</span>
-        {getChild()}
-        </AuthLayout>
+    <></>
+      // <AuthLayout>
+      //   <span>{t('password_change')}</span>
+      //   {getChild()}
+      //   </AuthLayout>
   );
   };

@@ -8,7 +8,7 @@ import { EMAIL_VALIDATION } from '../../../../../shared';
 
 export const RecoveryEmailForm = () => {
   const {t} = useTranslation();
-  const { checkEmail, resetErrorInfo, isLoading, errorMessage } = useEmailStore();
+  const { checkEmail, resetErrorInfo, isLoading } = useEmailStore();
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
 
@@ -34,10 +34,10 @@ export const RecoveryEmailForm = () => {
     onSubmit: (values) => {
       
       checkEmail(values).then(() => {
-        if (!errorMessage) {
-          //navigate('/recovery/email');
-        }
-        console.log(errorMessage)
+        // if (!errorMessage) {
+        //   //navigate('/recovery/email');
+        // }
+        // console.log(errorMessage)
       });
     },
   });
@@ -48,7 +48,6 @@ export const RecoveryEmailForm = () => {
 
   return (
     <div className="">
-        {errorMessage && <span>{errorMessage}</span>}
 
         <form onSubmit={formik.handleSubmit}>
         <div className="input-group">

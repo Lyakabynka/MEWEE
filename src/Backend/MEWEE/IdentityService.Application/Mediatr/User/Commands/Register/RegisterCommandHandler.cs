@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using BCrypt.Net;
 using IdentityService.Application.Features.Interfaces;
+using IdentityService.Application.Mediatr.Results.Shared;
 using IdentityService.Application.Response;
 using IdentityService.Domain.Entities;
 using MediatR;
@@ -39,6 +40,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
         
         await _dbContext.SaveChangesAsync(cancellationToken);
         
-        return Result.Create(new { });
+        return Result.Create(user);
+        //return Result.Create(new { });
     }
 }

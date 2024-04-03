@@ -6,8 +6,11 @@ export const LogoutPage = () => {
 
     const { isLoggedIn, logout } = useAuthStore();
 
-    if (isLoggedIn) logout();
-
+    console.log(isLoggedIn);
+    if (isLoggedIn)
+    {
+         logout();
+    }
     return (
         <>
             {!isLoggedIn &&
