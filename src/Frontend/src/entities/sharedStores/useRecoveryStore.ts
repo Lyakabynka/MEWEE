@@ -3,33 +3,40 @@ import { create } from "zustand";
 import { $api, decodeJwtToken } from "../../shared";
 import ENDPOINTS from "../../shared/api/endpoints";
 import { persist } from "zustand/middleware";
-import { AES, enc } from 'crypto-js'
-export interface IEmailRequest{
+
+
+
+export interface IEmailRecoveryRequest {
     email: string;
+    code: string;
+}
+export interface IPhoneRecoveryRequest{
+    phoneNumber: string;
+    code: string;
 }
 
-interface IEmailStore {
-    isEmailConfirmed: boolean | null;
 
+interface IRecoveryStore {
+    isEmailConfirmed: boolean | null;
     isLoading: boolean;
 
     errorField: string | null;
     errorMessage: string | null;
 
-    checkEmail: (params: IEmailRequest) => Promise<void>;
+    usingEmail: (params: IEmailRecoveryRequest) => Promise<void>;
+    usingPhone: (params: IPhoneRecoveryRequest) => Promise<void>;
 
-    clearAuth: () => void;
+    //clearAuth: () => void;
     resetErrorInfo: () => void;
 }
 
-export const useEmailStore = create<IEmailStore>()(persist((set, get) => ({
+export const useRecoveryStore = create<IRecoveryStore>()(persist((set, get) => ({
     isLoading: false,
-    email: null,
     isEmailConfirmed: null,
     errorField: null,
     errorMessage: null,
 
-    checkEmail: async (params: IEmailRequest) => {
+    usingEmail: async (params: IEmailRecoveryRequest) => {
 
         set({ isLoading: true });
         console.log(params);
@@ -43,16 +50,18 @@ export const useEmailStore = create<IEmailStore>()(persist((set, get) => ({
 
         set({ isLoading: false, errorMessage: response?.data });
     },
+    usingPhone: async (params: IPhoneRecoveryRequest) => {
 
-    clearAuth: () => {
-        localStorage.removeItem('email');
     },
+    // clearAuth: () => {
+    //     localStorage.removeItem('recovery');
+    // },
     resetErrorInfo: () => {
         set({ isLoading: false, errorField: null, errorMessage: null });
     }
 
 }), {
-    name: 'email',
+    name: 'recovery',
     version: 1,
     //serialize: state => encryptState(state),
     //deserialize: state => decryptState(state)

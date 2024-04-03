@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
 import { useAuthStore, useThemeStore } from '../../../../entities';
 import './index.css';
 import { SideToolbarMenuItem } from './components/sideToolbarMenuItem';
-import { title } from 'process';
 import { useTranslation } from 'react-i18next';
 
 export const SideToolbar = () => {
 
+    const navigate = useNavigate();
     const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
 
     const { t, i18n } = useTranslation();
@@ -46,6 +44,7 @@ export const SideToolbar = () => {
                     <button onClick={cycleThemes}>Next Theme</button>
                     <button onClick={() => i18n.changeLanguage('ua')}>UA</button>
                 </div>
+                    <button onClick={() => navigate('/auth/logout')}>LOGOUT</button>
             </div>
         </div>
     )

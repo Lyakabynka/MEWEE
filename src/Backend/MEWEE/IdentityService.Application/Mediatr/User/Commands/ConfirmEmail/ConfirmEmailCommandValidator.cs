@@ -26,7 +26,6 @@ public class ConfirmEmailCommandValidator : AbstractValidator<ConfirmEmailComman
             .WithMessage("error_invalid_email");
 
         RuleFor(x => x.ConfirmationCode)
-            .NotEmpty()
-            .Length(8);
+            .NotEmpty().WithMessage("confirmationCode_invalid");
     }
 }

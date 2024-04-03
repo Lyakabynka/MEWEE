@@ -26,6 +26,11 @@
     "settings": "Налаштування",
     "search": "Пошук",
 
+
+    "confirmationCode_does_not_exist": "Код підтвердження не існує",
+    "confirmationCode_invalid": "Недійсний код підтвердження",
+    "confirmationCode_expired": "Термін дії коду підтвердження закінчився",
+
     "error_username_required": "Ім'я обов'язкове для заповнення.",
     "error_username_too_short": "Ім'я занадто коротке",
     "error_username_too_long": "Ім'я занадто довге",

@@ -11,6 +11,7 @@ import { ManagePlanGroupPage } from '../../pages';
 import { ScheduledPlanPage } from '../../pages/plan/ScheduledPlanPage';
 import { AuthRoutes } from './auth/AuthRoutes';
 import { RecoveryRoutes } from './auth/RecoveryRoutes';
+import { EmailConfirmationForm } from "../../features";
 
 export const Routing = () => {
     return (
@@ -18,7 +19,6 @@ export const Routing = () => {
             <Route path="/" element={<AuthRoutes />} />
             <Route path="auth/:url" element={<AuthRoutes />} />
             <Route path="recovery/:url" element={<RecoveryRoutes />} />
-            <Route path="logout" element={<LogoutPage />} />
             <Route path="/feed" element={<HomePage />} />
             <Route path="plans" element={
                 <PrivateRoute requiredRole={EnumUserRole.user}>
