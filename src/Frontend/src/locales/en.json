@@ -26,6 +26,8 @@
     "settings": "Settings",
     "search": "Search",
 
+    "verify": "Verify",
+    "code": "Code",
     "confirmationCode_does_not_exist": "Confirmation code does not exist",
     "confirmationCode_invalid": "Invalid confirmation code",
     "confirmationCode_expired": "Confirmation code has expired",
@@ -44,6 +46,9 @@
     "error_short_password": "Password should be at least 8 characters long.",
     "error_long_password": "Password too long.",
     "error_nomatch_password": "Passwords do not match.",
+
+    "ur_password_has_changed":"Your password has been changed",
+    "forgotPasswordCode_invalid": "Verifaction code is invalid.",
     
     "error_agree_policy_required": "You must agree to the terms and privacy policy.",
     "unknown_error":"Uknown Error",

@@ -18,3 +18,10 @@ export {SideToolbar} from './user/components/sideToolbar'
 export {TopSearchBar} from './user/components/topSearchBar'
 export {FeedsContainer} from './user/components/feeds'
 export {FeedPost} from './user/components/feeds/components/post'
+
+
+// RECOVERY //
+export {RecoveryEmailForm} from './auth/RecoveryForm'
+export {RecoverySetPasswordForm} from './auth/RecoveryForm/generic/setPasswordForm'
+export {RecoveryEmailConfirmationForm} from './auth/RecoveryForm/email/stages/confirmationForm'
+export {RecoverySuccessFulForm} from './auth/RecoveryForm/generic/recoverySucessfull'

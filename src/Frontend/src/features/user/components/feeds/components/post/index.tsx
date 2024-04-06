@@ -74,7 +74,7 @@ export const FeedPost = (post: any) => {
             </header>
             <main className='feed-post-content'>
                 {isImage(currentPost.imageUrl) ? (
-                    <img src={currentPost.imageUrl} alt="Post Image" />
+                    <img style={{width:100+'%', borderRadius:20+'px'}} src={currentPost.imageUrl} alt="Post Image" />
                 ) : isVideo(currentPost.imageUrl) ? (
                     <video className='feed-post-video' ref={videoRef} autoPlay muted>
                         <source src={currentPost.imageUrl} type="video/mp4" />

@@ -1,5 +1,6 @@
 
 export {LoginPage} from './auth/LoginPage/LoginPage';
+export {RecoveryPage} from './auth/RecoveryPage'
 export {RegisterPage} from './auth/RegisterPage'
 export {LogoutPage} from './auth/LogoutPage'
 export {HomePage} from './user/home'

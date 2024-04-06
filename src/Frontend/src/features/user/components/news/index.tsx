@@ -3,6 +3,7 @@ import './index.css';
 import { usePostsStore, useThemeStore } from '../../../../entities';
 import { FeedPost } from '../feeds/components/post';
 import { Box, CircularProgress } from '@mui/material';
+import { NewsItem } from './newsItem';
 interface IPost {
     id: number;
     username: string;
@@ -42,7 +43,7 @@ export const HomeNews = () => {
     return (
         <div className='home-news-generic-container' style={{backgroundColor: currentTheme?.mainPage.post.background}}>
                             {data && data.map((post: IPost) => (
-                                post.id == 32 && <FeedPost key={post.id} post={post} />
+                                post.id == 32 && <NewsItem key={post.id} post={post} />
                 ))}
         </div>
 

@@ -26,7 +26,8 @@
     "settings": "Налаштування",
     "search": "Пошук",
 
-
+    "verify": "Перевірити",
+    "code":"Код",
     "confirmationCode_does_not_exist": "Код підтвердження не існує",
     "confirmationCode_invalid": "Недійсний код підтвердження",
     "confirmationCode_expired": "Термін дії коду підтвердження закінчився",
@@ -44,6 +45,9 @@
     "error_short_password": "Пароль повинен бути щонайменше 8 символів.",
     "error_long_password": "Пароль занадто довгий.",
     "error_nomatch_password": "Паролі не співпадають.",
+
+    "ur_password_has_changed":"Ваш пароль було змінено",
+    "forgotPasswordCode_invalid": "Неправильний код підтвердження",
     
     "error_agree_policy_required": "Ви повинні погодитися з умовами та політикою конфіденційності.",
     "unknown_error": "Невідома помилка",

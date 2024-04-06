@@ -15,3 +15,8 @@ export const LOGIN_SCHEMA = Yup.object().shape({
   email: V.EMAIL_VALIDATION,
   password: V.PASSWORD_VALIDATION
 });
+
+export const SET_NEW_PASSWORD_SCHEMA = Yup.object().shape({
+  password: V.PASSWORD_VALIDATION,
+  confirm_password: V.PASSWORD_VALIDATION.oneOf([Yup.ref('password')], C.PASSWORD.NO_MATCH_MESSAGE),
+});

@@ -12,6 +12,12 @@ export const ENDPOINTS = {
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
         CONFIRM_EMAIL: `${API_URL}/user/confirm-email`
     },
+    RECOVERY:
+    {
+        CONFIRM_EMAIL: `${API_URL}/user/forgot-password`,
+        VERIFY_CODE: `${API_URL}/user/check-forgot-password`,
+        SET_NEW_PASSWORD: `${API_URL}/user/restore-password`,
+    },
     FEEDS :{
         GET_POSTS: `https://sparkling-article.com/posts.json`,
     },

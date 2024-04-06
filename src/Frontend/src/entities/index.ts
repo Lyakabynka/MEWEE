@@ -2,7 +2,7 @@
 //////////// ENUMERABLE ////////////
 ////////////////////////////////////
 
-export { EnumRegisterationStage } from './enums/EnumRegistrationStage'
+export { EnumRegistrationStage } from './enums/EnumRegistrationStage'
 export { EnumUserRole } from './enums/EnumUserRole'
 export { EnumPlanType } from './enums/EnumPlanType'
 export { EnumScheduledPlanType } from './enums/EnumScheduleType'
@@ -12,8 +12,8 @@ export { EnumPlatform } from './enums/EnumPlatform'
 //////////// REQUESTS //////////////
 ////////////////////////////////////
 
-export type { ILoginRequest } from './requests/auth/ILoginRequest';
 export type { IConfirmEmailRequest } from './requests/auth/IConfirmEmailRequest';
+export type { ILoginRequest } from './requests/auth/ILoginRequest';
 export type { IRegisterRequest } from './requests/auth/IRegisterRequest'
 export type { ICreatePlanRequest } from './requests/plan/ICreatePlanRequest'
 export type { ICreateScheduledPlanRequest } from './requests/scheduledPlan/ICreateScheduledPlanRequest'
@@ -33,6 +33,7 @@ export type { IUserData } from './responses/shared/IUserData'
 
 export { useErrors } from './sharedStores/useErrors';
 export { usePostsStore } from './sharedStores/usePostsStore';
+export { useRecoveryStore } from './sharedStores/useRecoveryStore';
 export { useThemeStore } from './sharedStores/useThemeStore';
 export { useEmailStore } from './sharedStores/useEmailStore';
 export { useAuthStore } from './sharedStores/useAuthStore';

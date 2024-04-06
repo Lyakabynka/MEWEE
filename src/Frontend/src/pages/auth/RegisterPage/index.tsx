@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { EnumRegisterationStage, EnumUserRole, useAuthStore } from "../../../entities";
+import { EnumRegistrationStage, EnumUserRole, useAuthStore } from "../../../entities";
 import { Navigate, useNavigate } from "react-router-dom";
 import { EmailConfirmationForm, PreferencesForm, RegisterForm } from "../../../features";
 import path from 'path';
@@ -9,15 +9,15 @@ export const RegisterPage: React.FC<IAuthPageProps> = ({ setActiveAuthNav }) => 
 
 
     const { role, isLoggedIn } = useAuthStore();
-    const [currentStage, setCurrentStage] = useState<EnumRegisterationStage>(EnumRegisterationStage.Main);
+    const [currentStage, setCurrentStage] = useState<EnumRegistrationStage>(EnumRegistrationStage.Main);
 
 
     const handleStageProgression = () => setCurrentStage(prevStage => prevStage + 1);
-    const handleBack = () => setCurrentStage(EnumRegisterationStage.Main);
+    const handleBack = () => setCurrentStage(EnumRegistrationStage.Main);
 
     
     useEffect(() => {
-        setActiveAuthNav(currentStage === EnumRegisterationStage.Main);
+        setActiveAuthNav(currentStage === EnumRegistrationStage.Main);
     }, [currentStage, setActiveAuthNav]);
 
 
@@ -36,11 +36,11 @@ export const RegisterPage: React.FC<IAuthPageProps> = ({ setActiveAuthNav }) => 
     return (
         <>
             {/* Додати стиль на цю кнопку */}
-            {currentStage !== EnumRegisterationStage.Main && <button onClick={handleBack}>Go Back</button>}
+            {currentStage !== EnumRegistrationStage.Main && <button onClick={handleBack}>Go Back</button>}
             
-            {currentStage === EnumRegisterationStage.Main && <RegisterForm onNext={handleStageProgression} />}
-            {currentStage === EnumRegisterationStage.EmailConfirmation && <EmailConfirmationForm onNext={handleStageProgression} />}
-            {currentStage === EnumRegisterationStage.Preferences && <PreferencesForm></PreferencesForm> }
+            {currentStage === EnumRegistrationStage.Main && <RegisterForm onNext={handleStageProgression} />}
+            {currentStage === EnumRegistrationStage.EmailConfirmation && <EmailConfirmationForm onNext={handleStageProgression} />}
+            {currentStage === EnumRegistrationStage.Preferences && <PreferencesForm></PreferencesForm> }
         </>
     );
 };
