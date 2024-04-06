@@ -33,4 +33,3 @@ export const RecoveryPage: React.FC<IRecoveryPageProps> = ({ url }) => {
         </>
     );
 };
-//{currentStage === EnumRecoveryStage.Preferences && <PreferencesForm></PreferencesForm> }
