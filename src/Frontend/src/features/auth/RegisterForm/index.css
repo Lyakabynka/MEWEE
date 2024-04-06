@@ -5,10 +5,9 @@
     border-radius: 10px;
     width: 100%;
 }
-
-input {
+.input-registration {
     background: rgba(255, 255, 255, 1);
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     outline: none;
     padding-left: 5px;
@@ -18,7 +17,6 @@ input::placeholder {
     text-align: justify;
     padding-left: 10px;
 }
-
 
 .input-short {
     width: 100%;
@@ -39,18 +37,6 @@ input::placeholder {
     cursor: pointer;
     margin: 10px;
 }
-.registration-style:hover{
-    background: rgba(182, 122, 254, 1);
-}
-
-.register-me{
-    color: rgba(182, 122, 254, 1);
-    position: relative;
-    z-index: 1;
-}
-.registration-style:hover .register-me{
-    color: rgba(37, 0, 92, 1);
-}
 .registration-style:active::after {
     content: "";
     position: absolute;
@@ -61,12 +47,11 @@ input::placeholder {
     background: rgba(16, 16, 16, 0.2);
     border-radius: 10px;
 }
-
 .agree-with-policy-text{
     color: rgba(123, 123, 123, 1);
 }
 
-input[type="checkbox"]{
+.input-group input[type="checkbox"]{
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -77,10 +62,10 @@ input[type="checkbox"]{
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-input[type="checkbox"]:hover{
+.input-group input[type="checkbox"]:hover{
     border: 2px solid rgba(37, 0, 92, 1)
 }
-input[type="checkbox"]:checked {
+.input-group input[type="checkbox"]:checked {
     background: rgba(182, 122, 254, 1);
     border: 2px solid rgba(37, 0, 92, 1)
 }

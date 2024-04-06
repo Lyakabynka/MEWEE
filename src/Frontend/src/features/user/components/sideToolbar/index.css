@@ -1,19 +1,18 @@
-.toolbar-block-container, .toolbar-prof-block-container
+
+.toolbar-block-container, .toolbar-prof-block-container, .toolbar-items-block-container, .toolbar-settings-block-container
 {
-    background-color: #8B98FF;
     width: 100%;
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 10px;
 }
 .toolbar-generic-content
 {
-    padding: 16px;
-    padding-left: 5vw;
+    padding-top: 16px;
+    margin-left: 3vw;
     width: min-content;
 }
 .toolbar-block-container img
 {
-    width: 8vw;
+    width: 100%;
 }
 .toolbar-main-content
 {
@@ -24,8 +23,6 @@
     gap: 10px;
 }
 
-
-
 .toolbar-fio-title, .toolbar-fio-second
 {
     font-family: 'Geometria', sans-serif;
@@ -35,12 +32,11 @@
 {
     font-weight: normal;
 }
-
-
 .toolbar-profile-main-container
 {
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 }
 .toolbar-list
 {
@@ -55,28 +51,40 @@
     padding: 15px;
     width: 100%;
 }
-.toolbar-list > div > span
-{
-    margin-left: 10px;
-}
-.toolbar-prof-block-container
+.toolbar-prof-block-container, .toolbar-items-block-container, .toolbar-settings-block-container
 {
     margin-top: 0;
-    padding: 20px;
-    display: flex;
+    padding: 10px;
     align-items: center;
     justify-content: space-between;
+}
+.toolbar-items-block-container
+{
+    padding: 15px 10px 211px 10px;
+    position: relative;
+}
+.toolbar-settings-block-container{
+    padding: 16px;
+    display: flex;
 }
 .toolbar-profile-info-container
 {
     margin-left: 15px;
-    font-size: 0.9vw;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
 }
-.toolbar-logo
+.toolbar-logo, .toolbar-logo-another
 {
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
+}
+.toolbar-logo-another{
+    padding: 13px;
 }
 .toolbar-profile-image {
     width: 50px; /* Adjust the size as needed */
@@ -95,3 +103,20 @@
     display: flex;
     gap: 5px;
 }
+
+.arrow-block{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px 0 10px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.arrow-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+

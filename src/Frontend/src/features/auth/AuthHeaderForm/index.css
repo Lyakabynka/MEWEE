@@ -196,7 +196,7 @@
     }
 }
 .password-icon-default{
-    background-image: url("./images/icon_default.png");
+    background-image: url("./images/icon_default.svg");
 }
 .password-icon-active{
     background-image: url("./images/icon_active.png");
@@ -206,13 +206,13 @@
 /*}*/
 
 .text-style-1{
-    font-family: Geometria;
+    font-family: Geometria, sans-serif;
     font-size: 0.75em;
     font-weight: 400;
     line-height: 0.944em;
 }
 .text-style-2{
-    font-family: Geometria;
+    font-family: Geometria, sans-serif;
     font-size: 1em;
     font-weight: 700;
     line-height: 1.10em;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik'; // Import Formik library
 import * as Yup from 'yup'; // Import Yup for validation
-import { useAuthStore } from '../../../entities';
+import {useAuthStore, useThemeStore} from '../../../entities';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import "./index.css"
@@ -11,7 +11,23 @@ export const RegisterForm = () => {
   const {t} = useTranslation();
   const { register, resetErrorInfo, isLoading, errorMessage } = useAuthStore();
   const navigate = useNavigate();
-  
+  const { currentTheme } = useThemeStore();
+  const [isHoverButton, setIsHoverButton] = useState(false);
+  const [isActiveButton, setIsActiveButton] = useState(false);
+
+    const buttonStyle = {
+        backgroundColor: isActiveButton
+            ? currentTheme?.authPages.registrationPage.buttonActiveBackground
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.registrationPage.buttonHoverBackground
+                : currentTheme?.authPages.registrationPage.buttonBackground,
+        color: isActiveButton
+            ? currentTheme?.authPages.registrationPage.buttonActiveColor
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.registrationPage.buttonHoverColor
+                : currentTheme?.authPages.registrationPage.buttonColor,
+    };
+
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirm_password: false
@@ -62,13 +78,13 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
   return (
     <div className="form-container">
       <div className='login-or-block'>
-        <div></div>
-        <span>{t('or')}</span>
-        <div></div>
+          <div style={{borderColor: currentTheme?.authPages.loginPage.lineColor}}></div>
+          <span style={{color: currentTheme?.authPages.loginPage.lineColorText}}>{t('or')}</span>
+          <div style={{borderColor: currentTheme?.authPages.loginPage.lineColor}}></div>
       </div>
-      <form onSubmit={formik.handleSubmit}>
-      <div className="input-group">
-                    <div className="input-container">
+        <form onSubmit={formik.handleSubmit}>
+            <div className="input-group">
+            <div className="input-container">
                         <label className={`label-style ${usernameError ? 'label-error' : ''}`}>
                             <input
                                 type="text"
@@ -78,7 +94,8 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                                 value={formik.values.username}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short ${usernameError ? 'input-error' : ''}`}
+                                className={`text-style-1 input-short input-registration ${usernameError ? 'input-error' : ''}`}
+                                style={{backgroundColor: currentTheme?.authPages.registrationPage.inputBackground}}
                             />
                         </label>
                         {formik.touched.username && formik.errors.username &&
@@ -94,7 +111,8 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                                 value={formik.values.surname}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short ${surnameError ? 'input-error' : ''}`}
+                                className={`text-style-1 input-short input-registration ${surnameError ? 'input-error' : ''}`}
+                                style={{backgroundColor: currentTheme?.authPages.registrationPage.inputBackground}}
                             />
                         </label>
                         {formik.touched.surname && formik.errors.surname &&
@@ -112,7 +130,8 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-long ${emailError ? 'input-error' : ''}`}
+                                className={`text-style-1 input-long input-registration ${emailError ? 'input-error' : ''}`}
+                                style={{backgroundColor: currentTheme?.authPages.registrationPage.inputBackground}}
                             />
                         </label>
                         {formik.touched.email && formik.errors.email && <div className="error">{t(formik.errors.email)}</div>}
@@ -129,7 +148,8 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short password-input ${passwordError ? 'input-error' : ''}`}
+                                className={`text-style-1 input-short input-registration password-input ${passwordError ? 'input-error' : ''}`}
+                                style={{backgroundColor: currentTheme?.authPages.registrationPage.inputBackground}}
                             />
                             <span
                                 className={`show-password-toggle ${showPassword.password ? 'password-icon-active' : 'password-icon-default'}`}
@@ -148,7 +168,8 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                                 value={formik.values.confirm_password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short password-input ${confirmPasswordError ? 'input-error' : ''}`}
+                                className={`text-style-1 input-short input-registration password-input ${confirmPasswordError ? 'input-error' : ''}`}
+                                style={{backgroundColor: currentTheme?.authPages.registrationPage.inputBackground}}
                             />
                             <span
                                 className={`show-password-toggle ${showPassword.confirm_password ? 'password-icon-active' : 'password-icon-default'}`}
@@ -159,10 +180,15 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                     </div>
                 </div>
                 <div className="input-group">
-                    <button className="registration-style" type="submit">
-                        <span className="text-style-2 register-me">
-                            {t('register-me')}
-                        </span>
+                    <button className="registration-style text-style-2" type="submit"
+                            style={buttonStyle}
+                            onMouseEnter={() => setIsHoverButton(true)}
+                            onMouseLeave={() => {
+                                setIsHoverButton(false);
+                                setIsActiveButton(false);
+                            }}
+                            onMouseDown={() => setIsActiveButton(true)}
+                            onMouseUp={() => setIsActiveButton(false)}>{t('register-me')}
                     </button>
                     <input
                         type="checkbox"
@@ -173,18 +199,20 @@ const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
                         onBlur={formik.handleBlur}
                     />
                     <div className="agree-with-policy-container">
-                        <div className={`text-style-1 agree-with-policy-text ${policyAgreeError ? 'input-error' : ''}`}>{t('agree-with-policy')}</div>
+                        <div
+                            className={`text-style-1 agree-with-policy-text ${policyAgreeError ? 'input-error' : ''}`}>{t('agree-with-policy')}</div>
                         {formik.touched.policyAgree && formik.errors.policyAgree &&
                             <div className="error">{t(formik.errors.policyAgree)}</div>}
                     </div>
                 </div>
 
-      </form>
+        </form>
 
-      {isLoading && <div className="loading-indicator">Loading...</div>}
+        {isLoading && <div className="loading-indicator">Loading...</div>}
     </div>
   );
 };
 {/* <div className="login-link">
 <a href="/auth/login">Already have an account? Sign in</a>
-</div> */}
+</div> */
+}

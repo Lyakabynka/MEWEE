@@ -6,9 +6,8 @@
     width: 100%;
 }
 
-input {
-    background: rgba(255, 255, 255, 1);
-    border-radius: 10px;
+.input-login {
+    border-radius: 8px;
     border: none;
     outline: none;
     width: 100%;
@@ -25,16 +24,10 @@ input {
     color: rgba(37, 0, 92, 1);
     text-align: center;
 }
-.link:hover{
-    color: rgba(182, 122, 254, 1);
-}
-.link:active{
-    color: rgba(251, 165, 0, 1);
-}
 
 .login-style{
     position: relative;
-    width: 45%;
+    width: 40%;
     height: 48.19px;
     background: rgba(37, 0, 92, 1);
     border-radius: 10px;
@@ -42,19 +35,6 @@ input {
     cursor: pointer;
     margin: 10px;
 }
-.login-style:hover{
-    background: rgba(182, 122, 254, 1);
-}
-
-.authorize{
-    color: rgba(182, 122, 254, 1);
-    position: relative;
-    z-index: 1;
-}
-.login-style:hover .authorize{
-    color: rgba(37, 0, 92, 1);
-}
-
 .login-style:active::after {
     content: "";
     position: absolute;
@@ -65,7 +45,6 @@ input {
     background: rgba(16, 16, 16, 0.2);
     border-radius: 10px;
 }
-
 .label-error{
     background: red;
 }

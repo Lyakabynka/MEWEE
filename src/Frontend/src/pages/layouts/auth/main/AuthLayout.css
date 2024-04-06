@@ -27,6 +27,7 @@
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .auth-top-content
 {
@@ -58,6 +59,14 @@
     font-family: 'Geometria', sans-serif;
     color: gray;
     font-size: 10px;
+}
+
+.language-switch-container{
+    position: absolute;
+    right: 1.5vw;
+    bottom: 1.2vw;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width:900px) {

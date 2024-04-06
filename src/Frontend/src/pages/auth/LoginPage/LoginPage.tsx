@@ -7,18 +7,10 @@ import { Box } from '@mui/material';
 
 export const LoginPage = () => {
 
-    const { role, isLoggedIn } = useAuthStore();
+    const { isLoggedIn } = useAuthStore();
 
     if (isLoggedIn) {
-        switch (role) {
-            case EnumUserRole.user:
-                return <Navigate to='/feed' />
-            case EnumUserRole.administrator:
-                return <Navigate to='/administrator' />
-            default:
-                console.error('Unexpected user role');
-                break;
-        }
+        return <Navigate to='/feed'/>
     }
 
     return (

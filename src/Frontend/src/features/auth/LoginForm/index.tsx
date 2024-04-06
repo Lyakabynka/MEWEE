@@ -3,7 +3,7 @@ import {
 } from "@mui/material";
 import React, {useEffect, useState} from "react";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useAuthStore } from "../../../entities";
+import {useAuthStore, useThemeStore} from "../../../entities";
 import { useFormik } from 'formik'; // Import Formik library
 import * as Yup from 'yup'; // Import Yup for validation
 import Link from '@mui/material/Link';
@@ -17,10 +17,39 @@ export function LoginForm() {
     const {t} = useTranslation();
     const { login, resetErrorInfo, isLoading, errorMessage } = useAuthStore();
     const navigate = useNavigate();
+    const { currentTheme } = useThemeStore();
 
     const [showPassword, setShowPassword] = useState({
         password: false,
     });
+
+    const [isHoverButton, setIsHoverButton] = useState(false);
+    const [isActiveButton, setIsActiveButton] = useState(false);
+    const [isHoverLink, setIsHoverLink] = useState(false);
+    const [isActiveLink, setIsActiveLink] = useState(false);
+
+    const buttonStyle = {
+        backgroundColor: isActiveButton
+            ? currentTheme?.authPages.loginPage.buttonActiveBackground
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.loginPage.buttonHoverBackground
+                : currentTheme?.authPages.loginPage.buttonBackground,
+        color: isActiveButton
+            ? currentTheme?.authPages.loginPage.buttonActiveColor
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.loginPage.buttonHoverColor
+                : currentTheme?.authPages.loginPage.buttonColor,
+    };
+    const linkStyle = {
+        color: isActiveLink
+            ? currentTheme?.authPages.loginPage.linkActiveColor
+            : (isHoverLink && !isActiveLink)
+                ? currentTheme?.authPages.loginPage.linkHoverColor
+                : currentTheme?.authPages.loginPage.linkColor,
+    };
+    const inputStyle = {
+        backgroundColor: currentTheme?.authPages.loginPage.inputBackground,
+    };
 
     const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
         setShowPassword(prevState => ({
@@ -65,9 +94,9 @@ export function LoginForm() {
 
 
             <div className='login-or-block'>
-                    <div></div>
-                    <span>{t('or')}</span>
-                    <div></div>
+                    <div style={{borderColor: currentTheme?.authPages.loginPage.lineColor}}></div>
+                    <span style={{color: currentTheme?.authPages.loginPage.lineColorText}}>{t('or')}</span>
+                    <div style={{borderColor: currentTheme?.authPages.loginPage.lineColor}}></div>
                 </div>
                 <form onSubmit={handleSubmit}>
                 <div className="input-group">
@@ -82,7 +111,8 @@ export function LoginForm() {
                                     autoFocus
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
-                                    className={`"text-style-1 ${emailError ? 'input-error' : ''}`}
+                                    className={`"text-style-1 input-login ${emailError ? 'input-error' : ''}`}
+                                    style={inputStyle}
                                 />
                             </label>
                             {formik.errors.email && <div className="error">{t(formik.errors.email)}</div>}
@@ -98,7 +128,8 @@ export function LoginForm() {
                                     autoComplete="new-password"
                                     value={formik.values.password}
                                     onChange={formik.handleChange}
-                                    className={`"text-style-1 password-input ${passwordError ? 'input-error' : ''}`}
+                                    className={`"text-style-1 input-login password-input ${passwordError ? 'input-error' : ''}`}
+                                    style={inputStyle}
                                 />
                                 <span
                                     className={`show-password-toggle ${showPassword.password ? 'password-icon-active' : 'password-icon-default'}`}
@@ -107,9 +138,28 @@ export function LoginForm() {
                             {formik.errors.password && <div className="error">{t(formik.errors.password)}</div>}
                         </div>
                     </div>
-                    <button className="login-style" type="submit"><span className="text-style-2 authorize">{t('login')}</span></button>
+                    <button className="login-style text-style-2" type="submit"
+                            style={buttonStyle}
+                            onMouseEnter={() => setIsHoverButton(true)}
+                            onMouseLeave={() => {
+                                setIsHoverButton(false);
+                                setIsActiveButton(false);
+                            }}
+                            onMouseDown={() => setIsActiveButton(true)}
+                            onMouseUp={() => setIsActiveButton(false)}>{t('login')}
+                    </button>
                     <div className="link-container">
-                        <Link href="/auth"><span className="text-style-1 link">{t('forgot_password')}?</span></Link>
+                        <Link href="/auth">
+                            <span className="text-style-1 link"
+                                  style={linkStyle}
+                                  onMouseEnter={() => setIsHoverLink(true)}
+                                  onMouseLeave={() => {
+                                      setIsHoverLink(false);
+                                      setIsActiveLink(false);
+                                  }}
+                                  onMouseDown={() => setIsActiveLink(true)}
+                                  onMouseUp={() => setIsActiveLink(false)}>
+                                {t('forgot_password')}?</span></Link>
                     </div>
                     {errorMessage && <span className="error">{t(errorMessage)}</span>}
                     {isLoading && <div className="loading-container"><CircularProgress /></div>}

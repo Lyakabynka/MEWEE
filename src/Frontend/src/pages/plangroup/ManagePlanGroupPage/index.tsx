@@ -187,16 +187,6 @@ export const ManagePlanGroupPage = () => {
                             Group
                         </Typography>
                     </Box>
-                    <AgGridReact
-                        columnDefs={plansInGroupColumnDefs}
-                        rowData={planGroup?.planPlanGroups}
-                        rowDragManaged={true}
-                        animateRows={true}
-                        defaultColDef={defaultColDef}
-                        onRowDoubleClicked={handlePlanPlanGroupsDoubleClicked}
-                        onDragStopped={handlePlanPlanGroupsDragStopped}
-                        onGridReady={onPlanPlanGroupGridReady}
-                    />
                 </div>
                 {/* <Box sx={{
                     verticalAlign: 'center',
@@ -231,14 +221,7 @@ export const ManagePlanGroupPage = () => {
                             Plans
                         </Typography>
                     </Box>
-                    <AgGridReact
-                        columnDefs={planColumnDefs}
-                        rowData={plans}
-                        rowDragManaged={true}
-                        animateRows={true}
-                        defaultColDef={defaultColDef}
-                        onRowDoubleClicked={handlePlansRowDoubleClicked}
-                    />
+
                 </div>
             </div>
             <ManagePlanGroupSaveButtonPlaceHolder handle={handleClick} />

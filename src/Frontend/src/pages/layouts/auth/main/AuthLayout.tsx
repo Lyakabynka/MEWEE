@@ -3,17 +3,22 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 import './AuthLayout.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthHeaderForm } from '../../../../features';
+import {SwitchComponent} from "../../../../features/user/components/sideToolbar/components/switchComponent";
+import {LanguageComponent} from "../../../../features/user/components/sideToolbar/components/languageComponent";
+import {useThemeStore} from "../../../../entities";
 
 export const AuthLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const { t } = useTranslation(); // Call useTranslation hook
     const navigate = useNavigate();
+    const { currentTheme } = useThemeStore();
 
     return (
         <div className='auth-main-container'>
             <AuthHeaderForm />
             <div className='auth-content-holder'>
                 <div className='auth-title-holder'>
-                    <span className='auth-title-text'>MEWEE</span>
+                    <span className='auth-title-text' style={{color: currentTheme?.authPages.commonElements.logoColorText}}
+                    >MEWEE</span>
                     <span className='auth-sub-title-text'>{t('title-description')}</span>
                 </div>
                 <div className='auth-content-container'>
@@ -26,6 +31,10 @@ export const AuthLayout: React.FC<{ children: React.ReactNode }> = ({ children }
                         </div>
                     </div>
                     {children}
+                    <div className="language-switch-container">
+                        <LanguageComponent />
+                        <SwitchComponent />
+                    </div>
                 </div>
             </div>
         </div>
