@@ -1,4 +1,4 @@
-commit: "forgot-password-restoring-added" @Andriy31193
+commit: "forgot-password-restoring-added-t" @Andriy31193
 ------------------------------------------
 
 This update affected "Forgot password?" system. 

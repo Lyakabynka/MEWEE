@@ -59,7 +59,6 @@ const passwordError = formik.touched.password && formik.errors.password;
 const confirmPasswordError = formik.touched.confirm_password && formik.errors.confirm_password;
   return (
     <div className="">
-      <span>SET NEW PASSWORD:</span>
         <form onSubmit={formik.handleSubmit}>
         <div className="input-group">
                     <div className="input-container">

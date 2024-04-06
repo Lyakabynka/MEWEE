@@ -45,7 +45,6 @@ export const RecoveryEmailConfirmationForm: React.FC<{ onNext: () => void }> = (
   const codeError = formik.errors.code;
   return (
     <div className="">
-      <span>ENTER CODE:</span>
         <form onSubmit={formik.handleSubmit}>
         <div className="input-container">
                             <label className={`label-style ${codeError ? 'label-error' : ''}`}>
