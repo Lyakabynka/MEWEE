@@ -1,6 +1,8 @@
 .home-generic-container
 {
     display: flex;
+    max-width: 1260px;
+    margin: 0 auto;
 }
 .home-main-container
 {
@@ -9,4 +11,9 @@
 .home-generic-content-holder
 {
     display: flex;
+}
+
+@media (max-width: 1260px) {
+    .home-generic-container {
+    }
 }

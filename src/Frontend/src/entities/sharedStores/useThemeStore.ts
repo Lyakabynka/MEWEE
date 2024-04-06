@@ -16,12 +16,12 @@ interface IThemeStore {
 export const useThemeStore = create<IThemeStore>()(persist((set, get) => ({
     currentThemeIndex: 0,
     currentTheme: null,
-    
+
     setTheme: (theme: Theme | null) => {
         if (theme != null) {
             const themeIndex = themes.findIndex((t) => t === theme);
             if (themeIndex !== -1) {
-                set({ 
+                set({
                     currentThemeIndex: themeIndex,
                     currentTheme: themes[themeIndex]
                 })
@@ -30,13 +30,13 @@ export const useThemeStore = create<IThemeStore>()(persist((set, get) => ({
     },
 
     cycleThemes: () => {
-        set((state) => ({ 
+        set((state) => ({
             currentThemeIndex: (state.currentThemeIndex + 1) % themes.length,
-            
+
             currentTheme: themes[(state.currentThemeIndex + 1) % themes.length]
         }));
     },
-    getCurrentTheme: () => 
+    getCurrentTheme: () =>
     {
         const themeIndex = get().currentThemeIndex;
         return themes[themeIndex];

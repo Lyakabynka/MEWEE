@@ -111,12 +111,6 @@ export const ScheduledPlanPage = () => {
                         style={{
                             width: '100%'
                         }}>
-                        <AgGridReact
-                            columnDefs={scheduledPlanColumnDefs}
-                            rowData={planSchedule?.scheduledPlans}
-                            defaultColDef={defaultColDef}
-                            onRowDoubleClicked={handleScheduledPlansDoubleClicked}
-                        />
                     </div>
                 </div>
             </div>

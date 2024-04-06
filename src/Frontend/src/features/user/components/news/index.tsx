@@ -40,10 +40,11 @@ export const HomeNews = () => {
     }
 
     return (
-        <div className='home-news-generic-container' style={{backgroundColor: currentTheme?.colorBlocks?.contentColor ?? 'white'}}>
+        <div className='home-news-generic-container' style={{backgroundColor: currentTheme?.mainPage.post.background}}>
                             {data && data.map((post: IPost) => (
                                 post.id == 32 && <FeedPost key={post.id} post={post} />
                 ))}
         </div>
+
     )
 };

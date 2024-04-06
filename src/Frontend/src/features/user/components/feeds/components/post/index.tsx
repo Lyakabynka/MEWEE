@@ -42,22 +42,24 @@ export const FeedPost = (post: any) => {
   const CustomBox = currentTheme?.components?.MuiIcon;
     // const fio = username?.split(' ');
     return (
-        <div className='feed-post-generic-container' style={{backgroundColor: currentTheme?.colorBlocks?.contentColor ?? 'white'}}>
+        <div className='feed-post-generic-container' style={{backgroundColor: currentTheme?.mainPage.post.background}}>
             <header className='feed-post-profile-main-container'>
                 <div className='feed-post-profile-main-section'>
                     <div className='feed-post-profile-image'>
                         <img src={currentPost.profileImageUrl}></img>
                     </div>
                     <div className='feed-post-profile-info-container'>
-                        <span className='feed-post-profile-title'>{currentPost.username}</span>
-                        <span className='feed-post-date'>{currentPost.postDate}</span>
+                        <span className='feed-post-profile-title'
+                              style={{color: currentTheme?.mainPage.post.colorText}}>{currentPost.username}</span>
+                        <span className='feed-post-date'
+                              style={{color: currentTheme?.mainPage.post.thirdColorText}}>{currentPost.postDate}</span>
                         <div className='feed-post-location-container'>
 
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 21.6C12 21.6 19.5131 14.9217 19.5131 9.91304C19.5131 5.7637 16.1494 2.39999 12 2.39999C7.85067 2.39999 4.48697 5.7637 4.48697 9.91304C4.48697 14.9217 12 21.6 12 21.6Z" stroke={currentTheme?.icon?.stroke ?? 'black'} strokeWidth="2"/>
-                            <path d="M14.4003 9.60015C14.4003 10.9256 13.3258 12.0001 12.0003 12.0001C10.6748 12.0001 9.60032 10.9256 9.60032 9.60015C9.60032 8.27466 10.6748 7.20015 12.0003 7.20015C13.3258 7.20015 14.4003 8.27466 14.4003 9.60015Z" stroke={currentTheme?.icon?.stroke ?? 'black'} strokeWidth="2"/>
+                            <path d="M12 21.6C12 21.6 19.5131 14.9217 19.5131 9.91304C19.5131 5.7637 16.1494 2.39999 12 2.39999C7.85067 2.39999 4.48697 5.7637 4.48697 9.91304C4.48697 14.9217 12 21.6 12 21.6Z" stroke={currentTheme?.mainPage.post?.icon ?? 'black'} strokeWidth="2"/>
+                            <path d="M14.4003 9.60015C14.4003 10.9256 13.3258 12.0001 12.0003 12.0001C10.6748 12.0001 9.60032 10.9256 9.60032 9.60015C9.60032 8.27466 10.6748 7.20015 12.0003 7.20015C13.3258 7.20015 14.4003 8.27466 14.4003 9.60015Z" stroke={currentTheme?.mainPage.post?.icon ?? 'black'} strokeWidth="2"/>
                         </svg>
-                            <span className='feed-post-date' style={{color: currentTheme?.colorTexts?.date ?? 'gray'}}>{currentPost.location}</span>
+                            <span className='feed-post-date' style={{color: currentTheme?.mainPage.post.secondColorText}}>{currentPost.location}</span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +85,8 @@ export const FeedPost = (post: any) => {
                 )}
             </main>
             <footer>
-                <span className='feed-post-content-title-text'>{currentPost.title}</span>
+                <span className='feed-post-content-title-text'
+                      style={{color: currentTheme?.mainPage.post.colorText}}>{currentPost.title}</span>
                 <p className='feed-post-content-description'>{currentPost.description}</p>
                 <nav className='feed-post-nav'>
                     <button className='feed-post-button-more'>{t('more')}</button>
