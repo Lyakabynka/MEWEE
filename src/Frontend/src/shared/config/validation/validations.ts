@@ -22,9 +22,8 @@ export const PASSWORD_VALIDATION = Yup.string()
   .max(C.PASSWORD.MAX_LENGTH.value, C.PASSWORD.MAX_LENGTH.message)
   .required(C.PASSWORD.REQUIRED_MESSAGE);
 
-export const CONFIRM_PASSWORD_VALIDATION = Yup.string()
-  .oneOf([Yup.ref('password')], C.PASSWORD.NO_MATCH_MESSAGE)
-  .required(C.PASSWORD.NO_MATCH_MESSAGE);
+  export const CONFIRM_PASSWORD_VALIDATION = Yup.string()
+  .required(C.PASSWORD.REQUIRED_MESSAGE);
 
 export const POLICY_AGREE_VALIDATION = Yup.boolean()
   .oneOf([true], C.POLICY_AGREE.REQUIRED_MESSAGE)

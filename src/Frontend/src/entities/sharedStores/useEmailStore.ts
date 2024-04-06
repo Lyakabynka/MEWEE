@@ -33,7 +33,7 @@ export const useEmailStore = create<IEmailStore>()(persist((set, get) => ({
 
         set({ isLoading: true });
         console.log(params);
-        const response = await $api.post<any>(ENDPOINTS.USER.GET_EMAIL_CONFIRMED, params);
+        const response = await $api.post<any>(ENDPOINTS.USER.CONFIRM_EMAIL, params);
 
         if (response?.status == 409) {
             const error = response.data.error;

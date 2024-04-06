@@ -3,7 +3,7 @@ using FluentValidation;
 using IdentityService.Application.Features.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.Application.Mediatr.User.Commands;
+namespace IdentityService.Application.Mediatr.User.Commands.Register;
 
 public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {

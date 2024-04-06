@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import * as C from './config';
 import * as V from './validations';
 
 export const REGISTER_SCHEMA = Yup.object().shape({
@@ -6,7 +7,7 @@ export const REGISTER_SCHEMA = Yup.object().shape({
   surname: V.SURNAME_VALIDATION,
   email: V.EMAIL_VALIDATION,
   password: V.PASSWORD_VALIDATION,
-  confirm_password: V.PASSWORD_VALIDATION,
+  confirm_password: V.PASSWORD_VALIDATION.oneOf([Yup.ref('password')], C.PASSWORD.NO_MATCH_MESSAGE),
   policyAgree: V.POLICY_AGREE_VALIDATION, 
 });
 

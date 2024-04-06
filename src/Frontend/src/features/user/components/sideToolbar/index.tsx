@@ -1,10 +1,11 @@
+<<<<<<< HEAD
 import React, {useEffect, useState} from 'react';
+=======
+>>>>>>> 37733862c06b99a250ba46706029fd5778618247
 import { Navigate, useNavigate } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
 import { useAuthStore, useThemeStore } from '../../../../entities';
 import './index.css';
 import { SideToolbarMenuItem } from './components/sideToolbarMenuItem';
-import { title } from 'process';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as IconGroups } from './images/icon_groups.svg';
 import { ReactComponent as IconEvents } from './images/icon_events.svg';
@@ -21,6 +22,7 @@ import {LanguageComponent} from "./components/languageComponent";
 
 export const SideToolbar = () => {
 
+    const navigate = useNavigate();
     const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
     const { t, i18n } = useTranslation();
     const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme  } = useThemeStore();
@@ -104,6 +106,7 @@ export const SideToolbar = () => {
                     )}
                     <LanguageComponent />
                 </div>
+                    <button onClick={() => navigate('/auth/logout')}>LOGOUT</button>
             </div>
         </div>
     )

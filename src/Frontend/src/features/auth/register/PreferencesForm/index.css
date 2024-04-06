@@ -1,0 +1,58 @@
+.preferences-main-container
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.preferences-items-container-block
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+
+}
+.preferences-input-container
+{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 2px solid purple;
+    padding: 10px;
+}
+.preferences-items-container-block > input
+{
+
+
+}
+.preferences-items-content-block
+{
+    display: flex;
+    border: 2px solid purple;
+    border-top: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+}
+.preferences-items-container
+{
+
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.preference-item
+{
+    border-radius: 20px;
+    background-color: orange;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 25px;
+
+}
+.preference-item > span
+{
+    margin: 5px;
+    vertical-align: middle;
+}

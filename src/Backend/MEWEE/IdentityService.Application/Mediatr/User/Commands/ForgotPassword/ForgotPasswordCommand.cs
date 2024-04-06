@@ -1,9 +1,9 @@
 ﻿using IdentityService.Application.Features.Interfaces;
 using IdentityService.Application.Response;
 
-namespace IdentityService.Application.Mediatr.User.Queries;
+namespace IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
 
-public class GetEmailConfirmedQuery : IValidatableRequest<Result>
+public class ForgotPasswordCommand : IValidatableRequest<Result>
 {
     public string Email { get; set; }
 }

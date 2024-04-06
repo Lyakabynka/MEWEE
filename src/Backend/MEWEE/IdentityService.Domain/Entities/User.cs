@@ -14,6 +14,11 @@ public class User : BaseEntity
     public bool IsEmailConfirmed { get; set; } = false;
 
     public List<RefreshSession> RefreshSessions { get; set; }
+    
+    
+    
+    public ConfirmationCode? ConfirmationCode { get; set; }
+    public ForgotPasswordCode? ForgotPasswordCode { get; set; }
 }
 
 

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 export const RecoveryPhoneForm = () => {
   const {t} = useTranslation();
-  const { register, resetErrorInfo, isLoading, errorMessage } = useAuthStore();
+  const { register, isLoading } = useAuthStore();
   const navigate = useNavigate();
 
   return (

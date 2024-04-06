@@ -10,7 +10,7 @@ export const ENDPOINTS = {
     USER :{
         REGISTER: `${API_URL}/user/register`,
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
-        GET_EMAIL_CONFIRMED: `${API_URL}/user/email`
+        CONFIRM_EMAIL: `${API_URL}/user/confirm-email`
     },
     FEEDS :{
         GET_POSTS: `https://sparkling-article.com/posts.json`,

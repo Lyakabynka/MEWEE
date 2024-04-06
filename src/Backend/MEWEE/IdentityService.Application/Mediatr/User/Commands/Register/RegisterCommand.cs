@@ -1,7 +1,7 @@
 ﻿using IdentityService.Application.Features.Interfaces;
 using IdentityService.Application.Response;
 
-namespace IdentityService.Application.Mediatr.User.Commands;
+namespace IdentityService.Application.Mediatr.User.Commands.Register;
 
 public class RegisterCommand : IValidatableRequest<Result>
 {

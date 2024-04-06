@@ -10,6 +10,10 @@ namespace IdentityService.Persistence
         public DbSet<User> Users { get; set; }
         
         public DbSet<RefreshSession> RefreshSessions { get; set; }
+        
+        public DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
+        
+        public DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

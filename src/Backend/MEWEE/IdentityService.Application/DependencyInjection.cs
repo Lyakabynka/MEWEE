@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using FluentValidation;
 using IdentityService.Application.Features.Behaviors;
+using IdentityService.Application.Features.Interfaces;
 using IdentityService.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,7 @@ public static class DependencyInjection
     {
         services.AddScoped<JwtProvider>();
         services.AddScoped<CookieProvider>();
+        services.AddScoped<IEmailService, EmailService>();
 
         services.AddMediatR(config =>
         {

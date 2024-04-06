@@ -1,5 +1,9 @@
-﻿using IdentityService.Application.Mediatr.User.Commands;
-using IdentityService.Application.Mediatr.User.Queries;
+﻿using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
+using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
+using IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
+using IdentityService.Application.Mediatr.User.Commands.Register;
+using IdentityService.Application.Mediatr.User.Commands.RestorePassword;
+using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +35,7 @@ public class UserController : ApiControllerBase
         {
             Username = requestModel.Username,
             Password = requestModel.Password,
-            Email = requestModel.Email,
+            Email = requestModel.Email.ToLower(),
         };
         
         return await Mediator.Send(request);
@@ -51,6 +55,7 @@ public class UserController : ApiControllerBase
     [HttpGet("profile")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetUsersProfile()
     {
         var request = new GetUserProfileQuery()
@@ -60,25 +65,107 @@ public class UserController : ApiControllerBase
 
         return await Mediator.Send(request);
     }
+    
     /// <summary>
-    /// Get the User email
+    /// Confirms user's email
     /// </summary>
     /// <remarks>
     /// Sample request:
-    /// POST /user/email
+    /// POST /user/confirm-email
     /// </remarks>
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [Authorize]
-    [HttpGet("email")]
+    [HttpPost("confirm-email")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> GetEmailConfirmed()
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailRequestModel requestModel)
     {
-        var request = new GetEmailConfirmedQuery()
+        var request = new ConfirmEmailCommand()
         {
-            Email = Email
+            Email = requestModel.Email.ToLower(),
+            ConfirmationCode = requestModel.Code,
+        };
+
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// changes user's password
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/change-password
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [Authorize]
+    [HttpPost("change-password")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequestModel requestModel)
+    {
+        var request = new ChangePasswordCommand()
+        {
+            UserId = UserId,
+            OldPassword = requestModel.OldPassword,
+            NewPassword = requestModel.NewPassword
+        };
+
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// sends forgot password email to user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/forgot-password
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("forgot-password")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestModel requestModel)
+    {
+        var request = new ForgotPasswordCommand()
+        {
+            Email = requestModel.Email
+        };
+
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Restore user's password
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/restore-code
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("restore-password")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RestorePassword([FromBody] RestorePasswordRequestModel requestModel)
+    {
+        var request = new RestorePasswordCommand()
+        {
+            Email = requestModel.Email,
+            Code = requestModel.Code,
+            NewPassword = requestModel.NewPassword,
         };
 
         return await Mediator.Send(request);

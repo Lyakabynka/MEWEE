@@ -26,6 +26,10 @@
     "settings": "Settings",
     "search": "Search",
 
+    "confirmationCode_does_not_exist": "Confirmation code does not exist",
+    "confirmationCode_invalid": "Invalid confirmation code",
+    "confirmationCode_expired": "Confirmation code has expired",
+
     
     "error_username_required": "Name is required.",
     "error_username_too_short": "Name is too short",

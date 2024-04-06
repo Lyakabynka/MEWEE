@@ -14,5 +14,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasConversion(
                 r => r.ToString(),
                 r => Enum.Parse<UserRole>(r));
+        
+        builder.HasOne(u => u.ConfirmationCode)
+            .WithOne(cc => cc.User)
+            .HasForeignKey<ConfirmationCode>(cc => cc.UserId);
+        
+        builder.HasOne(u => u.ForgotPasswordCode)
+            .WithOne(fc => fc.User)
+            .HasForeignKey<ForgotPasswordCode>(fc => fc.UserId);
     }
 }
