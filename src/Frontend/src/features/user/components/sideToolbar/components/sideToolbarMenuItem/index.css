@@ -1,0 +1,23 @@
+.text-block{
+    font-family: Geometria, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.item{
+    cursor: pointer;
+    height: 38px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: red;
+}
+.icon-centered{
+    justify-content: center;
+}
+.icon-container{
+    height: 24px;
+    width: 24px;
+}
+
+

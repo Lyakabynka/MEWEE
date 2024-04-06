@@ -1,0 +1,7 @@
+/* global-styles.css */
+@font-face {
+    font-family: 'LogoFont';
+    src: url('./fonts/logofont.otf') format('otf'); /* Adjust the path as necessary */
+    /* Add more src declarations for different font formats if needed */
+  }
+  

@@ -1,0 +1,80 @@
+.top-search-bar-container
+{
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 3vw;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0 20px 0 20px;
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+.input-search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    box-sizing: border-box;
+}
+.label-search-bar-style {
+    position: relative;
+    display: block;
+    background: linear-gradient(91.54deg, rgba(37, 0, 92, 0.7) 0%, rgba(151, 71, 255, 0.7) 100%);
+    padding: 2px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 15px;
+}
+.input-search-bar {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 34px;
+    padding-left: 5px;
+    position: relative;
+    padding-right: 25px;
+}
+.input-search-bar::placeholder{
+    font-family: Geometria, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+.top-search-bar-title-container{
+    margin-right: 20px;
+    flex: 0 0 auto;
+}
+.top-search-bar-title
+{
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 32px !important;
+}
+.top-search-bar-tools-container
+{
+    margin-left: 10px;
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.input-search-bar-icon {
+    position: absolute;
+    top: 18px;
+    right: 9px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    @media (max-width: 768px) {
+        top: calc(50% - 1px);
+        right: 6px;
+        width: 16px;
+        height: 16px;
+    }
+}
+.search-icon-default{
+    background-image: url("./images/icon_search.svg");
+}

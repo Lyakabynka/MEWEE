@@ -1,0 +1,94 @@
+.label-style {
+    display: block;
+    background: linear-gradient(91.54deg, rgba(37, 0, 92, 0.7) 0%, rgba(151, 71, 255, 0.7) 100%);
+    padding: 2px;
+    border-radius: 10px;
+    width: 100%;
+}
+.input-registration {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+}
+input::placeholder {
+    color: rgba(123, 123, 123, 1);
+    text-align: justify;
+    padding-left: 10px;
+}
+
+.input-short {
+    width: 100%;
+    height: 40px;
+}
+.input-long {
+    width: 100%;
+    height: 40px;
+}
+
+.registration-style{
+    position: relative;
+    width: 45%;
+    height: 48.19px;
+    background: rgba(37, 0, 92, 1);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+.registration-style:active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 16, 16, 0.2);
+    border-radius: 10px;
+}
+.agree-with-policy-text{
+    color: rgba(123, 123, 123, 1);
+}
+
+.input-group input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(182, 122, 254, 1);
+    cursor: pointer;
+    appearance: none;
+    margin: 22px 10px 20px 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.input-group input[type="checkbox"]:hover{
+    border: 2px solid rgba(37, 0, 92, 1)
+}
+.input-group input[type="checkbox"]:checked {
+    background: rgba(182, 122, 254, 1);
+    border: 2px solid rgba(37, 0, 92, 1)
+}
+
+.label-error{
+    background: red;
+}
+
+.input-error{
+    color: red;
+    font-weight: 700;
+}
+
+.input-error::placeholder {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
