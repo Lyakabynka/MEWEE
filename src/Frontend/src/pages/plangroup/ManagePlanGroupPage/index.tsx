@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { AgGridReact } from 'ag-grid-react';
 import { ColDef, RowDoubleClickedEvent, RowDragEndEvent, RowDragEvent, DragStoppedEvent, GridReadyEvent, GridApi } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -221,7 +220,6 @@ export const ManagePlanGroupPage = () => {
                             Plans
                         </Typography>
                     </Box>
-
                 </div>
             </div>
             <ManagePlanGroupSaveButtonPlaceHolder handle={handleClick} />

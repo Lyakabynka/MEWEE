@@ -1,4 +1,4 @@
-import { AgGridReact } from 'ag-grid-react';
+
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { $api, ENDPOINTS } from '../../../shared';
@@ -111,6 +111,7 @@ export const ScheduledPlanPage = () => {
                         style={{
                             width: '100%'
                         }}>
+                       
                     </div>
                 </div>
             </div>
