@@ -1,6 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessagingService", "MessagingService", "{7BDB06F2-86D3-40A4-971E-978BD17B818D}"
+	ProjectSection(SolutionItems) = preProject
+		Features\Behaviors = Features\Behaviors
+		Features\Behaviors\ValidationBehavior.cs = Features\Behaviors\ValidationBehavior.cs
+		Features\Converters = Features\Converters
+		Features\Converters\SnakeCaseStringEnumConverter.cs = Features\Converters\SnakeCaseStringEnumConverter.cs
+		Features\Extensions = Features\Extensions
+		Features\Extensions\ValidationResultExtensions.cs = Features\Extensions\ValidationResultExtensions.cs
+		Features\Interfaces = Features\Interfaces
+		Features\Interfaces\IValidatableRequest.cs = Features\Interfaces\IValidatableRequest.cs
+		Features\Interfaces\IApplicationDbContext.cs = Features\Interfaces\IApplicationDbContext.cs
+		Features\Interfaces\IEmailService.cs = Features\Interfaces\IEmailService.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagingService.Application", "MessagingService.Application\MessagingService.Application.csproj", "{3087F801-E659-419D-B72B-EA4634355C08}"
 EndProject
