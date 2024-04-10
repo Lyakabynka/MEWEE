@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using MessagingService.Application.Features.Interfaces;
 using MessagingService.Application.Response;
 using MessagingService.Domain.Entities;
@@ -18,8 +20,8 @@ public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, Resul
     {
         var post = new Domain.Entities.Post()
         {
-            Title = request.Title,
-            Content = request.Content,
+            Title = request.Title.Trim(),
+            Content = request.Content.Trim(),
             Attachment = request.Attachment,
             UserId = request.UserId
         };
