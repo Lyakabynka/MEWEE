@@ -38,9 +38,9 @@ builder.Services.AddCors(options =>
     // All clients (temporary)
     options.AddPolicy("AllowAll", policy =>
     {
+        policy.AllowAnyOrigin();
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
-        policy.AllowAnyOrigin();
     });
 });
 

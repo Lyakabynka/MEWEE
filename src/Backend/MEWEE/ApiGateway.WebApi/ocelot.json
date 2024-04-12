@@ -1,0 +1,73 @@
+{
+  "Routes" : [
+    {
+      "UpstreamPathTemplate" : "/auth/login",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "planit.identity",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/auth/login"
+    },
+    {
+      "UpstreamPathTemplate" : "/auth/refresh",
+      "UpstreamHttpMethod": ["Put"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/auth/refresh"
+    },
+    {
+      "UpstreamPathTemplate" : "/auth/logout",
+      "UpstreamHttpMethod": ["Delete"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/auth/logout"
+    },
+    {
+      "UpstreamPathTemplate" : "/user/register",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/user/register"
+    },
+    
+    {
+      "UpstreamPathTemplate" : "/post",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/post"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl" : "http://localhost:80"
+  }
+}

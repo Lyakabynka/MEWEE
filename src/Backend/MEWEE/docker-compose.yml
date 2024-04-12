@@ -52,6 +52,21 @@ services:
     depends_on:
       - postgres
     
+  
+  apigateway:
+    container_name: apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway.WebApi/Dockerfile
+    image: lyakabynka/mewee.apigateway
+    hostname: mewee.messagingservice
+    ports:
+      - 5000:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: on-failure
+    depends_on:
+      - postgres
 
 volumes:
   db_data:
