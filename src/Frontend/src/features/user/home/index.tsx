@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from '@mui/material';
-import { useAuthStore } from '../../../entities';
+import { EnumActivityType, useAuthStore } from '../../../entities';
 import Link from '@mui/material/Link';
 import { useTranslation } from 'react-i18next';
 import { SideToolbar } from '../components/sideToolbar';
@@ -8,20 +8,23 @@ import { ThemeProvider, useTheme } from 'styled-components';
 import { TopSearchBar } from '../components/topSearchBar';
 import './index.css';
 import { FeedsContainer } from '../components/feeds';
-import { HomeNews } from '../components/news';
+import { ActivityPanel } from '../components/activityPanel';
+import CreatePostForm from '../profile/forms/createPost';
 
 export const HomePageForm = () => {
 
     const { t } = useTranslation();
+    console.log(document.cookie);
 
     return (
         <div className='home-generic-container'>
+            <CreatePostForm></CreatePostForm>
             <SideToolbar></SideToolbar>
             <div className='home-main-container'>
                 <TopSearchBar></TopSearchBar>
                 <div className='home-generic-content-holder'>
                     <FeedsContainer></FeedsContainer>
-                    <HomeNews></HomeNews>
+                    <ActivityPanel activityType={EnumActivityType.Comments}></ActivityPanel>
                 </div>
             </div>
 

@@ -8,7 +8,7 @@ export const SwitchComponent = () => {
 
     return (
         <label className="switch">
-            <input type="checkbox" className="switch_input" checked={currentThemeIndex === 1}
+            <input type="checkbox" className="switch_input" onChange={()=>{}} checked={currentThemeIndex === 1}
                    onClick={cycleThemes}/>
             <span className="switch_slider"></span>
         </label>

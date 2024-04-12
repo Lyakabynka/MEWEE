@@ -13,7 +13,7 @@ export {ManagePlanGroupSaveButtonPlaceHolder} from './plangroup/ManagePlanGroupS
 // Home Page components ///
 export {EmailConfirmationForm} from './auth/register/EmailConfirmation'
 export {PreferencesForm} from './auth/register/PreferencesForm'
-export {HomeNews} from './user/components/news'
+export {ActivityPanel} from './user/components/activityPanel'
 export {SideToolbar} from './user/components/sideToolbar'
 export {TopSearchBar} from './user/components/topSearchBar'
 export {FeedsContainer} from './user/components/feeds'
@@ -25,3 +25,6 @@ export {RecoveryEmailForm} from './auth/RecoveryForm'
 export {RecoverySetPasswordForm} from './auth/RecoveryForm/generic/setPasswordForm'
 export {RecoveryEmailConfirmationForm} from './auth/RecoveryForm/email/stages/confirmationForm'
 export {RecoverySuccessFulForm} from './auth/RecoveryForm/generic/recoverySucessfull'
+
+// PROFILE //
+export {CreatePostForm} from './user/profile/forms/createPost'

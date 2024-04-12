@@ -14,16 +14,16 @@ import backgroundImage from '../background.svg';
 const App: React.FC = () => {
 
   
-  const { establishConnection, closeConnection } = useSignalRStore();
-  const { id, isLoggedIn } = useAuthStore();
+  //const { establishConnection, closeConnection } = useSignalRStore();
+  //const { id, isLoggedIn } = useAuthStore();
   
   const { getCurrentTheme  } = useThemeStore();
   const theme = getCurrentTheme() || themes[0];
 
-  useEffect(() => {
-    if (isLoggedIn && id !== null && isLoggedIn === true) establishConnection(id);
-    else if (isLoggedIn) closeConnection();
-  }, [isLoggedIn, id]);
+  // useEffect(() => {
+  //   if (isLoggedIn && id !== null && isLoggedIn === true) establishConnection(id);
+  //   else if (isLoggedIn) closeConnection();
+  // }, [isLoggedIn, id]);
 
   return (
       <ThemeProvider theme={theme}>

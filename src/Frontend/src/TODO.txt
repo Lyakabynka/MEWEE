@@ -22,3 +22,17 @@ What's important:
 ------------------------------------------
 Preferably but not mandatory:
 - Try to write html structure and style it for "Comments" window and "Comment Item" @hope2k-qq 
+
+
+
+Groups
+Events
+API for Home Page
+Ask designers for ready things
+Messenger (partly)
+Comments
+Annonc
+
+Overall make all windows from side bar panel
+
+Ask backend to make home poage til tuesday

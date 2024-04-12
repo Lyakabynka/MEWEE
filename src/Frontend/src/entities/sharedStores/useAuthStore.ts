@@ -6,6 +6,7 @@ import { persist } from "zustand/middleware";
 import { AES, enc } from 'crypto-js'
 import { error } from "console";
 import { ResponseCallback, decryptState, encryptState, pErrors } from "./utils";
+import { AxiosInstance } from "axios";
 
 
 
@@ -21,6 +22,7 @@ interface IAuthStore {
 
     isLoading: boolean;
     
+    getAPI: () => AxiosInstance;
     login: (callback: ResponseCallback, params: ILoginRequest) => Promise<void>;
     register: (callback: ResponseCallback, params: IRegisterRequest) => Promise<void>;
     confirmEmail: (callback: ResponseCallback, params: IConfirmEmailRequest) => Promise<void>;
@@ -30,6 +32,7 @@ interface IAuthStore {
 }
 
 export const useAuthStore = create<IAuthStore>()(persist((set, get) => ({
+
     isLoading: false,
     id: null,
     username: null,
@@ -38,6 +41,11 @@ export const useAuthStore = create<IAuthStore>()(persist((set, get) => ({
     platform: null,
     isEmailConfirmed: null,
     isLoggedIn: false,
+
+    getAPI: () =>
+    {
+        return $api;    
+    },
 
     login: async (callback: ResponseCallback, params: ILoginRequest) => {
 
@@ -65,6 +73,8 @@ export const useAuthStore = create<IAuthStore>()(persist((set, get) => ({
             });
 
             set({ isLoggedIn: true });
+            
+            console.log(document.cookie);
         }
 
         set({ isLoading: false });
@@ -126,6 +136,9 @@ export const useAuthStore = create<IAuthStore>()(persist((set, get) => ({
 }), {
     name: 'auth',
     version: 1,
-    serialize: state => encryptState(state),
-    deserialize: state => decryptState(state)
+    storage: {
+        getItem: key => decryptState(localStorage.getItem(key)),
+        setItem: (key, value) => localStorage.setItem(key, encryptState(value)),
+        removeItem: key => localStorage.removeItem(key),
+    }
 }));

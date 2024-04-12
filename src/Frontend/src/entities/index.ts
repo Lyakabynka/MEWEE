@@ -2,6 +2,7 @@
 //////////// ENUMERABLE ////////////
 ////////////////////////////////////
 
+export { EnumActivityType } from './enums/EnumActivityType'
 export { EnumRegistrationStage } from './enums/EnumRegistrationStage'
 export { EnumUserRole } from './enums/EnumUserRole'
 export { EnumPlanType } from './enums/EnumPlanType'

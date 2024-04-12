@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
 import './index.css';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '../../../../../entities';
+import { useThemeStore } from '../../../../../../../entities';
 
 export const NewsItem = (post: any) => {
 
