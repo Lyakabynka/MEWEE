@@ -50,7 +50,7 @@ export const useAuthStore = create<IAuthStore>()(persist((set, get) => ({
     login: async (callback: ResponseCallback, params: ILoginRequest) => {
 
         const response = await $api.post<IUserData | any>(ENDPOINTS.AUTH.LOGIN, params); 
-        console.log(response.data);
+        console.log(response);
         
 
         callback(pErrors(response.data.errors));
