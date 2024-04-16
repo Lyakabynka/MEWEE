@@ -8,8 +8,8 @@ export const HomePage = () => {
 
     const { isLoggedIn, role } = useAuthStore();
 
-    if (!isLoggedIn)
-        return <Navigate to='/auth/login' />
+    //if (!isLoggedIn)
+    //    return <Navigate to='/auth/login' />
 
     return (
         <HomePageForm />

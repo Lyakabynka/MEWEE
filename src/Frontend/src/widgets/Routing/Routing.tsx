@@ -16,7 +16,7 @@ import { EmailConfirmationForm } from "../../features";
 export const Routing = () => {
     return (
         <Routes>
-            <Route path="/" element={<AuthRoutes />} />
+            <Route path="/" element={<HomePage />} /> {/* Temporary */}
             <Route path="auth/:url" element={<AuthRoutes />} />
             <Route path="recovery/:url" element={<RecoveryRoutes />} />
             <Route path="/feed" element={<HomePage />} />

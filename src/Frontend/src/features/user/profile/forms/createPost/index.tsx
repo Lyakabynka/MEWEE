@@ -45,11 +45,10 @@ export const CreatePostForm: React.FC = () => {
   const sendPostToApi = async (title: string, content: string, imageBase64: string) => {
     try {
       // Call your API endpoint here
-      await axios.post('http://localhost:5002/post', {
+      await getAPI().post('/post', {
         title,
         content,
-        image: imageBase64,
-      }, { withCredentials: true });
+        image: imageBase64});
       // Reset form fields after successful submission
       setTitle('');
       setContent('');
