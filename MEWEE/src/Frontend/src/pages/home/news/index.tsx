@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./index.css";
 import { usePostsStore, useThemeStore } from "../../../entities";
-import { FeedPost } from "../feeds/components/post";
+import { FeedPost } from "../feeds/components/post/FeedPost";
 import { Box, CircularProgress } from "@mui/material";
 interface IPost {
   id: number;
