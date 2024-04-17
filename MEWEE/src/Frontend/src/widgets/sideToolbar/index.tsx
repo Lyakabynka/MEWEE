@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useAuthStore, useThemeStore } from "../../../../entities";
+import { useAuthStore, useThemeStore } from "../../entities";
 import "./index.css";
 import { SideToolbarMenuItem } from "./components/sideToolbarMenuItem";
 import { useTranslation } from "react-i18next";

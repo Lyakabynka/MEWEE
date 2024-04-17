@@ -55,17 +55,17 @@ export const RegisterForm = () => {
       const { surname, confirm_password, policyAgree, ...rest } = values;
       console.log(rest);
 
-      register(rest).then(() => {
-        if (!errorMessage) {
-          navigate("/auth/login");
-        }
-      });
+      // register(rest).then(() => {
+      //   if (!errorMessage) {
+      //     navigate("/auth/login");
+      //   }
+      // });
     },
   });
 
-  useEffect(() => {
-    resetErrorInfo();
-  }, []);
+  // useEffect(() => {
+  //   resetErrorInfo();
+  // }, []);
 
   const usernameError = formik.touched.username && formik.errors.username;
   const surnameError = formik.touched.surname && formik.errors.surname;

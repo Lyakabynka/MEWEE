@@ -1,8 +1,9 @@
+// Update the mapping function in the FeedsContainer component
 import React, { useEffect } from "react";
-import "./index.css";
-import { usePostsStore, useThemeStore } from "../../../../entities";
-import { FeedPost } from "../feeds/components/post";
 import { Box, CircularProgress } from "@mui/material";
+import { usePostsStore } from "../../../entities";
+import { FeedPost } from "./components/post";
+// Define the interface for a single post
 interface IPost {
   id: number;
   username: string;
@@ -19,8 +20,7 @@ interface IPost {
   content?: string;
 }
 
-export const HomeNews = () => {
-  const { currentTheme } = useThemeStore();
+export const FeedsContainer = () => {
   const { data, isLoading, errorMessage, getPosts } = usePostsStore();
 
   useEffect(() => {
@@ -47,15 +47,11 @@ export const HomeNews = () => {
   }
 
   return (
-    <div
-      className="home-news-generic-container"
-      style={{ backgroundColor: currentTheme?.mainPage.post.background }}
-    >
-      {data &&
-        data.map(
-          (post: IPost) =>
-            post.id == 32 && <FeedPost key={post.id} post={post} />
-        )}
+    <div className="feeds-generic-container">
+      <div className="feeds-main-content">
+        {data &&
+          data.map((post: IPost) => <FeedPost key={post.id} post={post} />)}
+      </div>
     </div>
   );
 };

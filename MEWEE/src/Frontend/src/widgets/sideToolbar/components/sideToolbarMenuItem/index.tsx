@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useThemeStore } from "../../../../../../entities";
+import { useThemeStore } from "../../../../entities";
 import "./index.css";
 
 interface SideToolbarMenuItemProps {
