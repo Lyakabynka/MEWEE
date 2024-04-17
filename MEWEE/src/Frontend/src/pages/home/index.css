@@ -1,19 +1,16 @@
-.home-generic-container
-{
-    display: flex;
-    max-width: 1260px;
-    margin: 0 auto;
+.home-generic-container {
+  display: flex;
+  max-width: 1260px;
+  margin: 0 auto;
 }
-.home-main-container
-{
-    width: 100%;
+.home-main-container {
+  width: 100%;
 }
-.home-generic-content-holder
-{
-    display: flex;
+.home-generic-content-holder {
+  display: flex;
 }
 
 @media (max-width: 1260px) {
-    .home-generic-container {
-    }
+  .home-generic-container {
+  }
 }

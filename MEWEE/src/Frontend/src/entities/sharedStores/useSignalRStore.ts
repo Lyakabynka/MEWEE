@@ -1,131 +1,141 @@
 import * as signalR from "@microsoft/signalr";
-import { EnumPlanType, EnumPlatform, IPlan, IPlanPlanGroup, useAuthStore } from "..";
+import {
+  EnumPlanType,
+  EnumPlatform,
+  IPlan,
+  IPlanPlanGroup,
+  useAuthStore,
+} from "..";
 import { create } from "zustand";
 
 interface IPlanPlanGroupExtended extends IPlanPlanGroup {
-    index: number,
+  index: number;
 }
 
 declare global {
-    interface Window {
-        electron: boolean | undefined | null;
-        planProcessor: any;
-        planGroupProcessor: any;
-    }
+  interface Window {
+    electron: boolean | undefined | null;
+    planProcessor: any;
+    planGroupProcessor: any;
+  }
 }
 
 interface ISignalRStore {
-    connection: signalR.HubConnection | null,
-    isElectron: () => boolean,
-    establishConnection: (userId: string) => Promise<void>,
-    closeConnection: () => Promise<void>
+  connection: signalR.HubConnection | null;
+  isElectron: () => boolean;
+  establishConnection: (userId: string) => Promise<void>;
+  closeConnection: () => Promise<void>;
 }
 
 export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
+  connection: null,
 
-    connection: null,
+  isElectron: () => {
+    return window.electron !== null && window.electron !== undefined;
+  },
 
-    isElectron: () => {
-        return window.electron !== null && window.electron !== undefined;
-    },
+  establishConnection: async (userId) => {
+    if (get().connection !== null) {
+      await get().closeConnection();
+    }
 
-    establishConnection: async (userId) => {
+    set({
+      connection: new signalR.HubConnectionBuilder()
+        .withUrl("http://localhost:5003/plan-hub")
+        .configureLogging(signalR.LogLevel.Information)
+        .withAutomaticReconnect()
+        .build(),
+    });
 
-        if (get().connection !== null) {
-            await get().closeConnection();
-        }
+    const { connection } = get();
 
-        set({
-            connection: new signalR.HubConnectionBuilder()
-                .withUrl("http://localhost:5003/plan-hub")
-                .configureLogging(signalR.LogLevel.Information)
-                .withAutomaticReconnect()
-                .build()
-        })
+    connection!.on("ProcessPlan", (plan: IPlan) => {
+      console.log("Started processing: ");
+      console.log(plan);
 
-        const { connection } = get();
+      switch (plan.type) {
+        case EnumPlanType.notification:
+          break;
+        case EnumPlanType.voiceCommand:
+          const synthesis = window.speechSynthesis;
 
-        connection!.on("ProcessPlan", (plan: IPlan) => {
+          const utterance = new SpeechSynthesisUtterance(plan.information);
+          utterance.voice = synthesis.getVoices()[4];
 
-            console.log("Started processing: ");
-            console.log(plan);
+          synthesis.speak(utterance);
+          break;
+        case EnumPlanType.weatherCommand:
+          break;
+      }
+      console.log(get().isElectron());
 
-            switch (plan.type) {
-                case EnumPlanType.notification:
+      if (get().isElectron()) {
+        window.planProcessor.process(plan);
+      }
+    });
 
-                    break;
-                case EnumPlanType.voiceCommand:
-                    const synthesis = window.speechSynthesis;
+    connection!.on(
+      "ProcessPlanGroup",
+      (planPlanGroups: IPlanPlanGroupExtended[]) => {
+        console.log("Started processing: ");
+        console.log(planPlanGroups);
 
-                    const utterance = new SpeechSynthesisUtterance(plan.information)
-                    utterance.voice = synthesis.getVoices()[4];
+        planPlanGroups.forEach((ppg) => {
+          switch (ppg.plan.type) {
+            case EnumPlanType.notification:
+              break;
+            case EnumPlanType.voiceCommand:
+              const synthesis = window.speechSynthesis;
 
-                    synthesis.speak(utterance);
-                    break;
-                case EnumPlanType.weatherCommand:
+              const utterance = new SpeechSynthesisUtterance(
+                ppg.plan.information
+              );
+              utterance.voice = synthesis.getVoices()[4];
 
-                    break;
-            }
-            console.log(get().isElectron());
-            
-            if (get().isElectron()) {
-                window.planProcessor.process(plan);
-            }
+              synthesis.speak(utterance);
+              break;
+            case EnumPlanType.weatherCommand:
+              break;
+          }
         });
 
-        connection!.on("ProcessPlanGroup", (planPlanGroups: IPlanPlanGroupExtended[]) => {
-            console.log("Started processing: ");
-            console.log(planPlanGroups);
+        if (get().isElectron()) {
+          window.planGroupProcessor.process(planPlanGroups);
+        }
+      }
+    );
 
-            planPlanGroups.forEach(ppg => {
+    connection!.onreconnecting(() => {
+      console.warn(
+        "Connection with server has been lost. Trying to reconnect..."
+      );
+    });
 
-                switch (ppg.plan.type) {
-                    case EnumPlanType.notification:
+    await connection!
+      .start()
+      .then(() => {
+        console.info(
+          "Connection with SignalR hub has been successfully established!"
+        );
+      })
+      .catch((e) => {
+        console.log("Server is offline");
+        console.log(e);
+      });
 
-                        break;
-                    case EnumPlanType.voiceCommand:
-                        const synthesis = window.speechSynthesis;
+    await connection!
+      .invoke("SubscribeToPlan", userId)
+      .then(() => {
+        console.log("Subscribed to plan: " + userId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 
-                        const utterance = new SpeechSynthesisUtterance(ppg.plan.information)
-                        utterance.voice = synthesis.getVoices()[4];
-
-                        synthesis.speak(utterance);
-                        break;
-                    case EnumPlanType.weatherCommand:
-
-                        break;
-                }
-
-            });
-
-            if (get().isElectron()) {
-                window.planGroupProcessor.process(planPlanGroups);
-            }
-        })
-
-        connection!.onreconnecting(() => {
-            console.warn('Connection with server has been lost. Trying to reconnect...');
-        })
-
-        await connection!.start().then(() => {
-            console.info("Connection with SignalR hub has been successfully established!");
-        }).catch((e) => {
-            console.log("Server is offline");
-            console.log(e);
-        })
-
-        await connection!.invoke('SubscribeToPlan', userId)
-            .then(() => {
-                console.log("Subscribed to plan: " + userId);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    },
-
-    closeConnection: async () => {
-        const { connection } = get();
-        await connection?.stop();
-        set({ connection: null });
-    }
-}))
+  closeConnection: async () => {
+    const { connection } = get();
+    await connection?.stop();
+    set({ connection: null });
+  },
+}));

@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import "./AuthLayout.css";
 import { useNavigate } from "react-router-dom";
-import { AuthHeaderForm } from "../../../../features";
+import { AuthHeaderForm } from "../../../../features/exportFeaturesComponents";
 import { SwitchComponent } from "../../../../widgets/sideToolbar/components/switchComponent";
 import { LanguageComponent } from "../../../../widgets/sideToolbar/components/languageComponent";
 import { useThemeStore } from "../../../../entities";

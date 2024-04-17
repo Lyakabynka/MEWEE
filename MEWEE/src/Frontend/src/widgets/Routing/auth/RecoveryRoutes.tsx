@@ -1,7 +1,10 @@
-import { useParams } from 'react-router-dom';
-import { AuthLayout } from '../../../pages';
-import { RecoveryEmailForm, RecoveryPhoneForm } from '../../../features/auth/RecoveryForms';
-import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
+import { AuthLayout } from "../../../pages/exportPageComponents";
+import {
+  RecoveryEmailForm,
+  RecoveryPhoneForm,
+} from "../../../features/auth/RecoveryForms";
+import { useTranslation } from "react-i18next";
 
 export const RecoveryRoutes = () => {
   const { url } = useParams();
@@ -9,9 +12,9 @@ export const RecoveryRoutes = () => {
 
   function getChild() {
     switch (url) {
-      case 'email':
+      case "email":
         return <RecoveryEmailForm />;
-      case 'phone':
+      case "phone":
         return <RecoveryPhoneForm />;
       default:
         return <RecoveryEmailForm />;
@@ -20,9 +23,9 @@ export const RecoveryRoutes = () => {
 
   return (
     <></>
-      // <AuthLayout>
-      //   <span>{t('password_change')}</span>
-      //   {getChild()}
-      //   </AuthLayout>
+    // <AuthLayout>
+    //   <span>{t('password_change')}</span>
+    //   {getChild()}
+    //   </AuthLayout>
   );
-  };
+};

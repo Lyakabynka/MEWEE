@@ -1,26 +1,31 @@
-import { useParams } from 'react-router-dom';
-import { LoginPage } from '../../../pages/auth/LoginPage/LoginPage';
-import { AuthLayout, LogoutPage, RegisterPage } from '../../../pages';
-import { useState } from 'react';
+import { useParams } from "react-router-dom";
+import { LoginPage } from "../../../pages/auth/LoginPage/LoginPage";
+import {
+  AuthLayout,
+  LogoutPage,
+  RegisterPage,
+} from "../../../pages/exportPageComponents";
+import { useState } from "react";
 
 export const AuthRoutes = () => {
   const { url } = useParams();
 
   const [isAuthNavActive, setActiveAuthNav] = useState(true);
 
-  
   function getChild() {
     switch (url) {
-      case 'login':
+      case "login":
         return <LoginPage setActiveAuthNav={setActiveAuthNav} />;
-      case 'register':
+      case "register":
         return <RegisterPage setActiveAuthNav={setActiveAuthNav} />;
-      case 'logout':
+      case "logout":
         return <LogoutPage />;
       default:
         return <LoginPage setActiveAuthNav={setActiveAuthNav} />;
     }
   }
 
-  return <AuthLayout isAuthNavActive={isAuthNavActive}>{getChild()}</AuthLayout>;
+  return (
+    <AuthLayout isAuthNavActive={isAuthNavActive}>{getChild()}</AuthLayout>
+  );
 };

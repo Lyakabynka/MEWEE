@@ -1,122 +1,113 @@
-
-.toolbar-block-container, .toolbar-prof-block-container, .toolbar-items-block-container, .toolbar-settings-block-container
-{
-    width: 100%;
-    border-radius: 10px;
+.toolbar-block-container,
+.toolbar-prof-block-container,
+.toolbar-items-block-container,
+.toolbar-settings-block-container {
+  width: 100%;
+  border-radius: 10px;
 }
-.toolbar-generic-content
-{
-    padding-top: 16px;
-    margin-left: 3vw;
-    width: min-content;
+.toolbar-generic-content {
+  padding-top: 16px;
+  margin-left: 3vw;
+  width: min-content;
 }
-.toolbar-block-container img
-{
-    width: 100%;
+.toolbar-block-container img {
+  width: 100%;
 }
-.toolbar-main-content
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
+.toolbar-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
 }
 
-.toolbar-fio-title, .toolbar-fio-second
-{
-    font-family: 'Geometria', sans-serif;
-    font-weight: bold;
+.toolbar-fio-title,
+.toolbar-fio-second {
+  font-family: "Geometria", sans-serif;
+  font-weight: bold;
 }
-.toolbar-fio-second
-{
-    font-weight: normal;
+.toolbar-fio-second {
+  font-weight: normal;
 }
-.toolbar-profile-main-container
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.toolbar-profile-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.toolbar-list
-{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.toolbar-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-.toolbar-list > div
-{
-    border-radius: 20px;
-    display: flex;
-    padding: 15px;
-    width: 100%;
+.toolbar-list > div {
+  border-radius: 20px;
+  display: flex;
+  padding: 15px;
+  width: 100%;
 }
-.toolbar-prof-block-container, .toolbar-items-block-container, .toolbar-settings-block-container
-{
-    margin-top: 0;
-    padding: 10px;
-    align-items: center;
-    justify-content: space-between;
+.toolbar-prof-block-container,
+.toolbar-items-block-container,
+.toolbar-settings-block-container {
+  margin-top: 0;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
-.toolbar-items-block-container
-{
-    padding: 15px 10px 211px 10px;
-    position: relative;
+.toolbar-items-block-container {
+  padding: 15px 10px 211px 10px;
+  position: relative;
 }
-.toolbar-settings-block-container{
-    padding: 16px;
-    display: flex;
+.toolbar-settings-block-container {
+  padding: 16px;
+  display: flex;
 }
-.toolbar-profile-info-container
-{
-    margin-left: 15px;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
+.toolbar-profile-info-container {
+  margin-left: 15px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
 }
-.toolbar-logo, .toolbar-logo-another
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80px;
-    padding: 30px;
+.toolbar-logo,
+.toolbar-logo-another {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 30px;
 }
-.toolbar-logo-another{
-    padding: 13px;
+.toolbar-logo-another {
+  padding: 13px;
 }
 .toolbar-profile-image {
-    width: 50px; /* Adjust the size as needed */
-    height: 50px; /* Adjust the size as needed */
-    border-radius: 50%; /* Make it circular */
-    overflow: hidden; /* Hide overflow content */
-    background-color: red;
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Hide overflow content */
+  background-color: red;
 }
 .toolbar-profile-image img {
-    width: 100%; /* Make the image fill its container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any default image spacing */
+  width: 100%; /* Make the image fill its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any default image spacing */
 }
-.toolbar-tools-container
-{
-    display: flex;
-    gap: 5px;
+.toolbar-tools-container {
+  display: flex;
+  gap: 5px;
 }
 
-.arrow-block{
-    width: 30px;
-    height: 30px;
-    border-radius: 10px 0 10px 0;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.arrow-block {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px 0 10px 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .arrow-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
-

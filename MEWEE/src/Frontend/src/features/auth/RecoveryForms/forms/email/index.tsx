@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useFormik } from 'formik'; // Import Formik library
-import * as Yup from 'yup'; // Import Yup for validation
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { useEmailStore } from '../../../../../entities';
-import { EMAIL_VALIDATION } from '../../../../../shared';
+import React, { useEffect, useState } from "react";
+import { useFormik } from "formik"; // Import Formik library
+import * as Yup from "yup"; // Import Yup for validation
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useEmailStore } from "../../../../../entities";
+import { EMAIL_VALIDATION } from "../../../../../shared";
 
 export const RecoveryEmailForm = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { checkEmail, resetErrorInfo, isLoading } = useEmailStore();
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
 
   // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
@@ -25,14 +25,12 @@ export const RecoveryEmailForm = () => {
   //   }
   // };
 
-
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: "",
     },
     validationSchema: EMAIL_VALIDATION,
     onSubmit: (values) => {
-      
       checkEmail(values).then(() => {
         // if (!errorMessage) {
         //   //navigate('/recovery/email');
@@ -48,14 +46,23 @@ export const RecoveryEmailForm = () => {
 
   return (
     <div className="">
-
-        <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className="input-group">
-          <input type="email" id="email" name="email" placeholder={t('email')+'*'} value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-          {formik.touched.email && formik.errors.email && <div className="error">{t(formik.errors.email)}</div>}
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder={t("email") + "*"}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className="error">{t(formik.errors.email)}</div>
+          )}
         </div>
         <div className="input-group">
-          <button type="submit">{t('send')} E-mail</button>
+          <button type="submit">{t("send")} E-mail</button>
         </div>
       </form>
       {isLoading && <div className="loading-indicator">Loading...</div>}

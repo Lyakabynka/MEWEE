@@ -3,7 +3,7 @@ import {
   ILoginRequest,
   IRegisterRequest,
   IUserData,
-} from "../index";
+} from "..";
 import { $api, decodeJwtToken } from "../../shared";
 import { create } from "zustand";
 import ENDPOINTS from "../../shared/api/endpoints";

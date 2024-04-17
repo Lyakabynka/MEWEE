@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Routing } from "../widgets";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { useSignalRStore, useThemeStore } from "../entities/index";
+import { useSignalRStore, useThemeStore } from "../entities";
 import { useAuthStore } from "../entities";
 
 import { useTranslation } from "react-i18next";
