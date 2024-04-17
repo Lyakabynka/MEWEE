@@ -1,8 +1,9 @@
 // Update the mapping function in the FeedsContainer component
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { usePostsStore } from "../../../entities";
-import { FeedPost } from "./components/post";
+import { FeedPost } from "./components/post/FeedPost";
+import "./feeds_container.css";
 // Define the interface for a single post
 interface IPost {
   id: number;

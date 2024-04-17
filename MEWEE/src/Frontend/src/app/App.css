@@ -1,5 +1,5 @@
-.background {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.div_gobal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

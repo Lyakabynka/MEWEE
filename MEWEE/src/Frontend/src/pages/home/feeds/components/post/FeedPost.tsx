@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
-import "./index.css";
 import { useThemeStore } from "../../../../../entities";
 import { useTranslation } from "react-i18next";
+import styles from "./feed_post.module.scss";
 
 export const FeedPost = (post: any) => {
   const { t } = useTranslation();
@@ -11,6 +9,7 @@ export const FeedPost = (post: any) => {
   const currentPost = post.post;
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
   const { currentTheme } = useThemeStore();
+
   const isImage = (url: string) => {
     return /\.(jpeg|jpg|gif|png)$/i.test(url);
   };
@@ -18,6 +17,7 @@ export const FeedPost = (post: any) => {
   const isVideo = (url: string) => {
     return /\.(mp4|webm|ogg)$/i.test(url);
   };
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.addEventListener("ended", handleVideoEnded);
@@ -42,28 +42,28 @@ export const FeedPost = (post: any) => {
   // const fio = username?.split(' ');
   return (
     <div
-      className="feed-post-generic-container"
+      className={styles.feed_post_generic_container}
       style={{ backgroundColor: currentTheme?.mainPage.post.background }}
     >
-      <header className="feed-post-profile-main-container">
-        <div className="feed-post-profile-main-section">
-          <div className="feed-post-profile-image">
-            <img src={currentPost.profileImageUrl}></img>
+      <header className={styles.feed_post_profile_main_container}>
+        <div className={styles.feed_post_profile_main_section}>
+          <div className={styles.feed_post_profile_image}>
+            <img src={currentPost.profileImageUrl} />
           </div>
-          <div className="feed-post-profile-info-container">
+          <div className={styles.feed_post_profile_info_container}>
             <span
-              className="feed-post-profile-title"
+              className={styles.feed_post_profile_title}
               style={{ color: currentTheme?.mainPage.post.colorText }}
             >
               {currentPost.username}
             </span>
             <span
-              className="feed-post-date"
+              className={styles.feed_post_date}
               style={{ color: currentTheme?.mainPage.post.thirdColorText }}
             >
               {currentPost.postDate}
             </span>
-            <div className="feed-post-location-container">
+            <div className={styles.feed_post_location_container}>
               <svg
                 width="14"
                 height="14"
@@ -83,7 +83,7 @@ export const FeedPost = (post: any) => {
                 />
               </svg>
               <span
-                className="feed-post-date"
+                className={styles.feed_post_date}
                 style={{ color: currentTheme?.mainPage.post.secondColorText }}
               >
                 {currentPost.location}
@@ -91,7 +91,7 @@ export const FeedPost = (post: any) => {
             </div>
           </div>
         </div>
-        <div className="feed-post-more">
+        <div>
           <svg
             width="24"
             height="24"
@@ -117,11 +117,16 @@ export const FeedPost = (post: any) => {
           </svg>
         </div>
       </header>
-      <main className="feed-post-content">
+      <main className={styles.feed_post_content}>
         {isImage(currentPost.imageUrl) ? (
           <img src={currentPost.imageUrl} alt="Post Image" />
         ) : isVideo(currentPost.imageUrl) ? (
-          <video className="feed-post-video" ref={videoRef} autoPlay muted>
+          <video
+            className={styles.feed_post_video}
+            ref={videoRef}
+            autoPlay
+            muted
+          >
             <source src={currentPost.imageUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -129,19 +134,19 @@ export const FeedPost = (post: any) => {
           <span>Unsupported media format</span>
         )}
       </main>
-      <footer>
+      <footer className={styles.footer}>
         <span
-          className="feed-post-content-title-text"
+          className={styles.feed_post_content_title_text}
           style={{ color: currentTheme?.mainPage.post.colorText }}
         >
           {currentPost.title}
         </span>
-        <p className="feed-post-content-description">
+        <p className={styles.feed_post_content_description}>
           {currentPost.description}
         </p>
-        <nav className="feed-post-nav">
-          <button className="feed-post-button-more">{t("more")}</button>
-          <div className="feed-post-tools">
+        <nav className={styles.feed_post_nav}>
+          <button className={styles.feed_post_button_more}>{t("more")}</button>
+          <div className={styles.feed_post_tools}>
             <svg
               width="24"
               height="24"
