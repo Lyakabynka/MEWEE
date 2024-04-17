@@ -16,5 +16,3 @@ export { PreferencesForm } from "./auth/register/PreferencesForm";
 export { HomeNews } from "../pages/home/news";
 export { SideToolbar } from "../widgets/sideToolbar/SideToolbar";
 export { TopSearchBar } from "../widgets/topSearchBar/TopSearchBar";
-export { FeedsContainer } from "../pages/home/feeds";
-export { FeedPost } from "../pages/home/feeds/components/post";

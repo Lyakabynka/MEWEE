@@ -6,7 +6,7 @@ export const posts = [
   "profileImageUrl": "https://i.pinimg.com/originals/51/7b/26/517b269cf770b221c3b99b269120a76a.jpg",
   "postDate": "15:20",
   "location": "456 Elm Street, Los Angeles, USA",
-  "imageUrl": "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+  "imageUrl": "https://sparkling-article.com/preview.jpg",
   "title": "Sunset Views",
   "description": "Capturing the breathtaking views of the sunset!",
   "likes": 20,
@@ -21,7 +21,7 @@ export const posts = [
       "location": "Iva Kuljevana 51, 20222, Lopud, Хорватія",
       "imageUrl": "https://www.thesun.co.uk/wp-content/uploads/2019/08/NINTCHDBPICT000517308093.jpg",
       "title": "My lovely cat",
-      "description": "Sometimes I feel weird.",
+      "description": "",
       "likes": 1,
       "comments": 1,
       "shares": 1

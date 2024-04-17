@@ -1,0 +1,13 @@
+.activity-panel-generic-container
+{
+    background-color: red;
+    
+    flex: 40%;
+
+    margin-top: 15px;
+    margin-right: 4vw;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}

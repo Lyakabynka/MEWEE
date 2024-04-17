@@ -1,69 +1,71 @@
-import { EnumUserRole, ILoginRequest, IRegisterRequest, IUserData } from "..";
+import { EnumUserRole, ILoginRequest, IRegisterRequest, IUserData } from "../index";
 import { create } from "zustand";
 import { $api, decodeJwtToken } from "../../shared";
 import ENDPOINTS from "../../shared/api/endpoints";
 import { persist } from "zustand/middleware";
+import { ResponseCallback, pErrors } from "./utils";
 
-export interface IEmailRecoveryRequest {
-  email: string;
-  code: string;
+
+
+
+export interface IPhoneRecoveryRequest{
+    phoneNumber: string;
+    code: string;
 }
-export interface IPhoneRecoveryRequest {
-  phoneNumber: string;
-  code: string;
-}
+
 
 interface IRecoveryStore {
-  isEmailConfirmed: boolean | null;
-  isLoading: boolean;
+    email: string | null;
+    verificationCode: string | null;
+    isLoading: boolean;
 
-  errorField: string | null;
-  errorMessage: string | null;
-
-  usingEmail: (params: IEmailRecoveryRequest) => Promise<void>;
-  usingPhone: (params: IPhoneRecoveryRequest) => Promise<void>;
-
-  //clearAuth: () => void;
-  resetErrorInfo: () => void;
+    verificateCode: (response: ResponseCallback,  params: { code: string }) => Promise<void>;
+    confirmEmail: (callback: ResponseCallback,  params: { email: string }) => Promise<void>;
+    setNewPassword: (callback: ResponseCallback,  params: { password: string }) => Promise<void>;
 }
+export const useRecoveryStore = create<IRecoveryStore>()(persist((set, get) => ({
+    
+    email: null,
+    verificationCode: null,
+    isLoading: false,
 
-export const useRecoveryStore = create<IRecoveryStore>()(
-  persist(
-    (set, get) => ({
-      isLoading: false,
-      isEmailConfirmed: null,
-      errorField: null,
-      errorMessage: null,
-
-      usingEmail: async (params: IEmailRecoveryRequest) => {
-        set({ isLoading: true });
-        console.log(params);
-        const response = await $api.post<any>(
-          ENDPOINTS.USER.CONFIRM_EMAIL,
-          params
-        );
-
-        if (response?.status == 409) {
-          const error = response.data.error;
-          set({ errorField: error.errorCode, errorMessage: error.message });
-        }
-        console.log(response?.data);
-
-        set({ isLoading: false, errorMessage: response?.data });
-      },
-      usingPhone: async (params: IPhoneRecoveryRequest) => {},
-      // clearAuth: () => {
-      //     localStorage.removeItem('recovery');
-      // },
-      resetErrorInfo: () => {
-        set({ isLoading: false, errorField: null, errorMessage: null });
-      },
-    }),
+    verificateCode: async (callback: ResponseCallback,  params: { code: string }) =>
     {
-      name: "recovery",
-      version: 1,
-      //serialize: state => encryptState(state),
-      //deserialize: state => decryptState(state)
-    }
-  )
-);
+        set({ isLoading: true, verificationCode: params.code });
+        const request = {code: params.code, email: get().email};
+        const response = await $api.post<any>(ENDPOINTS.RECOVERY.VERIFY_CODE, request);
+        
+        callback(pErrors(response.data.errors));
+
+        set({ isLoading: false });
+    },
+    
+    confirmEmail: async (callback: ResponseCallback,  params: { email: string }) => {
+
+        set({ isLoading: true, email: params.email });
+
+        const response = await $api.post<any>(ENDPOINTS.RECOVERY.CONFIRM_EMAIL, params);
+        
+        callback(pErrors(response.data.errors));
+
+        set({ isLoading: false });
+
+    },
+    setNewPassword: async (callback: ResponseCallback,  params: { password: string }) => {
+
+        set({ isLoading: true });
+
+        const request = { email: get().email, code: get().verificationCode, newPassword: params.password};
+        const response = await $api.post<any>(ENDPOINTS.RECOVERY.SET_NEW_PASSWORD, request);
+        
+        callback(pErrors(response.data.errors));
+
+        set({ isLoading: false });
+
+    },
+    
+
+}), {
+    name: 'recovery',
+    version: 1,
+}));

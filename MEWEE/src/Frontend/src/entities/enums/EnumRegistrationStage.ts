@@ -1,4 +1,4 @@
-export enum EnumRegisterationStage {
+export enum EnumRegistrationStage {
     Main,
     EmailConfirmation,
     Preferences

@@ -1,0 +1,38 @@
+commit: "forgot-password-restoring-added-t" @Andriy31193
+------------------------------------------
+
+This update affected "Forgot password?" system. 
+Now you can restore your password using your email and verification coe that comes to your inbox.
+
+------------------------------------------
+What we have to do:
+- Fix if needed styles on each step in "Forgot password?" menu. 
+------------------------------------------
+What's important:
+- Style button "Go Back" в "D:\Projects\MEWEE\src\Frontend\src\pages\auth\RecoveryPage\index.tsx" @hope2k-qq
+- Make pop-up mini menu after pressing three-dots button on the post. @hope2k-qq
+    [
+        In Figma this menu includes:
+        _______________
+        | Підписатись |
+        | Зберегти    |
+        | Приховати   |
+        ---------------
+    ]
+------------------------------------------
+Preferably but not mandatory:
+- Try to write html structure and style it for "Comments" window and "Comment Item" @hope2k-qq 
+
+
+
+Groups
+Events
+API for Home Page
+Ask designers for ready things
+Messenger (partly)
+Comments
+Annonc
+
+Overall make all windows from side bar panel
+
+Ask backend to make home poage til tuesday
