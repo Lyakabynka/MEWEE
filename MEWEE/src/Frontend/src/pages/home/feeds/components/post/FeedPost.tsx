@@ -42,15 +42,15 @@ export const FeedPost = (post: any) => {
   // const fio = username?.split(' ');
   return (
     <div
-      className={styles.feed_post_generic_container}
+      className={styles.div}
       style={{ backgroundColor: currentTheme?.mainPage.post.background }}
     >
-      <header className={styles.feed_post_profile_main_container}>
-        <div className={styles.feed_post_profile_main_section}>
-          <div className={styles.feed_post_profile_image}>
+      <header>
+        <div className={styles.header_div}>
+          <div>
             <img src={currentPost.profileImageUrl} />
           </div>
-          <div className={styles.feed_post_profile_info_container}>
+          <div>
             <span
               className={styles.feed_post_profile_title}
               style={{ color: currentTheme?.mainPage.post.colorText }}

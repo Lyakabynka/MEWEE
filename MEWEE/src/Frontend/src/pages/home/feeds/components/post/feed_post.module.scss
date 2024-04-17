@@ -1,46 +1,45 @@
-.feed_post_generic_container {
+.div {
   margin: 15px;
   border-radius: 30px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  .feed_post_profile_main_container {
+  > header {
     display: flex;
     justify-content: space-between;
-    .feed_post_profile_main_section {
+    .header_div {
       display: flex;
-      .feed_post_profile_image {
-        width: 60px; /* Adjust the size as needed */
-        height: 60px; /* Adjust the size as needed */
-        border-radius: 50%; /* Make it circular */
-        overflow: hidden; /* Hide overflow content */
+      > div:first-child {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
         background-color: white;
         > img {
-          width: 100%; /* Make the image fill its container */
-          height: auto; /* Maintain aspect ratio */
-          display: block; /* Remove any default image spacing */
+          width: 100%;
+          height: auto;
+          display: block;
         }
       }
-      .feed_post_profile_info_container {
+      > div:last-child {
         margin-left: 15px;
         font-size: 0.9vw;
         display: flex;
         flex-direction: column;
-        .feed_post_profile_title {
+        > span:first-child {
           font-family: "Geometria-Bold", sans-serif;
           font-size: 1.2vw;
         }
-
-        .feed_post_location_container {
+        > span:last-child {
+          font-family: "Geometria", sans-serif;
+          font-size: 1vw;
+          color: gray;
+        }
+        > div {
           font-family: "Geometria-Bold", sans-serif;
           display: flex;
           align-items: center;
           gap: 5px;
-          .feed_post_date {
-            font-family: "Geometria", sans-serif;
-            font-size: 1vw;
-            color: gray;
-          }
         }
       }
     }
