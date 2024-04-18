@@ -1,18 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-import { PlanGroupPage, PlanPage } from "../../pages";
+import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { HomePage } from "../../features/exportFeaturesComponents";
 import { PrivateRoute } from "./PrivateRoute";
 import { EnumUserRole } from "../../entities";
-import { ManagePlanGroupPage } from "../../pages";
+import { ManagePlanGroupPage } from "../../pages/exportPageComponents";
 import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import { AuthRoutes } from "./auth/AuthRoutes";
 import { RecoveryRoutes } from "./auth/RecoveryRoutes";
-import { EmailConfirmationForm } from "../../features";
 
 export const Routing = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} /> {/* Temporary */}
+      <Route path="/" element={<HomePage />} />
       <Route path="auth/:url" element={<AuthRoutes />} />
       <Route path="recovery/:url" element={<RecoveryRoutes />} />
       <Route path="/feed" element={<HomePage />} />

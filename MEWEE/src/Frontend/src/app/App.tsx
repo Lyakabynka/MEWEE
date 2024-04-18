@@ -5,7 +5,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { themes } from "../themes";
 import { SideToolbar } from "../features/exportFeaturesComponents";
 import { TopSearchBar } from "../features/exportFeaturesComponents";
-import { Routing } from "../widgets";
+import { Routing } from "../widgets/exportWigetComponents";
 import Grid from "@mui/material/Grid";
 import "./App.css";
 

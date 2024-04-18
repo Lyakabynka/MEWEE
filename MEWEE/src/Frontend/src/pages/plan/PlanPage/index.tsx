@@ -1,33 +1,28 @@
-import React, { useEffect } from "react";
-import { usePlanStore } from '../usePlanStore'
-import { IPlan, useAuthStore } from '../../../entities';
-import { Box, CircularProgress, Container, Grid } from '@mui/material';
-import { CreatePlanListenPlaceHolder, PlanCard } from "../../../features";
-
+import { useEffect } from "react";
+import { usePlanStore } from "../usePlanStore";
+import { Box, CircularProgress } from "@mui/material";
+import { CreatePlanListenPlaceHolder } from "../../../features/exportFeaturesComponents";
 
 export const PlanPage = () => {
+  const { isLoading, plans, getPlans } = usePlanStore();
 
-    const { isLoading, plans, getPlans } = usePlanStore();
+  useEffect(() => {
+    getPlans();
+  }, []);
 
-    useEffect(() => {
-        getPlans();
-    }, [])
-
-    return (
-        <>
-            {isLoading ?
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <CircularProgress />
-                </Box>
-                :
-                <Box>
-                    
-                </Box>
-            }
-            <CreatePlanListenPlaceHolder />
-        </>
-    )
-}
+  return (
+    <>
+      {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box></Box>
+      )}
+      <CreatePlanListenPlaceHolder />
+    </>
+  );
+};
 //{plans?.map((plan: IPlan) => {
 //    return <PlanCard key={plan.id} plan={plan} />
 //})}

@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useAuthStore } from "../../../entities";
 import { Navigate } from "react-router-dom";
 import { EnumUserRole } from "../../../entities";
-import { LoginForm } from "../../../features";
-import { Box } from '@mui/material';
-import { IAuthPageProps } from '../IAuthPageProps';
+import { LoginForm } from "../../../features/exportFeaturesComponents";
+import { Box } from "@mui/material";
+import { IAuthPageProps } from "../IAuthPageProps";
 
 export const LoginPage: React.FC<IAuthPageProps> = ({ setActiveAuthNav }) => {
+  useEffect(() => {
+    setActiveAuthNav(true);
+  });
 
-    useEffect(() => { setActiveAuthNav(true); });
+  const { isLoggedIn } = useAuthStore();
 
-    const { isLoggedIn } = useAuthStore();
+  if (isLoggedIn) {
+    return <Navigate to="/feed" />;
+  }
 
-    if (isLoggedIn) {
-        return <Navigate to='/feed'/>
-    }
-
-    return (
-        <LoginForm />
-    );
+  return <LoginForm />;
 };

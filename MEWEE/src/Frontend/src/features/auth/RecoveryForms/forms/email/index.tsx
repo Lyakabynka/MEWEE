@@ -4,7 +4,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEmailStore } from "../../../../../entities";
-import { EMAIL_VALIDATION } from "../../../../../shared";
+import { EMAIL_VALIDATION } from "../../../../../shared/exportSharedMorules";
 
 export const RecoveryEmailForm = () => {
   const { t } = useTranslation();
