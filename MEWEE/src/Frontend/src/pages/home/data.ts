@@ -1,3 +1,28 @@
+import { ReactComponent as FriendsHomeModalIcon } from "../../assets/image/icons/FriendsHomeModalIcon.svg";
+import { ReactComponent as SaveHomeModalIcon } from "../../assets/image/icons/SaveHomeModalIcon.svg";
+import { ReactComponent as EyeHomeModalIcon } from "../../assets/image/icons/EyeHomeModalIcon.svg";
+
+export const modalPostDataLink = [
+  {
+    id: 1,
+    url: "#",
+    icons: FriendsHomeModalIcon,
+    text: "modal_home_link1",
+  },
+  {
+    id: 2,
+    url: "#",
+    icons: SaveHomeModalIcon,
+    text: "modal_home_link2",
+  },
+  {
+    id: 3,
+    url: "#",
+    icons: EyeHomeModalIcon,
+    text: "modal_home_link3",
+  },
+];
+
 export const posts = [
   {
     id: 14,

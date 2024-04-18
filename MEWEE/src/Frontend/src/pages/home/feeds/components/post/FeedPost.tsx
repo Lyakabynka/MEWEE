@@ -1,9 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../../entities";
 import { useTranslation } from "react-i18next";
+import LocationIcon from "../../../../../assets/image/icons/LocationIcon.svg";
+import {
+  FeedPostPropsTypes,
+  modalPostDataLinkTypes,
+} from "../../../home.interface";
+import { modalPostDataLink } from "../../../data";
 import styles from "./feed_post.module.scss";
 
-export const FeedPost = (post: any) => {
+export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
+  const [modalIcon, setModalIcon] = useState<Boolean>(true);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const currentPost = post.post;
@@ -37,6 +44,10 @@ export const FeedPost = (post: any) => {
       videoRef.current.play(); // Start playing again
     }
   };
+
+  const handleModalClick = () => {
+    setModalIcon(!modalIcon);
+  };
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
@@ -45,45 +56,39 @@ export const FeedPost = (post: any) => {
       className={styles.div}
       style={{ backgroundColor: currentTheme?.mainPage.post.background }}
     >
+      <ul
+        className={modalIcon ? styles.ul : `${styles.ul} ${styles._ul_visible}`}
+      >
+        {modalPostDataLink ? (
+          modalPostDataLink.map((item: modalPostDataLinkTypes) => {
+            return (
+              <li key={item.id}>
+                <a href={item.url}>
+                  <img src={`${item.icons}`} />
+                  <h6>{t(`${item.text}`)}</h6>
+                </a>
+              </li>
+            );
+          })
+        ) : (
+          <p>Ошибка сервера...</p>
+        )}
+      </ul>
       <header>
         <div className={styles.header_div}>
           <div>
             <img src={currentPost.profileImageUrl} />
           </div>
           <div>
-            <span
-              className={styles.feed_post_profile_title}
-              style={{ color: currentTheme?.mainPage.post.colorText }}
-            >
+            <span style={{ color: currentTheme?.mainPage.post.colorText }}>
               {currentPost.username}
             </span>
-            <span
-              className={styles.feed_post_date}
-              style={{ color: currentTheme?.mainPage.post.thirdColorText }}
-            >
+            <span style={{ color: currentTheme?.mainPage.post.thirdColorText }}>
               {currentPost.postDate}
             </span>
-            <div className={styles.feed_post_location_container}>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 21.6C12 21.6 19.5131 14.9217 19.5131 9.91304C19.5131 5.7637 16.1494 2.39999 12 2.39999C7.85067 2.39999 4.48697 5.7637 4.48697 9.91304C4.48697 14.9217 12 21.6 12 21.6Z"
-                  stroke={currentTheme?.mainPage.post?.icon ?? "black"}
-                  strokeWidth="2"
-                />
-                <path
-                  d="M14.4003 9.60015C14.4003 10.9256 13.3258 12.0001 12.0003 12.0001C10.6748 12.0001 9.60032 10.9256 9.60032 9.60015C9.60032 8.27466 10.6748 7.20015 12.0003 7.20015C13.3258 7.20015 14.4003 8.27466 14.4003 9.60015Z"
-                  stroke={currentTheme?.mainPage.post?.icon ?? "black"}
-                  strokeWidth="2"
-                />
-              </svg>
+            <div>
+              <img src={LocationIcon} />
               <span
-                className={styles.feed_post_date}
                 style={{ color: currentTheme?.mainPage.post.secondColorText }}
               >
                 {currentPost.location}
@@ -91,33 +96,13 @@ export const FeedPost = (post: any) => {
             </div>
           </div>
         </div>
-        <div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="#B67AFE"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 7.19999C10.6745 7.19999 9.60001 6.12548 9.60001 4.79999C9.60001 3.47451 10.6745 2.39999 12 2.39999C13.3255 2.39999 14.4 3.47451 14.4 4.79999C14.4 6.12548 13.3255 7.19999 12 7.19999Z"
-              stroke="#B67AFE"
-              strokeWidth="2"
-            />
-            <path
-              d="M12 14.4C10.6745 14.4 9.60001 13.3255 9.60001 12C9.60001 10.6745 10.6745 9.59999 12 9.59999C13.3255 9.59999 14.4 10.6745 14.4 12C14.4 13.3255 13.3255 14.4 12 14.4Z"
-              stroke="#B67AFE"
-              strokeWidth="2"
-            />
-            <path
-              d="M12 21.6C10.6745 21.6 9.60001 20.5255 9.60001 19.2C9.60001 17.8745 10.6745 16.8 12 16.8C13.3255 16.8 14.4 17.8745 14.4 19.2C14.4 20.5255 13.3255 21.6 12 21.6Z"
-              stroke="#B67AFE"
-              strokeWidth="2"
-            />
-          </svg>
+        <div onClick={handleModalClick} className={styles.modal_button}>
+          <div />
+          <div />
+          <div />
         </div>
       </header>
-      <main className={styles.feed_post_content}>
+      <main className={styles.main}>
         {isImage(currentPost.imageUrl) ? (
           <img src={currentPost.imageUrl} alt="Post Image" />
         ) : isVideo(currentPost.imageUrl) ? (
@@ -135,18 +120,13 @@ export const FeedPost = (post: any) => {
         )}
       </main>
       <footer className={styles.footer}>
-        <span
-          className={styles.feed_post_content_title_text}
-          style={{ color: currentTheme?.mainPage.post.colorText }}
-        >
+        <span style={{ color: currentTheme?.mainPage.post.colorText }}>
           {currentPost.title}
         </span>
-        <p className={styles.feed_post_content_description}>
-          {currentPost.description}
-        </p>
-        <nav className={styles.feed_post_nav}>
-          <button className={styles.feed_post_button_more}>{t("more")}</button>
-          <div className={styles.feed_post_tools}>
+        <p>{currentPost.description}</p>
+        <nav className={styles.nav}>
+          <button>{t("more")}</button>
+          <div>
             <svg
               width="24"
               height="24"

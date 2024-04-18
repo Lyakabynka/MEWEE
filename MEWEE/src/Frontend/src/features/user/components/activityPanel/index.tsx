@@ -1,13 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
-import {
-  EnumActivityType,
-  usePostsStore,
-  useThemeStore,
-} from "../../../../entities";
-import { FeedPost } from "../feeds/components/post";
-import { Box, CircularProgress } from "@mui/material";
-import { NewsItem } from "./components/newsWindow/newsItem";
+import { EnumActivityType, useThemeStore } from "../../../../entities";
 import { NewsWindow } from "./components/newsWindow";
 import { CommentsWindow } from "./components/commentsWindow";
 
