@@ -1,19 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../../entities";
 import { useTranslation } from "react-i18next";
-import LocationIcon from "../../../../../assets/image/icons/LocationIcon.svg";
-import SentPostIcon from "../../../../../assets/image/icons/SentPostIcon.svg";
-import CommentPostIcon from "../../../../../assets/image/icons/CommentPostIcon.svg";
 import {
   FeedPostPropsTypes,
   modalPostDataLinkTypes,
 } from "../../../home.interface";
 import { modalPostDataLink } from "../../../data";
+import LocationIcon from "../../../../../assets/image/icons/LocationIcon.svg";
 import LikePostIcon from "../../../../../assets/image/icons/LikePostIcon.svg";
+import SentIcon from "../../../../../assets/image/icons/SentIcon.svg";
+import CommentPostIcon from "../../../../../assets/image/icons/CommentPostIcon.svg";
+import CommentWriterAvatar from "../../../../../assets/image/CommentWriterAvatar.png";
+import LikeComentIcon from "../../../../../assets/image/icons/LikeComentIcon.svg";
+import EmojiIcon from "../../../../../assets/image/icons/EmojiIcon.svg";
+
 import styles from "./feed_post.module.scss";
 
 export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
   const [modalIcon, setModalIcon] = useState<Boolean>(true);
+  const [commentsHiden, setCommentsHiden] = useState<Boolean>(true);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const currentPost = post.post;
@@ -51,99 +56,137 @@ export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
   const handleModalClick = () => {
     setModalIcon(!modalIcon);
   };
+
+  const handleCommentClick = () => {
+    setCommentsHiden(!commentsHiden);
+  };
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
   return (
-    <div
-      className={styles.div}
-      style={{ backgroundColor: currentTheme?.mainPage.post.background }}
-    >
-      <ul
-        className={modalIcon ? styles.ul : `${styles.ul} ${styles._ul_visible}`}
+    <div className={styles.div}>
+      <div
+        className={styles.sub_div}
+        style={{ backgroundColor: currentTheme?.mainPage.post.background }}
       >
-        {modalPostDataLink ? (
-          modalPostDataLink.map((item: modalPostDataLinkTypes) => {
-            return (
-              <li key={item.id}>
-                <a href={item.url}>
-                  <div>
-                    <img src={`${item.icons}`} />
-                    <h6>{t(`${item.text}`)}</h6>
-                  </div>
-                </a>
-              </li>
-            );
-          })
-        ) : (
-          <p>Ошибка сервера...</p>
-        )}
-      </ul>
-      <header>
-        <div className={styles.header_div}>
-          <div>
-            <img src={currentPost.profileImageUrl} />
-          </div>
-          <div>
-            <span style={{ color: currentTheme?.mainPage.post.colorText }}>
-              {currentPost.username}
-            </span>
-            <span style={{ color: currentTheme?.mainPage.post.thirdColorText }}>
-              {currentPost.postDate}
-            </span>
+        <ul
+          className={
+            modalIcon ? styles.ul : `${styles.ul} ${styles._ul_visible}`
+          }
+        >
+          {modalPostDataLink ? (
+            modalPostDataLink.map((item: modalPostDataLinkTypes) => {
+              return (
+                <li key={item.id}>
+                  <a href={item.url}>
+                    <div>
+                      <img src={`${item.icons}`} />
+                      <h6>{t(`${item.text}`)}</h6>
+                    </div>
+                  </a>
+                </li>
+              );
+            })
+          ) : (
+            <p>Ошибка сервера...</p>
+          )}
+        </ul>
+        <header>
+          <div className={styles.header_div}>
             <div>
-              <img src={LocationIcon} />
-              <span
-                style={{ color: currentTheme?.mainPage.post.secondColorText }}
-              >
-                {currentPost.location}
+              <img src={currentPost.profileImageUrl} />
+            </div>
+            <div>
+              <span style={{ color: currentTheme?.mainPage.post.colorText }}>
+                {currentPost.username}
               </span>
+              <span
+                style={{ color: currentTheme?.mainPage.post.thirdColorText }}
+              >
+                {currentPost.postDate}
+              </span>
+              <div>
+                <img src={LocationIcon} />
+                <span
+                  style={{ color: currentTheme?.mainPage.post.secondColorText }}
+                >
+                  {currentPost.location}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div onClick={handleModalClick} className={styles.modal_button}>
+            <div />
+            <div />
+            <div />
+          </div>
+        </header>
+        <main className={styles.main}>
+          {isImage(currentPost.imageUrl) ? (
+            <div>
+              <img src={currentPost.imageUrl} alt="Post Image" />
+            </div>
+          ) : isVideo(currentPost.imageUrl) ? (
+            <video
+              className={styles.feed_post_video}
+              ref={videoRef}
+              autoPlay
+              muted
+            >
+              <source src={currentPost.imageUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <span>Unsupported media format</span>
+          )}
+        </main>
+        <footer className={styles.footer}>
+          <span style={{ color: currentTheme?.mainPage.post.colorText }}>
+            {currentPost.title}
+          </span>
+          <p>{currentPost.description}</p>
+          <nav className={styles.nav}>
+            <button>{t("more")}</button>
+            <div>
+              <img src={LikePostIcon} />
+              <img src={SentIcon} />
+              <img onClick={handleCommentClick} src={CommentPostIcon} />
+            </div>
+          </nav>
+        </footer>
+      </div>
+      <div
+        className={
+          commentsHiden
+            ? styles.comments
+            : `${styles.comments} ${styles._comments_visible}`
+        }
+      >
+        <div className={styles.comments_contetn}>
+          <img src={CommentWriterAvatar} />
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Quam maecenas mollis dui
+              sociis ullamcorper. Rhoncus feugiat euismod consectetur quam
+              pellentesque. Eget et scelerisque etiam aliquet maecenas nullam
+              proin tortor. Lectus pulvinar placerat.
+            </p>
+            <div>
+              <a href="#">Показати відповіді</a>
+              <a href="#">Відповісти</a>
+              <img src={LikeComentIcon} />
             </div>
           </div>
         </div>
-        <div onClick={handleModalClick} className={styles.modal_button}>
-          <div />
-          <div />
-          <div />
-        </div>
-      </header>
-      <main className={styles.main}>
-        {isImage(currentPost.imageUrl) ? (
-          <img src={currentPost.imageUrl} alt="Post Image" />
-        ) : isVideo(currentPost.imageUrl) ? (
-          <video
-            className={styles.feed_post_video}
-            ref={videoRef}
-            autoPlay
-            muted
-          >
-            <source src={currentPost.imageUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <span>Unsupported media format</span>
-        )}
-      </main>
-      <footer className={styles.footer}>
-        <span style={{ color: currentTheme?.mainPage.post.colorText }}>
-          {currentPost.title}
-        </span>
-        <p>{currentPost.description}</p>
-        <nav className={styles.nav}>
-          <button>{t("more")}</button>
+        <div className={styles.comments_add}>
+          <button>Nick</button>
+          <input type="text" placeholder="Lorem ipsum..." />
           <div>
-            <a href="#">
-              <img src={LikePostIcon} />
-            </a>
-            <a href="#">
-              <img src={SentPostIcon} />
-            </a>
-            <a href="#">
-              <img src={CommentPostIcon} />
-            </a>
+            <img src={EmojiIcon} />
+            <img src={SentIcon} />
           </div>
-        </nav>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 };

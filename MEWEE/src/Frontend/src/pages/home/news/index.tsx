@@ -55,7 +55,7 @@ export const HomeNews = () => {
       {data &&
         data.map(
           (post: IPost) =>
-            post.id == 32 && <FeedPost key={post.id} post={post} />
+            post.id == 14 && <FeedPost key={post.id} post={post} />
         )}
     </div>
   );

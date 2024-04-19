@@ -22,6 +22,8 @@ ol {
 }
 
 a {
+  font-size: 0.625rem;
+  line-height: 0.78125rem;
   text-decoration: none;
   color: inherit;
 }
@@ -36,4 +38,29 @@ h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2.5125rem;
+}
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.5725;
+}
+h3 {
+  font-size: 0.9375rem;
+  line-height: 1.175rem;
+}
+h4 {
+  font-size: 0.875rem;
+  line-height: 1.100625rem;
+}
+h5 {
+  font-size: 0.75rem;
+  line-height: 0.94375rem;
+}
+p {
+  font-size: 0.625rem;
+  line-height: 0.78125rem;
 }

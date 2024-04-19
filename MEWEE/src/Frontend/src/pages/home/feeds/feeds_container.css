@@ -1,5 +1,6 @@
 .feeds-main-content {
   display: flex;
   flex-direction: column;
+  padding: 0.9rem;
   gap: 10px;
 }
