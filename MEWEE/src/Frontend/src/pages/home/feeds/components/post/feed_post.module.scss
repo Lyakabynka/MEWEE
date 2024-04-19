@@ -20,11 +20,15 @@
     transition: opacity 0.5s ease, visibility 0s linear 0.5s;
     z-index: 3;
     > li {
-      display: flex;
-      align-items: center;
       margin-bottom: 1rem;
-      > img {
-        margin-right: 0.5rem;
+      > a {
+        > div {
+          display: flex;
+          align-items: center;
+          > img {
+            margin-right: 0.5rem;
+          }
+        }
       }
     }
   }
@@ -92,8 +96,6 @@
     }
   }
   .main {
-    margin: 15px;
-    margin-left: 0;
     .feed_post_video {
       width: 100%;
     }
@@ -105,6 +107,7 @@
     }
     > p {
       font-weight: bold;
+      margin-bottom: 2rem;
     }
     .span {
       color: gray;
@@ -112,19 +115,26 @@
     .nav {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       > button {
         color: #b67afe;
         font-family: "Geometria", sans-serif;
         border: 1px solid #b67afe;
         border-radius: 20px;
         padding: 15px;
-        width: 130px;
         background-color: transparent;
       }
       > div {
         display: flex;
+        align-items: center;
         gap: 15px;
         margin-right: 15px;
+        > a {
+          transition: transform 0.3s ease;
+        }
+        > a:hover {
+          transform: scale(1.5);
+        }
       }
     }
   }

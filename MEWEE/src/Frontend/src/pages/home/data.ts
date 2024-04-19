@@ -1,6 +1,6 @@
-import { ReactComponent as FriendsHomeModalIcon } from "../../assets/image/icons/FriendsHomeModalIcon.svg";
-import { ReactComponent as SaveHomeModalIcon } from "../../assets/image/icons/SaveHomeModalIcon.svg";
-import { ReactComponent as EyeHomeModalIcon } from "../../assets/image/icons/EyeHomeModalIcon.svg";
+import FriendsHomeModalIcon from "../../assets/image/icons/FriendsHomeModalIcon.svg";
+import SaveHomeModalIcon from "../../assets/image/icons/SaveHomeModalIcon.svg";
+import EyeHomeModalIcon from "../../assets/image/icons/EyeHomeModalIcon.svg";
 
 export const modalPostDataLink = [
   {

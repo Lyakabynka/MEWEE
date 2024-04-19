@@ -1,4 +1,3 @@
-import { useState } from "react"; // Import useState hook for managing state
 import { themes } from "../../themes";
 import { Theme } from "@mui/material/styles";
 import { create } from "zustand";
@@ -17,7 +16,6 @@ export const useThemeStore = create<IThemeStore>()(
     (set, get) => ({
       currentThemeIndex: 0,
       currentTheme: null,
-
       setTheme: (theme: Theme | null) => {
         if (theme != null) {
           const themeIndex = themes.findIndex((t) => t === theme);

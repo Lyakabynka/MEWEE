@@ -1,6 +1,6 @@
 export interface modalPostDataLinkTypes {
   id: number;
-  icons: React.ComponentType;
+  icons: any;
   url: string;
   text: string;
 }
