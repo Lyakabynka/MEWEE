@@ -1,0 +1,75 @@
+@import "src/mixins.scss";
+
+.comments {
+  position: relative;
+  display: none;
+  bottom: 60px;
+  width: 100%;
+  max-height: 21rem;
+  background-color: white;
+  border-radius: 1.25rem;
+  overflow: auto;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
+  z-index: 1;
+  .comments_contetn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    > img {
+      margin-right: 1rem;
+    }
+    > div {
+      padding-top: 1rem;
+      > p {
+        margin-bottom: 1rem;
+      }
+      > div {
+        display: flex;
+        align-items: center;
+        > a {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .comments_add {
+    display: flex;
+    border: 2px solid #25005c;
+    border-radius: 10px;
+    padding: 0.5rem;
+    > button {
+      background-color: #fba500;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 0 1rem;
+      @include hover-scale;
+    }
+    > input {
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+    > div {
+      display: flex;
+      > img {
+        @include hover-scale;
+      }
+    }
+  }
+}
+
+.comments_full {
+  width: 100%;
+  background-color: white;
+  border-radius: 1.25rem;
+  overflow: auto;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
+}
+
+._comments_visible {
+  display: block;
+}

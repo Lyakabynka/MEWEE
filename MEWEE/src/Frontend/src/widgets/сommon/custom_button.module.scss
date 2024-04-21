@@ -1,0 +1,11 @@
+@import "src/mixins.scss";
+
+.button {
+  border: 1px solid #b67afe;
+  font-family: "Geometria", sans-serif;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #b67afe;
+  padding: 0.5rem 3rem;
+  @include hover-scale;
+}

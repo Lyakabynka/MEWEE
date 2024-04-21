@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { usePostsStore, useThemeStore } from "../../../entities";
-import { FeedPost } from "../feeds/components/post/FeedPost";
+import { FeedPost } from "../feeds/post/FeedPost";
 import { Box, CircularProgress } from "@mui/material";
 import { modalPostDataLink } from "../data";
 import "./index.css";

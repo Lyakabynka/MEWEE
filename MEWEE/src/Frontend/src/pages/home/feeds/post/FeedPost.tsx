@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useThemeStore } from "../../../../../entities";
+import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
 import {
   FeedPostPropsTypes,
   modalPostDataLinkTypes,
-} from "../../../home.interface";
-import { modalPostDataLink } from "../../../data";
-import LocationIcon from "../../../../../assets/image/icons/LocationIcon.svg";
-import LikePostIcon from "../../../../../assets/image/icons/LikePostIcon.svg";
-import SentIcon from "../../../../../assets/image/icons/SentIcon.svg";
-import CommentPostIcon from "../../../../../assets/image/icons/CommentPostIcon.svg";
-import CommentWriterAvatar from "../../../../../assets/image/CommentWriterAvatar.png";
-import LikeComentIcon from "../../../../../assets/image/icons/LikeComentIcon.svg";
-import EmojiIcon from "../../../../../assets/image/icons/EmojiIcon.svg";
+} from "../../home.interface";
+import { modalPostDataLink } from "../../data";
+import CustomButton from "../../../../widgets/сommon/customButton";
+import CommentBarComponents from "../../../../widgets/comment-bar-components/CommentBarComponents";
+import LocationIcon from "../../../../assets/image/icons/LocationIcon.svg";
+import LikePostIcon from "../../../../assets/image/icons/LikePostIcon.svg";
+import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
+import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
 
 import styles from "./feed_post.module.scss";
 
@@ -146,7 +145,7 @@ export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
           </span>
           <p>{currentPost.description}</p>
           <nav className={styles.nav}>
-            <button>{t("more")}</button>
+            <CustomButton text={t("more")} />
             <div>
               <img src={LikePostIcon} />
               <img src={SentIcon} />
@@ -155,7 +154,8 @@ export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
           </nav>
         </footer>
       </div>
-      <div
+      <CommentBarComponents appearance={true} hiden={commentsHiden} />
+      {/* <div
         className={
           commentsHiden
             ? styles.comments
@@ -186,7 +186,7 @@ export const FeedPost: React.FC<FeedPostPropsTypes> = (post) => {
             <img src={SentIcon} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { usePostsStore } from "../../../entities";
-import { FeedPost } from "./components/post/FeedPost";
+import { FeedPost } from "./post/FeedPost";
 import { postDataTypes } from "../home.interface";
 import "./feeds_container.css";
 

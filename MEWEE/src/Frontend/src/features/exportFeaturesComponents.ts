@@ -17,4 +17,4 @@ export { HomeNews } from "../pages/home/news";
 export { SideToolbar } from "../widgets/sideToolbar/SideToolbar";
 export { TopSearchBar } from "../widgets/topSearchBar/TopSearchBar";
 export { FeedsContainer } from "../pages/home/feeds/FeedsContainer";
-export { FeedPost } from "../pages/home/feeds/components/post/FeedPost";
+export { FeedPost } from "../pages/home/feeds/post/FeedPost";
