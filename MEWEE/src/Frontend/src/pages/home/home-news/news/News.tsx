@@ -1,23 +1,17 @@
+import {} from "react";
 import { FC, useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../../../widgets/сommon/customButton";
-import CommentBarComponents from "../../../../widgets/comment-bar-components/CommentBarComponents";
-import LocationIcon from "../../../../assets/image/icons/LocationIcon.svg";
-import LikePostIcon from "../../../../assets/image/icons/LikePostIcon.svg";
 import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
-import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
+import SaveHomeModalIcon from "../../../../assets/image/icons/SaveHomeModalIcon.svg";
 import {
   FeedPostPropsTypes,
   modalPostDataLinkTypes,
 } from "../../home.interface";
 import { postDataTypes } from "../../home.interface";
-import styles from "./feed_post.module.scss";
-
-export const FeedPost: FC<FeedPostPropsTypes> = ({
-  posts,
-  modalPostDataLinkProps,
-}) => {
+import styles from "./news.module.scss";
+const News: FC<FeedPostPropsTypes> = ({ posts, modalPostDataLinkProps }) => {
   const [modalIcon, setModalIcon] = useState<Boolean>(true);
   const [commentsHiden, setCommentsHiden] = useState<Boolean>(true);
   const { t } = useTranslation();
@@ -99,37 +93,15 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
                     <p>Ошибка сервера...</p>
                   )}
                 </ul>
-                <header>
-                  <div className={styles.header_div}>
-                    <div>
-                      <img src={item.profileImageUrl} />
-                    </div>
-                    <div>
-                      <span
-                        style={{
-                          color: currentTheme?.mainPage.post.colorText,
-                        }}
-                      >
-                        {item.username}
-                      </span>
-                      <span
-                        style={{
-                          color: currentTheme?.mainPage.post.thirdColorText,
-                        }}
-                      >
-                        {item.postDate}
-                      </span>
-                      <div>
-                        <img src={LocationIcon} />
-                        <span
-                          style={{
-                            color: currentTheme?.mainPage.post.secondColorText,
-                          }}
-                        >
-                          {item.location}
-                        </span>
-                      </div>
-                    </div>
+                <header className={styles.header}>
+                  <div>
+                    <h3
+                      style={{
+                        color: currentTheme?.mainPage.post.colorText,
+                      }}
+                    >
+                      {item.username}
+                    </h3>
                   </div>
                   <div
                     onClick={handleModalClick}
@@ -169,17 +141,16 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
                   <nav className={styles.nav}>
                     <CustomButton text={t("more")} />
                     <div>
-                      <img src={LikePostIcon} />
+                      <img src={SaveHomeModalIcon} />
                       <img src={SentIcon} />
-                      <img onClick={handleCommentClick} src={CommentPostIcon} />
                     </div>
                   </nav>
                 </footer>
               </div>
-              <CommentBarComponents appearance={true} hiden={commentsHiden} />
             </div>
           );
         })}
     </div>
   );
 };
+export default News;

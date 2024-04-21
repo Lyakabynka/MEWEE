@@ -1,26 +1,11 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { usePostsStore, useThemeStore } from "../../../entities";
-import { FeedPost } from "../feeds/post/FeedPost";
 import { Box, CircularProgress } from "@mui/material";
-import { modalPostDataLink } from "../data";
+import News from "./news/News";
+import { modalPostDataLink } from "../dataHome";
 import "./index.css";
-interface IPost {
-  id: number;
-  username: string;
-  profileImageUrl: string;
-  postDate: string;
-  location: string;
-  imageUrl: string;
-  title: string;
-  description: string;
-  likes: number;
-  comments: number;
-  shares: number;
-  // Add content property if necessary
-  content?: string;
-}
 
-export const HomeNews = () => {
+export const HomeNews: FC = () => {
   const { currentTheme } = useThemeStore();
   const { data, isLoading, errorMessage, getPosts } = usePostsStore();
 
@@ -52,11 +37,7 @@ export const HomeNews = () => {
       className="home-news-generic-container"
       style={{ backgroundColor: currentTheme?.mainPage.post.background }}
     >
-      {data &&
-        data.map(
-          (post: IPost) =>
-            post.id == 14 && <FeedPost key={post.id} post={post} />
-        )}
+      <News posts={data} modalPostDataLinkProps={modalPostDataLink} />
     </div>
   );
 };

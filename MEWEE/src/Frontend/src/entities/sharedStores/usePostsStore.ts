@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { posts } from "../../pages/home/data";
+import { posts } from "../../pages/home/dataHome";
 
 interface IPoststore {
   isLoading: boolean;

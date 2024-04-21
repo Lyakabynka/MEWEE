@@ -2,8 +2,8 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../entities";
-import { FeedsContainer } from "./feeds/FeedsContainer";
-import { HomeNews } from "./news";
+import { HomeFeed } from "./feeds/HomeFeed";
+import { HomeNews } from "./home-news/HomeNews";
 import "./home_page.css";
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export const HomePage: React.FC = () => {
       <div className="home-generic-container">
         <div className="home-main-container">
           <div className="home-generic-content-holder">
-            <FeedsContainer />
+            <HomeFeed />
             <HomeNews />
           </div>
         </div>

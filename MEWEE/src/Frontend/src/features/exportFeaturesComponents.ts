@@ -13,8 +13,8 @@ export { ManagePlanGroupSaveButtonPlaceHolder } from "./plangroup/ManagePlanGrou
 // Home Page components ///
 export { EmailConfirmationForm } from "./auth/register/EmailConfirmation";
 export { PreferencesForm } from "./auth/register/PreferencesForm";
-export { HomeNews } from "../pages/home/news";
+export { HomeNews } from "../pages/home/home-news/HomeNews";
 export { SideToolbar } from "../widgets/sideToolbar/SideToolbar";
 export { TopSearchBar } from "../widgets/topSearchBar/TopSearchBar";
-export { FeedsContainer } from "../pages/home/feeds/FeedsContainer";
+export { HomeFeed } from "../pages/home/feeds/HomeFeed";
 export { FeedPost } from "../pages/home/feeds/post/FeedPost";

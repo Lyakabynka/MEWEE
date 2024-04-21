@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CommentBarComponentsTypes } from "../data.interface";
+import { CommentBarComponentsTypes } from "../widget.interface";
 import styles from "./comment_bar_components.module.scss";
 const CommentBarComponents: FC<CommentBarComponentsTypes> = ({
   commentData,

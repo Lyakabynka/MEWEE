@@ -22,5 +22,6 @@ export interface postDataTypes {
 }
 
 export interface FeedPostPropsTypes {
-  post: postDataTypes;
+  posts: postDataTypes[] | null;
+  modalPostDataLinkProps: modalPostDataLinkTypes[];
 }

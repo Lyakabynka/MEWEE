@@ -1,17 +1,17 @@
-// Update the mapping function in the FeedsContainer component
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { usePostsStore } from "../../../entities";
 import { FeedPost } from "./post/FeedPost";
-import { postDataTypes } from "../home.interface";
-import "./feeds_container.css";
+import { modalPostDataLink } from "../dataHome";
 
-export const FeedsContainer = () => {
+export const HomeFeed: FC = () => {
   const { data, isLoading, errorMessage, getPosts } = usePostsStore();
 
   useEffect(() => {
     getPosts(); // Fetch posts when component mounts
   }, []);
+
+  console.log("DADA GOGOGOGOGOGO", data);
 
   if (isLoading) {
     return (
@@ -32,14 +32,5 @@ export const FeedsContainer = () => {
     return <div>Error: {errorMessage}</div>;
   }
 
-  return (
-    <div className="feeds-generic-container">
-      <div className="feeds-main-content">
-        {data &&
-          data.map((post: postDataTypes) => (
-            <FeedPost key={post.id} post={post} />
-          ))}
-      </div>
-    </div>
-  );
+  return <FeedPost posts={data} modalPostDataLinkProps={modalPostDataLink} />;
 };

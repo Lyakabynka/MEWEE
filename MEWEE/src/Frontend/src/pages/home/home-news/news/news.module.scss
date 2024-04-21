@@ -43,46 +43,10 @@
       visibility: visible;
       transition-delay: 0s;
     }
-    > header {
+    > .header {
       display: flex;
       justify-content: space-between;
-      .header_div {
-        display: flex;
-        margin-bottom: 2rem;
-        > div:first-child {
-          width: 3.75rem;
-          height: 3.75rem;
-          border-radius: 50%;
-          overflow: hidden;
-          background-color: white;
-          > img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-        }
-        > div:last-child {
-          display: flex;
-          flex-direction: column;
-          font-size: 0.9vw;
-          margin-left: 0.9rem;
-          > span:first-child {
-            font-family: "Geometria-Bold", sans-serif;
-            font-size: 1.2vw;
-          }
-          > span:last-child {
-            font-family: "Geometria", sans-serif;
-            font-size: 1vw;
-            color: gray;
-          }
-          > div {
-            font-family: "Geometria-Bold", sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-          }
-        }
-      }
+      align-items: center;
       .modal_button {
         cursor: pointer;
         padding: 0.5rem;
