@@ -10,6 +10,7 @@ import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
 import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
 import { FeedPostPropsTypes } from "../../home.interface";
 import { postDataTypes } from "../../../post-show/dataPostShow.interface";
+import { commentsData } from "../../../../widgets/dataWidget";
 import styles from "./feed_post.module.scss";
 
 export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {
@@ -139,9 +140,10 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {
                 </footer>
               </div>
               <CommentBarComponents
+                id={item.id}
                 appearance={true}
                 hiden={commentsHiden}
-                id={item.id}
+                commentDataRender={commentsData}
               />
             </div>
           );

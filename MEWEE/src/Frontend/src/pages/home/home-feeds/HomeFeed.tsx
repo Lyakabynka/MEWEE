@@ -10,8 +10,6 @@ export const HomeFeed: FC = () => {
     getPosts(); // Fetch posts when component mounts
   }, []);
 
-  console.log("DADA GOGOGOGOGOGO", data);
-
   if (isLoading) {
     return (
       <Box

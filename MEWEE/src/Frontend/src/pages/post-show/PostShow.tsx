@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import { postData } from "./dataPostShow";
 import Post from "./post/Post";
 import CommentBarComponents from "../../widgets/comment-bar-components/CommentBarComponents";
+import { commentsData } from "../../widgets/dataWidget";
 const PostShow: FC = () => {
   return (
     <>
@@ -11,7 +12,10 @@ const PostShow: FC = () => {
           <Post dataObject={postData} />
         </Grid>
         <Grid sm={4}>
-          <CommentBarComponents appearance={false} />
+          <CommentBarComponents
+            commentDataRender={commentsData}
+            appearance={false}
+          />
         </Grid>
       </Grid>
     </>

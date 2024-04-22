@@ -1,5 +1,4 @@
 @import "src/mixins.scss";
-
 .comments {
   position: relative;
   display: none;
@@ -67,7 +66,7 @@
   border-radius: 1.25rem;
   overflow: auto;
   padding: 1rem 3rem;
-  margin-top: 2rem;
+  margin-top: 0.9rem;
   .comments_contetn {
     display: flex;
     justify-content: space-between;

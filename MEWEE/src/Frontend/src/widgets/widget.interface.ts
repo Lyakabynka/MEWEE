@@ -19,15 +19,12 @@ export interface commentDataTypes {
   id: number;
   avatarIcon: any;
   commentText: string;
-  showAnswers: string;
-  answer: string;
-  likeIcon: any;
 }
 
 export interface CommentBarPropsTypes {
   id?: number;
-  commentData?: commentDataTypes[];
   title?: string;
   hiden?: number | null;
   appearance: boolean;
+  commentDataRender: commentDataTypes[];
 }
