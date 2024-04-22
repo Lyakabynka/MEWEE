@@ -68,6 +68,54 @@
   overflow: auto;
   padding: 1rem 3rem;
   margin-top: 2rem;
+  .comments_contetn {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    > img {
+      margin: 1rem 1rem 0 0;
+      margin-right: 1rem;
+    }
+    > div {
+      padding-top: 1rem;
+      > p {
+        margin-bottom: 1rem;
+      }
+      > div {
+        display: flex;
+        align-items: center;
+        > a {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .comments_add {
+    display: flex;
+    border: 2px solid #25005c;
+    border-radius: 10px;
+    padding: 0.5rem;
+    > button {
+      background-color: #fba500;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 0 1rem;
+      @include hover-scale;
+    }
+    > input {
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+    > div {
+      display: flex;
+      > img {
+        @include hover-scale;
+      }
+    }
+  }
 }
 
 ._comments_visible {

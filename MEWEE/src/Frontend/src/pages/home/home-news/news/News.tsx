@@ -2,18 +2,14 @@ import {} from "react";
 import { FC, useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
-import CustomButton from "../../../../widgets/сommon/customButton";
+import CustomButton from "../../../../widgets/сommon/custom-button/customButton";
 import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
 import SaveHomeModalIcon from "../../../../assets/image/icons/SaveHomeModalIcon.svg";
-import {
-  FeedPostPropsTypes,
-  modalPostDataLinkTypes,
-} from "../../home.interface";
-import { postDataTypes } from "../../home.interface";
+import CustomModalIcon from "../../../../widgets/сommon/custom-modal-icon/CustomModalIcon";
+import { FeedPostPropsTypes } from "../../home.interface";
+import { postDataTypes } from "../../../post-show/dataPostShow.interface";
 import styles from "./news.module.scss";
-const News: FC<FeedPostPropsTypes> = ({ posts, modalPostDataLinkProps }) => {
-  const [activeModalId, setActiveModalId] = useState<number | null>(null);
-  const [modalIcon, setModalIcon] = useState<Boolean>(true);
+const News: FC<FeedPostPropsTypes> = ({ posts }) => {
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
@@ -40,16 +36,12 @@ const News: FC<FeedPostPropsTypes> = ({ posts, modalPostDataLinkProps }) => {
   }, []);
 
   const handleVideoEnded = () => {
-    // Reset the playback time to 0 when the video ends
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play(); // Start playing again
+      videoRef.current.play();
     }
   };
 
-  const handleModalClick = (postId: number) => {
-    setActiveModalId(activeModalId === postId ? null : postId);
-  };
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
@@ -65,35 +57,6 @@ const News: FC<FeedPostPropsTypes> = ({ posts, modalPostDataLinkProps }) => {
                   backgroundColor: currentTheme?.mainPage.post.background,
                 }}
               >
-                {activeModalId === item.id && (
-                  <ul
-                    className={
-                      modalIcon
-                        ? styles.ul
-                        : `${styles.ul} ${styles._ul_visible}`
-                    }
-                  >
-                    {modalPostDataLinkProps ? (
-                      modalPostDataLinkProps.map(
-                        (item: modalPostDataLinkTypes) => {
-                          return (
-                            <li key={item.id}>
-                              <a href={item.url}>
-                                <div>
-                                  <img src={`${item.icons}`} />
-                                  <h6>{t(`${item.text}`)}</h6>
-                                </div>
-                              </a>
-                            </li>
-                          );
-                        }
-                      )
-                    ) : (
-                      <p>Ошибка сервера...</p>
-                    )}
-                  </ul>
-                )}
-
                 <header className={styles.header}>
                   <div>
                     <h3
@@ -104,14 +67,7 @@ const News: FC<FeedPostPropsTypes> = ({ posts, modalPostDataLinkProps }) => {
                       {item.username}
                     </h3>
                   </div>
-                  <div
-                    onClick={() => handleModalClick(item.id)}
-                    className={styles.modal_button}
-                  >
-                    <div />
-                    <div />
-                    <div />
-                  </div>
+                  <CustomModalIcon id={item.id} />
                 </header>
                 <main className={styles.main}>
                   {isImage(item.imageUrl) ? (

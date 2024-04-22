@@ -4,6 +4,17 @@ export interface ButtonPropsTypes {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
+export interface modalPostDataLinkTypes {
+  id: number;
+  icons: any;
+  url: string;
+  text: string;
+}
+
+export interface CustomModalIconPropsTypes {
+  id: number;
+}
+
 export interface commentDataTypes {
   id: number;
   avatarIcon: any;
@@ -13,9 +24,10 @@ export interface commentDataTypes {
   likeIcon: any;
 }
 
-export interface CommentBarComponentsTypes {
+export interface CommentBarPropsTypes {
+  id?: number;
   commentData?: commentDataTypes[];
   title?: string;
-  hiden?: Boolean;
+  hiden?: number | null;
   appearance: boolean;
 }

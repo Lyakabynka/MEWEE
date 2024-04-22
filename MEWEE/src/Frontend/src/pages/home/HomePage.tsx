@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../entities";
-import { HomeFeed } from "./feeds/HomeFeed";
+import { HomeFeed } from "./home-feeds/HomeFeed";
 import { HomeNews } from "./home-news/HomeNews";
 import "./home_page.css";
 export const HomePage: React.FC = () => {
@@ -16,17 +16,15 @@ export const HomePage: React.FC = () => {
       <div className="home-generic-container">
         <div className="home-main-container">
           <div className="home-generic-content-holder">
-            <HomeFeed />
-            <HomeNews />
+            <Grid sm={8}>
+              <HomeFeed />
+            </Grid>
+            <Grid sm={4}>
+              <HomeNews />
+            </Grid>
           </div>
         </div>
       </div>
     </Grid>
   );
-  // <Grid container direction="column" alignItems="center">
-  //     <h4>Username: </h4>
-  //     <h6>Email: {email} | {isEmailConfirmed ? 'Email confirmed' : 'Confirm your email' }</h6>
-  //     <h6>Role: {role}</h6>
-  //     <Link href="/logout">{t('Logout')}</Link>
-  // </Grid>
 };

@@ -1,25 +1,19 @@
 import { FC, useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
-import CustomButton from "../../../../widgets/сommon/customButton";
+import CustomButton from "../../../../widgets/сommon/custom-button/customButton";
 import CommentBarComponents from "../../../../widgets/comment-bar-components/CommentBarComponents";
+import CustomModalIcon from "../../../../widgets/сommon/custom-modal-icon/CustomModalIcon";
 import LocationIcon from "../../../../assets/image/icons/LocationIcon.svg";
 import LikePostIcon from "../../../../assets/image/icons/LikePostIcon.svg";
 import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
 import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
-import {
-  FeedPostPropsTypes,
-  modalPostDataLinkTypes,
-} from "../../home.interface";
-import { postDataTypes } from "../../home.interface";
+import { FeedPostPropsTypes } from "../../home.interface";
+import { postDataTypes } from "../../../post-show/dataPostShow.interface";
 import styles from "./feed_post.module.scss";
 
-export const FeedPost: FC<FeedPostPropsTypes> = ({
-  posts,
-  modalPostDataLinkProps,
-}) => {
-  const [modalIcon, setModalIcon] = useState<Boolean>(true);
-  const [commentsHiden, setCommentsHiden] = useState<Boolean>(true);
+export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {
+  const [commentsHiden, setCommentsHiden] = useState<number | null>(null);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
@@ -46,20 +40,16 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
   }, []);
 
   const handleVideoEnded = () => {
-    // Reset the playback time to 0 when the video ends
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play(); // Start playing again
+      videoRef.current.play();
     }
   };
 
-  const handleModalClick = () => {
-    setModalIcon(!modalIcon);
+  const handleCommentClick = (postId: number) => {
+    setCommentsHiden(commentsHiden === postId ? null : postId);
   };
 
-  const handleCommentClick = () => {
-    setCommentsHiden(!commentsHiden);
-  };
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
@@ -75,30 +65,6 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
                   backgroundColor: currentTheme?.mainPage.post.background,
                 }}
               >
-                <ul
-                  className={
-                    modalIcon ? styles.ul : `${styles.ul} ${styles._ul_visible}`
-                  }
-                >
-                  {modalPostDataLinkProps ? (
-                    modalPostDataLinkProps.map(
-                      (item: modalPostDataLinkTypes) => {
-                        return (
-                          <li key={item.id}>
-                            <a href={item.url}>
-                              <div>
-                                <img src={`${item.icons}`} />
-                                <h6>{t(`${item.text}`)}</h6>
-                              </div>
-                            </a>
-                          </li>
-                        );
-                      }
-                    )
-                  ) : (
-                    <p>Ошибка сервера...</p>
-                  )}
-                </ul>
                 <header>
                   <div className={styles.header_div}>
                     <div>
@@ -131,14 +97,7 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
                       </div>
                     </div>
                   </div>
-                  <div
-                    onClick={handleModalClick}
-                    className={styles.modal_button}
-                  >
-                    <div />
-                    <div />
-                    <div />
-                  </div>
+                  <CustomModalIcon id={item.id} />
                 </header>
                 <main className={styles.main}>
                   {isImage(item.imageUrl) ? (
@@ -171,12 +130,19 @@ export const FeedPost: FC<FeedPostPropsTypes> = ({
                     <div>
                       <img src={LikePostIcon} />
                       <img src={SentIcon} />
-                      <img onClick={handleCommentClick} src={CommentPostIcon} />
+                      <img
+                        onClick={() => handleCommentClick(item.id)}
+                        src={CommentPostIcon}
+                      />
                     </div>
                   </nav>
                 </footer>
               </div>
-              <CommentBarComponents appearance={true} hiden={commentsHiden} />
+              <CommentBarComponents
+                appearance={true}
+                hiden={commentsHiden}
+                id={item.id}
+              />
             </div>
           );
         })}

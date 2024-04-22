@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { HomePage } from "../../features/exportFeaturesComponents";
+import { AuthRoutes } from "./auth/AuthRoutes";
+import { RecoveryRoutes } from "./auth/RecoveryRoutes";
+import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { PrivateRoute } from "./PrivateRoute";
 import { EnumUserRole } from "../../entities";
 import { ManagePlanGroupPage } from "../../pages/exportPageComponents";
 import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
-import { AuthRoutes } from "./auth/AuthRoutes";
-import { RecoveryRoutes } from "./auth/RecoveryRoutes";
+import PostShow from "../../pages/post-show/PostShow";
 
 export const Routing = () => {
   return (
@@ -14,7 +15,7 @@ export const Routing = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="auth/:url" element={<AuthRoutes />} />
       <Route path="recovery/:url" element={<RecoveryRoutes />} />
-      <Route path="/feed" element={<HomePage />} />
+      <Route path="/post-show" element={<PostShow />} />
       <Route
         path="plans"
         element={
@@ -39,6 +40,7 @@ export const Routing = () => {
           </PrivateRoute>
         }
       />
+
       <Route
         path="plans/:id/scheduled"
         element={

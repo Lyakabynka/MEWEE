@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./custom_button.module.scss";
-import { ButtonPropsTypes } from "../widget.interface";
+import { ButtonPropsTypes } from "../../widget.interface";
 const CustomButton: FC<ButtonPropsTypes> = ({ text, buttonType, onClick }) => {
   return (
     <>

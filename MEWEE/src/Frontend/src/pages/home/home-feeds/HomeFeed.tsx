@@ -1,8 +1,7 @@
 import { FC, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { usePostsStore } from "../../../entities";
-import { FeedPost } from "./post/FeedPost";
-import { modalPostDataLink } from "../dataHome";
+import { FeedPost } from "./home-post/FeedPost";
 
 export const HomeFeed: FC = () => {
   const { data, isLoading, errorMessage, getPosts } = usePostsStore();
@@ -32,5 +31,5 @@ export const HomeFeed: FC = () => {
     return <div>Error: {errorMessage}</div>;
   }
 
-  return <FeedPost posts={data} modalPostDataLinkProps={modalPostDataLink} />;
+  return <FeedPost posts={data} />;
 };

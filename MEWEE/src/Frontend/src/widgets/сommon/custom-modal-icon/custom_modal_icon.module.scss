@@ -1,0 +1,43 @@
+.modal_button {
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+  > div {
+    width: 5px;
+    height: 5px;
+    background-color: #b67afe;
+    border-radius: 50%;
+    margin-bottom: 0.2rem;
+  }
+}
+
+.ul {
+  position: absolute;
+  top: 1.25rem;
+  right: 2.5rem;
+  max-width: 11.3rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+  > li {
+    margin-bottom: 1rem;
+    > a {
+      > div {
+        display: flex;
+        align-items: center;
+        > img {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+._ul_visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
