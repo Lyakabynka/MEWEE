@@ -2,12 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\" />
+      <Folder Include="Features\Extensions\" />
+      <Folder Include="Mediatr\Comments\Queries\" />
+      <Folder Include="Mediatr\PostLikes\Queries\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -15,7 +16,16 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.9.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+      <PackageReference Include="FuzzySharp" Version="2.0.2" />
+      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="8.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.Json" Version="8.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     </ItemGroup>
 
 </Project>

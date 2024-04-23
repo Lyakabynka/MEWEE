@@ -1,4 +1,5 @@
 ﻿using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
+using IdentityService.Application.Mediatr.User.Commands.CheckForgotPasswordCode;
 using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
 using IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
 using IdentityService.Application.Mediatr.User.Commands.Register;
@@ -139,6 +140,32 @@ public class UserController : ApiControllerBase
         var request = new ForgotPasswordCommand()
         {
             Email = requestModel.Email
+        };
+
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Checks validity of user's forgot password code
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/check-forgot-password
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("check-forgot-password")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CheckForgotPasswordCode([FromBody] CheckForgotPasswordCodeRequestModel requestModel)
+    {
+        var request = new CheckForgotPasswordCodeCommand()
+        {
+            Email = requestModel.Email,
+            Code = requestModel.Code,
         };
 
         return await Mediator.Send(request);

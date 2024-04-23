@@ -28,13 +28,45 @@ services:
       - .env
     hostname: mewee.identityservice
     ports:
-      - 5001:8080
+      - :8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: on-failure
+    depends_on:
+      - postgres
+
+  messagingservice:
+    container_name: messagingservice
+    build:
+      context: .
+      dockerfile: MessagingService.WebApi/Dockerfile
+    image: lyakabynka/mewee.messagingservice
+    env_file:
+      - .env
+    hostname: mewee.messagingservice
+    ports:
+      - :8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     restart: on-failure
     depends_on:
       - postgres
     
+  
+  apigateway:
+    container_name: apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway.WebApi/Dockerfile
+    image: lyakabynka/mewee.apigateway
+    hostname: mewee.messagingservice
+    ports:
+      - 5000:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: on-failure
+    depends_on:
+      - postgres
 
 volumes:
   db_data:
