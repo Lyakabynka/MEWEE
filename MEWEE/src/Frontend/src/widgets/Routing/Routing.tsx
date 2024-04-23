@@ -14,52 +14,52 @@ export const Routing = () => {
   return (
 
     <Grid container>
-      <div className="div_global">
+      <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }} className="div_global">
         <Grid item md={3}>
           <SideToolbar />
         </Grid>
-      </div>
-      <div>
-        <TopSearchBar />
-        <Grid item md={12}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/post-show" element={<PostShow />} />
-            <Route
-              path="plans"
-              element={
-                <PrivateRoute requiredRole={EnumUserRole.user}>
-                  <PlanPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="plan-groups"
-              element={
-                <PrivateRoute requiredRole={EnumUserRole.user}>
-                  <PlanGroupPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="plan-groups/:id"
-              element={
-                <PrivateRoute requiredRole={EnumUserRole.user}>
-                  <ManagePlanGroupPage />
-                </PrivateRoute>
-              }
-            />
+        <div>
+          <TopSearchBar />
+          <Grid item md={12}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/post-show" element={<PostShow />} />
+              <Route
+                path="plans"
+                element={
+                  <PrivateRoute requiredRole={EnumUserRole.user}>
+                    <PlanPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="plan-groups"
+                element={
+                  <PrivateRoute requiredRole={EnumUserRole.user}>
+                    <PlanGroupPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="plan-groups/:id"
+                element={
+                  <PrivateRoute requiredRole={EnumUserRole.user}>
+                    <ManagePlanGroupPage />
+                  </PrivateRoute>
+                }
+              />
 
-            <Route
-              path="plans/:id/scheduled"
-              element={
-                <PrivateRoute requiredRole={EnumUserRole.user}>
-                  <ScheduledPlanPage />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </Grid>
+              <Route
+                path="plans/:id/scheduled"
+                element={
+                  <PrivateRoute requiredRole={EnumUserRole.user}>
+                    <ScheduledPlanPage />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </Grid>
+        </div>
       </div>
     </Grid>
 
