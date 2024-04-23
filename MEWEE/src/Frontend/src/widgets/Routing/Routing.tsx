@@ -10,6 +10,7 @@ import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
 import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponents";
 import { Grid } from "@mui/material";
+//
 export const Routing = () => {
   return (
 
@@ -21,8 +22,9 @@ export const Routing = () => {
         <div>
           <TopSearchBar />
           <Grid item md={12}>
+            
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/feed" element={<HomePage />} />
               <Route path="/post-show" element={<PostShow />} />
               <Route
                 path="plans"
