@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MessagingService.Application.Features.Interfaces;
+using MessagingService.Application.Mediatr.Shared;
 using MessagingService.Application.Response;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,16 @@ public class GetPostsQueryHandler : IRequestHandler<GetPostsQuery, Result>
     public async Task<Result> Handle(GetPostsQuery request, CancellationToken cancellationToken)
     {
         var posts = await _dbContext.Posts
+            .Include(p => p.Likes)
             .Where(p => p.UserId == request.UserId)
+            .Select(p =>
+                new PostVm()
+                {
+                    Title = p.Title,
+                    Content = p.Content,
+                    Attachment = p.Attachment,
+                    LikesCount = p.Likes.Count,
+                })
             .ToListAsync(cancellationToken);
 
         return Result.Create(posts);
