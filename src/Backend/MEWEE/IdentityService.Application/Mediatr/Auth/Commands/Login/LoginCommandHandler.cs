@@ -37,6 +37,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
     {
         var user = await _dbContext.Users
             .AsTracking()
+            .Include(u => u.ConfirmationCode)
             .FirstAsync(user => user.Email == request.Email, cancellationToken);
 
         if (!user.IsEmailConfirmed)
