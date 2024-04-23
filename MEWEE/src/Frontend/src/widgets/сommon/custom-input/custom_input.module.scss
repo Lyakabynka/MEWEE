@@ -1,0 +1,54 @@
+@import "src/mixins.scss";
+
+.div {
+  position: relative;
+  display: flex;
+  border: 2px solid #25005c;
+  border-radius: 10px;
+  padding: 0.5rem;
+  .smile_icon {
+    position: absolute;
+    right: 0px;
+    bottom: 50px;
+    max-width: 256px;
+    max-height: 154px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px 5px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+    display: none;
+    padding: 0.5rem;
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  ._smile_icon_visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+    display: block;
+  }
+  > button {
+    background-color: #fba500;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 0 1rem;
+    @include hover-scale;
+  }
+  > input {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+  > div {
+    display: flex;
+    > img {
+      @include hover-scale;
+    }
+  }
+}

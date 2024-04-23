@@ -22,7 +22,7 @@ export const Routing = () => {
         <div>
           <TopSearchBar />
           <Grid item md={12}>
-            
+
             <Routes>
               <Route path="/feed" element={<HomePage />} />
               <Route path="/post-show" element={<PostShow />} />

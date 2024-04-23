@@ -3,6 +3,7 @@ import LikeComentIcon from "../../assets/image/icons/LikeComentIcon.svg";
 import EmojiIcon from "../../assets/image/icons/EmojiIcon.svg";
 import SentIcon from "../../assets/image/icons/SentIcon.svg";
 import { CommentBarPropsTypes, commentDataTypes } from "../widget.interface";
+import CustomInput from "../сommon/custom-input/CustomInput";
 import styles from "./comment_bar_components.module.scss";
 const CommentBarComponents: FC<CommentBarPropsTypes> = ({
   id,
@@ -42,15 +43,7 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
                 </div>
               );
             })}
-
-          <div className={styles.comments_add}>
-            <button>Nick</button>
-            <input type="text" placeholder="Lorem ipsum..." />
-            <div>
-              <img src={EmojiIcon} />
-              <img src={SentIcon} />
-            </div>
-          </div>
+          <CustomInput />
         </div>
       )}
     </>

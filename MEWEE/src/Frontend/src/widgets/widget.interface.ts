@@ -28,3 +28,8 @@ export interface CommentBarPropsTypes {
   appearance: boolean;
   commentDataRender: commentDataTypes[];
 }
+
+export interface smileDataTypes {
+  id: number;
+  smile: any;
+}

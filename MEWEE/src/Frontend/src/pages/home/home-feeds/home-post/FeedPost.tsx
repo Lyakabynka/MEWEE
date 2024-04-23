@@ -10,7 +10,7 @@ import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
 import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
 import { FeedPostPropsTypes } from "../../home.interface";
 import { postDataTypes } from "../../../post-show/dataPostShow.interface";
-import { commentsData } from "../../../../widgets/dataWidget";
+import { commentsData } from "../../../../widgets/widgetData";
 import styles from "./feed_post.module.scss";
 
 export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {

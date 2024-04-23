@@ -4,7 +4,7 @@ import {
   CustomModalIconPropsTypes,
   modalPostDataLinkTypes,
 } from "../../widget.interface";
-import { modalPostDataLink } from "../../dataWidget";
+import { modalPostDataLink } from "../../widgetData";
 import styles from "./custom_modal_icon.module.scss";
 const CustomModalIcon: FC<CustomModalIconPropsTypes> = ({ id }) => {
   const [activeModalId, setActiveModalId] = useState<number | null>(null);

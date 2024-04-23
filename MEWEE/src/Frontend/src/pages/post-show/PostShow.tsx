@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { postData } from "./dataPostShow";
 import Post from "./post/Post";
 import CommentBarComponents from "../../widgets/comment-bar-components/CommentBarComponents";
-import { commentsData } from "../../widgets/dataWidget";
+import { commentsData } from "../../widgets/widgetData";
 const PostShow: FC = () => {
   return (
     <>
