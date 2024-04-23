@@ -7,7 +7,7 @@ const RegLogRouting: FC = () => {
         <Routes>
             <Route path="/auth" element={<AuthRoutes />} />
             <Route path="auth/:url" element={<AuthRoutes />} />
-            <Route path="recovery/:url" element={<RecoveryRoutes />} />
+            <Route path="auth/recovery/:url" element={<RecoveryRoutes />} />
         </Routes>
 
     )

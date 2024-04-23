@@ -72,7 +72,7 @@ export function LoginForm() {
     setAutoClearErrors(errors);
 
     console.log(errors);
-    if (errors.length == 0) navigate("/profile");
+    if (errors.length == 0) navigate("/feed");
   };
 
   const emailError = formik.errors.email;
@@ -166,7 +166,7 @@ export function LoginForm() {
             {t("login")}
           </button>
           <div className="link-container">
-            <Link href="/recovery/email">
+            <Link href="/auth/recovery/email">
               <span
                 className="text-style-1 link"
                 style={linkStyle}
