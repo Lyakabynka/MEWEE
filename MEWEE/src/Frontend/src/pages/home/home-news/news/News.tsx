@@ -1,4 +1,3 @@
-import {} from "react";
 import { FC, useState, useEffect, useRef } from "react";
 import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
