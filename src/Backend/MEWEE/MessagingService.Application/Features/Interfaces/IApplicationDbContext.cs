@@ -16,5 +16,9 @@ public interface IApplicationDbContext
     
     DbSet<Share> Shares { get; set; }
     
+    DbSet<Chat> Chats { get; set; }
+    DbSet<ChatUser> ChatParticipants { get; set; }
+    DbSet<Message> Messages { get; set; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

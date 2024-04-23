@@ -3,6 +3,7 @@ using MessagingService.Application.Mediatr.Post.Commands.DeletePost;
 using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
+using MessagingService.Application.Mediatr.PostLikes.Commands.CreatePostLike;
 using MessagingService.WebApi.Models;
 using MessagingService.WebApi.Models.Post;
 using Microsoft.AspNetCore.Authorization;
@@ -156,6 +157,65 @@ public class PostController : ApiControllerBase
         {
             SearchQuery = requestModel.SearchQuery,
             Pagination = requestModel.Pagination
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    
+    /// <summary>
+    /// Likes a post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /like-post
+    /// </remarks>
+    /// <param name="requestModel">CreatePostLikeRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("like-post")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> CreatePostLike([FromBody] CreatePostLikeRequestModel requestModel)
+    {
+        var request = new CreatePostLikeCommand()
+        {
+            PostId = requestModel.PostId,
+            UserId = UserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Unlikes a post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /unlike-post
+    /// </remarks>
+    /// <param name="requestModel">DeletePostLikeRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("unlike-post")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> DeletePostLike([FromBody] DeletePostLikeRequestModel requestModel)
+    {
+        var request = new CreatePostLikeCommand()
+        {
+            PostId = requestModel.PostId,
+            UserId = UserId,
         };
         
         return await Mediator.Send(request);

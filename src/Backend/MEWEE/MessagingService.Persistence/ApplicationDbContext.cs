@@ -14,6 +14,10 @@ namespace MessagingService.Persistence
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<Share> Shares { get; set; }
         
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<ChatUser> ChatParticipants { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

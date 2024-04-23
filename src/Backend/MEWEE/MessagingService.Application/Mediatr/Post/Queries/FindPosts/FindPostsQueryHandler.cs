@@ -5,6 +5,7 @@ using FuzzySharp;
 using FuzzySharp.SimilarityRatio.Scorer.StrategySensitive;
 using MediatR;
 using MessagingService.Application.Features.Interfaces;
+using MessagingService.Application.Mediatr.Shared;
 using MessagingService.Application.Response;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,9 +27,18 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
         var pageSize = request.Pagination.PageSize;
 
         var posts = await _dbContext.Posts
+            .Include(p => p.Likes)
             .Where(p => EF.Functions.FuzzyStringMatchLevenshtein(p.Title.ToLowerInvariant(), searchQuery) <= 3)
             .Skip(page * pageSize)
             .Take(pageSize)
+            .Select(p =>
+                new PostVm()
+                {
+                    Title = p.Title,
+                    Content = p.Content,
+                    Attachment = p.Attachment,
+                    LikesCount = p.Likes.Count,
+                })
             .ToListAsync(cancellationToken);
 
         return Result.Create(posts);

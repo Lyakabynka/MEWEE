@@ -1,4 +1,5 @@
 ﻿using MessagingService.Application.Mediatr.Comments.Commands.CreateComment;
+using MessagingService.Application.Mediatr.Comments.Commands.DeleteComment;
 using MessagingService.Application.Mediatr.Comments.Queries.GetComments;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.WebApi.Models;
@@ -26,7 +27,7 @@ public class CommentController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> FindPosts([FromBody] GetCommentsRequestModel requestModel)
+    public async Task<IActionResult> GetComments([FromBody] GetCommentsRequestModel requestModel)
     {
         var request = new GetCommentsQuery()
         {
@@ -54,13 +55,41 @@ public class CommentController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> FindPosts([FromBody] CreateCommentRequestModel requestModel)
+    public async Task<IActionResult> CreateComment([FromBody] CreateCommentRequestModel requestModel)
     {
         var request = new CreateCommentCommand()
         {
             PostId = requestModel.PostId,
             ReplyCommentId = requestModel.ReplyCommentId,
             Content = requestModel.Content,
+            UserId = UserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Delete comment
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// DELETE /comment
+    /// </remarks>
+    /// <param name="requestModel">DeleteCommentRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpDelete("comment")]
+    [ProducesResponseType<List<CommentDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> CreateComment([FromBody] DeleteCommentRequestModel requestModel)
+    {
+        var request = new DeleteCommentCommand()
+        {
+            CommentId = requestModel.CommentId,
             UserId = UserId,
         };
         

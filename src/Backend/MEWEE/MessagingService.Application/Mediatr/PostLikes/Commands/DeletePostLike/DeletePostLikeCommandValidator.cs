@@ -4,13 +4,20 @@ using FluentValidation;
 using MessagingService.Application.Features.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessagingService.Application.Mediatr.Post.Commands.DeletePost;
+namespace MessagingService.Application.Mediatr.PostLikes.Commands.DeletePostLike;
 
-public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
+public class DeletePostLikeCommandValidator : AbstractValidator<DeletePostLikeCommand>
 {
-    public DeletePostCommandValidator(IApplicationDbContext dbContext)
+    public DeletePostLikeCommandValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(c => c.Id)
+        RuleFor(c => c.UserId)
+            .NotEqual(Guid.Empty);
+
+        RuleFor(c => c.PostId)
+            .NotEqual(Guid.Empty);
+        
+        
+        RuleFor(c => c.PostId)
             .NotEqual(Guid.Empty)
             .MustAsync(async (id, cancellationToken) =>
             {
@@ -19,8 +26,5 @@ public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
                 return post is not null;
             })
             .WithMessage("post_does_not_exist");
-
-        RuleFor(c => c.UserId)
-            .NotEqual(Guid.Empty);
-    } 
+    }    
 }

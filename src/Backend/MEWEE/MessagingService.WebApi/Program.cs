@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MessagingService.Application;
+using MessagingService.Application.Hubs;
 using MessagingService.Persistence;
 using MessagingService.WebApi;
 using MessagingService.WebApi.Middleware;
@@ -105,5 +106,7 @@ app.UseSwaggerUI(config =>
 app.MapControllers();
 
 app.MapGet("/", () => Results.Ok("Works!"));
+
+app.MapHub<MessageHub>("hubs/message");
 
 app.Run();
