@@ -11,4 +11,5 @@ export const decryptState = (encryptedState: any) => {
 };
 
 export type ResponseCallback = (errors: string[]) => void;
+export type ResponseDataCallback = (data: any, errors: string[]) => void;
 export const pErrors = (errors: object) => (errors !== null && errors !== undefined) ? Object.values(errors).flatMap(error => Array.isArray(error) ? error : [error]) : [];

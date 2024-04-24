@@ -7,6 +7,7 @@ import { Routing } from "../widgets/exportWigetComponents";
 import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "./App.css";
+import PostUploader from "../pages/home/post-uploader/PostUploader";
 import RegLogRouting from "../widgets/routing/RegLogRouting";
 
 const App: React.FC = () => {
@@ -29,6 +30,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <PostUploader></PostUploader>
       <Grid item md={12}>
         {hideSideToolbarAndTopSearchBar ? <RegLogRouting /> : <Routing />}
       </Grid>

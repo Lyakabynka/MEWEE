@@ -5,13 +5,14 @@ export interface postDataTypes {
   postDate: string;
   location: string;
   imageUrl: string;
-  title: string;
   description: string;
   likes: number;
   comments: number;
   shares: number;
   // Add content property if necessary
+  title: string;
   content?: string;
+  attachment? : string;
 }
 
 export interface postDataProps {

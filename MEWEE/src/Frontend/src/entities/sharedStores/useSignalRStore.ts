@@ -31,96 +31,96 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
 
     establishConnection: async (userId) => {
 
-        if (get().connection !== null) {
-            await get().closeConnection();
-        }
+        // if (get().connection !== null) {
+        //     await get().closeConnection();
+        // }
 
-        set({
-            connection: new signalR.HubConnectionBuilder()
-                .withUrl("http://localhost:5003/plan-hub")
-                .configureLogging(signalR.LogLevel.Information)
-                .withAutomaticReconnect()
-                .build()
-        })
+        // set({
+        //     // connection: new signalR.HubConnectionBuilder()
+        //     //     .withUrl("http://localhost:5003/plan-hub")
+        //     //     .configureLogging(signalR.LogLevel.Information)
+        //     //     .withAutomaticReconnect()
+        //     //     .build()
+        // })
 
-        const { connection } = get();
+        // const { connection } = get();
 
-        connection!.on("ProcessPlan", (plan: IPlan) => {
+        // connection!.on("ProcessPlan", (plan: IPlan) => {
 
-            console.log("Started processing: ");
-            console.log(plan);
+        //     console.log("Started processing: ");
+        //     console.log(plan);
 
-            switch (plan.type) {
-                case EnumPlanType.notification:
+        //     switch (plan.type) {
+        //         case EnumPlanType.notification:
 
-                    break;
-                case EnumPlanType.voiceCommand:
-                    const synthesis = window.speechSynthesis;
+        //             break;
+        //         case EnumPlanType.voiceCommand:
+        //             const synthesis = window.speechSynthesis;
 
-                    const utterance = new SpeechSynthesisUtterance(plan.information)
-                    utterance.voice = synthesis.getVoices()[4];
+        //             const utterance = new SpeechSynthesisUtterance(plan.information)
+        //             utterance.voice = synthesis.getVoices()[4];
 
-                    synthesis.speak(utterance);
-                    break;
-                case EnumPlanType.weatherCommand:
+        //             synthesis.speak(utterance);
+        //             break;
+        //         case EnumPlanType.weatherCommand:
 
-                    break;
-            }
-            console.log(get().isElectron());
+        //             break;
+        //     }
+        //     console.log(get().isElectron());
             
-            if (get().isElectron()) {
-                window.planProcessor.process(plan);
-            }
-        });
+        //     if (get().isElectron()) {
+        //         window.planProcessor.process(plan);
+        //     }
+        // });
 
-        connection!.on("ProcessPlanGroup", (planPlanGroups: IPlanPlanGroupExtended[]) => {
-            console.log("Started processing: ");
-            console.log(planPlanGroups);
+        // connection!.on("ProcessPlanGroup", (planPlanGroups: IPlanPlanGroupExtended[]) => {
+        //     console.log("Started processing: ");
+        //     console.log(planPlanGroups);
 
-            planPlanGroups.forEach(ppg => {
+        //     planPlanGroups.forEach(ppg => {
 
-                switch (ppg.plan.type) {
-                    case EnumPlanType.notification:
+        //         switch (ppg.plan.type) {
+        //             case EnumPlanType.notification:
 
-                        break;
-                    case EnumPlanType.voiceCommand:
-                        const synthesis = window.speechSynthesis;
+        //                 break;
+        //             case EnumPlanType.voiceCommand:
+        //                 const synthesis = window.speechSynthesis;
 
-                        const utterance = new SpeechSynthesisUtterance(ppg.plan.information)
-                        utterance.voice = synthesis.getVoices()[4];
+        //                 const utterance = new SpeechSynthesisUtterance(ppg.plan.information)
+        //                 utterance.voice = synthesis.getVoices()[4];
 
-                        synthesis.speak(utterance);
-                        break;
-                    case EnumPlanType.weatherCommand:
+        //                 synthesis.speak(utterance);
+        //                 break;
+        //             case EnumPlanType.weatherCommand:
 
-                        break;
-                }
+        //                 break;
+        //         }
 
-            });
+        //     });
 
-            if (get().isElectron()) {
-                window.planGroupProcessor.process(planPlanGroups);
-            }
-        })
+        //     if (get().isElectron()) {
+        //         window.planGroupProcessor.process(planPlanGroups);
+        //     }
+        // })
 
-        connection!.onreconnecting(() => {
-            console.warn('Connection with server has been lost. Trying to reconnect...');
-        })
+        // connection!.onreconnecting(() => {
+        //     console.warn('Connection with server has been lost. Trying to reconnect...');
+        // })
 
-        await connection!.start().then(() => {
-            console.info("Connection with SignalR hub has been successfully established!");
-        }).catch((e) => {
-            console.log("Server is offline");
-            console.log(e);
-        })
+        // await connection!.start().then(() => {
+        //     console.info("Connection with SignalR hub has been successfully established!");
+        // }).catch((e) => {
+        //     console.log("Server is offline");
+        //     console.log(e);
+        // })
 
-        await connection!.invoke('SubscribeToPlan', userId)
-            .then(() => {
-                console.log("Subscribed to plan: " + userId);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        // await connection!.invoke('SubscribeToPlan', userId)
+        //     .then(() => {
+        //         console.log("Subscribed to plan: " + userId);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
     },
 
     closeConnection: async () => {

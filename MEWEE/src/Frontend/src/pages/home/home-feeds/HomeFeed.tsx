@@ -1,13 +1,22 @@
 import { FC, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
-import { usePostsStore } from "../../../entities";
+import { useAuthStore, usePostsStore } from "../../../entities";
 import { FeedPost } from "./home-post/FeedPost";
 
 export const HomeFeed: FC = () => {
-  //const { data, isLoading, errorMessage, getPosts } = usePostsStore();
+  const { id } = useAuthStore();
+  const { posts, getPosts } = usePostsStore();
+
+  const onResponse = (errors: string[]) => {
+
+
+    console.log(errors);
+    if (errors.length == 0) console.log("all good");
+  };
 
   useEffect(() => {
-    //getPosts(); // Fetch posts when component mounts
+    getPosts(onResponse, id); // Fetch posts when component mounts
+
   }, []);
 
   // if (isLoading) {
@@ -29,5 +38,5 @@ export const HomeFeed: FC = () => {
   //   return <div>Error: {errorMessage}</div>;
   // }
 
-  return <></>;
+  return <FeedPost posts={posts} />;
 };
