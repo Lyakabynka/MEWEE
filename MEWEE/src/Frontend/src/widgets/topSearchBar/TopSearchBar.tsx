@@ -1,11 +1,11 @@
 import { useThemeStore } from "../../entities";
-import "./index.css";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as IconPlus } from "./images/icon_plus.svg";
 import { ReactComponent as IconFilter } from "./images/icon_filter.svg";
 import { ReactComponent as IconNothification } from "./images/icon_nothification.svg";
 import { ReactComponent as IconMessages } from "./images/icon_messages.svg";
 import { TopSearchBarItem } from "./components/topSearchBarItem";
+import "./index.css";
 
 export const TopSearchBar = () => {
   const { t } = useTranslation();

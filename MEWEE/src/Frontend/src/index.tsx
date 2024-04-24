@@ -28,7 +28,7 @@ i18next.init({
 root.render(
   <BrowserRouter>
     <I18nextProvider i18n={i18next}>
-    <App />
+      <App />
     </I18nextProvider>
   </BrowserRouter>
 );
