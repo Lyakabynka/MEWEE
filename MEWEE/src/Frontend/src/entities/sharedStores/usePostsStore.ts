@@ -1,27 +1,32 @@
 import { create } from "zustand";
 import { posts } from "../../pages/home/dataHome";
+import { ResponseCallback, decryptState, encryptState, pErrors } from "./utils";
+import { $api, ENDPOINTS } from "../../shared/exportSharedMorules";
+import { useAuthStore } from "./useAuthStore";
 
 interface IPoststore {
   isLoading: boolean;
-  errorMessage: string | null;
-  data: typeof posts | null;
-  getPosts: () => Promise<void>;
+  getPosts: (callback: ResponseCallback, id: any) => Promise<void>;
 }
 
 export const usePostsStore = create<IPoststore>((set) => ({
   isLoading: false,
-  errorMessage: null,
-  data: null,
 
-  getPosts: async () => {
-    set({ isLoading: true, errorMessage: null, data: null });
-    try {
-      // Simulating an asynchronous API call by setting a timeout
-      setTimeout(() => {
-        set({ isLoading: false, data: posts });
-      }, 1000); // Simulated 1 second delay
-    } catch (error) {
-      set({ isLoading: false, errorMessage: "Network error" });
+  getPosts: async (callback: ResponseCallback, id: any) => { 
+    
+    const response = await $api.post<any>(ENDPOINTS.HOME.GET_POSTS, {userId: id});
+    console.log(response);
+
+    callback(pErrors(response.data.errors));
+
+    if (response?.status == 200) {
+      console.log(response.data);
+
+      const userData: any = response.data;
+      console.log(userData);
+
     }
+
+    set({ isLoading: false });
   },
 }));

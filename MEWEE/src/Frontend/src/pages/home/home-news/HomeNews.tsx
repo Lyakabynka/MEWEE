@@ -1,34 +1,21 @@
 import { FC, useEffect } from "react";
-import { usePostsStore } from "../../../entities";
+import { useAuthStore, usePostsStore } from "../../../entities";
 import { Box, CircularProgress } from "@mui/material";
 import News from "./news/News";
 
 export const HomeNews: FC = () => {
-  const { data, isLoading, errorMessage, getPosts } = usePostsStore();
-
+  const { getPosts } = usePostsStore();
+  const {id} = useAuthStore();
+  console.log(id)
+  let data = null;
   useEffect(() => {
-    getPosts(); // Fetch posts when component mounts
+    getPosts(onResponse, id); // Fetch posts when component mounts
   }, []);
 
-  if (isLoading) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
-  }
+  const onResponse = (errors: string[]) => {
 
-  if (errorMessage) {
-    return <div>Error: {errorMessage}</div>;
-  }
-
+    console.log(errors);
+  };
   return (
     <div className="home-news-generic-container">
       <News posts={data} />

@@ -12,6 +12,10 @@ export const ENDPOINTS = {
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
         CONFIRM_EMAIL: `${API_URL}/user/confirm-email`
     },
+    HOME :
+    {
+        GET_POSTS: `${API_URL}/posts`,
+    },
     RECOVERY:
     {
         CONFIRM_EMAIL: `${API_URL}/user/forgot-password`,
