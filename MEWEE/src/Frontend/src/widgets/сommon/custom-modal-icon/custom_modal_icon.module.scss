@@ -2,6 +2,8 @@
   cursor: pointer;
   padding: 0.5rem;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
   > div {
     width: 5px;
     height: 5px;

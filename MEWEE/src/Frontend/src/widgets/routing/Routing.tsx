@@ -14,7 +14,7 @@ export const Routing = () => {
   return (
 
     <Grid container>
-      <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }} className="div_global">
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }} >
         <Grid item md={3}>
           <SideToolbar />
         </Grid>
