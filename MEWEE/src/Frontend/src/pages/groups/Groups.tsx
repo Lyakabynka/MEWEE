@@ -6,7 +6,7 @@ import Sidebar from "./sidebar/Sidebar";
 
 const Groups: FC = () => {
     return (
-        <Grid container>
+        <Grid container sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}>
             <Grid md={3}>
                 <Sidebar data={dataSideBar} />
             </Grid>

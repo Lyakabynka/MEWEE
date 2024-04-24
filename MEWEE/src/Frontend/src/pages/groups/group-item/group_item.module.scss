@@ -28,4 +28,33 @@
       align-items: center;
     }
   }
+  .modal_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+._div_horizont {
+  position: relative;
+  display: flex;
+  background-color: white;
+  border-radius: 16px;
+  margin: 0.5rem;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+  > img {
+    width: 134px;
+    height: 130px;
+    margin-right: 1rem;
+  }
+  .modal_button {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
 }

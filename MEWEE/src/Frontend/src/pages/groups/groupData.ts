@@ -53,7 +53,7 @@ export const dataGroupItem = [
   {
     id: 1,
     img: GroupPageImage1,
-    title: "Вебінари| англійська для початківців",
+    title: "Вебінари| англійська",
     participants: "165 учасників",
   },
   {
@@ -65,7 +65,7 @@ export const dataGroupItem = [
   {
     id: 3,
     img: GroupPageImage3,
-    title: "Туристичні місця Хмельниччини",
+    title: "Туристичні місця",
     participants: "456 учасників",
   },
   {
@@ -83,7 +83,7 @@ export const dataGroupItem = [
   {
     id: 6,
     img: GroupPageImage6,
-    title: "Волонтерський Хаб Хмельницького",
+    title: "Волонтерський Хаб",
     participants: "5 789 учасників",
   },
   {

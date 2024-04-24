@@ -15,10 +15,10 @@ const GroupItem: FC<dataGroupItemPropTypes> = ({ data }) => {
                 </header>
             </Grid>
             {data && (
-                data.map((item: dataGroupItemTypes) => {
+                data.map((item: dataGroupItemTypes, index: number) => {
                     return (
-                        <Grid key={item.id} md={4}>
-                            <div className={styles.div}>
+                        <Grid key={item.id} md={index < 6 ? 4 : 6}>
+                            <div className={` ${index < 6 ? styles.div : styles._div_horizont}`}>
                                 <img src={item.img} />
                                 <div>
                                     <div>
@@ -28,6 +28,9 @@ const GroupItem: FC<dataGroupItemPropTypes> = ({ data }) => {
                                     <div>
                                         <CustomButton text="Приєднатись" />
                                     </div>
+                                </div>
+                                <div className={styles.modal_button}>
+                                    <CustomModalIcon id={item.id} />
                                 </div>
                             </div>
                         </Grid>
