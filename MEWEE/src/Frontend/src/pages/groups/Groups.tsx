@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Grid } from "@mui/material";
-import { dataSideBar } from "./groupData";
+import { dataSideBar, dataGroupItem } from "./groupData";
 import GroupItem from "./group-item/GroupItem";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -11,7 +11,7 @@ const Groups: FC = () => {
                 <Sidebar data={dataSideBar} />
             </Grid>
             <Grid md={9}>
-                <GroupItem />
+                <GroupItem data={dataGroupItem} />
             </Grid>
         </Grid>
     )

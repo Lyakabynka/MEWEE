@@ -7,3 +7,14 @@ export interface dataSideBarTypes {
 export interface groupDataPropTypes {
   data: dataSideBarTypes[];
 }
+
+export interface dataGroupItemTypes {
+  id: number;
+  img: any;
+  title: string;
+  participants: string;
+}
+
+export interface dataGroupItemPropTypes {
+  data: dataGroupItemTypes[];
+}
