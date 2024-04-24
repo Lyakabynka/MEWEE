@@ -1,13 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../features/exportFeaturesComponents";
-import { AuthRoutes } from "./auth/AuthRoutes";
-import { RecoveryRoutes } from "./auth/RecoveryRoutes";
 import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { PrivateRoute } from "./PrivateRoute";
 import { EnumUserRole } from "../../entities";
 import { ManagePlanGroupPage } from "../../pages/exportPageComponents";
 import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
+import Groups from "../../pages/groups/Groups";
 import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponents";
 import { Grid } from "@mui/material";
 //
@@ -20,12 +19,12 @@ export const Routing = () => {
           <SideToolbar />
         </Grid>
         <div>
-          <TopSearchBar />
           <Grid item md={12}>
-
+            <TopSearchBar />
             <Routes>
               <Route path="/feed" element={<HomePage />} />
               <Route path="/post-show" element={<PostShow />} />
+              <Route path="/groups" element={<Groups />} />
               <Route
                 path="plans"
                 element={

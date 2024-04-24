@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
 import { useThemeStore } from "../../entities";
 import "./index.css";
 import { useTranslation } from "react-i18next";
@@ -8,7 +5,6 @@ import { ReactComponent as IconPlus } from "./images/icon_plus.svg";
 import { ReactComponent as IconFilter } from "./images/icon_filter.svg";
 import { ReactComponent as IconNothification } from "./images/icon_nothification.svg";
 import { ReactComponent as IconMessages } from "./images/icon_messages.svg";
-import { ReactComponent as IconSearch } from "./images/icon_search.svg";
 import { TopSearchBarItem } from "./components/topSearchBarItem";
 
 export const TopSearchBar = () => {

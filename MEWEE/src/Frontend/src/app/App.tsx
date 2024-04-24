@@ -4,7 +4,7 @@ import { useAuthStore } from "../entities";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { themes } from "../themes";
 import { Routing } from "../widgets/exportWigetComponents";
-import RegLogRouting from "../widgets/Routing/RegLogRouting";
+import RegLogRouting from "../widgets/routing/RegLogRouting";
 import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "./App.css";
