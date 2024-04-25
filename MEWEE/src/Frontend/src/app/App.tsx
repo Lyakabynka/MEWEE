@@ -30,7 +30,6 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <PostUploader></PostUploader>
       <Grid item md={12}>
         {hideSideToolbarAndTopSearchBar ? <RegLogRouting /> : <Routing />}
       </Grid>

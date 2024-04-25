@@ -1,13 +1,13 @@
 import { useErrors, usePostsStore, useThemeStore } from "../../entities";
 import { useTranslation } from "react-i18next";
+import { useFormik } from "formik";
 import { ReactComponent as IconPlus } from "./images/icon_plus.svg";
 import { ReactComponent as IconFilter } from "./images/icon_filter.svg";
 import { ReactComponent as IconNothification } from "./images/icon_nothification.svg";
 import { ReactComponent as IconMessages } from "./images/icon_messages.svg";
-import { TopSearchBarItem } from "./components/topSearchBarItem";
+import { TopSearchBarItem } from "./components/topSearchBarItem/TopSearchBarItem";
+import AddPost from "./components/add-post/AddPost";
 import "./index.css";
-import { useFormik } from "formik";
-import { LOGIN_SCHEMA } from "../../shared/exportSharedMorules";
 
 export const TopSearchBar = () => {
   const { t } = useTranslation();
@@ -18,12 +18,12 @@ export const TopSearchBar = () => {
   // const fio = username?.split(' ');
 
   const formik = useFormik({
-    initialValues: { prompt: ""},
+    initialValues: { prompt: "" },
 
     onSubmit: () => {
-      findPosts(onResponse, formik.values.prompt, {page: 1, pageSize: 0});
+      findPosts(onResponse, formik.values.prompt, { page: 1, pageSize: 0 });
     },
-    
+
   });
 
   const onResponse = (errors: string[]) => {
@@ -57,12 +57,12 @@ export const TopSearchBar = () => {
             onChange={formik.handleChange}
             placeholder={t("search") + "..."}
           />
-          
+
           <span className="input-search-bar-icon search-icon-default" onClick={() => formik.handleSubmit()} />
         </label>
       </div>
       <div className="top-search-bar-tools-container">
-        <TopSearchBarItem icon={<IconPlus />} />
+        <AddPost />
         <TopSearchBarItem icon={<IconFilter />} />
         <TopSearchBarItem icon={<IconNothification />} />
         <TopSearchBarItem icon={<IconMessages />} />

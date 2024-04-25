@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useThemeStore } from "../../../../entities";
-import "./index.css";
+import "./top_search_bar_item.css";
 
 interface TopSearchBarItemProps {
   icon: React.ReactNode;
