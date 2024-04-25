@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import { postData } from "./dataPostShow";
 import Post from "./post/Post";
 import CommentBarComponents from "../../widgets/comment-bar-components/CommentBarComponents";
+import ImageDropzone from "../../widgets/ImageDropzone";
 import { commentsData } from "../../widgets/widgetData";
 const PostShow: FC = () => {
   return (
