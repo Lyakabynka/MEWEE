@@ -26,6 +26,7 @@ public class GetPostsQueryHandler : IRequestHandler<GetPostsQuery, Result>
             .Select(p =>
                 new PostVm()
                 {
+                    Id = p.Id,
                     Title = p.Title,
                     Content = p.Content,
                     Attachment = p.Attachment,
