@@ -94,7 +94,7 @@ export const useAuthStore = create<IAuthStore>()(
       ) => {
         set({ isLoading: true });
 
-        const response = await $api.post<any>(ENDPOINTS.USER.REGISTER, params);
+        const response = await $api.post<any>(ENDPOINTS.USER.REGISTER, params, {withCredentials:false});
 
         callback(pErrors(response.data.errors));
 

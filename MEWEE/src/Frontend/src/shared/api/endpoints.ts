@@ -13,6 +13,7 @@ export const ENDPOINTS = {
         CONFIRM_EMAIL: `${API_URL}/user/confirm-email`,
         GET_POSTS: `${API_URL}/posts`,
         POST: `${API_URL}/post`,
+        CREATE_CHAT: `${API_URL}/chat`,
     },
     HOME :
     {

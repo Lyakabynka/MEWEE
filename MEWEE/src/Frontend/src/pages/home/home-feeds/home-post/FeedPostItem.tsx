@@ -35,7 +35,6 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
     if(at != "")
   decryptImage(at)
     .then(decryptedData => {
-      console.log(decryptedData);
       setImageSrc(decryptedData);
     })
     .catch(error => {
@@ -43,15 +42,6 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
     });
     
   }, []);
-  const decodeImageForPost = async (encryptedImage: string) => {
-    try {
-        const decryptedData = await decryptImage(encryptedImage);
-        return decryptedData; // Return the decrypted image data
-    } catch (error) {
-        console.error("Error decoding image:", error);
-        return null; // Return null if decryption fails
-    }
-};
 
   useEffect(() => {
     if (videoRef.current) {
@@ -71,7 +61,6 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
       videoRef.current.play();
     }
   };
-
   const handleCommentClick = (postId: number) => {
     setCommentsHiden(commentsHiden === postId ? null : postId);
   };
