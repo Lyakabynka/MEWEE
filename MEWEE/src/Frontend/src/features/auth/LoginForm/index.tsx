@@ -7,6 +7,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import styles from "./login_form.module.scss";
 import { useTranslation } from "react-i18next";
 import { LOGIN_SCHEMA } from "../../../shared/exportSharedMorules";
 
@@ -15,37 +16,8 @@ export function LoginForm() {
   const navigate = useNavigate();
   const [errors, setErrors, setAutoClearErrors] = useErrors();
   const { login, isLoading } = useAuthStore();
-  const { currentTheme } = useThemeStore();
 
   const [showPassword, setShowPassword] = useState({ password: false });
-
-  const [isHoverButton, setIsHoverButton] = useState(false);
-  const [isActiveButton, setIsActiveButton] = useState(false);
-  const [isHoverLink, setIsHoverLink] = useState(false);
-  const [isActiveLink, setIsActiveLink] = useState(false);
-
-  const buttonStyle = {
-    backgroundColor: isActiveButton
-      ? currentTheme?.authPages.loginPage.buttonActiveBackground
-      : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.loginPage.buttonHoverBackground
-      : currentTheme?.authPages.loginPage.buttonBackground,
-    color: isActiveButton
-      ? currentTheme?.authPages.loginPage.buttonActiveColor
-      : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.loginPage.buttonHoverColor
-      : currentTheme?.authPages.loginPage.buttonColor,
-  };
-  const linkStyle = {
-    color: isActiveLink
-      ? currentTheme?.authPages.loginPage.linkActiveColor
-      : isHoverLink && !isActiveLink
-      ? currentTheme?.authPages.loginPage.linkHoverColor
-      : currentTheme?.authPages.loginPage.linkColor,
-  };
-  const inputStyle = {
-    backgroundColor: currentTheme?.authPages.loginPage.inputBackground,
-  };
 
   const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
     setShowPassword((prevState) => ({
@@ -79,119 +51,63 @@ export function LoginForm() {
   const passwordError = formik.errors.password;
 
   return (
-    <div>
-      <div className="form-container">
-        <div className="login-or-block">
-          <div
-            style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
-          ></div>
-          <span
-            style={{ color: currentTheme?.authPages.loginPage.lineColorText }}
-          >
-            {t("or")}
-          </span>
-          <div
-            style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
-          ></div>
+      <div>
+        <div className={styles.div}>
+          <header className={styles.header}>
+            <div className={styles.header_div}></div>
+            <span className={styles.header_span}>{t('or')}</span>
+            <div className={styles.header_div}></div>
+          </header>
+          <form onSubmit={formik.handleSubmit}>
+            <main className={styles.main}>
+              <div>
+                <label className={`${styles.label} ${emailError ? styles.label_error : ''}`}>
+                  <input
+                      required
+                      autoComplete="email"
+                      name="email"
+                      id="email"
+                      placeholder={t('email') + '*'}
+                      autoFocus
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      className={`${emailError ? styles.input_error : ''}`}
+                  />
+                </label>
+                {formik.errors.email && <div className={styles.error}>{t(formik.errors.email)}</div>}
+              </div>
+              <div>
+                <label className={`${styles.label} ${passwordError ? styles.label_error : ''}`}>
+                  <input
+                      required
+                      name="password"
+                      placeholder={t('password') + '*'}
+                      type={showPassword.password ? 'text' : 'password'}
+                      id="password"
+                      autoComplete="new-password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      className={`${passwordError ? styles.input_error : ''}`}
+                  />
+                  <span
+                      className={`${showPassword.password ? styles.password_icon_active : styles.password_icon_default}`}
+                      onClick={() => togglePasswordVisibility('password')}/>
+                </label>
+                {formik.errors.password && <div className={styles.error}>{t(formik.errors.password)}</div>}
+              </div>
+            </main>
+            <footer>
+              <button type="submit">{t('login')}</button>
+              <div className={styles.div_link}>
+                <Link href="/auth/recovery/email"><span>{t('forgot_password')}?</span></Link>
+              </div>
+              {(errors && errors.length > 0) && errors.map((error, index) => (
+                  <span key={index} className={styles.error}>{t(error)}</span>
+              ))}
+              {isLoading && <CircularProgress></CircularProgress>}
+            </footer>
+          </form>
         </div>
-        <form onSubmit={formik.handleSubmit}>
-          <div className="input-group">
-            <div className="input-container">
-              <label
-                className={`label-style ${emailError ? "label-error" : ""}`}
-              >
-                <input
-                  required
-                  autoComplete="email"
-                  name="email"
-                  id="email"
-                  placeholder={t("email") + "*"}
-                  autoFocus
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  className={`"text-style-1 input-login ${
-                    emailError ? "input-error" : ""
-                  }`}
-                  style={inputStyle}
-                />
-              </label>
-              {formik.errors.email && (
-                <div className="error">{t(formik.errors.email)}</div>
-              )}
-            </div>
-            <div className="input-container">
-              <label
-                className={`label-style ${passwordError ? "label-error" : ""}`}
-              >
-                <input
-                  required
-                  name="password"
-                  placeholder={t("password") + "*"}
-                  type={showPassword.password ? "text" : "password"}
-                  id="password"
-                  autoComplete="new-password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  className={`"text-style-1 input-login password-input ${
-                    passwordError ? "input-error" : ""
-                  }`}
-                  style={inputStyle}
-                />
-                <span
-                  className={`show-password-toggle ${
-                    showPassword.password
-                      ? "password-icon-active"
-                      : "password-icon-default"
-                  }`}
-                  onClick={() => togglePasswordVisibility("password")}
-                />
-              </label>
-              {formik.errors.password && (
-                <div className="error">{t(formik.errors.password)}</div>
-              )}
-            </div>
-          </div>
-          <button
-            className="login-style text-style-2"
-            type="submit"
-            style={buttonStyle}
-            onMouseEnter={() => setIsHoverButton(true)}
-            onMouseLeave={() => {
-              setIsHoverButton(false);
-              setIsActiveButton(false);
-            }}
-            onMouseDown={() => setIsActiveButton(true)}
-            onMouseUp={() => setIsActiveButton(false)}
-          >
-            {t("login")}
-          </button>
-          <div className="link-container">
-            <Link href="/auth/recovery/email">
-              <span
-                className="text-style-1 link"
-                style={linkStyle}
-                onMouseEnter={() => setIsHoverLink(true)}
-                onMouseLeave={() => {
-                  setIsHoverLink(false);
-                  setIsActiveLink(false);
-                }}
-                onMouseDown={() => setIsActiveLink(true)}
-                onMouseUp={() => setIsActiveLink(false)}
-              >
-                {t("forgot_password")}?
-              </span>
-            </Link>
-          </div>
-          {errors &&
-            errors.length > 0 &&
-            errors.map((error, index) => (
-              <span key={index} className="error">
-                {t(error)}
-              </span>
-            ))}
-          {isLoading && <CircularProgress></CircularProgress>}
-        </form>
       </div>
-    </div>
   );
 }

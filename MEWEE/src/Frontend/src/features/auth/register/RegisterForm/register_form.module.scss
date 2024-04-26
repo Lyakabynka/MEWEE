@@ -1,0 +1,239 @@
+@import "src/mixins.scss";
+
+.div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 0.625rem;
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+
+    .header_div {
+      border: 1px solid var(--authPages_commonElements_lineColor);
+      width: 100%;
+    }
+
+    .header_span {
+      font-family: 'Geometria', sans-serif;
+      margin-left: 0.625rem;
+      margin-right: 0.625rem;
+      color: var(--authPages_commonElements_lineColorText);
+    }
+  }
+  main{
+    .main_div_1{
+      display: flex;
+
+      div:first-child{
+        position: relative;
+        width: 100%;
+        margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
+
+        label{
+          input{
+          }
+        }
+      }
+      div:last-child{
+        position: relative;
+        width: 100%;
+        margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
+
+        label{
+          input{
+          }
+        }
+      }
+    }
+    .main_div_2{
+      display: flex;
+
+      div:first-child{
+        position: relative;
+        width: 100%;
+        margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
+
+        label{
+          input{
+          }
+        }
+      }
+    }
+    .main_div_3{
+      display: flex;
+
+      div:first-child{
+        position: relative;
+        width: 100%;
+        margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
+
+        label{
+          input{
+            position: relative;
+            padding-right: 2.19rem;
+          }
+          span{
+
+          }
+        }
+      }
+      div:last-child{
+        position: relative;
+        width: 100%;
+        margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
+
+        label{
+          input{
+            position: relative;
+            padding-right: 2.19rem;
+          }
+          span{
+
+          }
+        }
+      }
+    }
+  }
+  footer{
+    display: flex;
+    button{
+      position: relative;
+      width: 45%;
+      height: 3rem;
+      background: var(--authPages_commonElements_buttonBackground);
+      color: var(--authPages_commonElements_buttonColor);
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      margin: 0.625rem;
+      font-family: Geometria, sans-serif;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: var(--authPages_commonElements_buttonHoverBackground);
+        color: var(--authPages_commonElements_buttonHoverColor);
+      }
+
+      &:active {
+        background-color: var(--authPages_commonElements_buttonActiveBackground);
+        color: var(--authPages_commonElements_buttonActiveColor);
+      }
+
+      &:active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(16, 16, 16, 0.2);
+        border-radius: 10px;
+      }
+    }
+    input[type="checkbox"]{
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 2px solid rgba(182, 122, 254, 1);
+      cursor: pointer;
+      appearance: none;
+      margin: 1.375rem 0.625rem 1.25rem 1.875rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      &:hover{
+        border: 2px solid rgba(37, 0, 92, 1)
+      }
+
+      &:checked{
+        background: rgba(182, 122, 254, 1);
+        border: 2px solid rgba(37, 0, 92, 1)
+      }
+    }
+    .div_text_container{
+      margin: 17px 10px 10px 0;
+      width: 40%;
+
+      div:first-child{
+        color: rgba(123, 123, 123, 1);
+        font-family: Geometria, sans-serif;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+
+.label{
+  display: block;
+  background: linear-gradient(91.54deg, rgba(37, 0, 92, 0.7) 0%, rgba(151, 71, 255, 0.7) 100%);
+  padding: 2px;
+  border-radius: 10px;
+  width: 100%;
+
+  input{
+    background: var(--authPages_commonElements_inputBackground);
+    color: var(--authPages_commonElements_inputColor);
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 12px 12px 12px 5px;
+    font-family: Geometria, sans-serif;
+    font-size: 0.75rem;
+
+    &::placeholder{
+      color: rgba(123, 123, 123, 1);
+      text-align: justify;
+      padding-left: 10px;
+    }
+  }
+}
+
+
+.label_error{
+  background: red !important;
+}
+
+.input_error{
+  color: red !important;
+  font-weight: 700 !important;
+  &::placeholder{
+    color: red !important;
+  }
+}
+
+.error{
+  color: red;
+  font-family: Geometria, sans-serif;
+  font-size: 0.75rem;
+  margin: 0.625rem 0 0 0.3125rem !important;
+}
+
+.show_password_toggle{
+  position: absolute;
+  top: 23px;
+  right: 9px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  @media (max-width: 768px) {
+    top: calc(23px - 1px);
+    right: 6px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.password_icon_default{
+  background-image: url("../../AuthHeaderForm/images/icon_default.svg");
+}
+.password_icon_active{
+  background-image: url("../../AuthHeaderForm/images/icon_active.png");
+}

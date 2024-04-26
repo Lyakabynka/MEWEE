@@ -1,0 +1,77 @@
+@import "src/mixins.scss";
+
+.div{
+  header{
+    font-family: Cy Grotesk Wide, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--authPages_emailConfirmationPage_ColorText);
+  }
+  main{
+
+  }
+  footer{
+    display: flex;
+
+    button:first-child{
+      position: relative;
+      width: 45%;
+      height: 3rem;
+      background: var(--authPages_commonElements_buttonBackground);
+      color: var(--authPages_commonElements_buttonColor);
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-family: Geometria, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+
+      &:hover {
+        background-color: var(--authPages_commonElements_buttonHoverBackground);
+        color: var(--authPages_commonElements_buttonHoverColor);
+      }
+
+      &:active {
+        background-color: var(--authPages_commonElements_buttonActiveBackground);
+        color: var(--authPages_commonElements_buttonActiveColor);
+      }
+
+      &:active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(16, 16, 16, 0.2);
+        border-radius: 10px;
+      }
+    }
+
+    button:last-child{
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-left: 1.56rem;
+      font-family: Geometria, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--authPages_emailConfirmationPage_ColorText);
+
+      &:hover {
+        color: var(--authPages_emailConfirmationPage_ColorHoverText);
+      }
+
+      &:active {
+        color: var(--authPages_emailConfirmationPage_ColorActiveText);
+      }
+    }
+  }
+}
+
+.error{
+  color: red;
+  font-family: Geometria, sans-serif;
+  font-size: 0.75rem;
+  margin: 0.625rem 0 0 0.3125rem !important;
+}
