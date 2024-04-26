@@ -5,22 +5,18 @@ import Post from "./post/Post";
 import CommentBarComponents from "../../widgets/comment-bar-components/CommentBarComponents";
 import { commentsData } from "../../widgets/widgetData";
 import { usePostsStore } from "../../entities";
-const PostShow: FC = () => {
+import { postDataTypes } from "./dataPostShow.interface";
+const PostShow: FC<{ posts: any }> = ({ posts }) => {
 
-  const { posts } = usePostsStore();
 
   return (
     <>
       <Grid container>
         <Grid sm={8}>
-          {/* <Post dataObject={postData} /> */}
-          <Post dataObject={posts} />
-        </Grid>
-        <Grid sm={4}>
-          {/* <CommentBarComponents
-            commentDataRender={commentsData}
-            appearance={false}
-          /> */}
+        {posts &&
+          posts.map((item: postDataTypes) => {
+          return <Post dataObject={item}></Post>
+        })}
         </Grid>
       </Grid>
     </>

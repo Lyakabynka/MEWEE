@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../features/exportFeaturesComponents";
 import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { PrivateRoute } from "./PrivateRoute";
-import { EnumUserRole } from "../../entities";
+import { EnumUserRole, usePostsStore } from "../../entities";
 import { ManagePlanGroupPage } from "../../pages/exportPageComponents";
 import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
@@ -11,6 +11,7 @@ import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponen
 import { Grid } from "@mui/material";
 //
 export const Routing = () => {
+
   return (
 
     <Grid container>
@@ -23,7 +24,7 @@ export const Routing = () => {
             <TopSearchBar />
             <Routes>
               <Route path="/feed" element={<HomePage />} />
-              <Route path="/post-show" element={<PostShow />} />
+              {/* <Route path="/post-show" element={<PostShow />} /> */}
               <Route path="/groups" element={<Groups />} />
               <Route
                 path="plans"

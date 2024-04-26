@@ -6,7 +6,7 @@ export interface postDataTypes {
   location: string;
   imageUrl: string;
   description: string;
-  likes: number;
+  likesCount: number;
   comments: number;
   shares: number;
   // Add content property if necessary

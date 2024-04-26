@@ -18,7 +18,8 @@ interface IPoststore {
 
   createPost: (callback: ResponseCallback, request: ICreatePostRequest) => Promise<void>;
   getPosts: (callback: ResponseCallback, id: any) => Promise<void>;
-  findPosts: (call1back: ResponseCallback, query: string, pagination: any) => Promise<void>;
+  findPosts: (callback: ResponseCallback, query: string, pagination: any) => Promise<void>;
+  likePost:  (callback: ResponseCallback, postId: string) => Promise<void>;
 }
 
 export const usePostsStore = create<IPoststore>((set) => ({
@@ -61,6 +62,21 @@ export const usePostsStore = create<IPoststore>((set) => ({
     if (response?.status == 200) {
       console.log(response.data);
       set({ posts: response.data });
+    }
+
+
+    callback(pErrors(response.data.errors));
+
+    set({ isLoading: false });
+  },
+  likePost: async (callback: ResponseCallback, postId: string) => { 
+
+    const response = await $api.post<any>(ENDPOINTS.HOME.LIKE_POST, {postId: postId});
+    console.log(response);
+
+    
+    if (response?.status == 200) {
+      console.log(response.data);
     }
 
 

@@ -23,6 +23,7 @@ export const ENDPOINTS = {
     HOME :
     {
         FIND_POSTS: `${API_URL}/posts/find`,
+        LIKE_POST: `${API_URL}/like-post`,
     },
     RECOVERY:
     {

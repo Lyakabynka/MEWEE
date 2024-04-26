@@ -5,7 +5,7 @@ import LikePostIcon from "../../../assets/image/icons/LikePostIcon.svg";
 import SentIcon from "../../../assets/image/icons/SentIcon.svg";
 import CommentPostIcon from "../../../assets/image/icons/CommentPostIcon.svg";
 import styles from "./feed_post_item.module.scss";
-import { useThemeStore } from "../../../entities";
+import { usePostsStore, useThemeStore } from "../../../entities";
 import CustomModalIcon from "../../сommon/custom-modal-icon/CustomModalIcon";
 import CommentBarComponents from "../../comment-bar-components/CommentBarComponents";
 import { useCommentStore } from "../../../entities/sharedStores/useCommentStore";
@@ -20,6 +20,7 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
   const { currentTheme } = useThemeStore();
+  const { likePost } = usePostsStore();
   const { getComments } = useCommentStore();
   const [comments, setComments] = useState<any>(null);
   const isImage = (url: string) => {
@@ -39,6 +40,15 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
 
 }
   };
+const onResponseL = (errors: string[]) => {
+      
+  console.log(errors);
+  if (errors.length == 0) 
+    {
+        console.log("like-post good");
+  
+}};
+  
   useEffect(() => {
     getComments(onResponse, item.id,1,0);
     const at = item.attachment ?? "";
@@ -152,7 +162,8 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
                   <nav className={styles.nav}>
                     <CustomButton text={t("more")} />
                     <div>
-                      <img src={LikePostIcon} />
+                      <img onClick={() => likePost(onResponseL, item.id)} src={LikePostIcon} />
+                      <span>{item.likesCount}</span>
                       <img src={SentIcon} />
                       <img
                         onClick={() => handleCommentClick(item.id)}
