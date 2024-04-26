@@ -22,9 +22,9 @@ export const RecoveryEmailForm: React.FC<{ onNext: () => void }> = ({ onNext }) 
 
     const onResponse = (errors: string[]) =>
     {
+        console.log("e:",errors);
         setAutoClearErrors(errors);
 
-        console.log(errors);
         if (errors.length == 0)
             onNext();
     }
@@ -56,6 +56,9 @@ export const RecoveryEmailForm: React.FC<{ onNext: () => void }> = ({ onNext }) 
                     <button type="submit">{t('send') + " " + t('code')}</button>
                     <button>{t('go_back')}</button>
                 </footer>
+                {(errors && errors.length > 0) && errors.map((error, index) => (
+                  <span key={index} className={styles.error}>{t(error)}</span>
+                ))}
                 {isLoading && <CircularProgress></CircularProgress>}
             </form>
 

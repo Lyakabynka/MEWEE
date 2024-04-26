@@ -3,6 +3,7 @@ import {API_URL} from "./endpoints";
 import {useAuthStore} from "../../entities";
 
 const $api = axios.create({
+    
     baseURL: API_URL,
     withCredentials: true
 });
