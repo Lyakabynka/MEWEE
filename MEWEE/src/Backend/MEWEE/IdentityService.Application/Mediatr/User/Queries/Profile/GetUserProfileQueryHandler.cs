@@ -21,6 +21,7 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
             .Where(user => user.Id == request.UserId)
             .Select(user => new UserVm
             {
+                Id = user.Id,
                 Username = user.Username,
                 Email = user.Email,
                 Role = user.Role,

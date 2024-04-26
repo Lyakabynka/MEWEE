@@ -40,6 +40,19 @@
       "DownstreamPathTemplate": "/auth/logout"
     },
     {
+      "UpstreamPathTemplate" : "/user/profile/{userId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/profile/{userId}"
+    },
+    {
       "UpstreamPathTemplate" : "/user/register",
       "UpstreamHttpMethod": ["Post"],
 
@@ -106,6 +119,33 @@
         }
       ],
       "DownstreamPathTemplate": "/posts"
+    },
+
+    {
+      "UpstreamPathTemplate" : "/comments",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/comments"
+    },
+    {
+      "UpstreamPathTemplate" : "/comment",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/comment"
     },
 
     {

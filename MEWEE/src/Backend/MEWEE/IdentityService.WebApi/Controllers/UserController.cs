@@ -52,16 +52,16 @@ public class UserController : ApiControllerBase
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [Authorize]
-    [HttpGet("profile")]
+    //[Authorize]
+    [HttpGet("profile/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetUsersProfile()
+    public async Task<IActionResult> GetUsersProfile([FromRoute] Guid userId)
     {
         var request = new GetUserProfileQuery()
         {
-            UserId = UserId
+            UserId = userId
         };
 
         return await Mediator.Send(request);
