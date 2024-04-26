@@ -4,6 +4,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./index.css";
+import styles from "./register_form.module.scss";
 import { REGISTER_SCHEMA } from "../../../../shared/exportSharedMorules";
 import { CircularProgress } from "@mui/material";
 import { useAuthStore, useErrors, useThemeStore } from "../../../../entities";
@@ -13,22 +14,6 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
   const { t } = useTranslation();
   const { register, isLoading } = useAuthStore();
   const navigate = useNavigate();
-  const { currentTheme } = useThemeStore();
-  const [isHoverButton, setIsHoverButton] = useState(false);
-  const [isActiveButton, setIsActiveButton] = useState(false);
-
-  const buttonStyle = {
-    backgroundColor: isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonActiveBackground
-      : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonHoverBackground
-      : currentTheme?.authPages.registrationPage.buttonBackground,
-    color: isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonActiveColor
-      : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonHoverColor
-      : currentTheme?.authPages.registrationPage.buttonColor,
-  };
 
   const [showPassword, setShowPassword] = useState({
     password: false,
@@ -77,215 +62,154 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
     formik.touched.policyAgree && formik.errors.policyAgree;
 
   return (
-    <div className="form-container">
-      <div className="login-or-block">
-        <div
-          style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
-        ></div>
-        <span
-          style={{ color: currentTheme?.authPages.loginPage.lineColorText }}
-        >
-          {t("or")}
-        </span>
-        <div
-          style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
-        ></div>
-      </div>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="input-group">
-          <div className="input-container">
-            <label
-              className={`label-style ${usernameError ? "label-error" : ""}`}
-            >
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder={t("name") + "*"}
-                value={formik.values.username}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`text-style-1 input-short input-registration ${
-                  usernameError ? "input-error" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
-                }}
-              />
-            </label>
-            {formik.touched.username && formik.errors.username && (
-              <div className="error">{t(formik.errors.username)}</div>
-            )}
-          </div>
-          <div className="input-container">
-            <label
-              className={`label-style ${surnameError ? "label-error" : ""}`}
-            >
-              <input
-                type="text"
-                id="surname"
-                name="surname"
-                placeholder={t("surname")}
-                value={formik.values.surname}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`text-style-1 input-short input-registration ${
-                  surnameError ? "input-error" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
-                }}
-              />
-            </label>
-            {formik.touched.surname && formik.errors.surname && (
-              <div className="error">{t(formik.errors.surname)}</div>
-            )}
-          </div>
-        </div>
-        <div className="input-group">
-          <div className="input-container">
-            <label className={`label-style ${emailError ? "label-error" : ""}`}>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder={t("email") + "*"}
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`text-style-1 input-long input-registration ${
-                  emailError ? "input-error" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
-                }}
-              />
-            </label>
-            {formik.touched.email && formik.errors.email && (
-              <div className="error">{t(formik.errors.email)}</div>
-            )}
-          </div>
-        </div>
-        <div className="input-group">
-          <div className="input-container">
-            <label
-              className={`label-style ${passwordError ? "label-error" : ""}`}
-            >
-              <input
-                type={showPassword.password ? "text" : "password"}
-                id="password"
-                name="password"
-                placeholder={t("password") + "*"}
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`text-style-1 input-short input-registration password-input ${
-                  passwordError ? "input-error" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
-                }}
-              />
-              <span
-                className={`show-password-toggle ${
-                  showPassword.password
-                    ? "password-icon-active"
-                    : "password-icon-default"
-                }`}
-                onClick={() => togglePasswordVisibility("password")}
-              />
-            </label>
-            {formik.touched.password && formik.errors.password && (
-              <div className="error">{t(formik.errors.password)}</div>
-            )}
-          </div>
-          <div className="input-container">
-            <label
-              className={`label-style ${
-                confirmPasswordError ? "label-error" : ""
-              }`}
-            >
-              <input
-                type={showPassword.confirm_password ? "text" : "password"}
-                id="confirm_password"
-                name="confirm_password"
-                placeholder={t("confirm_password") + "*"}
-                value={formik.values.confirm_password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`text-style-1 input-short input-registration password-input ${
-                  confirmPasswordError ? "input-error" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
-                }}
-              />
-              <span
-                className={`show-password-toggle ${
-                  showPassword.confirm_password
-                    ? "password-icon-active"
-                    : "password-icon-default"
-                }`}
-                onClick={() => togglePasswordVisibility("confirm_password")}
-              />
-            </label>
-            {formik.touched.confirm_password &&
-              formik.errors.confirm_password && (
-                <div className="error">{t(formik.errors.confirm_password)}</div>
-              )}
-          </div>
-        </div>
-        <div className="input-group">
-          <button
-            className="registration-style text-style-2"
-            type="submit"
-            style={buttonStyle}
-            onMouseEnter={() => setIsHoverButton(true)}
-            onMouseLeave={() => {
-              setIsHoverButton(false);
-              setIsActiveButton(false);
-            }}
-            onMouseDown={() => setIsActiveButton(true)}
-            onMouseUp={() => setIsActiveButton(false)}
-          >
-            {t("register-me")}
-          </button>
-          <input
-            type="checkbox"
-            id="policyAgree"
-            name="policyAgree"
-            checked={formik.values.policyAgree}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          <div className="agree-with-policy-container">
-            <div
-              className={`text-style-1 agree-with-policy-text ${
-                policyAgreeError ? "input-error" : ""
-              }`}
-            >
-              {t("agree-with-policy")}
+      <div className={styles.div}>
+        <header>
+          <div className={styles.header_div}></div>
+          <span className={styles.header_span}>{t("or")}</span>
+          <div className={styles.header_div}></div>
+        </header>
+        <form onSubmit={formik.handleSubmit}>
+          <main>
+            <div className={styles.main_div_1}>
+              <div>
+                <label className={`${styles.label} ${usernameError ? styles.label_error : ""}`}>
+                  <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder={t("name") + "*"}
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`${usernameError ? styles.input_error : ''}`}
+                  />
+                </label>
+                {formik.touched.username && formik.errors.username && (
+                    <div className={styles.error}>{t(formik.errors.username)}</div>
+                )}
+              </div>
+              <div>
+                <label className={`${styles.label} ${surnameError ? styles.label_error : ""}`}>
+                  <input
+                      type="text"
+                      id="surname"
+                      name="surname"
+                      placeholder={t("surname")}
+                      value={formik.values.surname}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`${surnameError ? styles.input_error : ''}`}
+                  />
+                </label>
+                {formik.touched.surname && formik.errors.surname && (
+                    <div className={styles.error}>{t(formik.errors.surname)}</div>
+                )}
+              </div>
             </div>
-            {formik.touched.policyAgree && formik.errors.policyAgree && (
-              <div className="error">{t(formik.errors.policyAgree)}</div>
-            )}
-          </div>
-        </div>
-      </form>
-      {errors &&
-        errors.length > 0 &&
-        errors.map((error, index) => (
-          <span key={index} className="error">
+            <div className={styles.main_div_2}>
+              <div>
+                <label className={`${styles.label} ${emailError ? styles.label_error : ""}`}>
+                  <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder={t("email") + "*"}
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`${emailError ? styles.input_error : ""}`}
+                  />
+                </label>
+                {formik.touched.email && formik.errors.email && (
+                    <div className={styles.error}>{t(formik.errors.email)}</div>
+                )}
+              </div>
+            </div>
+            <div className={styles.main_div_3}>
+              <div>
+                <label className={`${styles.label} ${passwordError ? styles.label_error : ""}`}>
+                  <input
+                      type={showPassword.password ? "text" : "password"}
+                      id="password"
+                      name="password"
+                      placeholder={t("password") + "*"}
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`${passwordError ? styles.input_error : ""}`}
+                  />
+                  <span
+                      className={`${styles.show_password_toggle} ${showPassword.password
+                          ? styles.password_icon_active
+                          : styles.password_icon_default
+                      }`}
+                      onClick={() => togglePasswordVisibility("password")}
+                  />
+                </label>
+                {formik.touched.password && formik.errors.password && (
+                    <div className={styles.error}>{t(formik.errors.password)}</div>
+                )}
+              </div>
+              <div>
+                <label
+                    className={`${styles.label} ${confirmPasswordError ? styles.label_error : ""}`}>
+                  <input
+                      type={showPassword.confirm_password ? "text" : "password"}
+                      id="confirm_password"
+                      name="confirm_password"
+                      placeholder={t("confirm_password") + "*"}
+                      value={formik.values.confirm_password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`${confirmPasswordError ? styles.input_error : ""}`}
+                  />
+                  <span
+                      className={`${styles.show_password_toggle} ${
+                          showPassword.confirm_password
+                              ? styles.password_icon_active
+                              : styles.password_icon_default
+                      }`}
+                      onClick={() => togglePasswordVisibility("confirm_password")}
+                  />
+                </label>
+                {formik.touched.confirm_password &&
+                    formik.errors.confirm_password && (
+                        <div className={styles.error}>{t(formik.errors.confirm_password)}</div>
+                    )}
+              </div>
+            </div>
+          </main>
+          <footer>
+            <button type="submit">
+              {t("register-me")}
+            </button>
+            <input
+                type="checkbox"
+                id="policyAgree"
+                name="policyAgree"
+                checked={formik.values.policyAgree}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+            />
+            <div className={styles.div_text_container}>
+              <div className={`${policyAgreeError ? styles.input_error : ""}`}>
+                {t("agree-with-policy")}
+              </div>
+              {formik.touched.policyAgree && formik.errors.policyAgree && (
+                  <div className={styles.error}>{t(formik.errors.policyAgree)}</div>
+              )}
+            </div>
+          </footer>
+        </form>
+        {errors &&
+            errors.length > 0 &&
+            errors.map((error, index) => (
+                <span key={index} className={styles.error}>
             {t(error)}
           </span>
-        ))}
-      {isLoading && <CircularProgress></CircularProgress>}
-    </div>
+            ))}
+        {isLoading && <CircularProgress></CircularProgress>}
+      </div>
   );
 };
 {

@@ -7,6 +7,7 @@ import { Routing } from "../widgets/exportWigetComponents";
 import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "./App.css";
+import {setThemeVariables} from "../themesToCss";
 import PostUploader from "../pages/home/post-uploader/PostUploader";
 import RegLogRouting from "../widgets/routing/RegLogRouting";
 
@@ -16,6 +17,9 @@ const App: React.FC = () => {
 
   const { getCurrentTheme } = useThemeStore();
   const theme = getCurrentTheme() || themes[0];
+  useEffect(() => {
+    setThemeVariables(theme);
+  }, [theme]);
 
   useEffect(() => {
     if (isLoggedIn && id !== null && isLoggedIn === true) {

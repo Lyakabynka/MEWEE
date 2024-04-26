@@ -28,15 +28,15 @@ const [isActiveButton, setIsActiveButton] = useState(false);
 
 const buttonStyle = {
     backgroundColor: isActiveButton
-        ? currentTheme?.authPages.registrationPage.buttonActiveBackground
+        ? currentTheme?.authPages.commonElements.buttonActiveBackground
         : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.registrationPage.buttonHoverBackground
-            : currentTheme?.authPages.registrationPage.buttonBackground,
+            ? currentTheme?.authPages.commonElements.buttonHoverBackground
+            : currentTheme?.authPages.commonElements.buttonBackground,
     color: isActiveButton
-        ? currentTheme?.authPages.registrationPage.buttonActiveColor
+        ? currentTheme?.authPages.commonElements.buttonActiveColor
         : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.registrationPage.buttonHoverColor
-            : currentTheme?.authPages.registrationPage.buttonColor,
+            ? currentTheme?.authPages.commonElements.buttonHoverColor
+            : currentTheme?.authPages.commonElements.buttonColor,
 };
   const formik = useFormik({
     initialValues: {
@@ -72,7 +72,7 @@ const confirmPasswordError = formik.touched.confirm_password && formik.errors.co
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 className={`text-style-1 input-short input-registration password-input ${passwordError ? 'input-error' : ''}`}
-                                style={{ backgroundColor: currentTheme?.authPages.registrationPage.inputBackground }}
+                                style={{ backgroundColor: currentTheme?.authPages.commonElements.inputBackground }}
                             />
                             <span
                                 className={`show-password-toggle ${showPassword.password ? 'password-icon-active' : 'password-icon-default'}`}
@@ -92,7 +92,7 @@ const confirmPasswordError = formik.touched.confirm_password && formik.errors.co
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 className={`text-style-1 input-short input-registration password-input ${confirmPasswordError ? 'input-error' : ''}`}
-                                style={{ backgroundColor: currentTheme?.authPages.registrationPage.inputBackground }}
+                                style={{ backgroundColor: currentTheme?.authPages.commonElements.inputBackground }}
                             />
                             <span
                                 className={`show-password-toggle ${showPassword.confirm_password ? 'password-icon-active' : 'password-icon-default'}`}

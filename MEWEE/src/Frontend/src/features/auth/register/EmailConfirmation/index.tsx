@@ -19,15 +19,15 @@ export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext
   
     const buttonStyle = {
         backgroundColor: isActiveButton
-            ? currentTheme?.authPages.loginPage.buttonActiveBackground
+            ? currentTheme?.authPages.commonElements.buttonActiveBackground
             : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.loginPage.buttonHoverBackground
-                : currentTheme?.authPages.loginPage.buttonBackground,
+                ? currentTheme?.authPages.commonElements.buttonHoverBackground
+                : currentTheme?.authPages.commonElements.buttonBackground,
         color: isActiveButton
-            ? currentTheme?.authPages.loginPage.buttonActiveColor
+            ? currentTheme?.authPages.commonElements.buttonActiveColor
             : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.loginPage.buttonHoverColor
-                : currentTheme?.authPages.loginPage.buttonColor,
+                ? currentTheme?.authPages.commonElements.buttonHoverColor
+                : currentTheme?.authPages.commonElements.buttonColor,
     };
     const linkStyle = {
         color: isActiveLink
@@ -54,7 +54,7 @@ export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext
     }
 
     const inputStyle = {
-        backgroundColor: currentTheme?.authPages.loginPage.inputBackground,
+        backgroundColor: currentTheme?.authPages.commonElements.inputBackground,
     };
     const codeError = formik.errors.code;
     return (

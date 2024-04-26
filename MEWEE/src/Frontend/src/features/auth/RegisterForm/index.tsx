@@ -19,15 +19,15 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
 
   const buttonStyle = {
     backgroundColor: isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonActiveBackground
+      ? currentTheme?.authPages.commonElements.buttonActiveBackground
       : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonHoverBackground
-      : currentTheme?.authPages.registrationPage.buttonBackground,
+      ? currentTheme?.authPages.commonElements.buttonHoverBackground
+      : currentTheme?.authPages.commonElements.buttonBackground,
     color: isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonActiveColor
+      ? currentTheme?.authPages.commonElements.buttonActiveColor
       : isHoverButton && !isActiveButton
-      ? currentTheme?.authPages.registrationPage.buttonHoverColor
-      : currentTheme?.authPages.registrationPage.buttonColor,
+      ? currentTheme?.authPages.commonElements.buttonHoverColor
+      : currentTheme?.authPages.commonElements.buttonColor,
   };
 
   const [showPassword, setShowPassword] = useState({
@@ -80,15 +80,15 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
     <div className="form-container">
       <div className="login-or-block">
         <div
-          style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
+          style={{ borderColor: currentTheme?.authPages.commonElements.lineColor }}
         ></div>
         <span
-          style={{ color: currentTheme?.authPages.loginPage.lineColorText }}
+          style={{ color: currentTheme?.authPages.commonElements.lineColorText }}
         >
           {t("or")}
         </span>
         <div
-          style={{ borderColor: currentTheme?.authPages.loginPage.lineColor }}
+          style={{ borderColor: currentTheme?.authPages.commonElements.lineColor }}
         ></div>
       </div>
       <form onSubmit={formik.handleSubmit}>
@@ -110,7 +110,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                 }`}
                 style={{
                   backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
+                    currentTheme?.authPages.commonElements.inputBackground,
                 }}
               />
             </label>
@@ -135,7 +135,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                 }`}
                 style={{
                   backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
+                    currentTheme?.authPages.commonElements.inputBackground,
                 }}
               />
             </label>
@@ -160,7 +160,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                 }`}
                 style={{
                   backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
+                    currentTheme?.authPages.commonElements.inputBackground,
                 }}
               />
             </label>
@@ -187,7 +187,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                 }`}
                 style={{
                   backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
+                    currentTheme?.authPages.commonElements.inputBackground,
                 }}
               />
               <span
@@ -222,7 +222,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                 }`}
                 style={{
                   backgroundColor:
-                    currentTheme?.authPages.registrationPage.inputBackground,
+                    currentTheme?.authPages.commonElements.inputBackground,
                 }}
               />
               <span
