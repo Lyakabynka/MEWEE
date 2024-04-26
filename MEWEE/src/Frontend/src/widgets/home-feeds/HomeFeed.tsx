@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
-import { useAuthStore, usePostsStore } from "../../../entities";
 import { FeedPost } from "./home-post/FeedPost";
+import { useAuthStore, usePostsStore } from "../../entities";
 
 export const HomeFeed: FC = () => {
   const { id } = useAuthStore();

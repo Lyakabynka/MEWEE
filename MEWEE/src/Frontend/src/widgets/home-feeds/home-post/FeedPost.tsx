@@ -1,9 +1,8 @@
 import { FC, useState, useEffect, useRef } from "react";
 import styles from "./feed_post.module.scss";
-import { decryptImage } from "../../../../entities/sharedStores/post-utils";
 import { FeedPostItem } from "./FeedPostItem";
-import { FeedPostPropsTypes } from "../../home.interface";
-import { postDataTypes } from "../../../post-show/dataPostShow.interface";
+import { postDataTypes } from "../../../pages/post-show/dataPostShow.interface";
+import { FeedPostPropsTypes } from "../../../pages/home/home.interface";
 
 export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {
   

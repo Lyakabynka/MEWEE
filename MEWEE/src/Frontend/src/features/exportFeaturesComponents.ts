@@ -16,5 +16,5 @@ export { PreferencesForm } from "./auth/register/PreferencesForm";
 export { HomeNews } from "../pages/home/home-news/HomeNews";
 export { SideToolbar } from "../widgets/sideToolbar/SideToolbar";
 export { TopSearchBar } from "../widgets/topSearchBar/TopSearchBar";
-export { HomeFeed } from "../pages/home/home-feeds/HomeFeed";
-export { FeedPost } from "../pages/home/home-feeds/home-post/FeedPost";
+export { HomeFeed } from "../widgets/home-feeds/HomeFeed";
+export { FeedPost } from "../widgets/home-feeds/home-post/FeedPost";

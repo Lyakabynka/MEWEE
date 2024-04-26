@@ -24,7 +24,7 @@ const PostUploader: FC = () => {
     if (event.target.files && event.target.files[0]) {
       setImage(event.target.files[0]);
 
-      const encryptedData = await encryptImage(event.target.files[0]);
+      const encryptedData = "";
       setEncryptedImage(encryptedData);
 
       handleSubmit();

@@ -1,19 +1,17 @@
 import { FC, useState, useEffect, useRef } from "react";
-import { useThemeStore } from "../../../../entities";
 import { useTranslation } from "react-i18next";
-import CustomButton from "../../../../widgets/сommon/custom-button/customButton";
-import CommentBarComponents from "../../../../widgets/comment-bar-components/CommentBarComponents";
-import CustomModalIcon from "../../../../widgets/сommon/custom-modal-icon/CustomModalIcon";
-import LocationIcon from "../../../../assets/image/icons/LocationIcon.svg";
-import LikePostIcon from "../../../../assets/image/icons/LikePostIcon.svg";
-import SentIcon from "../../../../assets/image/icons/SentIcon.svg";
-import CommentPostIcon from "../../../../assets/image/icons/CommentPostIcon.svg";
-import { FeedPostPropsTypes } from "../../home.interface";
-import { postDataTypes } from "../../../post-show/dataPostShow.interface";
-import { commentsData } from "../../../../widgets/widgetData";
+import LocationIcon from "../../../assets/image/icons/LocationIcon.svg";
+import LikePostIcon from "../../../assets/image/icons/LikePostIcon.svg";
+import SentIcon from "../../../assets/image/icons/SentIcon.svg";
+import CommentPostIcon from "../../../assets/image/icons/CommentPostIcon.svg";
 import styles from "./feed_post_item.module.scss";
-import { decryptImage } from "../../../../entities/sharedStores/post-utils";
-import { useCommentStore } from "../../../../entities/sharedStores/useCommentStore";
+import { useThemeStore } from "../../../entities";
+import CustomModalIcon from "../../сommon/custom-modal-icon/CustomModalIcon";
+import CommentBarComponents from "../../comment-bar-components/CommentBarComponents";
+import { useCommentStore } from "../../../entities/sharedStores/useCommentStore";
+import { postDataTypes } from "../../../pages/post-show/dataPostShow.interface";
+import { decryptImage } from "../../../entities/sharedStores/post-utils";
+import CustomButton from "../../сommon/custom-button/customButton";
 
 export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
   const [commentsHiden, setCommentsHiden] = useState<string | null>(null);

@@ -14,6 +14,8 @@ import Dropzone from "react-dropzone";
 import ImageModal2 from "../../../../assets/image/ImageModal2.png";
 import CommentWriterAvatar from "../../../../assets/image/CommentWriterAvatar.png";
 import styles from "./add_post.module.scss";
+import { useAuthStore, usePostsStore } from "../../../../entities";
+import { encryptImage } from "../../../../entities/sharedStores/post-utils";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogActions-root": {
@@ -23,11 +25,53 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const AddPost: FC = () => {
+
+  const { username } = useAuthStore();
   const [image, setImage] = useState<string | ArrayBuffer | null>(null);
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const [modal1, setModal1] = useState<boolean>(false);
-  const [modal2, setModal2] = useState<boolean>(false);
-  const [modal3, setModal3] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [encryptedImage, setEncryptedImage] = useState<string>("");
+  const { createPost } = usePostsStore();
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name === "title") {
+      setTitle(value);
+    } else if (name === "content") {
+      setContent(value);
+    }
+  };
+
+
+  const handleSubmit = () => {
+    createPost(onResponse, { title: title, content: content, attachment: encryptedImage });
+  };
+
+  const onResponse = (errors: string[]) => {
+    console.log(errors);
+    if (errors.length === 0) console.log("all good");
+  };
+
+  const handleDrop = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0]; // первый файл из списка
+    const reader = new FileReader();
+
+    reader.onload = async (e: ProgressEvent<FileReader>) => {
+        const result = e.target ? e.target.result : null; // Проверка на null
+        if (result !== null && typeof result === "string") {
+            // Проверка на тип
+            setImage(result);
+            const encryptedData = await encryptImage(result);
+            setEncryptedImage(encryptedData);
+        }
+    };
+
+    reader.readAsDataURL(file); // Конвертирует файл в base64
+};
+
+
+
 
   const openModal = (step: number) => {
     setCurrentStep(step);
@@ -37,60 +81,9 @@ const AddPost: FC = () => {
   const closeModal = () => {
     setCurrentStep(0);
   };
-
-  const handleClickOpenModal1 = () => {
-    setModal1(true);
-  };
-
-  const handleClickOpenModal2 = () => {
-    setModal1(false);
-    setModal2(true);
-  };
-
-  const handleCloseModal1 = () => {
-    setModal1(false);
-  };
-
-  const handleCloseModal2 = () => {
-    setModal2(false);
-  };
-
-  const handleCloseModal3 = () => {
-    setModal3(false);
-  };
-
-  const handleStep2 = () => {
-    setModal2(false);
-    setModal3(true);
-  };
-
-  const handleBack2 = () => {
-    setModal1(true);
-    setModal2(false);
-  };
-
-  const handleBack3 = () => {
-    setModal2(true);
-    setModal3(false);
-  };
-
-  const handleDrop = (acceptedFiles: File[]) => {
-    const file = acceptedFiles[0]; // первый файл из списка
-    const reader = new FileReader();
-
-    reader.onload = (e: ProgressEvent<FileReader>) => {
-      const result = e.target ? e.target.result : null; // Проверка на null
-      if (result !== null && typeof result === "string") {
-        // Проверка на тип
-        setImage(result);
-      }
-    };
-
-    reader.readAsDataURL(file); // Конвертирует файл в base64
-  };
   return (
     <>
-      <div className={styles.div_add} onClick={() => openModal(1)}>
+      <div className={styles.div_add} onClick={() => {openModal(1); setImage(null)}}>
         <AddIcon style={{ color: "black" }} />
       </div>
 
@@ -122,7 +115,8 @@ const AddPost: FC = () => {
             <h4>
               Перетягніть сюди <br /> фото або відео
             </h4>
-            <button onClick={() => openModal(2)}>Вибрати з присторою</button>
+            { image !== null &&
+            <button onClick={() => openModal(2)}>Далі</button>}
           </div>
         </DialogActions>
         <IconButton
@@ -144,12 +138,12 @@ const AddPost: FC = () => {
         <DialogActions>
           <div className={styles.modal_item2}>
             <div>
-              <div onClick={() => openModal(1)}>
+              <div onClick={() => {openModal(1); setImage(null)}}>
                 <ArrowLeftIcon />
               </div>
               <h2>Створення </h2>
             </div>
-            <div>
+            <div style={{backgroundImage: `url(${image})`}}>
               <div>
                 <img src={SizeModalButton} onClick={() => openModal(3)} />
               </div>
@@ -178,29 +172,29 @@ const AddPost: FC = () => {
                 <ArrowLeftIcon />
               </div>
               <h2>Створення посту </h2>
-              <LibraryAddIcon />
+              <LibraryAddIcon onClick={handleSubmit} />
             </div>
             <div className={styles.modal_item_content}>
               <div>
-                <img src={ImageModal2} />
+                {typeof image === 'string' ? <img src={image} /> : null}
               </div>
               <form>
                 <div className={styles.user}>
                   <img src={CommentWriterAvatar} />
-                  <h3>Nataly</h3>
+                  <h3>{username}</h3>
                 </div>
                 <div className={styles.title_input}>
                   <img src={EmojiIcon} />
-                  <input type="text" />
+                  <input type="text" name="title" onChange={handleInputChange} placeholder="Title..." />
                 </div>
                 <div className={styles.all_input}>
                   <div className={styles.textarea_div}>
                     <img src={EmojiIcon} />
-                    <textarea placeholder="Введите ваш текст здесь" />
+                    <input placeholder="Введите ваш текст здесь" name="content" onChange={handleInputChange} />
                   </div>
                   <div>
-                    <input type="text" />
-                    <input type="text" />
+                    <input type="text" placeholder="Location..." />
+                    <input type="text" placeholder="Category..." />
                   </div>
                 </div>
               </form>

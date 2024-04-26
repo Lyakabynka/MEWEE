@@ -1,23 +1,12 @@
-import CryptoJS from 'crypto-js';
+import CryptoJS from "crypto-js";
 
-export const encryptImage = async (file: any): Promise<string> => {
+export const encryptImage = async (base64Data: string): Promise<string> => {
     return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            const base64 = reader.result?.toString();
-            if (base64) {
-                const encryptedData = CryptoJS.AES.encrypt(base64, "secret_key").toString();
-                resolve(encryptedData);
-            } else {
-                reject(new Error("Failed to read file."));
-            }
-        };
-        reader.onerror = () => {
-            reject(new Error("Failed to read file."));
-        };
-        reader.readAsDataURL(file);
+        const encryptedData = CryptoJS.AES.encrypt(base64Data, "secret_key").toString();
+        resolve(encryptedData);
     });
 };
+
 
 
 export const decryptImage = (encryptedData: string): Promise<string> => {
