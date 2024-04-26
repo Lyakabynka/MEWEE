@@ -58,17 +58,17 @@ const AddPost: FC = () => {
     const reader = new FileReader();
 
     reader.onload = async (e: ProgressEvent<FileReader>) => {
-        const result = e.target ? e.target.result : null; // Проверка на null
-        if (result !== null && typeof result === "string") {
-            // Проверка на тип
-            setImage(result);
-            const encryptedData = await encryptImage(result);
-            setEncryptedImage(encryptedData);
-        }
+      const result = e.target ? e.target.result : null; // Проверка на null
+      if (result !== null && typeof result === "string") {
+        // Проверка на тип
+        setImage(result);
+        const encryptedData = await encryptImage(result);
+        setEncryptedImage(encryptedData);
+      }
     };
 
     reader.readAsDataURL(file); // Конвертирует файл в base64
-};
+  };
 
 
 
@@ -83,7 +83,7 @@ const AddPost: FC = () => {
   };
   return (
     <>
-      <div className={styles.div_add} onClick={() => {openModal(1); setImage(null)}}>
+      <div className={styles.div_add} onClick={() => { openModal(1); setImage(null) }}>
         <AddIcon style={{ color: "black" }} />
       </div>
 
@@ -115,8 +115,8 @@ const AddPost: FC = () => {
             <h4>
               Перетягніть сюди <br /> фото або відео
             </h4>
-            { image !== null &&
-            <button onClick={() => openModal(2)}>Далі</button>}
+            {image !== null &&
+              <button onClick={() => openModal(2)}>Далі</button>}
           </div>
         </DialogActions>
         <IconButton
@@ -138,12 +138,12 @@ const AddPost: FC = () => {
         <DialogActions>
           <div className={styles.modal_item2}>
             <div>
-              <div onClick={() => {openModal(1); setImage(null)}}>
+              <div onClick={() => { openModal(1); setImage(null) }}>
                 <ArrowLeftIcon />
               </div>
               <h2>Створення </h2>
             </div>
-            <div style={{backgroundImage: `url(${image})`}}>
+            <div style={{ backgroundImage: `url(${image})` }}>
               <div>
                 <img src={SizeModalButton} onClick={() => openModal(3)} />
               </div>
