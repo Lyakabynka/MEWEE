@@ -66,7 +66,7 @@ const News: FC<FeedPostPropsTypes> = ({ posts }) => {
                       {item.username}
                     </h3>
                   </div>
-                  <CustomModalIcon id={item.id} />
+                  <CustomModalIcon id={0} />
                 </header>
                 <main className={styles.main}>
                   {isImage(item.imageUrl) ? (

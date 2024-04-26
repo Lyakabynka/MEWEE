@@ -5,5 +5,6 @@ export * from './timezoneConverter'
 
 // CONFIGS //
 // VALIDATION //
+export * from './config/constants/apicontants'
 export * from './config/validation/schemas'
 export * from './config/validation/validations'

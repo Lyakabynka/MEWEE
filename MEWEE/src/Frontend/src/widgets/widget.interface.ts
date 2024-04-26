@@ -16,17 +16,21 @@ export interface CustomModalIconPropsTypes {
 }
 
 export interface commentDataTypes {
-  id: number;
+  id: string;
   avatarIcon: any;
-  commentText: string;
+  content: string;
+  userId: string;
+  replyCommentId: string;
 }
 
 export interface CommentBarPropsTypes {
-  id?: number;
+  id?: string;
+  replyId?: string;
   title?: string;
-  hiden?: number | null;
+  hiden?: string | null;
   appearance: boolean;
   commentDataRender: commentDataTypes[];
+  onUpdated: () => void;
 }
 
 export interface smileDataTypes {

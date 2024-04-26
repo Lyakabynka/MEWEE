@@ -15,6 +15,11 @@ export const ENDPOINTS = {
         POST: `${API_URL}/post`,
         CREATE_CHAT: `${API_URL}/chat`,
     },
+    POST:
+    {
+        GET_COMMENTS: `${API_URL}/comments`,
+        CREATE_COMMENT: `${API_URL}/comment`,
+    },
     HOME :
     {
         FIND_POSTS: `${API_URL}/posts/find`,

@@ -83,7 +83,7 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
               </div>
             </div>
           </div>
-          <CustomModalIcon id={1} />
+          <CustomModalIcon id={0} />
         </header>
         <main className={styles.main}>
           {isImage(dataObject.imageUrl) ? (

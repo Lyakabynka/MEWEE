@@ -10,7 +10,7 @@ import ENDPOINTS from "../../shared/api/endpoints";
 import { persist } from "zustand/middleware";
 import { AES, enc } from "crypto-js";
 import { error } from "console";
-import { ResponseCallback, decryptState, encryptState, pErrors } from "./utils";
+import { ResponseCallback, ResponseDataCallback, decryptState, encryptState, pErrors } from "./utils";
 import { AxiosInstance } from "axios";
 
 interface IAuthStore {
@@ -34,6 +34,9 @@ interface IAuthStore {
   confirmEmail: (
     callback: ResponseCallback,
     params: IConfirmEmailRequest
+  ) => Promise<void>;
+  getProfile:(callback: ResponseDataCallback,
+    userId: string
   ) => Promise<void>;
   logout: () => Promise<void>;
 
@@ -131,6 +134,19 @@ export const useAuthStore = create<IAuthStore>()(
         set({ isLoading: false });
       },
 
+      getProfile: async (callback: ResponseDataCallback, userId: string) => {
+          const response = await $api.get<any>(ENDPOINTS.USER.GET_PROFILE_DATA + `/${userId}`);
+      
+          console.log(response);
+      
+          if (response?.status === 200) {
+            callback(response.data, []);
+          }
+          callback(null, pErrors(response.data.errors));
+      
+        set((state) => ({ ...state, isLoading: false }));
+      },
+      
       logout: async () => {
         console.log("oki");
         await $api.delete<any>(ENDPOINTS.AUTH.LOGOUT, {

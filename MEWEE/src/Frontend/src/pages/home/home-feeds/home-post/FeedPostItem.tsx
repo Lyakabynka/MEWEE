@@ -13,15 +13,17 @@ import { postDataTypes } from "../../../post-show/dataPostShow.interface";
 import { commentsData } from "../../../../widgets/widgetData";
 import styles from "./feed_post_item.module.scss";
 import { decryptImage } from "../../../../entities/sharedStores/post-utils";
+import { useCommentStore } from "../../../../entities/sharedStores/useCommentStore";
 
 export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
-  const [commentsHiden, setCommentsHiden] = useState<number | null>(null);
+  const [commentsHiden, setCommentsHiden] = useState<string | null>(null);
   const { t } = useTranslation();
   const [imageSrc, setImageSrc] = useState<string>();
   const videoRef = useRef<HTMLVideoElement>(null);
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
   const { currentTheme } = useThemeStore();
-
+  const { getComments } = useCommentStore();
+  const [comments, setComments] = useState<any>(null);
   const isImage = (url: string) => {
     return /\.(jpeg|jpg|gif|png)$/i.test(url);
   };
@@ -29,8 +31,18 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
   const isVideo = (url: string) => {
     return /\.(mp4|webm|ogg)$/i.test(url);
   };
+  const onResponse = (data: any, errors: string[]) => {
+      
+      console.log(errors);
+      if (errors.length == 0) 
+        {
+            console.log("all good");
+      setComments(data);
 
+}
+  };
   useEffect(() => {
+    getComments(onResponse, item.id,1,0);
     const at = item.attachment ?? "";
     if(at != "")
   decryptImage(at)
@@ -61,10 +73,13 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
       videoRef.current.play();
     }
   };
-  const handleCommentClick = (postId: number) => {
+  const handleCommentClick = (postId: string) => {
     setCommentsHiden(commentsHiden === postId ? null : postId);
   };
-
+  const onUpdated = () =>
+    {
+        getComments(onResponse, item.id,1,0);
+    }
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
@@ -108,7 +123,7 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
                       </div>
                     </div>
                   </div>
-                  <CustomModalIcon id={item.id} />
+                  <CustomModalIcon id={0} />
                 </header>
                 <main className={styles.main}>
                   {item.attachment ? (
@@ -145,6 +160,7 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
                         onClick={() => handleCommentClick(item.id)}
                         src={CommentPostIcon}
                       />
+                      <span>({comments ? comments.length : 0})</span>
                     </div>
                   </nav>
                 </footer>
@@ -153,7 +169,8 @@ export const FeedPostItem: FC<{item: postDataTypes}> = ({ item }) => {
                 id={item.id}
                 appearance={true}
                 hiden={commentsHiden}
-                commentDataRender={commentsData}
+                commentDataRender={comments}
+                onUpdated={onUpdated}
               />
             </div>
   );

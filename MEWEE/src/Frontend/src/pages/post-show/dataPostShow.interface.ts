@@ -1,5 +1,5 @@
 export interface postDataTypes {
-  id: number;
+  id: string;
   username: string;
   profileImageUrl: string;
   postDate: string;
