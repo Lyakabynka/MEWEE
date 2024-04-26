@@ -4,49 +4,50 @@ import { useTranslation } from 'react-i18next';
 import { useErrors, useRecoveryStore, useThemeStore } from '../../../../../entities';
 import { CircularProgress } from '@mui/material';
 import { SET_NEW_PASSWORD_SCHEMA } from '../../../../../shared/exportSharedMorules';
+import styles from "./set_password_form.module.scss";
 
 export const RecoverySetPasswordForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
-  const {t} = useTranslation();
-  const { setNewPassword, isLoading } = useRecoveryStore();
-  const [errors, setErrors, setAutoClearErrors] = useErrors();
-  const { currentTheme } = useThemeStore();
+    const {t} = useTranslation();
+    const { setNewPassword, isLoading } = useRecoveryStore();
+    const [errors, setErrors, setAutoClearErrors] = useErrors();
+    const { currentTheme } = useThemeStore();
 
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confirm_password: false
-});
+    const [showPassword, setShowPassword] = useState({
+        password: false,
+        confirm_password: false
+    });
 
-const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
-    setShowPassword(prevState => ({
-        ...prevState,
-        [fieldName]: !prevState[fieldName]
-    }));
-};
+    const togglePasswordVisibility = (fieldName: keyof typeof showPassword) => {
+        setShowPassword(prevState => ({
+            ...prevState,
+            [fieldName]: !prevState[fieldName]
+        }));
+    };
 
-const [isHoverButton, setIsHoverButton] = useState(false);
-const [isActiveButton, setIsActiveButton] = useState(false);
+    const [isHoverButton, setIsHoverButton] = useState(false);
+    const [isActiveButton, setIsActiveButton] = useState(false);
 
-const buttonStyle = {
-    backgroundColor: isActiveButton
-        ? currentTheme?.authPages.commonElements.buttonActiveBackground
-        : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.commonElements.buttonHoverBackground
-            : currentTheme?.authPages.commonElements.buttonBackground,
-    color: isActiveButton
-        ? currentTheme?.authPages.commonElements.buttonActiveColor
-        : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.commonElements.buttonHoverColor
-            : currentTheme?.authPages.commonElements.buttonColor,
-};
-  const formik = useFormik({
-    initialValues: {
-      password: '',
-      confirm_password: ''
-    },
-    validationSchema: SET_NEW_PASSWORD_SCHEMA,
-    onSubmit:() =>  {  setNewPassword(onVerificationSentResponse, { password: formik.values.password }); } }
-  );
-  const onVerificationSentResponse = (errors: string[]) =>
+    const buttonStyle = {
+        backgroundColor: isActiveButton
+            ? currentTheme?.authPages.commonElements.buttonActiveBackground
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.commonElements.buttonHoverBackground
+                : currentTheme?.authPages.commonElements.buttonBackground,
+        color: isActiveButton
+            ? currentTheme?.authPages.commonElements.buttonActiveColor
+            : (isHoverButton && !isActiveButton)
+                ? currentTheme?.authPages.commonElements.buttonHoverColor
+                : currentTheme?.authPages.commonElements.buttonColor,
+    };
+    const formik = useFormik({
+        initialValues: {
+            password: '',
+            confirm_password: ''
+        },
+        validationSchema: SET_NEW_PASSWORD_SCHEMA,
+        onSubmit:() =>  {  setNewPassword(onVerificationSentResponse, { password: formik.values.password }); } }
+    );
+    const onVerificationSentResponse = (errors: string[]) =>
     {
         setAutoClearErrors(errors);
 
@@ -55,14 +56,15 @@ const buttonStyle = {
             onNext();
         }
     }
-const passwordError = formik.touched.password && formik.errors.password;
-const confirmPasswordError = formik.touched.confirm_password && formik.errors.confirm_password;
-  return (
-    <div className="">
-        <form onSubmit={formik.handleSubmit}>
-        <div className="input-group">
-                    <div className="input-container">
-                        <label className={`label-style ${passwordError ? 'label-error' : ''}`}>
+    const passwordError = formik.touched.password && formik.errors.password;
+    const confirmPasswordError = formik.touched.confirm_password && formik.errors.confirm_password;
+    return (
+        <div className={styles.div}>
+            <form onSubmit={formik.handleSubmit}>
+                <header>{t('password_change')}</header>
+                <main>
+                    <div>
+                        <label className={`${styles.label} ${passwordError ? styles.label_error : ''}`}>
                             <input
                                 type={showPassword.password ? 'text' : 'password'}
                                 id="password"
@@ -71,18 +73,19 @@ const confirmPasswordError = formik.touched.confirm_password && formik.errors.co
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short input-registration password-input ${passwordError ? 'input-error' : ''}`}
-                                style={{ backgroundColor: currentTheme?.authPages.commonElements.inputBackground }}
+                                className={`${passwordError ? styles.input_error : ''}`}
                             />
-                            <span
-                                className={`show-password-toggle ${showPassword.password ? 'password-icon-active' : 'password-icon-default'}`}
+                            <span className={`${styles.show_password_toggle} 
+                                ${showPassword.password 
+                                    ? styles.password_icon_active 
+                                    : styles.password_icon_default }`}
                                 onClick={() => togglePasswordVisibility('password')} />
                         </label>
                         {formik.touched.password && formik.errors.password &&
-                            <div className="error">{t(formik.errors.password)}</div>}
+                            <div className={styles.error}>{t(formik.errors.password)}</div>}
                     </div>
-                    <div className="input-container">
-                        <label className={`label-style ${confirmPasswordError ? 'label-error' : ''}`}>
+                    <div>
+                        <label className={`${styles.label} ${confirmPasswordError ? styles.label_error : ''}`}>
                             <input
                                 type={showPassword.confirm_password ? 'text' : 'password'}
                                 id="confirm_password"
@@ -91,37 +94,29 @@ const confirmPasswordError = formik.touched.confirm_password && formik.errors.co
                                 value={formik.values.confirm_password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                className={`text-style-1 input-short input-registration password-input ${confirmPasswordError ? 'input-error' : ''}`}
-                                style={{ backgroundColor: currentTheme?.authPages.commonElements.inputBackground }}
+                                className={`${confirmPasswordError ? styles.input_error : ''}`}
                             />
                             <span
-                                className={`show-password-toggle ${showPassword.confirm_password ? 'password-icon-active' : 'password-icon-default'}`}
+                                className={`${styles.show_password_toggle} 
+                                ${showPassword.confirm_password 
+                                    ? styles.password_icon_active 
+                                    : styles.password_icon_default}`}
                                 onClick={() => togglePasswordVisibility('confirm_password')} />
                         </label>
                         {formik.touched.confirm_password && formik.errors.confirm_password &&
-                            <div className="error">{t(formik.errors.confirm_password)}</div>}
+                            <div className={styles.error}>{t(formik.errors.confirm_password)}</div>}
                     </div>
-                </div>
-          
-          <div className="input-group">
-          <button className="registration-style text-style-2" type="submit"
-                        style={buttonStyle}
-                        onMouseEnter={() => setIsHoverButton(true)}
-                        onMouseLeave={() => {
-                            setIsHoverButton(false);
-                            setIsActiveButton(false);
-                        }}
-                        onMouseDown={() => setIsActiveButton(true)}
-                        onMouseUp={() => setIsActiveButton(false)}>{t('send')}
-                    </button>
+                </main>
+                <footer>
+                    <button type="submit">{t('send')}</button>
                     {isLoading && <CircularProgress></CircularProgress>}
-          </div>
-        </form>
-        
-        {(errors && errors.length > 0) && errors.map((error, index) => (
-            <span key={index} className="error">{t(error)}</span>
-        ))}
+                </footer>
+            </form>
 
-    </div>
-  );
+            {(errors && errors.length > 0) && errors.map((error, index) => (
+                <span key={index} className="error">{t(error)}</span>
+            ))}
+
+        </div>
+    );
 };

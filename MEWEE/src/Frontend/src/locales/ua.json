@@ -7,6 +7,7 @@
   "email": "Електронна пошта",
   "password": "Пароль",
   "confirm_password": "Повторіть пароль",
+  "confirm_email": "Підтвердження E-mail",
   "registration": "Реєстрація",
   "login": "Увійти",
   "register-me": "Зареєструватися",
