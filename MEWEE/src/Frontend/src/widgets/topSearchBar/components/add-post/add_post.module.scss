@@ -72,6 +72,7 @@
 .modal_item3 {
   .modal_header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;

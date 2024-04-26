@@ -5,7 +5,7 @@ import { postDataTypes } from "../../../pages/post-show/dataPostShow.interface";
 import { FeedPostPropsTypes } from "../../../pages/home/home.interface";
 
 export const FeedPost: FC<FeedPostPropsTypes> = ({ posts }) => {
-  
+
 
 
   // const fio = username?.split(' ');
