@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponents";
 import { HomePage } from "../../features/exportFeaturesComponents";
 import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { PrivateRoute } from "./PrivateRoute";
@@ -7,7 +8,7 @@ import { ManagePlanGroupPage } from "../../pages/exportPageComponents";
 import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
 import Groups from "../../pages/groups/Groups";
-import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponents";
+import Profile from "../../pages/profile/Profile";
 import { Grid } from "@mui/material";
 //
 export const Routing = () => {
@@ -26,6 +27,7 @@ export const Routing = () => {
               <Route path="/feed" element={<HomePage />} />
               {/* <Route path="/post-show" element={<PostShow />} /> */}
               <Route path="/groups" element={<Groups />} />
+              <Route path="/profile" element={<Profile />} />
               <Route
                 path="plans"
                 element={

@@ -46,12 +46,24 @@ export const useRecoveryStore = create<IRecoveryStore>()(
       ) => {
         set({ isLoading: true, verificationCode: params.code });
         const request = { code: params.code, email: get().email };
+
+        try
+        {
         const response = await $api.post<any>(
           ENDPOINTS.RECOVERY.VERIFY_CODE,
-          request
+          request,
+          {withCredentials:false}
         );
-
-        callback(pErrors(response.data.errors));
+        
+          if (response.status === 200) {
+            callback(pErrors([]));
+          } else {
+            callback(pErrors(['unknown_error']));
+          }
+        } catch (error:any) {
+          callback(pErrors(['unknown_error']));
+        
+      }
 
         set({ isLoading: false });
       },
@@ -66,41 +78,22 @@ export const useRecoveryStore = create<IRecoveryStore>()(
           const response = await $api.post<any>(
             ENDPOINTS.RECOVERY.CONFIRM_EMAIL,
             { email: params.email },
-            { withCredentials: true }
+            { withCredentials: false }
           );
           
           // Check if the response is successful
           if (response.status === 200) {
             // Handle successful response
+            callback(pErrors([]));
           } else {
             // Handle other non-200 responses
             callback(pErrors(['unknown_error']));
           }
         } catch (error:any) {
-          // Handle Axios errors
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.error("Server responded with error:", error.response.status);
-            // Handle specific error codes or show a generic error message
-            if (error.response.status === 500) {
-              // Handle 500 Internal Server Error
-            } else {
-              // Handle other HTTP error codes
-              callback(pErrors(['unknown_error']));
-            }
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.error("No response received:", error.request);
-            // Handle network-related errors
-            callback(pErrors(['network_error']));
-          } else {
-            // Something else happened in making the request that triggered an error
-            console.error("Error in request:", error.message);
-            // Handle other types of errors
-            callback(pErrors(['unknown_error']));
-          }
-        }
+          // Handle Axios error
+          callback(pErrors(['unknown_error']));
+        
+      }
       
         set({ isLoading: false });
       },
@@ -116,12 +109,22 @@ export const useRecoveryStore = create<IRecoveryStore>()(
           code: get().verificationCode,
           newPassword: params.password,
         };
-        const response = await $api.post<any>(
+
+        try{
+          const response = await $api.post<any>(
           ENDPOINTS.RECOVERY.SET_NEW_PASSWORD,
           request
         );
 
-        callback(pErrors(response.data.errors));
+        if (response.status === 200) {
+          callback(pErrors([]));
+        } else {
+          callback(pErrors(['unknown_error']));
+        }
+      } catch (error:any) {
+        callback(pErrors(['unknown_error']));
+      
+    }
 
         set({ isLoading: false });
       },
