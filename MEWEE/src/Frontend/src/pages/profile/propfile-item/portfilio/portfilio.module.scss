@@ -1,0 +1,43 @@
+.div {
+  > h1 {
+    margin-bottom: 2rem;
+  }
+  .sub_div1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    > div {
+      max-width: 20.31rem;
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem;
+      > div:first-child {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        > img {
+          margin-right: 1rem;
+        }
+      }
+      > div:last-child {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+  .sub_div2 {
+    > h1 {
+      margin-bottom: 2rem;
+    }
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      > div {
+        margin: 1rem;
+        > img {
+          width: 350px;
+        }
+      }
+    }
+  }
+}

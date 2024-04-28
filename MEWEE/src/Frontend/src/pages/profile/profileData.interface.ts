@@ -41,3 +41,38 @@ export interface prfileItemDataTypes {
 export interface prfileItemDataPropsTypes {
   profileItemData: prfileItemDataTypes[];
 }
+
+export interface reviewsStarTypes {
+  id: string;
+  image: any;
+}
+
+export interface portfilioDataTypes {
+  id: string;
+  reviewsUserAvatar: any;
+  reviewsUserName: string;
+  reviews: string;
+  reviewsStar: reviewsStarTypes[];
+}
+
+export interface sertificateTypes {
+  id: string;
+  image: any;
+}
+
+export interface portfilioDataPropsTypes {
+  portfilioData: portfilioDataTypes[];
+  setificateData: sertificateTypes[];
+}
+
+export interface friendDataTypes {
+  id: string;
+  name: string;
+  avatar: any;
+  online: boolean;
+  onlineSwitch: any;
+}
+
+export interface friendDataPropsTypes {
+  friendData: friendDataTypes[];
+}
