@@ -31,19 +31,40 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
 
     establishConnection: async (userId) => {
 
-        // if (get().connection !== null) {
-        //     await get().closeConnection();
-        // }
 
-        // set({
-        //     // connection: new signalR.HubConnectionBuilder()
-        //     //     .withUrl("http://localhost:5003/plan-hub")
-        //     //     .configureLogging(signalR.LogLevel.Information)
-        //     //     .withAutomaticReconnect()
-        //     //     .build()
-        // })
+        if (get().connection !== null) {
+            await get().closeConnection();
+        }
+        
+        set({
+            connection: new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:5002/hubs/message")
+            .configureLogging(signalR.LogLevel.Information)
+            .withAutomaticReconnect()
+            .build()
+        })
+        
+        const { connection } = get();
+        
+        connection!.on("receiveMessage", (message: any) => {
+            // Handle received message
+        });
 
-        // const { connection } = get();
+        await connection!.start().then(() => {
+            console.info("Connection with SignalR hub has been successfully established!");
+        }).catch((e) => {
+            console.log("Server is offline");
+            console.log(e);
+        });
+
+        await connection!.invoke('initializeSession')
+            .then(() => {
+                console.log("Initialized session");
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
 
         // connection!.on("ProcessPlan", (plan: IPlan) => {
 
@@ -103,24 +124,24 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
         //     }
         // })
 
-        // connection!.onreconnecting(() => {
-        //     console.warn('Connection with server has been lost. Trying to reconnect...');
-        // })
+        connection!.onreconnecting(() => {
+            console.warn('Connection with server has been lost. Trying to reconnect...');
+        })
 
-        // await connection!.start().then(() => {
-        //     console.info("Connection with SignalR hub has been successfully established!");
-        // }).catch((e) => {
-        //     console.log("Server is offline");
-        //     console.log(e);
-        // })
+        await connection!.start().then(() => {
+            console.info("Connection with SignalR hub has been successfully established!");
+        }).catch((e) => {
+            console.log("Server is offline");
+            console.log(e);
+        })
 
-        // await connection!.invoke('SubscribeToPlan', userId)
-        //     .then(() => {
-        //         console.log("Subscribed to plan: " + userId);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
+        await connection!.invoke('SubscribeToPlan', userId)
+            .then(() => {
+                console.log("Subscribed to plan: " + userId);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     },
 
     closeConnection: async () => {

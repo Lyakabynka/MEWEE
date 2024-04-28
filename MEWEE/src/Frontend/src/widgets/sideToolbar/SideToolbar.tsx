@@ -18,6 +18,7 @@ import { SwitchComponent } from "./components/switchComponent";
 import { LanguageComponent } from "./components/languageComponent";
 import { decryptImage } from "../../entities/sharedStores/post-utils";
 import ProfilePictureUploader from "../../features/profilePictureUploader/ProfilePictureUploader";
+import { CircularProgress } from "@mui/material";
 
 export const SideToolbar = () => {
   const navigate = useNavigate();
@@ -69,7 +70,9 @@ export const SideToolbar = () => {
           className="toolbar-block-container"
           style={{
             backgroundColor: currentTheme?.mainPage?.sideBar?.secondBackground,
+            cursor: "pointer"
           }}
+          onClick={() => navigate('/feed')}
         >
           {isVisible ? (
             <div className="toolbar-logo">
@@ -83,8 +86,10 @@ export const SideToolbar = () => {
         </div>
         <div
           className="toolbar-prof-block-container"
+          onClick={() => navigate('/profile')}
           style={{
             backgroundColor: currentTheme?.mainPage?.sideBar?.background,
+            cursor:"pointer"
           }}
         >
           <div className="toolbar-profile-main-container">
@@ -121,32 +126,38 @@ export const SideToolbar = () => {
               isVisible={isVisible}
               icon={<IconGroups />}
               title={t("groups")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
             <SideToolbarMenuItem
               isVisible={isVisible}
               icon={<IconEvents />}
               title={t("events")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
             <SideToolbarMenuItem
               isVisible={isVisible}
               icon={<IconAnnouncements />}
               title={t("announcements")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
             <SideToolbarMenuItem
               isVisible={isVisible}
               icon={<IconJobs />}
               title={t("jobs")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
             <SideToolbarMenuItem
               isVisible={isVisible}
               icon={<IconNews />}
               title={t("news")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
             <SideToolbarMenuItem
               isVisible={isVisible}
               icon={<IconSettings />}
               title={t("settings")}
-            />
+              onNavigate={() => navigate('/groups')}
+              />
           </div>
           <div
             onClick={toggleVisibility}

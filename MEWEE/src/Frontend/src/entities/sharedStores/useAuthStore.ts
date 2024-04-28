@@ -162,15 +162,19 @@ export const useAuthStore = create<IAuthStore>()(
       },
 
       getProfile: async (callback: ResponseDataCallback, userId: string) => {
-        const response = await $api.get<any>(ENDPOINTS.USER.GET_PROFILE_DATA + `/${userId}`);
 
-        console.log(response);
+        try {
+          const response = await $api.get<any>(ENDPOINTS.USER.GET_PROFILE_DATA + `/${userId}`);
 
-        if (response?.status === 200) {
-          callback(response.data, []);
+          if (response?.status === 200) {
+            callback(response.data, []);
+          } else {
+            callback(null, pErrors(response.data.errors));
+          }
+        } catch (error: any) {
+          callback(null, pErrors(['unknown_error']));
+
         }
-        callback(null, pErrors(response.data.errors));
-
         set((state) => ({ ...state, isLoading: false }));
       },
 
@@ -190,7 +194,7 @@ export const useAuthStore = create<IAuthStore>()(
         try {
           const response = await $api.post<any>(
             ENDPOINTS.USER.UPDATE_PROFILE_DATA,
-            {ProfileAvatar: profileAvatarData},
+            { ProfileAvatar: profileAvatarData },
             { withCredentials: true }
           );
           if (response?.status == 200) {
