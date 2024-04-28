@@ -1,6 +1,19 @@
 @import "src/mixins.scss";
 .div_add {
   cursor: pointer;
+  width: 24px;
+  height: 24px;
+  svg{
+    color: var(--mainPage_header_icon);
+
+    &:hover{
+      opacity: var(--mainPage_header_hoverIcon);
+    }
+
+    &:active{
+      color: var(--mainPage_header_activeIcon);
+    }
+  }
 }
 
 .modal_item1 {

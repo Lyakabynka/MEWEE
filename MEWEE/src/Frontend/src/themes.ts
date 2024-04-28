@@ -62,7 +62,16 @@ declare module '@mui/material/styles' {
         colorText: string;
         secondColorText: string;
         thirdColorText: string;
+        comments: {
+          background: string;
+          userColorText: string;
+          colorText: string;
+          shAnswerColorText: string;
+          answerColorText: string;
+          inputBackground: string;
+        },
       },
+
     },
   }
 
@@ -126,6 +135,14 @@ declare module '@mui/material/styles' {
         colorText?: string;
         secondColorText?: string;
         thirdColorText?: string;
+        comments?: {
+          background?: string;
+          userColorText?: string;
+          colorText?: string;
+          shAnswerColorText?: string;
+          answerColorText?: string;
+          inputBackground?: string;
+        },
       },
     },
   }
@@ -191,6 +208,14 @@ export const themes: Theme[] = [
         colorText: 'black',
         secondColorText:'#25005C',
         thirdColorText:'gray',
+        comments: {
+          background: 'white',
+          userColorText: 'black',
+          colorText: 'black',
+          shAnswerColorText: '#FBA500',
+          answerColorText: '#B67AFE',
+          inputBackground: 'white',
+        },
       },
     },
     palette: {
@@ -259,6 +284,14 @@ export const themes: Theme[] = [
         colorText: 'white',
         secondColorText:'#B67AFE',
         thirdColorText:'gray',
+        comments: {
+          background: '#2F2937',
+          userColorText: 'white',
+          colorText: 'white',
+          shAnswerColorText: '#FBA500',
+          answerColorText: '#B67AFE',
+          inputBackground: '#4e4955',
+        },
       },
     },
     palette: {

@@ -3,6 +3,8 @@ import { CommentBarPropsTypes, commentDataTypes } from "../widget.interface";
 import CustomInput from "../сommon/custom-input/CustomInput";
 import styles from "./comment_bar_components.module.scss";
 import CommentBarItem from "./CommentBarItem";
+import { ReactComponent as CloseIcon } from "../../assets/image/icons/CloseIcon.svg"
+import CloseIcon2 from "../../assets/image/icons/CloseIcon.svg"
 import { useCommentStore } from "../../entities/sharedStores/useCommentStore";
 import { EMPTY_GUID } from "../../shared/exportSharedMorules";
 
@@ -86,9 +88,9 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
               )
             )}
           {replyTo !== null && (
-            <div>
+            <div className={styles.reply}>
               <span>Replying to... {replyTo.username}</span>
-              <button onClick={resetReplyTo}>x</button>
+              <CloseIcon onClick={resetReplyTo}/>
             </div>
           )}
           <CustomInput onSubmit={handleSubmit} />

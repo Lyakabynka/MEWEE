@@ -113,6 +113,7 @@
               font-family: "Geometria", sans-serif;
               text-align: center;
               font-size: 1.1vw;
+              color: var(--mainPage_post_colorText);
             }
             > img {
             @include hover-scale;

@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
+import { ReactComponent as IconPlus } from "../../images/icon_plus.svg";
 import AddItem from "../../../../assets/image/AddItem.png";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
@@ -92,7 +93,7 @@ const AddPost: FC = () => {
   return (
     <>
       <div className={styles.div_add} onClick={() => { openModal(1); setImage(null) }}>
-        <AddIcon style={{ color: "black" }} />
+        <IconPlus/>
       </div>
 
       {/* МОДАЛЬНОЕ ОКНО ШАГ 1 */}

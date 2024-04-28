@@ -6,12 +6,14 @@ import { smileDataTypes } from "../../widget.interface";
 import styles from "./custom_input.module.scss"
 import { useAuthStore } from "../../../entities";
 import { useFormik } from "formik";
+import {useTranslation} from "react-i18next";
 interface CustomInputProps {
     onSubmit: (comment: string) => void; // Function to be called on submit
 }
 const CustomInput: FC<CustomInputProps> = ({
     onSubmit
   }) => {
+    const { t } = useTranslation();
     const { username } = useAuthStore();
     const [visibleSmile, setVisibleSmile] = useState<boolean>(true)
     const handleClickSmileVisible = () => {
@@ -34,7 +36,8 @@ const CustomInput: FC<CustomInputProps> = ({
         <>
             <div className={styles.div}>
                 <button>{username}</button>
-                <input type="text" id="cvalue" name="cvalue" value={formik.values.cvalue} onChange={formik.handleChange} placeholder="Your comment..." />
+                <input type="text" id="cvalue" name="cvalue" value={formik.values.cvalue} onChange={formik.handleChange}
+                       placeholder={t('add_comment_placeholder')} />
                 <div>
                     <img onClick={handleClickSmileVisible} src={EmojiIcon} />
                     <img src={SentIcon} onClick={() => formik.handleSubmit()} />

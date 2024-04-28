@@ -5,9 +5,11 @@ import CustomInput from "../сommon/custom-input/CustomInput";
 import styles from "./comment_bar_item.module.scss"
 import { useAuthStore } from "../../entities";
 import { decryptImage } from "../../entities/sharedStores/post-utils";
+import {useTranslation} from "react-i18next";
 
 const CommentBarItem: FC<{ parent: any, item: any, replies: any, onReply: (id: string, user: any) => void }> = ({ parent, item, replies, onReply }) => {
 
+    const { t } = useTranslation();
     const { getProfile } = useAuthStore();
     const [isLoading, setIsLoading] = useState(true);
     const [author, setAuthor] = useState<any>(null);
@@ -82,10 +84,10 @@ const CommentBarItem: FC<{ parent: any, item: any, replies: any, onReply: (id: s
                             <span>{item.content}</span>
                             <div>
                                 <a onClick={toggleRepliesVisibility}>
-                                    <p>{isRepliesHidden ? `Показати відповіді (${replies.length})` : 'Сховати відповіді'}</p>
+                                    <p>{isRepliesHidden ? `${t('view_replies')} (${replies.length})` : t('hide_replies')}</p>
                                 </a>
-                                <a onClick={() => onReply(item.id, author)}>
-                                    <p>Відповісти</p>
+                                <a className={styles.answer} onClick={() => onReply(item.id, author)}>
+                                    <p>{t('reply')}</p>
                                 </a>
                                 <img src={LikeComentIcon} />
                             </div>

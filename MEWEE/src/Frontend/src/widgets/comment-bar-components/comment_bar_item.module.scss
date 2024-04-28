@@ -29,6 +29,7 @@ section
         font-size: 0.7rem;
         margin-top: 1rem;
         margin-left: 1rem;
+        color: var(--mainPage_post_comments_userColorText);
 
         > span
         {
@@ -48,18 +49,25 @@ section
         > span {
           font-size: 0.9rem;
           margin-bottom: 1rem;
+          color: var(--mainPage_post_comments_colorText);
         }
         > div {
           display: flex;
           align-items: center;
-          > a {
+          > a{
             margin-right: 0.5rem;
-
+            color: var(--mainPage_post_comments_shAnswerColorText);
             > p:hover
             {
               cursor: pointer;
-              color: #9436ab;
+              opacity: 0.75;
             }
+          }
+          > a.answer{
+            color: var(--mainPage_post_comments_answerColorText);
+          }
+          > img {
+            @include hover-scale;
           }
         }
       }

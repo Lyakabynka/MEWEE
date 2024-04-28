@@ -6,6 +6,8 @@
   border: 2px solid #25005c;
   border-radius: 10px;
   padding: 0.5rem;
+  background-color: var(--mainPage_post_comments_inputBackground);
+
   .smile_icon {
     position: absolute;
     right: 0px;
@@ -46,6 +48,8 @@
     width: 100%;
     border: none;
     outline: none;
+    background-color: var(--mainPage_post_comments_inputBackground);
+    color: var(--mainPage_post_comments_colorText);
   }
   > div {
     display: flex;
