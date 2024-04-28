@@ -8,13 +8,14 @@ import { ReactComponent as IconMessages } from "./images/icon_messages.svg";
 import { TopSearchBarItem } from "./components/topSearchBarItem/TopSearchBarItem";
 import AddPost from "./components/add-post/AddPost";
 import "./index.css";
+import { CircularProgress } from "@mui/material";
 
 export const TopSearchBar = () => {
   const { t } = useTranslation();
   // const { username, email, isLoggedIn, role, isEmailConfirmed } = useAuthStore();
   const [errors, setErrors, setAutoClearErrors] = useErrors();
   const { currentTheme } = useThemeStore();
-  const { findPosts, getPosts } = usePostsStore();
+  const { isLoading, findPosts, getPosts } = usePostsStore();
   // const fio = username?.split(' ');
 
   const formik = useFormik({
@@ -61,6 +62,7 @@ export const TopSearchBar = () => {
           <span className="input-search-bar-icon search-icon-default" onClick={() => formik.handleSubmit()} />
         </label>
       </div>
+          {isLoading && <CircularProgress size={"1rem"}></CircularProgress>}
       <div className="top-search-bar-tools-container">
         <AddPost />
         <TopSearchBarItem icon={<IconFilter />} />

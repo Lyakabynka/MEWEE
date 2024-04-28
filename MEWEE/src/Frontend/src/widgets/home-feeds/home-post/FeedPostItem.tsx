@@ -100,19 +100,25 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
     }
   }
 
+  const updatePost = () =>
+    {
+      console.log("updated");
+      getComments(onResponse, item.id, 1, 0);
+      getPostLikes(onGetPostLikesResponse, item.id);
+      getProfile(onProfileResponse, item.userId);
+      const at = item.attachment ?? "";
+      if (at != "")
+        decryptImage(at)
+          .then(decryptedData => {
+            setImageSrc(decryptedData);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    }
   useEffect(() => {
-    getComments(onResponse, item.id, 1, 0);
-    getPostLikes(onGetPostLikesResponse, item.id);
-    getProfile(onProfileResponse, item.userId);
-    const at = item.attachment ?? "";
-    if (at != "")
-      decryptImage(at)
-        .then(decryptedData => {
-          setImageSrc(decryptedData);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+    
+    updatePost();
 
   }, []);
 

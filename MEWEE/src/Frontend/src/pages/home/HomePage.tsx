@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { CircularProgress, Grid, LinearProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../../entities";
 import { HomeFeed } from "./../../widgets/home-feeds/HomeFeed";

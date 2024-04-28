@@ -6,12 +6,14 @@ interface SideToolbarMenuItemProps {
   title: string;
   icon: React.ReactNode;
   isVisible: boolean;
+  onNavigate: () => void;
 }
 
 export const SideToolbarMenuItem: React.FC<SideToolbarMenuItemProps> = ({
   title,
   icon,
   isVisible,
+  onNavigate
 }) => {
   const { currentTheme } = useThemeStore();
   const [backgroundColor, setBackgroundColor] = useState("transparent");
@@ -22,6 +24,7 @@ export const SideToolbarMenuItem: React.FC<SideToolbarMenuItemProps> = ({
     <div
       className={`item ${isVisible ? "" : "icon-centered"}`}
       style={{ background: backgroundColor }}
+      onClick={onNavigate}
       onMouseEnter={() => {
         setBackgroundColor(
           currentTheme?.mainPage.sideBar.hoverBackground || ""
