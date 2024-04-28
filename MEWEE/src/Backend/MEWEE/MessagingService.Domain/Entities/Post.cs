@@ -8,6 +8,8 @@ public class Post : BaseEntity
     public string Title { get; set; }
     public string Content { get; set; }
     public string? Attachment { get; set; }
+    public string? Location { get; set; }
+    public string Category { get; set; }
     
     public List<Share> Shares { get; set; }
     public List<PostLike> Likes { get; set; }

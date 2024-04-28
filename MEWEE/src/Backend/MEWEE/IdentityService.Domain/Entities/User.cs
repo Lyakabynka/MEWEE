@@ -9,6 +9,8 @@ public class User : BaseEntity
 
     public string Email { get; set; }
 
+    public string? ProfileAvatar { get; set; }
+
     public UserRole Role { get; set; } = UserRole.User;
 
     public bool IsEmailConfirmed { get; set; } = false;

@@ -9,15 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.Application.Mediatr.User.Commands.UpdateUserProfile;
 
-public class UploadProfileAvatarCommandHandler : IRequestHandler<UpdateUserProfileCommand, Result>
+public class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfileCommand, Result>
 {
     private readonly IApplicationDbContext _dbContext;
-    private readonly IEmailService _emailService;
     
-    public UploadProfileAvatarCommandHandler(IApplicationDbContext dbContext, IEmailService emailService)
+    public UpdateUserProfileCommandHandler(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
-        _emailService = emailService;
     }
 
     public async Task<Result> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
@@ -30,11 +28,12 @@ public class UploadProfileAvatarCommandHandler : IRequestHandler<UpdateUserProfi
         }
 
         //Update
-        if (!string.IsNullOrEmpty(request.Attachment))
+        if (!string.IsNullOrEmpty(request.ProfileAvatar))
         {
-            user.ProfileAvatar = request.Attachment;
+            user.ProfileAvatar = request.ProfileAvatar;
         }
 
+        _dbContext.Users.Update(user);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         return Result.Create(new { });

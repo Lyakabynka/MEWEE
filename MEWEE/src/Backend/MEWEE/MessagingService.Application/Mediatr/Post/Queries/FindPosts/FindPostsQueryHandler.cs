@@ -42,6 +42,8 @@ namespace MessagingService.Application.Mediatr.Post.Queries.FindPosts
                         Title = p.Title,
                         Content = p.Content,
                         Attachment = p.Attachment,
+                        Location = p.Location,
+                        Category = p.Category,
                         LikesCount = p.Likes.Count,
                     })
                 .ToList();

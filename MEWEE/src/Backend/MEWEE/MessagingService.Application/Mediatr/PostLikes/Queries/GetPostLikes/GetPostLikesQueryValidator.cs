@@ -2,17 +2,17 @@
 using FluentValidation;
 using MessagingService.Application.Mediatr.Shared.Pagination;
 
-namespace MessagingService.Application.Mediatr.Comments.Queries.GetComments;
+namespace MessagingService.Application.Mediatr.PostLikes.Queries.GetPostLikes;
 
-public class CreateCommentCommandValidator : AbstractValidator<GetCommentsQuery>
+public class CreatePostLikesCommandValidator : AbstractValidator<GetPostLikesQuery>
 {
-    public CreateCommentCommandValidator()
+    public CreatePostLikesCommandValidator()
     {
         RuleFor(c => c.PostId)
             .NotEqual(Guid.Empty);
 
-        RuleFor(x => x.Pagination)
-            .NotNull()
-            .SetValidator(new PaginationValidator());
+        // RuleFor(x => x.Pagination)
+        //     .NotNull()
+        //     .SetValidator(new PaginationValidator());
     }
 }

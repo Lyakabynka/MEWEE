@@ -3,14 +3,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MessagingService.Application.Features.Interfaces;
-using MessagingService.Application.Mediatr.Comments.Commands.CreateComment;
+using MessagingService.Application.Mediatr.Comments.Queries.GetComments;
 using MessagingService.Application.Response;
 using MessagingService.Domain.Entities;
+using MessagingService.Domain.Entities.Likes;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessagingService.Application.Mediatr.Comments.Queries.GetComments;
+namespace MessagingService.Application.Mediatr.PostLikes.Queries.GetPostLikes;
 
-public class GetPostLikesQueryHandler : IRequestHandler<GetCommentsQuery, Result>
+public class GetPostLikesQueryHandler : IRequestHandler<GetPostLikesQuery, Result>
 {
     private readonly IApplicationDbContext _dbContext;
 
@@ -19,29 +20,19 @@ public class GetPostLikesQueryHandler : IRequestHandler<GetCommentsQuery, Result
         _dbContext = dbContext;
     }
 
-    public async Task<Result> Handle(GetCommentsQuery request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(GetPostLikesQuery request, CancellationToken cancellationToken)
     {
-        var page = request.Pagination.Page;
-        var pageSize = request.Pagination.PageSize;
-        
-        var comments = await _dbContext.Comments
-            .Where(c => c.PostId == request.PostId)
-            .Select(c => new CommentDto()
-            {
-                Id = c.Id,
-                PostId = c.PostId,
-                ReplyCommentId = c.ReplyCommentId,
-                
-                Content = c.Content,
-                
-                Likes = c.Likes.Count,
-
-                UserId = c.UserId,
-            })
-            //.Skip(page*pageSize)
-            //.Take(pageSize)
+        var posts = await _dbContext.PostLikes
+            .Where(p => p.UserId == request.UserId && p.PostId == request.PostId)
+            .Select(p =>
+                new PostLike()
+                {
+                    Id = p.Id,
+                    UserId = request.UserId,
+                    PostId = request.PostId
+                })
             .ToListAsync(cancellationToken);
 
-        return Result.Create(comments);
+        return Result.Create(posts);
     }
 }

@@ -40,6 +40,45 @@
       "DownstreamPathTemplate": "/auth/logout"
     },
     {
+      "UpstreamPathTemplate" : "/user/forgot-password",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/forgot-password"
+    },
+    {
+      "UpstreamPathTemplate" : "/user/restore-password",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/restore-password"
+    },
+    {
+      "UpstreamPathTemplate" : "/user/check-forgot-password",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/check-forgot-password"
+    },
+    {
       "UpstreamPathTemplate" : "/user/profile/{userId}",
       "UpstreamHttpMethod": ["Get"],
 
@@ -53,6 +92,19 @@
       "DownstreamPathTemplate": "/user/profile/{userId}"
     },
     {
+      "UpstreamPathTemplate" : "/user/update-profile",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/update-profile"
+    },
+    {
       "UpstreamPathTemplate" : "/user/register",
       "UpstreamHttpMethod": ["Post"],
 
@@ -64,6 +116,19 @@
         }
       ],
       "DownstreamPathTemplate": "/user/register"
+    },
+    {
+      "UpstreamPathTemplate" : "/user/confirm-email",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/user/confirm-email"
     },
     
     {
@@ -119,6 +184,46 @@
         }
       ],
       "DownstreamPathTemplate": "/posts"
+    },
+
+    {
+      "UpstreamPathTemplate" : "/like-post",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/like-post"
+    },
+    {
+      "UpstreamPathTemplate" : "/unlike-post",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/unlike-post"
+    },
+    {
+      "UpstreamPathTemplate" : "/post-likes",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/post-likes"
     },
 
     {

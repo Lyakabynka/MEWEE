@@ -4,8 +4,10 @@ using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
 using IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
 using IdentityService.Application.Mediatr.User.Commands.Register;
 using IdentityService.Application.Mediatr.User.Commands.RestorePassword;
+using IdentityService.Application.Mediatr.User.Commands.UpdateUserProfile;
 using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
+using IdentityService.WebApi.Models.Profile;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,7 +43,34 @@ public class UserController : ApiControllerBase
         
         return await Mediator.Send(request);
     }
-
+    /// <summary>
+    /// Update a user profile
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// PUT /user/profile
+    /// </remarks>
+    /// <param name="requestModel">UpdatePostRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("update-profile")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> UpdateUserProfile([FromBody] UpdateUserProfileRequestModel requestModel)
+    {
+        var request = new UpdateUserProfileCommand()
+        {
+            UserId = UserId,
+            ProfileAvatar = requestModel.ProfileAvatar,
+        };
+        
+        return await Mediator.Send(request);
+    }
     /// <summary>
     /// Get the User profile
     /// </summary>

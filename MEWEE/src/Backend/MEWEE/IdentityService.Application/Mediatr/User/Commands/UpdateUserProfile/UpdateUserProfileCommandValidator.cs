@@ -3,50 +3,30 @@ using FluentValidation;
 using IdentityService.Application.Features.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.Application.Mediatr.User.Commands.Register;
+namespace IdentityService.Application.Mediatr.User.Commands.UpdateUserProfile;
 
-public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
+public class UpdateUserProfileValidator : AbstractValidator<UpdateUserProfileCommand>
 {
-    public RegisterCommandValidator(IApplicationDbContext dbContext)
+    public UpdateUserProfileValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(c => c.Username)
-            .Length(4, 20);
-
-        RuleFor(c => c.Password)
-            .Length(8, 40);
-
-        RuleFor(c => c.Email)
-            .Length(8, 80)
-            .Must((email) =>
+        RuleFor(c => c.UserId)
+            .NotEqual(Guid.Empty)
+            .MustAsync(async (id, cancellationToken) =>
             {
-                try
-                {
-                    var mailAddress = new MailAddress(email);
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            })
-            .WithMessage("error_invalid_email");
+                var user = await dbContext.Users.Where(p => p.Id == id).FirstOrDefaultAsync(cancellationToken);
 
-        RuleFor(c => c.Username)
-            .MustAsync(async (username, cancellationToken) =>
-            {
-                return !await dbContext.Users
-                    .Where(user => user.Username == username)
-                    .AnyAsync(cancellationToken);
+                return user is not null;
             })
-            .WithMessage("error_username_exists");
-        
-        RuleFor(c => c.Email)
-            .MustAsync(async (email, cancellationToken) =>
+            .WithMessage("user_not_found");
+
+        RuleFor(c => c.ProfileAvatar)
+            .Must(a =>
             {
-                return !await dbContext.Users
-                    .Where(user => user.Email == email)
-                    .AnyAsync(cancellationToken);
+                if (a is null) return true;
+
+                var buf = new Span<byte>(new byte[a.Length]);
+                return Convert.TryFromBase64String(a, buf, out int bytesParsed);
             })
-            .WithMessage("error_email_exists");
+            .WithMessage("invalid_attachment");
     }
 }

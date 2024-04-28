@@ -1,12 +1,6 @@
-﻿namespace MessagingService.WebApi.Models.Post;
+﻿namespace IdentityService.WebApi.Models.Profile;
 
 public class UpdateUserProfileRequestModel
 {
-    public Guid Id { get; set; }
-    
-    public string Title { get; set; }
-    public string Content { get; set; }
-    public string? Attachment { get; set; }
-    public string? Location { get; set; }
-    public string Category { get; set; }
+    public string ProfileAvatar { get; set; }
 }

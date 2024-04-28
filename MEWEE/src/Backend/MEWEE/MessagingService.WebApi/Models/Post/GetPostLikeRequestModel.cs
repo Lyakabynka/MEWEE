@@ -1,6 +1,6 @@
 ﻿namespace MessagingService.WebApi.Models.Post;
 
-public class CreatePostLikeRequestModel
+public class GetPostLikeRequestModel
 {
     public Guid PostId { get; set; }
 }

@@ -86,6 +86,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
             Username = user.Username,
             Email = user.Email,
             Role = user.Role,
+            ProfileAvatar = user.ProfileAvatar,
             IsEmailConfirmed = user.IsEmailConfirmed,
             //user's current agent
             UserAgent = session.UserAgent

@@ -8,7 +8,6 @@
     <ItemGroup>
       <Folder Include="Features\Extensions\" />
       <Folder Include="Mediatr\Comments\Queries\" />
-      <Folder Include="Mediatr\PostLikes\Queries\" />
     </ItemGroup>
 
     <ItemGroup>
