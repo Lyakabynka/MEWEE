@@ -37,12 +37,13 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
     return /\.(mp4|webm|ogg)$/i.test(url);
   };
 
-  const onGetPostLikesResponse = (data: any, errors: string[]) => {
+  // const onGetPostLikesResponse = (data: any, errors: string[]) => {
 
-    console.log(errors);
-    if (errors.length == 0 && data !== null) {
-      const result = data.filter((x: { postId: string }) => x.postId === item.id);
+  //   console.log(errors);
+  //   if (errors.length == 0 && data !== null) {
+  //     const result = data.filter((x: { postId: string }) => x.postId === item.id);
 
+<<<<<<< HEAD
       setIsLiked(result.length > 0);
     }
   };
@@ -138,16 +139,107 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   //   if (videoRef.current) {
   //     videoRef.current.currentTime = 0;
   //     videoRef.current.play();
+=======
+  //     setIsLiked(result.length > 0);
+>>>>>>> AliDev
   //   }
   // };
-  const handleCommentClick = (postId: string) => {
-    setCommentsHiden(commentsHiden === postId ? null : postId);
-  };
-  const onUpdated = () => {
-    getComments(onResponse, item.id, 1, 0);
-  }
-  // Check if currentTheme exists before accessing custom values
-  const CustomBox = currentTheme?.components?.MuiIcon;
+
+  // const onResponse = (data: any, errors: string[]) => {
+
+  //   //console.log(errors);
+  //   if (errors.length == 0) {
+  //     //console.log("all good");
+  //     setComments(data);
+
+  //   }
+  // }
+
+  // const onProfileResponse = (data: any, errors: string[]) => {
+
+  //   //console.log(errors);
+  //   if (errors.length == 0 && data !== null) {
+  //     setAuthor(data);
+  //     handleAvatarDecrypt(data);
+  //   }
+  // };
+
+  // const onLikePostResponse = (errors: string[]) => {
+
+  //   console.log(errors);
+  //   if (errors.length == 0) {
+
+  //     getPostLikes(onGetPostLikesResponse, item.id);
+  //   }
+  // };
+
+  // const handleLikePost = () => {
+
+  //   item.likesCount += !isLiked ? 1 : -1;
+
+  //   if (!isLiked)
+  //     likePost(onLikePostResponse, item.id)
+  //   else
+  //     unLikePost(onLikePostResponse, item.id)
+
+  // };
+  // const handleAvatarDecrypt = (data: any) => {
+
+  //   if (data.author !== null) {
+  //     const at = data.profileAvatar ?? "";
+  //     if (at != "")
+  //       decryptImage(at)
+  //         .then(decryptedData => {
+  //           setAvatar(decryptedData);
+  //         })
+  //         .catch(error => {
+  //           console.error(error);
+  //         });
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getComments(onResponse, item.id, 1, 0);
+  //   getPostLikes(onGetPostLikesResponse, item.id);
+  //   getProfile(onProfileResponse, item.userId);
+  //   const at = item.attachment ?? "";
+  //   if (at != "")
+  //     decryptImage(at)
+  //       .then(decryptedData => {
+  //         setImageSrc(decryptedData);
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+
+  // }, []);
+
+  // // useEffect(() => {
+  // //   if (videoRef.current) {
+  // //     videoRef.current.addEventListener("ended", handleVideoEnded);
+  // //   }
+
+  // //   return () => {
+  // //     if (videoRef.current) {
+  // //       videoRef.current.removeEventListener("ended", handleVideoEnded);
+  // //     }
+  // //   };
+  // // }, []);
+
+  // // const handleVideoEnded = () => {
+  // //   if (videoRef.current) {
+  // //     videoRef.current.currentTime = 0;
+  // //     videoRef.current.play();
+  // //   }
+  // // };
+  // const handleCommentClick = (postId: string) => {
+  //   setCommentsHiden(commentsHiden === postId ? null : postId);
+  // };
+  // const onUpdated = () => {
+  //   getComments(onResponse, item.id, 1, 0);
+  // }
+  // // Check if currentTheme exists before accessing custom values
+  // const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
   return (
     <div className={styles.div}>
@@ -211,9 +303,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
           )}
         </main>
         <footer className={styles.footer}>
-          <span
-            style={{ color: currentTheme?.mainPage.post.colorText }}
-          >
+          <span style={{ color: currentTheme?.mainPage.post.colorText }}>
             {item.title}
           </span>
           <p>{item.description}</p>
@@ -221,7 +311,11 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
             <CustomButton text={t("more")} />
             <div>
               <div>
-                <img onClick={handleLikePost} style={{ filter: isLiked ? "saturate(3)" : "" }} src={LikePostIcon} />
+                <img
+                  // onClick={handleLikePost}
+                  style={{ filter: isLiked ? "saturate(3)" : "" }}
+                  src={LikePostIcon}
+                />
                 <span>{item.likesCount}</span>
               </div>
               <div>
@@ -230,7 +324,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
               </div>
               <div>
                 <img
-                  onClick={() => handleCommentClick(item.id)}
+                  // onClick={() => handleCommentClick(item.id)}
                   src={CommentPostIcon}
                   style={{ filter: commentsHiden ? "saturate(3)" : "" }}
                 />
@@ -240,13 +334,13 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
           </nav>
         </footer>
       </div>
-      <CommentBarComponents
+      {/* <CommentBarComponents
         id={item.id}
         appearance={true}
         hiden={commentsHiden}
         commentDataRender={comments}
         onUpdated={onUpdated}
-      />
+      /> */}
     </div>
   );
 };

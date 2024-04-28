@@ -50,7 +50,7 @@ const UserInfo: FC<userInfoDataPropsTypes> = ({ userData }) => {
                     </ul>
                 </div>
                 <div>
-                    {/* ТУТ МОЖЕТ БЫТЬ JUST DO IT */}
+                    {/* //ТУТ МОЖЕТ БЫТЬ JUST DO IT */}
                 </div>
                 <div className={styles.gallery}>
                     <h2>Фото</h2>
@@ -59,12 +59,15 @@ const UserInfo: FC<userInfoDataPropsTypes> = ({ userData }) => {
                             userData.gallery.map((item, index) => {
                                 return (
                                     <Grid md={6}>
-                                        <img key={index} src={item.image} />
+                                        <img
+                                            width={100}
+                                            height={100}
+                                            key={index}
+                                            src={item.image} />
                                     </Grid>
                                 )
                             })
                         )}
-
                     </Grid>
                     <div>
                         <h5>Показати ще 30 </h5>
