@@ -27,7 +27,6 @@ public class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfile
             return Result.FormForbidden();
         }
 
-        //Update
         if (!string.IsNullOrEmpty(request.ProfileAvatar))
         {
             user.ProfileAvatar = request.ProfileAvatar;
