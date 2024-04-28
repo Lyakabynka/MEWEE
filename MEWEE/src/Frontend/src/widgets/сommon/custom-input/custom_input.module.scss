@@ -36,11 +36,13 @@
     background-color: #fba500;
     color: white;
     border: none;
+    font-size: 0.7rem;
     border-radius: 15px;
-    padding: 0 1rem;
-    @include hover-scale;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    //@include hover-scale;
   }
   > input {
+    margin-left: 1rem;
     width: 100%;
     border: none;
     outline: none;

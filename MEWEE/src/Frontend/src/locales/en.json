@@ -49,6 +49,7 @@
   "forgotPasswordCode_invalid": "Verifaction code is invalid.",
   "error_agree_policy_required": "You must agree to the terms and privacy policy.",
   "unknown_error": "Uknown Error",
+  "user_not_found":"User not found",
   "registration_sucess": "Registration sucess!",
   "login_sucess": "Login sucess!",
   "error_email_exists": "User with this E-mail already exists",

@@ -64,6 +64,15 @@
     }
   }
   footer{
+    section
+    {
+      display: flex;
+      align-items: center;
+    }
+    nav
+    {
+      margin-left: 10px;
+    }
     button{
       position: relative;
       width: 45%;

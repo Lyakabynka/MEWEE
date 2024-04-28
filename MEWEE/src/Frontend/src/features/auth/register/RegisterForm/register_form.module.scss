@@ -100,9 +100,19 @@
   }
   footer{
     display: flex;
+    section
+    {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+    nav
+    {
+      margin-left: 10px;
+    }
     button{
       position: relative;
-      width: 45%;
+      width: 80%;
       height: 3rem;
       background: var(--authPages_commonElements_buttonBackground);
       color: var(--authPages_commonElements_buttonColor);

@@ -12,10 +12,22 @@
   }
   footer{
     display: flex;
+    flex-direction: column;
+    section
+    {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      
+      > nav
+      {
+        margin-left: 1rem;
+      }
 
+    }
     button:first-child{
       position: relative;
-      width: 45%;
+      width: 50%;
       height: 3rem;
       background: var(--authPages_commonElements_buttonBackground);
       color: var(--authPages_commonElements_buttonColor);

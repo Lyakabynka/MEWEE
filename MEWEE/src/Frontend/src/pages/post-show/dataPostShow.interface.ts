@@ -1,9 +1,10 @@
 export interface postDataTypes {
   id: string;
+  userId: string;
   username: string;
   profileImageUrl: string;
-  postDate: string;
   location: string;
+  category: string;
   imageUrl: string;
   description: string;
   likesCount: number;
@@ -13,6 +14,7 @@ export interface postDataTypes {
   title: string;
   content?: string;
   attachment? : string;
+  createdAt: string;
 }
 
 export interface postDataProps {

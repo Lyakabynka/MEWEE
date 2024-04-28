@@ -8,8 +8,8 @@ import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "./App.css";
 import {setThemeVariables} from "../themesToCss";
-import PostUploader from "../pages/home/post-uploader/PostUploader";
 import RegLogRouting from "../widgets/routing/RegLogRouting";
+import ProfilePictureUploader from "../features/profilePictureUploader/ProfilePictureUploader";
 
 const App: React.FC = () => {
   const { establishConnection, closeConnection } = useSignalRStore();

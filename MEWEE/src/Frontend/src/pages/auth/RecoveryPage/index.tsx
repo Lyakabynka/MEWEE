@@ -26,19 +26,19 @@ export const RecoveryPage: React.FC<IRecoveryPageProps> = ({ url }) => {
   return (
     <>
       {/* Додати стиль на цю кнопку */}
-      {currentStage !== EnumRecoveryStage.Sucess && (
+      {/* {currentStage !== EnumRecoveryStage.Sucess && (
         <button onClick={handleBack}>Go Back</button>
-      )}
+      )} */}
       {url == "email" && (
         <>
           {currentStage === EnumRecoveryStage.Begin && (
-            <RecoveryEmailForm onNext={handleStageProgression} />
+            <RecoveryEmailForm onNext={handleStageProgression} onBack={handleBack} />
           )}
           {currentStage === EnumRecoveryStage.Confirmation && (
-            <RecoveryEmailConfirmationForm onNext={handleStageProgression} />
+            <RecoveryEmailConfirmationForm onNext={handleStageProgression} onBack={handleBack} />
           )}
           {currentStage === EnumRecoveryStage.ChangePassword && (
-            <RecoverySetPasswordForm onNext={handleStageProgression} />
+            <RecoverySetPasswordForm onNext={handleStageProgression}  />
           )}
           {currentStage === EnumRecoveryStage.Sucess && (
             <RecoverySuccessFulForm

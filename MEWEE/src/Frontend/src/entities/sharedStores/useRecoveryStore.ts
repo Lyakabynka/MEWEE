@@ -47,23 +47,22 @@ export const useRecoveryStore = create<IRecoveryStore>()(
         set({ isLoading: true, verificationCode: params.code });
         const request = { code: params.code, email: get().email };
 
-        try
-        {
-        const response = await $api.post<any>(
-          ENDPOINTS.RECOVERY.VERIFY_CODE,
-          request,
-          {withCredentials:false}
-        );
-        
+        try {
+          const response = await $api.post<any>(
+            ENDPOINTS.RECOVERY.VERIFY_CODE,
+            request,
+            { withCredentials: false }
+          );
+
           if (response.status === 200) {
             callback(pErrors([]));
           } else {
-            callback(pErrors(['unknown_error']));
+            callback(pErrors(response.data.errors));
           }
-        } catch (error:any) {
+        } catch (error: any) {
           callback(pErrors(['unknown_error']));
-        
-      }
+
+        }
 
         set({ isLoading: false });
       },
@@ -73,31 +72,31 @@ export const useRecoveryStore = create<IRecoveryStore>()(
         params: { email: string },
       ) => {
         set({ isLoading: true, email: params.email });
-      
+
         try {
           const response = await $api.post<any>(
             ENDPOINTS.RECOVERY.CONFIRM_EMAIL,
             { email: params.email },
             { withCredentials: false }
           );
-          
+
           // Check if the response is successful
           if (response.status === 200) {
             // Handle successful response
             callback(pErrors([]));
           } else {
             // Handle other non-200 responses
-            callback(pErrors(['unknown_error']));
+            callback(pErrors(response.data.errors));
           }
-        } catch (error:any) {
+        } catch (error: any) {
           // Handle Axios error
           callback(pErrors(['unknown_error']));
-        
-      }
-      
+
+        }
+
         set({ isLoading: false });
       },
-      
+
       setNewPassword: async (
         callback: ResponseCallback,
         params: { password: string }
@@ -110,21 +109,21 @@ export const useRecoveryStore = create<IRecoveryStore>()(
           newPassword: params.password,
         };
 
-        try{
+        try {
           const response = await $api.post<any>(
-          ENDPOINTS.RECOVERY.SET_NEW_PASSWORD,
-          request
-        );
+            ENDPOINTS.RECOVERY.SET_NEW_PASSWORD,
+            request
+          );
 
-        if (response.status === 200) {
-          callback(pErrors([]));
-        } else {
+          if (response.status === 200) {
+            callback(pErrors([]));
+          } else {
+            callback(pErrors(response.data.errors));
+          }
+        } catch (error: any) {
           callback(pErrors(['unknown_error']));
+
         }
-      } catch (error:any) {
-        callback(pErrors(['unknown_error']));
-      
-    }
 
         set({ isLoading: false });
       },

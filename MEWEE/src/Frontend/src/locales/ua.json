@@ -51,6 +51,7 @@
   "forgotPasswordCode_invalid": "Неправильний код підтвердження",
   "error_agree_policy_required": "Ви повинні погодитися з умовами та політикою конфіденційності.",
   "unknown_error": "Невідома помилка",
+  "user_not_found":"Користувача не знайдено",
   "registration_sucess": "Реєстрація успішна!",
   "login_sucess": "Успішний вхід!",
   "error_email_exists": "Користувач з цією електронною поштою вже існує",

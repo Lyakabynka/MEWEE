@@ -5,8 +5,9 @@ import { useErrors, useRecoveryStore, useThemeStore } from '../../../../../../en
 import { CircularProgress } from '@mui/material';
 import { CodeItem } from '../../../components/codeitem';
 import styles from "./confirmation_form.module.scss";
+import { PopUpError } from '../../../../../../widgets/popuperror/PopUpError';
 
-export const RecoveryEmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
+export const RecoveryEmailConfirmationForm: React.FC<{ onNext: () => void, onBack: () => void }> = ({ onNext, onBack }) => {
   const {t} = useTranslation();
   const { verificateCode, isLoading } = useRecoveryStore();
   const [errors, setErrors, setAutoClearErrors] = useErrors();
@@ -21,7 +22,7 @@ export const RecoveryEmailConfirmationForm: React.FC<{ onNext: () => void }> = (
   const onVerificationSentResponse = (errors: string[]) =>
     {
         setAutoClearErrors(errors);
-
+        console.log("rec:", errors);
         if (errors.length == 0)
         {
             onNext();
@@ -37,15 +38,21 @@ export const RecoveryEmailConfirmationForm: React.FC<{ onNext: () => void }> = (
                     {formik.errors.code && <div className={styles.error}>{t(formik.errors.code)}</div>}
                 </main>
                 <footer>
-                    <button type="submit">{t('verify') + " " + t('code')}</button>
-                    <button>{t('go_back')}</button>
-                </footer>
-                {isLoading && <CircularProgress></CircularProgress>}
-            </form>
+                    <section>
+                        <button type="submit">{t('verify') + " " + t('code')}</button>
+                        <nav>
+                            {isLoading && <CircularProgress size={"1rem"}></CircularProgress>}
+                        </nav>
+                        <button onClick={onBack}>{t('go_back')}</button>
+                    </section>
 
-            {(errors && errors.length > 0) && errors.map((error, index) => (
-                <span key={index} className={styles.error}>{t(error)}</span>
-            ))}
+                    <nav>
+                    {(errors && errors.length > 0) && errors.map((error, index) => (
+                        <PopUpError text={t(error)}></PopUpError>
+                    ))}
+                </nav>
+                </footer>
+            </form>
         </div>
     );
 };

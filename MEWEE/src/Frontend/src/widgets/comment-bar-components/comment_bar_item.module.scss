@@ -1,0 +1,72 @@
+@import "src/mixins.scss";
+
+section
+{
+  .comments_content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+
+    > header
+    {
+      display: flex;
+    
+      max-width: 50px;
+      > img {
+        margin-right: 1rem;
+        border-radius: 50%;
+        width: 50px;
+      }
+    }
+    > main
+    {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      > span{
+        font-weight: bold;
+        font-size: 0.7rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+
+        > span
+        {
+          margin-left: 8px;
+          font-weight: normal;
+          color: gray;
+          display:inline-block;
+          vertical-align: middle;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 15ch;
+        }
+      }
+      > div {
+        margin-left: 1rem;
+        > span {
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+        }
+        > div {
+          display: flex;
+          align-items: center;
+          > a {
+            margin-right: 0.5rem;
+
+            > p:hover
+            {
+              cursor: pointer;
+              color: #9436ab;
+            }
+          }
+        }
+      }
+    }
+  }
+  > footer
+  {
+    margin-left: 3rem;
+  }
+}

@@ -5,8 +5,9 @@ import { useErrors, useRecoveryStore, useThemeStore } from '../../../../../entit
 import { CircularProgress } from '@mui/material';
 import { SET_NEW_PASSWORD_SCHEMA } from '../../../../../shared/exportSharedMorules';
 import styles from "./set_password_form.module.scss";
+import { PopUpError } from '../../../../../widgets/popuperror/PopUpError';
 
-export const RecoverySetPasswordForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
+export const RecoverySetPasswordForm: React.FC<{ onNext: () => void}> = ({ onNext }) => {
     const {t} = useTranslation();
     const { setNewPassword, isLoading } = useRecoveryStore();
     const [errors, setErrors, setAutoClearErrors] = useErrors();
@@ -108,14 +109,22 @@ export const RecoverySetPasswordForm: React.FC<{ onNext: () => void }> = ({ onNe
                     </div>
                 </main>
                 <footer>
-                    <button type="submit">{t('send')}</button>
-                    {isLoading && <CircularProgress></CircularProgress>}
+                    <section>
+                        <button type="submit">{t('send')}</button>
+                        <nav>
+                            {isLoading && <CircularProgress size={"1rem"}></CircularProgress>}
+                        </nav>
+                    </section>
+
+                    <nav>
+                    {(errors && errors.length > 0) && errors.map((error, index) => (
+                        <PopUpError text={t(error)}></PopUpError>
+                    ))}
+                </nav>
                 </footer>
             </form>
 
-            {(errors && errors.length > 0) && errors.map((error, index) => (
-                <span key={index} className="error">{t(error)}</span>
-            ))}
+            
 
         </div>
     );

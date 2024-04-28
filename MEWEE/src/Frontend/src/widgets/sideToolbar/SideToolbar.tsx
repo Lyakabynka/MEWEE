@@ -16,12 +16,15 @@ import { ReactComponent as ArrowLeft } from "./images/arrow_left.svg";
 import { ReactComponent as ArrowRight } from "./images/arrow-right.svg";
 import { SwitchComponent } from "./components/switchComponent";
 import { LanguageComponent } from "./components/languageComponent";
+import { decryptImage } from "../../entities/sharedStores/post-utils";
+import ProfilePictureUploader from "../../features/profilePictureUploader/ProfilePictureUploader";
 
 export const SideToolbar = () => {
   const navigate = useNavigate();
-  const { username, email, isLoggedIn, role, isEmailConfirmed } =
+  const { username, profileAvatar, email, isLoggedIn, role, isEmailConfirmed } =
     useAuthStore();
   const { t, i18n } = useTranslation();
+  const [avatar, setAvatar] = useState<any>(null);
   const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme } =
     useThemeStore();
   const fio = username?.split(" ");
@@ -37,7 +40,20 @@ export const SideToolbar = () => {
     return storedLanguage || "en";
   });
 
+  const handleAvatarDecrypt = () => {
+    const at = profileAvatar ?? "";
+    if (at != "")
+      decryptImage(at)
+        .then(decryptedData => {
+          setAvatar(decryptedData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  }
+
   useEffect(() => {
+    handleAvatarDecrypt();
     localStorage.setItem("language", currentLanguage);
     i18n.changeLanguage(currentLanguage);
   }, [currentLanguage, i18n]);
@@ -72,8 +88,10 @@ export const SideToolbar = () => {
           }}
         >
           <div className="toolbar-profile-main-container">
+                <ProfilePictureUploader></ProfilePictureUploader>
             <div className="toolbar-profile-image">
-              <img src={require("./images/unknown.jpg")}></img>
+              <img src={avatar === "" ? require("./images/unknown.jpg") : avatar}>
+              </img>
             </div>
             {isVisible && (
               <div

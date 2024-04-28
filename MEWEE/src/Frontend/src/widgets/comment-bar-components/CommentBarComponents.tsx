@@ -36,11 +36,15 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
   
     return findReplies(replyCommentId);
   };
-  
+  const resetReplyTo = () =>
+  {
+    setReplyTo(null);
+    setReplyToId(EMPTY_GUID)
+  }
   
   const handleSubmit = (input: string) => {
+    resetReplyTo();
     const replyId = replyToId ?? "00000000-0000-0000-0000-000000000000";
-    console.log(id ?? "", replyId, input);
     createComment(onResponse, id ?? "", replyId, input);
   };
 
@@ -84,7 +88,7 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
           {replyTo !== null && (
             <div>
               <span>Replying to... {replyTo.username}</span>
-              <button onClick={()=>{setReplyTo(null); setReplyToId(EMPTY_GUID)}}>x</button>
+              <button onClick={resetReplyTo}>x</button>
             </div>
           )}
           <CustomInput onSubmit={handleSubmit} />

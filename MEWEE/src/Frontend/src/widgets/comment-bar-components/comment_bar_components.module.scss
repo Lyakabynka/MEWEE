@@ -7,9 +7,12 @@
   max-height: 21rem;
   background-color: white;
   border-radius: 1.25rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   overflow: auto;
   padding: 1rem 3rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  padding-top: 3rem;
   z-index: 1;
   .comments_contetn {
     display: flex;

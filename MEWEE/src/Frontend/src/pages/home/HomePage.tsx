@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
   //<CreateChatTest></CreateChatTest>
   return (
     <Grid container>
-      <Grid sm={8}>
+      <Grid sm={12}>
         <HomeFeed />
       </Grid>
       <Grid sm={4}>

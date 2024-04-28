@@ -1,0 +1,22 @@
+@import "src/mixins.scss";
+
+.popupSec
+{
+
+  > div {
+    margin: 1rem;
+    background-color: rgba(255, 101, 101, 0.36);
+    padding: 0.5rem;
+    width: max-content;
+    border-radius: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    > span
+    {
+      font-size: 0.8rem;
+      vertical-align: middle;
+      color: rgba(198, 32, 32, 0.673);
+    }
+  }
+}

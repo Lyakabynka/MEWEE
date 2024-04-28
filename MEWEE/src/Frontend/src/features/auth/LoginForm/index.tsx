@@ -10,6 +10,7 @@ import "./index.css";
 import styles from "./login_form.module.scss";
 import { useTranslation } from "react-i18next";
 import { LOGIN_SCHEMA } from "../../../shared/exportSharedMorules";
+import { PopUpError } from "../../../widgets/popuperror/PopUpError";
 
 export function LoginForm() {
   const { t } = useTranslation();
@@ -41,17 +42,19 @@ export function LoginForm() {
   });
 
   const onResponse = (errors: string[]) => {
-    setAutoClearErrors(errors);
+    setAutoClearErrors(errors, 9999);
 
     console.log(errors);
     if (errors.length == 0) navigate("/feed");
   };
 
+
+
   const emailError = formik.errors.email;
   const passwordError = formik.errors.password;
 
   return (
-      <div>
+    <div>
         <div className={styles.div}>
           <header className={styles.header}>
             <div className={styles.header_div}></div>
@@ -97,14 +100,18 @@ export function LoginForm() {
               </div>
             </main>
             <footer>
-              <button type="submit">{t('login')}</button>
+              <section>
+                <button type="submit">{t('login')}</button>
+                {isLoading && <CircularProgress size={"1rem"} ></CircularProgress>}
+              </section>
               <div className={styles.div_link}>
                 <Link href="/auth/recovery/email"><span>{t('forgot_password')}?</span></Link>
               </div>
-              {(errors && errors.length > 0) && errors.map((error, index) => (
-                  <span key={index} className={styles.error}>{t(error)}</span>
-              ))}
-              {isLoading && <CircularProgress></CircularProgress>}
+              <nav>
+                {(errors && errors.length > 0) && errors.map((error, index) => (
+                    <PopUpError text={t(error)}></PopUpError>
+                ))}
+              </nav>
             </footer>
           </form>
         </div>

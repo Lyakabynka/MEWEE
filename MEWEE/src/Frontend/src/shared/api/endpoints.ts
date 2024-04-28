@@ -10,6 +10,7 @@ export const ENDPOINTS = {
     USER :{
         REGISTER: `${API_URL}/user/register`,
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
+        UPDATE_PROFILE_DATA: `${API_URL}/user/update-profile`,
         CONFIRM_EMAIL: `${API_URL}/user/confirm-email`,
         GET_POSTS: `${API_URL}/posts`,
         POST: `${API_URL}/post`,
@@ -24,6 +25,8 @@ export const ENDPOINTS = {
     {
         FIND_POSTS: `${API_URL}/posts/find`,
         LIKE_POST: `${API_URL}/like-post`,
+        UNLIKE_POST: `${API_URL}/unlike-post`,
+        GET_POST_LIKES: `${API_URL}/post-likes`,
     },
     RECOVERY:
     {

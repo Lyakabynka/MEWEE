@@ -11,9 +11,12 @@ export const HomeFeed: FC = () => {
   const onResponse = (errors: string[]) => {
 
 
-    console.log(errors);
-    if (errors.length == 0) console.log("all good");
-  };
+    //console.log(errors);
+    if (errors.length == 0) 
+    {
+     // console.log("all good");
+    }
+    };
 
   useEffect(() => {
     getPosts(onResponse, id); // Fetch posts when component mounts

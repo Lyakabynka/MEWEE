@@ -31,6 +31,8 @@ const AddPost: FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
   const [encryptedImage, setEncryptedImage] = useState<string>("");
   const { createPost } = usePostsStore();
 
@@ -41,11 +43,17 @@ const AddPost: FC = () => {
     } else if (name === "content") {
       setContent(value);
     }
+    else if (name === "location") {
+      setLocation(value);
+    }
+    else if (name === "category") {
+      setCategory(value);
+    }
   };
 
 
   const handleSubmit = () => {
-    createPost(onResponse, { title: title, content: content, attachment: encryptedImage });
+    createPost(onResponse, { title: title, content: content, attachment: encryptedImage, location: location, category: category });
   };
 
   const onResponse = (errors: string[]) => {
@@ -193,8 +201,8 @@ const AddPost: FC = () => {
                     <input placeholder="Введите ваш текст здесь" name="content" onChange={handleInputChange} />
                   </div>
                   <div>
-                    <input type="text" placeholder="Location..." />
-                    <input type="text" placeholder="Category..." />
+                    <input type="text" name="location" onChange={handleInputChange} placeholder="Location..." />
+                    <input type="text" name="category" onChange={handleInputChange}  placeholder="Category..." />
                   </div>
                 </div>
               </form>

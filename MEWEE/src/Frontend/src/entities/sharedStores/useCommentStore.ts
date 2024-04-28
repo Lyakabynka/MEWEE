@@ -16,12 +16,12 @@ export const useCommentStore = create<ICommentStore>((set, get) => ({
   createComment: async (callback: ResponseCallback, postId: string, replyCommentId: string, content: string) =>
   {
       const response = await $api.post<any>(ENDPOINTS.POST.CREATE_COMMENT, { postId: postId, replyCommentId: replyCommentId === "" ? EMPTY_GUID: replyCommentId, content: content });
-      console.log(response);
+      //console.log(response);
 
       //callback(pErrors(response.data.errors));
 
       if (response?.status === 200) {
-        console.log(response.data);
+        //console.log(response.data);
 
 //        callback();
       }
@@ -31,10 +31,10 @@ export const useCommentStore = create<ICommentStore>((set, get) => ({
   getComments: async (callback: ResponseDataCallback, postId: string, page: number, pageSize: number) => {
     try {
       const response = await $api.post<any>(ENDPOINTS.POST.GET_COMMENTS, { postId, pagination: { page, pageSize } });
-      console.log(response);
+      //console.log(response);
   
       if (response?.status === 200) {
-        console.log(response.data);
+        //console.log(response.data);
   
         // Clear existing comments for the postId
         set((state) => ({
@@ -57,7 +57,7 @@ export const useCommentStore = create<ICommentStore>((set, get) => ({
         callback(get().comments[postId], []);
       }
       callback(get().comments[postId], pErrors(response.data.errors));
-      console.log(get().comments);
+      //console.log(get().comments);
     } catch (error) {
       console.error("Error fetching comments:", error);
       //callback(null);

@@ -5,24 +5,23 @@ import { useErrors, useRecoveryStore, useThemeStore } from '../../../entities';
 import { CircularProgress } from '@mui/material';
 import { EMAIL_VALIDATION } from '../../../shared/exportSharedMorules';
 import styles from "./recovery_form.module.scss";
+import { PopUpError } from '../../../widgets/popuperror/PopUpError';
 
-export const RecoveryEmailForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
-  const {t} = useTranslation();
-  const [errors, setErrors, setAutoClearErrors] = useErrors();
-  const {currentTheme} = useThemeStore();
-  const { confirmEmail, isLoading } = useRecoveryStore();
+export const RecoveryEmailForm: React.FC<{ onNext: () => void, onBack: () => void }> = ({ onNext, onBack }) => {
+    const { t } = useTranslation();
+    const [errors, setErrors, setAutoClearErrors] = useErrors();
+    const { currentTheme } = useThemeStore();
+    const { confirmEmail, isLoading } = useRecoveryStore();
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-    },
-    validationSchema: EMAIL_VALIDATION,
-    onSubmit: () => { confirmEmail(onResponse, { email: formik.values.email }); },
-  });
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: EMAIL_VALIDATION,
+        onSubmit: () => { confirmEmail(onResponse, { email: formik.values.email }); },
+    });
 
-    const onResponse = (errors: string[]) =>
-    {
-        console.log("e:",errors);
+    const onResponse = (errors: string[]) => {
         setAutoClearErrors(errors);
 
         if (errors.length == 0)
@@ -53,13 +52,17 @@ export const RecoveryEmailForm: React.FC<{ onNext: () => void }> = ({ onNext }) 
                     </div>
                 </main>
                 <footer>
+                <section>
                     <button type="submit">{t('send') + " " + t('code')}</button>
-                    <button>{t('go_back')}</button>
+                        {isLoading && <CircularProgress size={"1rem"} ></CircularProgress>}
+                    <button onClick={onBack}>{t('go_back')}</button>
+                </section>
                 </footer>
-                {(errors && errors.length > 0) && errors.map((error, index) => (
-                  <span key={index} className={styles.error}>{t(error)}</span>
-                ))}
-                {isLoading && <CircularProgress></CircularProgress>}
+                <nav>
+                    {(errors && errors.length > 0) && errors.map((error, index) => (
+                        <PopUpError text={t(error)}></PopUpError>
+                    ))}
+                </nav>
             </form>
 
         </div>

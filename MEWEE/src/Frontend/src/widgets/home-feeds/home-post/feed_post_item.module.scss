@@ -101,12 +101,27 @@
         }
         > div {
           display: flex;
-          align-items: center;
+          align-items:flex-start;
           gap: 15px;
           margin-right: 0.9rem;
+          > div 
+          {
+            display: flex;
+            flex-direction: column;
+            > span
+            {
+              font-family: "Geometria", sans-serif;
+              text-align: center;
+              font-size: 1.1vw;
+            }
+            > img {
+            @include hover-scale;
+            }
+          }
           > img {
             @include hover-scale;
           }
+          
         }
       }
     }

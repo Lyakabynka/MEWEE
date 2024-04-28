@@ -84,7 +84,7 @@
   height: 50px; /* Adjust the size as needed */
   border-radius: 50%; /* Make it circular */
   overflow: hidden; /* Hide overflow content */
-  background-color: red;
+  background-color: white;
 }
 .toolbar-profile-image img {
   width: 100%; /* Make the image fill its container */

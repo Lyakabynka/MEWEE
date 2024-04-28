@@ -6,7 +6,7 @@ import News from "./news/News";
 export const HomeNews: FC = () => {
   const { getPosts } = usePostsStore();
   const {id} = useAuthStore();
-  console.log(id)
+  //console.log(id)
   let data = null;
   useEffect(() => {
     getPosts(onResponse, id); // Fetch posts when component mounts
@@ -14,7 +14,7 @@ export const HomeNews: FC = () => {
 
   const onResponse = (errors: string[]) => {
 
-    console.log(errors);
+    //console.log(errors);
   };
   return (
     <div className="home-news-generic-container">

@@ -106,7 +106,7 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
                 color: currentTheme?.mainPage.post.thirdColorText,
               }}
             >
-              {dataObject.postDate}
+              {dataObject.createdAt}
             </span>
             <div>
               <img src={LocationIcon} />

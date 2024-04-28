@@ -34,8 +34,8 @@ export interface prfileItemDataTypes {
   content: string;
   attachment: string;
   userId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }
 
 export interface prfileItemDataPropsTypes {

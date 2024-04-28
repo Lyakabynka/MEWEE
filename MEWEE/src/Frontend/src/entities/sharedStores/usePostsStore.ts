@@ -10,6 +10,8 @@ interface ICreatePostRequest
   title: string;
   content: string;
   attachment: string;
+  location: string;
+  category: string;
 }
 
 interface IPoststore {
@@ -20,6 +22,8 @@ interface IPoststore {
   getPosts: (callback: ResponseCallback, id: any) => Promise<void>;
   findPosts: (callback: ResponseCallback, query: string, pagination: any) => Promise<void>;
   likePost:  (callback: ResponseCallback, postId: string) => Promise<void>;
+  unLikePost:  (callback: ResponseCallback, postId: string) => Promise<void>;
+  getPostLikes:  (callback: ResponseDataCallback, postId: string) => Promise<void>;
 }
 
 export const usePostsStore = create<IPoststore>((set) => ({
@@ -29,12 +33,12 @@ export const usePostsStore = create<IPoststore>((set) => ({
   createPost: async (callback: ResponseCallback, request: ICreatePostRequest) => { 
     
     const response = await $api.post<any>(ENDPOINTS.USER.POST, request);
-    console.log(response);
+    //console.log(response);
 
     callback(pErrors(response.data.errors));
 
     if (response?.status == 200) {
-      console.log(response.data);
+      //console.log(response.data);
     }
 
     set({ isLoading: false });
@@ -42,12 +46,12 @@ export const usePostsStore = create<IPoststore>((set) => ({
   getPosts: async (callback: ResponseCallback, id: any) => { 
     
     const response = await $api.post<any>(ENDPOINTS.USER.GET_POSTS, {userId: id});
-    console.log(response);
+    //console.log(response);
 
     callback(pErrors(response.data.errors));
 
     if (response?.status == 200) {
-      console.log(response.data);
+      //console.log(response.data);
       set({ posts: response.data });
     }
 
@@ -56,11 +60,11 @@ export const usePostsStore = create<IPoststore>((set) => ({
   findPosts: async (callback: ResponseCallback, query: string, pagination: any) => { 
 
     const response = await $api.post<any>(ENDPOINTS.HOME.FIND_POSTS, {searchQuery: query, pagination: pagination});
-    console.log(response);
+    //console.log(response);
 
     
     if (response?.status == 200) {
-      console.log(response.data);
+      //console.log(response.data);
       set({ posts: response.data });
     }
 
@@ -81,6 +85,37 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
 
     callback(pErrors(response.data.errors));
+
+    set({ isLoading: false });
+  },
+  unLikePost: async (callback: ResponseCallback, postId: string) => { 
+
+    const response = await $api.post<any>(ENDPOINTS.HOME.UNLIKE_POST, {postId: postId});
+    console.log(response);
+
+    
+    if (response?.status == 200) {
+      console.log(response.data);
+    }
+
+
+    callback(pErrors(response.data.errors));
+
+    set({ isLoading: false });
+  },
+  getPostLikes: async (callback: ResponseDataCallback, postId: string) => { 
+
+    const response = await $api.post<any>(ENDPOINTS.HOME.GET_POST_LIKES, {postId: postId, pagination:{page:1, pageSize: 0}});
+    console.log(response);
+
+    
+    if (response?.status == 200) {
+      console.log(response.data);
+      callback(response.data, pErrors(response.data.errors));
+    }
+
+
+    callback(null, pErrors(response.data.errors));
 
     set({ isLoading: false });
   },
