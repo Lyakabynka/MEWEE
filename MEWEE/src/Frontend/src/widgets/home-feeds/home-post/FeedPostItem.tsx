@@ -12,7 +12,7 @@ import { useCommentStore } from "../../../entities/sharedStores/useCommentStore"
 import { postDataTypes } from "../../../pages/post-show/dataPostShow.interface";
 import { decryptImage } from "../../../entities/sharedStores/post-utils";
 import CustomButton from "../../сommon/custom-button/customButton";
-import { prfileItemDataTypes } from "../../../pages/profile/profileData.interface";
+import { modalPostDataLink } from "../../widgetData";
 
 export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   const [commentsHiden, setCommentsHiden] = useState<string | null>(null);
@@ -173,7 +173,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
               </div>
             </div>
           </div>
-          <CustomModalIcon id={0} />
+          <CustomModalIcon id={0} links={modalPostDataLink} />
         </header>
         <main className={styles.main}>
           {item.attachment ? (
