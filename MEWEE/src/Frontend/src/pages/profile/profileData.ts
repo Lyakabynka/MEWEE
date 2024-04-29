@@ -306,7 +306,7 @@ export const friendData = [
   },
 ];
 
-export const sliderData = [
+export const imageData = [
   {
     id: "1",
     imgPath1:
@@ -334,5 +334,28 @@ export const sliderData = [
       "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
     imgPath2:
       "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+  },
+];
+
+export const sliderData = [
+  {
+    id: "1",
+    videoPath1: "https://sparkling-article.com/s.mp4",
+    videoPath2: "https://sparkling-article.com/s.mp4",
+  },
+  {
+    id: "2",
+    videoPath1: "https://sparkling-article.com/s.mp4",
+    videoPath2: "https://sparkling-article.com/s.mp4",
+  },
+  {
+    id: "3",
+    videoPath1: "https://sparkling-article.com/s.mp4",
+    videoPath2: "https://sparkling-article.com/s.mp4",
+  },
+  {
+    id: "4",
+    videoPath1: "https://sparkling-article.com/s.mp4",
+    videoPath2: "https://sparkling-article.com/s.mp4",
   },
 ];

@@ -46,8 +46,8 @@ export interface imagesDataTypes {
 
 export interface videoDataTypes {
   id: string;
-  imgPath1: string;
-  imgPath2: string;
+  imgPath1?: string;
+  imgPath2?: string;
 }
 
 export interface photoVideoSlidersPropTypes {
