@@ -38,10 +38,11 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   };
 
   // const onGetPostLikesResponse = (data: any, errors: string[]) => {
-
   //   console.log(errors);
   //   if (errors.length == 0 && data !== null) {
-  //     const result = data.filter((x: { postId: string }) => x.postId === item.id);
+  //     const result = data.filter(
+  //       (x: { postId: string }) => x.postId === item.id
+  //     );
 
 <<<<<<< HEAD
       setIsLiked(result.length > 0);
@@ -146,17 +147,14 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   // };
 
   // const onResponse = (data: any, errors: string[]) => {
-
   //   //console.log(errors);
   //   if (errors.length == 0) {
   //     //console.log("all good");
   //     setComments(data);
-
   //   }
-  // }
+  // };
 
   // const onProfileResponse = (data: any, errors: string[]) => {
-
   //   //console.log(errors);
   //   if (errors.length == 0 && data !== null) {
   //     setAuthor(data);
@@ -165,38 +163,31 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   // };
 
   // const onLikePostResponse = (errors: string[]) => {
-
   //   console.log(errors);
   //   if (errors.length == 0) {
-
   //     getPostLikes(onGetPostLikesResponse, item.id);
   //   }
   // };
 
   // const handleLikePost = () => {
-
   //   item.likesCount += !isLiked ? 1 : -1;
 
-  //   if (!isLiked)
-  //     likePost(onLikePostResponse, item.id)
-  //   else
-  //     unLikePost(onLikePostResponse, item.id)
-
+  //   if (!isLiked) likePost(onLikePostResponse, item.id);
+  //   else unLikePost(onLikePostResponse, item.id);
   // };
   // const handleAvatarDecrypt = (data: any) => {
-
   //   if (data.author !== null) {
   //     const at = data.profileAvatar ?? "";
   //     if (at != "")
   //       decryptImage(at)
-  //         .then(decryptedData => {
+  //         .then((decryptedData) => {
   //           setAvatar(decryptedData);
   //         })
-  //         .catch(error => {
+  //         .catch((error) => {
   //           console.error(error);
   //         });
   //   }
-  // }
+  // };
 
   // useEffect(() => {
   //   getComments(onResponse, item.id, 1, 0);
@@ -205,13 +196,12 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   //   const at = item.attachment ?? "";
   //   if (at != "")
   //     decryptImage(at)
-  //       .then(decryptedData => {
+  //       .then((decryptedData) => {
   //         setImageSrc(decryptedData);
   //       })
-  //       .catch(error => {
+  //       .catch((error) => {
   //         console.error(error);
   //       });
-
   // }, []);
 
   // // useEffect(() => {
@@ -237,10 +227,10 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
   // };
   // const onUpdated = () => {
   //   getComments(onResponse, item.id, 1, 0);
-  // }
+  // };
   // // Check if currentTheme exists before accessing custom values
   // const CustomBox = currentTheme?.components?.MuiIcon;
-  // const fio = username?.split(' ');
+  // // const fio = username?.split(' ');
   return (
     <div className={styles.div}>
       <div

@@ -18,6 +18,7 @@ import Sertificate4 from "../../assets/image/Sertificate.png";
 import onlineSwitch from "../../assets/image/onlineSwitch.png";
 import Friend1 from "../../assets/image/Friend1.png";
 import Friend2 from "../../assets/image/Friend2.png";
+import ProfileItemPhoto from "../../assets/image/ProfileItemPhoto.png";
 import { postDataTypes } from "../post-show/dataPostShow.interface";
 
 export const userInfoData: any = {
@@ -302,5 +303,36 @@ export const friendData = [
     avatar: Friend2,
     online: false,
     onlineSwitch: onlineSwitch,
+  },
+];
+
+export const sliderData = [
+  {
+    id: "1",
+    imgPath1:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+    imgPath2:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+  },
+  {
+    id: "2",
+    imgPath1:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+    imgPath2:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+  },
+  {
+    id: "3",
+    imgPath1:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+    imgPath2:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+  },
+  {
+    id: "4",
+    imgPath1:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
+    imgPath2:
+      "https://i.pinimg.com/474x/17/37/54/173754e80e276003674225580f32f9c5.jpg",
   },
 ];

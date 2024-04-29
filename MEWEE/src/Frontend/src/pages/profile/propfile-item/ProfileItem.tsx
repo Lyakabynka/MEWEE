@@ -4,11 +4,13 @@ import {
   portfilioData,
   setificateData,
   friendData,
+  sliderData
 } from "../profileData";
 import { profileButtonsDataTypes } from "../profileData.interface";
 import ProfilePost from "./profile-post/ProfilePost";
 import Portfilio from "./portfilio/Portfilio";
 import Friends from "./friends/Friends";
+import PhotoVideoSliders from "../../../widgets/photo-video-sliders/PhotoVideoSliders";
 import styles from "./profile_item.module.scss";
 const ProfileItem: FC = () => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
@@ -30,9 +32,8 @@ const ProfileItem: FC = () => {
             profileButtonsData.map((item: profileButtonsDataTypes) => {
               return (
                 <li
-                  className={`${styles.li} ${
-                    item.id === activeItemId ? styles._li_active : ""
-                  }`}
+                  className={`${styles.li} ${item.id === activeItemId ? styles._li_active : ""
+                    }`}
                   key={item.id}
                   onClick={() => handleLiClick(item.id)}
                 >
@@ -41,18 +42,25 @@ const ProfileItem: FC = () => {
               );
             })}
         </ul>
-        <div>
-          <ProfilePost />
-        </div>
-        <div>
-          <Portfilio
-            portfilioData={portfilioData}
-            setificateData={setificateData}
-          />
-        </div>
-        <div>
-          <Friends friendData={friendData} />
-        </div>
+        {activeItemId === 1 && (<ProfilePost />)}
+
+        {activeItemId === 2 && (
+          <Portfilio portfilioData={portfilioData} setificateData={setificateData} />)}
+
+        {activeItemId === 3 && (<Friends friendData={friendData} />)}
+        {activeItemId === 5 && (
+          <div className={styles.sliders_div}>
+            <PhotoVideoSliders title={"Недавні"} sliderData={sliderData} />
+            <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
+          </div>
+        )}
+        {activeItemId === 6 && (
+          <div className={styles.sliders_div}>
+            <PhotoVideoSliders title={"Недавні"} sliderData={sliderData} />
+            <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
+          </div>
+        )}
+
       </div>
     </>
   );
