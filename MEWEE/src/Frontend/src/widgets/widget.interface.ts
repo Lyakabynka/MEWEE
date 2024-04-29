@@ -51,6 +51,6 @@ export interface videoDataTypes {
 }
 
 export interface photoVideoSlidersPropTypes {
-  title: string;
+  title?: string;
   sliderData: imagesDataTypes[];
 }

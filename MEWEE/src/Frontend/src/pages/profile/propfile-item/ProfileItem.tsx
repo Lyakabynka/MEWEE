@@ -11,6 +11,7 @@ import ProfilePost from "./profile-post/ProfilePost";
 import Portfilio from "./portfilio/Portfilio";
 import Friends from "./friends/Friends";
 import PhotoVideoSliders from "../../../widgets/photo-video-sliders/PhotoVideoSliders";
+import ProfileItemFilter from "../../../assets/image/icons/ProfileItemFilter.svg"
 import styles from "./profile_item.module.scss";
 const ProfileItem: FC = () => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
@@ -50,13 +51,21 @@ const ProfileItem: FC = () => {
         {activeItemId === 3 && (<Friends friendData={friendData} />)}
         {activeItemId === 5 && (
           <div className={styles.sliders_div}>
-            <PhotoVideoSliders title={"Недавні"} sliderData={sliderData} />
+            <div className={styles.div_title}>
+              <h1>Недавні</h1>
+              <img src={ProfileItemFilter} />
+            </div>
+            <PhotoVideoSliders sliderData={sliderData} />
             <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
           </div>
         )}
         {activeItemId === 6 && (
           <div className={styles.sliders_div}>
-            <PhotoVideoSliders title={"Недавні"} sliderData={sliderData} />
+            <div className={styles.div_title}>
+              <h1>Недавні</h1>
+              <img src={ProfileItemFilter} />
+            </div>
+            <PhotoVideoSliders sliderData={sliderData} />
             <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
           </div>
         )}
