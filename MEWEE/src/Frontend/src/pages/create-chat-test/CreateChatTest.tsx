@@ -8,7 +8,7 @@ const CreateChatTest: FC = () => {
     const { createChat } = useChatStore();
 
   const handleSubmit = () => {
-    createChat(onResponse, "88905280-e2cd-4d11-b0af-a4793fe2c6cf");
+    createChat(onResponse, "8a0c9ae3-1035-45b1-b840-2ad49cd466e8");
   };
 
   const onResponse = (errors: string[]) => {

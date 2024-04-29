@@ -10,6 +10,8 @@ import "./App.css";
 import {setThemeVariables} from "../themesToCss";
 import RegLogRouting from "../widgets/routing/RegLogRouting";
 import ProfilePictureUploader from "../features/profilePictureUploader/ProfilePictureUploader";
+import ChatHub from "../pages/create-chat-test/ChatHub";
+import CreateChatTest from "../pages/create-chat-test/CreateChatTest";
 
 const App: React.FC = () => {
   const { establishConnection, closeConnection } = useSignalRStore();
@@ -33,6 +35,7 @@ const App: React.FC = () => {
   const hideSideToolbarAndTopSearchBar = location.pathname.startsWith("/auth"); // проверка, если маршрут начинается с /auth/
   return (
     <ThemeProvider theme={theme}>
+      <CreateChatTest></CreateChatTest>
       <CssBaseline />
       <Grid item md={12}>
         {hideSideToolbarAndTopSearchBar ? <RegLogRouting /> : <Routing />}

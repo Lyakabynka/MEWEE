@@ -28,7 +28,7 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
     isElectron: () => {
         return window.electron !== null && window.electron !== undefined;
     },
-
+    
     establishConnection: async (userId) => {
 
 
@@ -46,9 +46,7 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
         
         const { connection } = get();
         
-        connection!.on("receiveMessage", (message: any) => {
-            // Handle received message
-        });
+
 
         await connection!.start().then(() => {
             console.info("Connection with SignalR hub has been successfully established!");
@@ -57,42 +55,24 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
             console.log(e);
         });
 
-        await connection!.invoke('initializeSession')
+        await connection!.invoke('InitializeSession')
             .then(() => {
                 console.log("Initialized session");
             })
             .catch(err => {
                 console.log(err);
             });
-    
 
-        // connection!.on("ProcessPlan", (plan: IPlan) => {
-
-        //     console.log("Started processing: ");
-        //     console.log(plan);
-
-        //     switch (plan.type) {
-        //         case EnumPlanType.notification:
-
-        //             break;
-        //         case EnumPlanType.voiceCommand:
-        //             const synthesis = window.speechSynthesis;
-
-        //             const utterance = new SpeechSynthesisUtterance(plan.information)
-        //             utterance.voice = synthesis.getVoices()[4];
-
-        //             synthesis.speak(utterance);
-        //             break;
-        //         case EnumPlanType.weatherCommand:
-
-        //             break;
-        //     }
-        //     console.log(get().isElectron());
-            
-        //     if (get().isElectron()) {
-        //         window.planProcessor.process(plan);
-        //     }
-        // });
+        await connection!.invoke('SendMessage', "cb26c900-f324-4055-b33c-c95ba9e6b772", "hello_test", "2024-04-28 00:19:55.303389")
+        .then(() => {
+            console.log("Message sent");
+            connection!.on("receiveMessage", (message: any) => {
+                console.log("mess:" +message);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
         // connection!.on("ProcessPlanGroup", (planPlanGroups: IPlanPlanGroupExtended[]) => {
         //     console.log("Started processing: ");
@@ -128,20 +108,20 @@ export const useSignalRStore = create<ISignalRStore>()((set, get) => ({
             console.warn('Connection with server has been lost. Trying to reconnect...');
         })
 
-        await connection!.start().then(() => {
-            console.info("Connection with SignalR hub has been successfully established!");
-        }).catch((e) => {
-            console.log("Server is offline");
-            console.log(e);
-        })
+        // await connection!.start().then(() => {
+        //     console.info("Connection with SignalR hub has been successfully established!");
+        // }).catch((e) => {
+        //     console.log("Server is offline");
+        //     console.log(e);
+        // })
 
-        await connection!.invoke('SubscribeToPlan', userId)
-            .then(() => {
-                console.log("Subscribed to plan: " + userId);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        // await connection!.invoke('SubscribeToPlan', userId)
+        //     .then(() => {
+        //         console.log("Subscribed to plan: " + userId);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
     },
 
     closeConnection: async () => {
