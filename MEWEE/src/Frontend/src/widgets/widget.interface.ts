@@ -37,3 +37,20 @@ export interface smileDataTypes {
   id: number;
   smile: any;
 }
+
+export interface imagesDataTypes {
+  id: string;
+  imgPath1: any;
+  imgPath2: any;
+}
+
+export interface videoDataTypes {
+  id: string;
+  imgPath1: string;
+  imgPath2: string;
+}
+
+export interface photoVideoSlidersPropTypes {
+  title: string;
+  sliderData: imagesDataTypes[];
+}
