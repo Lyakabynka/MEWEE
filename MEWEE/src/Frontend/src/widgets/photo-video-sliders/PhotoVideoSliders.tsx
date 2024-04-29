@@ -8,7 +8,6 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { photoVideoSlidersPropTypes, videoDataTypes } from '../widget.interface';
-import ProfileItemFilter from "../../assets/image/icons/ProfileItemFilter.svg"
 import styles from "./photo_video_sliders.module.scss"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -37,7 +36,6 @@ const SwipeableTextMobileStepper: FC<photoVideoSlidersPropTypes> = ({ sliderData
         <Box className={styles.div}>
             <div className={styles.div_title}>
                 <h1>{title}</h1>
-                <img src={ProfileItemFilter} />
             </div>
             <AutoPlaySwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
