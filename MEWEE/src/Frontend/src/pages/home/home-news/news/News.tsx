@@ -7,6 +7,7 @@ import SaveHomeModalIcon from "../../../../assets/image/icons/SaveHomeModalIcon.
 import CustomModalIcon from "../../../../widgets/сommon/custom-modal-icon/CustomModalIcon";
 import { FeedPostPropsTypes } from "../../home.interface";
 import { postDataTypes } from "../../../post-show/dataPostShow.interface";
+import { modalPostDataLink } from "../../../../widgets/widgetData";
 import styles from "./news.module.scss";
 const News: FC<FeedPostPropsTypes> = ({ posts }) => {
   const { t } = useTranslation();
@@ -66,7 +67,7 @@ const News: FC<FeedPostPropsTypes> = ({ posts }) => {
                       {item.username}
                     </h3>
                   </div>
-                  <CustomModalIcon id={0} />
+                  <CustomModalIcon id={0} links={modalPostDataLink} />
                 </header>
                 <main className={styles.main}>
                   {isImage(item.imageUrl) ? (

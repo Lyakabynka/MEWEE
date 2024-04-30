@@ -4,9 +4,8 @@ import {
   CustomModalIconPropsTypes,
   modalPostDataLinkTypes,
 } from "../../widget.interface";
-import { modalPostDataLink } from "../../widgetData";
 import styles from "./custom_modal_icon.module.scss";
-const CustomModalIcon: FC<CustomModalIconPropsTypes> = ({ id }) => {
+const CustomModalIcon: FC<CustomModalIconPropsTypes> = ({ id, links }) => {
   const [activeModalId, setActiveModalId] = useState<number | null>(null);
   const { t } = useTranslation();
   const handleModalClick = (postId: number) => {
@@ -31,8 +30,8 @@ const CustomModalIcon: FC<CustomModalIconPropsTypes> = ({ id }) => {
               : `${styles.ul} ${styles._ul_visible}`
           }
         >
-          {modalPostDataLink ? (
-            modalPostDataLink.map((item: modalPostDataLinkTypes) => {
+          {links ? (
+            links.map((item: modalPostDataLinkTypes) => {
               return (
                 <li key={item.id}>
                   <a href={item.url}>
