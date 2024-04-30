@@ -31,7 +31,11 @@ declare module '@mui/material/styles' {
       },
       passwordChangePage: {
         ColorText: string;
-      }
+      },
+      preferencesPage:{
+        colorText: string;
+        borderColor: string;
+      },
     },
     mainPage:{
       sideBar: {
@@ -97,14 +101,18 @@ declare module '@mui/material/styles' {
       },
       registrationPage?: {
       },
-      emailConfirmationPage: {
+      emailConfirmationPage?: {
         ColorText?: string;
         ColorHoverText?: string;
         ColorActiveText?: string;
       },
-      passwordChangePage: {
+      passwordChangePage?: {
         ColorText?: string;
-      }
+      },
+      preferencesPage?:{
+        colorText?: string;
+        borderColor?: string;
+      },
     },
     mainPage:{
       sideBar?: {
@@ -177,7 +185,11 @@ export const themes: Theme[] = [
       },
       passwordChangePage: {
         ColorText: '#25005C',
-      }
+      },
+      preferencesPage:{
+        colorText: '#25005C',
+        borderColor: '#25005C',
+      },
     },
     mainPage:{
       sideBar: {
@@ -253,7 +265,11 @@ export const themes: Theme[] = [
       },
       passwordChangePage: {
         ColorText: '#B67AFE',
-      }
+      },
+      preferencesPage:{
+        colorText: '#B67AFE',
+        borderColor: '#B67AFE',
+      },
     },
     mainPage: {
       sideBar: {

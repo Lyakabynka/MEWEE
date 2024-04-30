@@ -43,15 +43,15 @@ export const RegisterPage: React.FC<IAuthPageProps> = ({
   return (
     <>
       {/* Додати стиль на цю кнопку */}
-      {currentStage !== EnumRegistrationStage.Main && (
-        <button onClick={handleBack}>Go Back</button>
-      )}
+      {/*{currentStage !== EnumRegistrationStage.Main && (*/}
+      {/*  <button onClick={handleBack}>Go Back</button>*/}
+      {/*)}*/}
 
       {currentStage === EnumRegistrationStage.Main && (
         <RegisterForm onNext={handleStageProgression} />
       )}
       {currentStage === EnumRegistrationStage.EmailConfirmation && (
-        <EmailConfirmationForm onNext={handleStageProgression} />
+        <EmailConfirmationForm onNext={handleStageProgression} onBack={handleBack}/>
       )}
       {currentStage === EnumRegistrationStage.Preferences && (
         <PreferencesForm></PreferencesForm>

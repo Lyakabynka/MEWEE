@@ -204,7 +204,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
             <div>
               <div>
                 <img
-                  // onClick={handleLikePost}
+                  //onClick={handleLikePost}
                   style={{ filter: isLiked ? "saturate(3)" : "" }}
                   src={LikePostIcon}
                 />
@@ -216,7 +216,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
               </div>
               <div>
                 <img
-                  // onClick={() => handleCommentClick(item.id)}
+                  onClick={() => handleCommentClick(item.id)}
                   src={CommentPostIcon}
                   style={{ filter: commentsHiden ? "saturate(3)" : "" }}
                 />
