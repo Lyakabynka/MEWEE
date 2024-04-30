@@ -6,9 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\MessagingService.Application\MessagingService.Application.csproj" />
-      <ProjectReference Include="..\MessagingService.Domain\MessagingService.Domain.csproj" />
-    </ItemGroup>
-
 </Project>
