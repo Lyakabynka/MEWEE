@@ -8,7 +8,7 @@ import { useState } from "react";
 import { CodeItem } from '../../RecoveryForm/components/codeitem';
 import styles from "./email_confirmation.module.scss";
 
-export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
+export const EmailConfirmationForm: React.FC<{ onNext: () => void, onBack: () => void }> = ({ onNext, onBack }) => {
 
     const {t} = useTranslation();
     const [errors, setErrors, setAutoClearErrors] = useErrors();
@@ -43,7 +43,7 @@ export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext
                 </main>
                 <footer>
                     <button type="submit">{t('verify') + " " + t('code')}</button>
-                    <button >{t('go_back')}</button>
+                    <button onClick={onBack}>{t('go_back')}</button>
                 </footer>
                 {isLoading && <CircularProgress></CircularProgress>}
             </form>

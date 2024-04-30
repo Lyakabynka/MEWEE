@@ -11,7 +11,6 @@ export const RecoverySetPasswordForm: React.FC<{ onNext: () => void}> = ({ onNex
     const {t} = useTranslation();
     const { setNewPassword, isLoading } = useRecoveryStore();
     const [errors, setErrors, setAutoClearErrors] = useErrors();
-    const { currentTheme } = useThemeStore();
 
     const [showPassword, setShowPassword] = useState({
         password: false,
@@ -25,21 +24,6 @@ export const RecoverySetPasswordForm: React.FC<{ onNext: () => void}> = ({ onNex
         }));
     };
 
-    const [isHoverButton, setIsHoverButton] = useState(false);
-    const [isActiveButton, setIsActiveButton] = useState(false);
-
-    const buttonStyle = {
-        backgroundColor: isActiveButton
-            ? currentTheme?.authPages.commonElements.buttonActiveBackground
-            : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.commonElements.buttonHoverBackground
-                : currentTheme?.authPages.commonElements.buttonBackground,
-        color: isActiveButton
-            ? currentTheme?.authPages.commonElements.buttonActiveColor
-            : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.commonElements.buttonHoverColor
-                : currentTheme?.authPages.commonElements.buttonColor,
-    };
     const formik = useFormik({
         initialValues: {
             password: '',
@@ -123,9 +107,6 @@ export const RecoverySetPasswordForm: React.FC<{ onNext: () => void}> = ({ onNex
                 </nav>
                 </footer>
             </form>
-
-            
-
         </div>
     );
 };

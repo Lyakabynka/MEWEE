@@ -10,7 +10,6 @@ import { PopUpError } from '../../../widgets/popuperror/PopUpError';
 export const RecoveryEmailForm: React.FC<{ onNext: () => void, onBack: () => void }> = ({ onNext, onBack }) => {
     const { t } = useTranslation();
     const [errors, setErrors, setAutoClearErrors] = useErrors();
-    const { currentTheme } = useThemeStore();
     const { confirmEmail, isLoading } = useRecoveryStore();
 
     const formik = useFormik({
