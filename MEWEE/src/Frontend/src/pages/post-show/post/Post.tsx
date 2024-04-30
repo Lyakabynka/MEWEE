@@ -12,6 +12,7 @@ import styles from "./post.module.scss";
 import CommentBarComponents from "../../../widgets/comment-bar-components/CommentBarComponents";
 import { decryptImage } from "../../../entities/sharedStores/post-utils";
 import { useCommentStore } from "../../../entities/sharedStores/useCommentStore";
+import { modalPostDataLink } from "../../../widgets/widgetData";
 const Post: FC<postDataProps> = ({ dataObject }) => {
   const [commentsHiden, setCommentsHiden] = useState<string | null>(null);
   const { t } = useTranslation();
@@ -29,27 +30,23 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
     return /\.(mp4|webm|ogg)$/i.test(url);
   };
   const onResponse = (data: any, errors: string[]) => {
-      
-      console.log(errors);
-      if (errors.length == 0) 
-        {
-            console.log("all good");
+    console.log(errors);
+    if (errors.length == 0) {
+      console.log("all good");
       setComments(data);
-
-}
+    }
   };
   useEffect(() => {
-    getComments(onResponse, dataObject.id,1,0);
+    getComments(onResponse, dataObject.id, 1, 0);
     const at = dataObject.attachment ?? "";
-    if(at != "")
-  decryptImage(at)
-    .then(decryptedData => {
-      setImageSrc(decryptedData);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-    
+    if (at != "")
+      decryptImage(at)
+        .then((decryptedData) => {
+          setImageSrc(decryptedData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
   }, []);
 
   useEffect(() => {
@@ -73,103 +70,100 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
   const handleCommentClick = (postId: string) => {
     setCommentsHiden(commentsHiden === postId ? null : postId);
   };
-  const onUpdated = () =>
-    {
-        getComments(onResponse, dataObject.id,1,0);
-    }
+  const onUpdated = () => {
+    getComments(onResponse, dataObject.id, 1, 0);
+  };
 
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
   return (
     <div className={styles.div}>
-    <div
-      className={styles.sub_div}
-      style={{
-        backgroundColor: currentTheme?.mainPage.post.background,
-      }}
-    >
-      <header>
-        <div className={styles.header_div}>
-          <div>
-            <img src={dataObject.profileImageUrl} />
-          </div>
-          <div>
-            <span
-              style={{
-                color: currentTheme?.mainPage.post.colorText,
-              }}
-            >
-              {dataObject.username}
-            </span>
-            <span
-              style={{
-                color: currentTheme?.mainPage.post.thirdColorText,
-              }}
-            >
-              {dataObject.createdAt}
-            </span>
+      <div
+        className={styles.sub_div}
+        style={{
+          backgroundColor: currentTheme?.mainPage.post.background,
+        }}
+      >
+        <header>
+          <div className={styles.header_div}>
             <div>
-              <img src={LocationIcon} />
+              <img src={dataObject.profileImageUrl} />
+            </div>
+            <div>
               <span
                 style={{
-                  color: currentTheme?.mainPage.post.secondColorText,
+                  color: currentTheme?.mainPage.post.colorText,
                 }}
               >
-                {dataObject.location}
+                {dataObject.username}
               </span>
+              <span
+                style={{
+                  color: currentTheme?.mainPage.post.thirdColorText,
+                }}
+              >
+                {dataObject.createdAt}
+              </span>
+              <div>
+                <img src={LocationIcon} />
+                <span
+                  style={{
+                    color: currentTheme?.mainPage.post.secondColorText,
+                  }}
+                >
+                  {dataObject.location}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <CustomModalIcon id={0} />
-      </header>
-      <main className={styles.main}>
-        {dataObject.attachment ? (
-          <div>
-            <img src={imageSrc} alt="Post Image" />
-          </div>
-        ) : isVideo(dataObject.imageUrl) ? (
-          <video
-            className={styles.feed_post_video}
-            ref={videoRef}
-            autoPlay
-            muted
-          >
-            <source src={dataObject.imageUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <span>Unsupported media format</span>
-        )}
-      </main>
-      <footer className={styles.footer}>
-        <span
-          style={{ color: currentTheme?.mainPage.post.colorText }}
-        >
-          {dataObject.title}
-        </span>
-        <p>{dataObject.description}</p>
-        <nav className={styles.nav}>
-          <CustomButton text={t("more")} />
-          <div>
-            <img src={LikePostIcon} />
-            <img src={SentIcon} />
-            <img
-              onClick={() => handleCommentClick(dataObject.id)}
-              src={CommentPostIcon}
-            />
-            <span>({comments ? comments.length : 0})</span>
-          </div>
-        </nav>
-      </footer>
+          <CustomModalIcon id={0} links={modalPostDataLink} />
+        </header>
+        <main className={styles.main}>
+          {dataObject.attachment ? (
+            <div>
+              <img src={imageSrc} alt="Post Image" />
+            </div>
+          ) : isVideo(dataObject.imageUrl) ? (
+            <video
+              className={styles.feed_post_video}
+              ref={videoRef}
+              autoPlay
+              muted
+            >
+              <source src={dataObject.imageUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <span>Unsupported media format</span>
+          )}
+        </main>
+        <footer className={styles.footer}>
+          <span style={{ color: currentTheme?.mainPage.post.colorText }}>
+            {dataObject.title}
+          </span>
+          <p>{dataObject.description}</p>
+          <nav className={styles.nav}>
+            <CustomButton text={t("more")} />
+            <div>
+              <img src={LikePostIcon} />
+              <img src={SentIcon} />
+              <img
+                onClick={() => handleCommentClick(dataObject.id)}
+                src={CommentPostIcon}
+              />
+              <span>({comments ? (comments.length > 0 ? comments.length-1 : 0) : 0})</span>
+            </div>
+          </nav>
+        </footer>
+      </div>
+      <CommentBarComponents
+        id={dataObject.id}
+        appearance={true}
+        hiden={commentsHiden}
+        commentDataRender={comments}
+        onUpdated={onUpdated}
+      />
     </div>
-    <CommentBarComponents
-      id={dataObject.id}
-      appearance={true}
-      hiden={commentsHiden}
-      commentDataRender={comments}
-      onUpdated={onUpdated}
-    />
-  </div>
   );
 };
 export default Post;

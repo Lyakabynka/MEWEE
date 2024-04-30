@@ -39,7 +39,6 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
 
   const onGetPostLikesResponse = (data: any, errors: string[]) => {
 
-    console.log(errors);
     if (errors.length == 0 && data !== null) {
       const result = data.filter((x: { postId: string }) => x.postId === item.id);
 
@@ -49,9 +48,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
 
   const onResponse = (data: any, errors: string[]) => {
 
-    //console.log(errors);
     if (errors.length == 0) {
-      //console.log("all good");
       setComments(data);
 
     }
@@ -59,7 +56,6 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
 
   const onProfileResponse = (data: any, errors: string[]) => {
 
-    //console.log(errors);
     if (errors.length == 0 && data !== null) {
       setAuthor(data);
       handleAvatarDecrypt(data);
@@ -68,9 +64,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
 
   const onLikePostResponse = (errors: string[]) => {
 
-    console.log(errors);
     if (errors.length == 0) {
-
       getPostLikes(onGetPostLikesResponse, item.id);
     }
   };
@@ -100,24 +94,22 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
     }
   }
 
-  const updatePost = () =>
-    {
-      console.log("updated");
-      getComments(onResponse, item.id, 1, 0);
-      getPostLikes(onGetPostLikesResponse, item.id);
-      getProfile(onProfileResponse, item.userId);
-      const at = item.attachment ?? "";
-      if (at != "")
-        decryptImage(at)
-          .then(decryptedData => {
-            setImageSrc(decryptedData);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }
+  const updatePost = () => {
+    getComments(onResponse, item.id, 1, 0);
+    getPostLikes(onGetPostLikesResponse, item.id);
+    getProfile(onProfileResponse, item.userId);
+    const at = item.attachment ?? "";
+    if (at != "")
+      decryptImage(at)
+        .then(decryptedData => {
+          setImageSrc(decryptedData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  }
   useEffect(() => {
-    
+
     updatePost();
 
   }, []);
@@ -189,7 +181,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
               </div>
             </div>
           </div>
-          <CustomModalIcon id={0} />
+          <CustomModalIcon id={0} links={[]} />
         </header>
         <main className={styles.main}>
           {item.attachment ? (
@@ -234,7 +226,7 @@ export const FeedPostItem: FC<{ item: postDataTypes }> = ({ item }) => {
                   src={CommentPostIcon}
                   style={{ filter: commentsHiden ? "saturate(3)" : "" }}
                 />
-                <span>{comments ? comments.length : 0}</span>
+                <span>{comments ? (comments.length > 0 ? comments.length - 1 : 0) : 0}</span>
               </div>
             </div>
           </nav>

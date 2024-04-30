@@ -107,6 +107,7 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
       if (response?.status == 200) {
         console.log(response.data);
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }
@@ -127,6 +128,7 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
       if (response?.status == 200) {
         console.log(response.data);
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }

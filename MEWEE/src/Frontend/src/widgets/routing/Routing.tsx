@@ -1,5 +1,9 @@
+import { Grid } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-import { SideToolbar, TopSearchBar } from "../../features/exportFeaturesComponents";
+import {
+  SideToolbar,
+  TopSearchBar,
+} from "../../features/exportFeaturesComponents";
 import { HomePage } from "../../features/exportFeaturesComponents";
 import { PlanGroupPage, PlanPage } from "../../pages/exportPageComponents";
 import { PrivateRoute } from "./PrivateRoute";
@@ -9,14 +13,12 @@ import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
 import Groups from "../../pages/groups/Groups";
 import Profile from "../../pages/profile/Profile";
-import { Grid } from "@mui/material";
-//
+import Chat from "../../pages/chat/Chat";
+
 export const Routing = () => {
-
   return (
-
     <Grid container>
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }} >
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <Grid item md={3}>
           <SideToolbar />
         </Grid>
@@ -28,6 +30,7 @@ export const Routing = () => {
               {/* <Route path="/post-show" element={<PostShow />} /> */}
               <Route path="/groups" element={<Groups />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/chat" element={<Chat />} />
               <Route
                 path="plans"
                 element={
@@ -66,6 +69,5 @@ export const Routing = () => {
         </div>
       </div>
     </Grid>
-
   );
 };

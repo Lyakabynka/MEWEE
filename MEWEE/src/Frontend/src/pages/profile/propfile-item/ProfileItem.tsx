@@ -4,14 +4,14 @@ import {
   portfilioData,
   setificateData,
   friendData,
-  sliderData
+  imageData,
 } from "../profileData";
 import { profileButtonsDataTypes } from "../profileData.interface";
 import ProfilePost from "./profile-post/ProfilePost";
 import Portfilio from "./portfilio/Portfilio";
 import Friends from "./friends/Friends";
 import PhotoVideoSliders from "../../../widgets/photo-video-sliders/PhotoVideoSliders";
-import ProfileItemFilter from "../../../assets/image/icons/ProfileItemFilter.svg"
+import ProfileItemFilter from "../../../assets/image/icons/ProfileItemFilter.svg";
 import styles from "./profile_item.module.scss";
 const ProfileItem: FC = () => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
@@ -33,8 +33,9 @@ const ProfileItem: FC = () => {
             profileButtonsData.map((item: profileButtonsDataTypes) => {
               return (
                 <li
-                  className={`${styles.li} ${item.id === activeItemId ? styles._li_active : ""
-                    }`}
+                  className={`${styles.li} ${
+                    item.id === activeItemId ? styles._li_active : ""
+                  }`}
                   key={item.id}
                   onClick={() => handleLiClick(item.id)}
                 >
@@ -43,20 +44,24 @@ const ProfileItem: FC = () => {
               );
             })}
         </ul>
-        {activeItemId === 1 && (<ProfilePost />)}
+        {activeItemId === 1 && <ProfilePost />}
 
         {activeItemId === 2 && (
-          <Portfilio portfilioData={portfilioData} setificateData={setificateData} />)}
+          <Portfilio
+            portfilioData={portfilioData}
+            setificateData={setificateData}
+          />
+        )}
 
-        {activeItemId === 3 && (<Friends friendData={friendData} />)}
+        {activeItemId === 3 && <Friends friendData={friendData} />}
         {activeItemId === 5 && (
           <div className={styles.sliders_div}>
             <div className={styles.div_title}>
               <h1>Недавні</h1>
               <img src={ProfileItemFilter} />
             </div>
-            <PhotoVideoSliders sliderData={sliderData} />
-            <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
+            <PhotoVideoSliders sliderData={imageData} />
+            <PhotoVideoSliders title={"Ретуш"} sliderData={imageData} />
           </div>
         )}
         {activeItemId === 6 && (
@@ -65,11 +70,10 @@ const ProfileItem: FC = () => {
               <h1>Недавні</h1>
               <img src={ProfileItemFilter} />
             </div>
-            <PhotoVideoSliders sliderData={sliderData} />
-            <PhotoVideoSliders title={"Ретуш"} sliderData={sliderData} />
+            <PhotoVideoSliders sliderData={imageData} />
+            <PhotoVideoSliders title={"Ретуш"} sliderData={imageData} />
           </div>
         )}
-
       </div>
     </>
   );
