@@ -38,8 +38,8 @@ public class GetCommentsQueryHandler : IRequestHandler<GetCommentsQuery, Result>
 
                 UserId = c.UserId,
             })
-            .Skip(page*pageSize)
-            .Take(pageSize)
+            //.Skip(page*pageSize)
+            //.Take(pageSize)
             .ToListAsync(cancellationToken);
 
         return Result.Create(comments);

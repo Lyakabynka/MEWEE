@@ -11,8 +11,8 @@ public class CreateCommentCommandValidator : AbstractValidator<GetCommentsQuery>
         RuleFor(c => c.PostId)
             .NotEqual(Guid.Empty);
 
-        RuleFor(x => x.Pagination)
-            .NotNull()
-            .SetValidator(new PaginationValidator());
+        // RuleFor(x => x.Pagination)
+        //     .NotNull()
+        //     .SetValidator(new PaginationValidator());
     }
 }
