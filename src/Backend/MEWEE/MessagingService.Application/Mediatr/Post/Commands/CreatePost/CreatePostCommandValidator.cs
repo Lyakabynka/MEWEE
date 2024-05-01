@@ -26,5 +26,8 @@ public class CreatePostCommandValidator : AbstractValidator<CreatePostCommand>
                 return Convert.TryFromBase64String(a, buf, out int bytesParsed);
             })
             .WithMessage("invalid_attachment");
+
+        RuleFor(c => c.Category)
+            .NotNull();
     }
 }
