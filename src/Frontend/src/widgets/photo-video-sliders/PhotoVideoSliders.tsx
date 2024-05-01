@@ -16,9 +16,9 @@ import styles from "./photo_video_sliders.module.scss";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const SwipeableTextMobileStepper: FC<photoVideoSlidersPropTypes> = ({
-                                                                        sliderData,
-                                                                        title,
-                                                                    }) => {
+    sliderData,
+    title,
+}) => {
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState<number>(0);
 

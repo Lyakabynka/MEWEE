@@ -22,7 +22,6 @@ export const useCommentStore = create<ICommentStore>((set, get) => ({
 
       if (response?.status === 200) {
         //console.log(response.data);
-        callback([]);
 
 //        callback();
       }
@@ -57,7 +56,7 @@ export const useCommentStore = create<ICommentStore>((set, get) => ({
   
         callback(get().comments[postId], []);
       }
-      else callback(get().comments[postId], pErrors(response.data.errors));
+      callback(get().comments[postId], pErrors(response.data.errors));
       //console.log(get().comments);
     } catch (error) {
       console.error("Error fetching comments:", error);

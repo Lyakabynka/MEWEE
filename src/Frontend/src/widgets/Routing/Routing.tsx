@@ -13,7 +13,7 @@ import { ScheduledPlanPage } from "../../pages/plan/ScheduledPlanPage";
 import PostShow from "../../pages/post-show/PostShow";
 import Groups from "../../pages/groups/Groups";
 import Profile from "../../pages/profile/Profile";
-import Chat from "../../pages/chat/Chat";
+import Messenger from "../../pages/messenger/Messenger";
 
 export const Routing = () => {
     return (
@@ -30,7 +30,7 @@ export const Routing = () => {
                             {/* <Route path="/post-show" element={<PostShow />} /> */}
                             <Route path="/groups" element={<Groups />} />
                             <Route path="/profile" element={<Profile />} />
-                            <Route path="/chat" element={<Chat />} />
+                            <Route path="/messenger" element={<Messenger />} />
                             <Route
                                 path="plans"
                                 element={

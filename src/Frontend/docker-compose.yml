@@ -1,0 +1,39 @@
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres
+    build:
+      context: .
+      dockerfile: Postgres/Dockerfile
+    hostname: mewee.postgres
+    ports: 
+      - "5432:5432"
+    image: postgres
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${Database__User}
+      - POSTGRES_PASSWORD=${Database__Password}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      
+  identityservice:
+    container_name: identityservice
+    build:
+      context: .
+      dockerfile: IdentityService.WebApi/Dockerfile
+    image: lyakabynka/mewee.identityservice
+    env_file:
+      - .env
+    hostname: mewee.identityservice
+    ports:
+      - 5001:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: on-failure
+    depends_on:
+      - postgres
+    
+
+volumes:
+  db_data:

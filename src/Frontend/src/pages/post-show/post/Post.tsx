@@ -151,7 +151,7 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
                 onClick={() => handleCommentClick(dataObject.id)}
                 src={CommentPostIcon}
               />
-              <span>({comments ? (comments.length > 0 ? comments.length-1 : 0) : 0})</span>
+              <span>({comments ? comments.length : 0})</span>
             </div>
           </nav>
         </footer>
