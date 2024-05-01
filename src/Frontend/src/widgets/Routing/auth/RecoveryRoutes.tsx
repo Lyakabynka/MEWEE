@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { AuthLayout, RecoveryPage } from '../../../pages';
+import { useParams } from "react-router-dom";
+import { AuthLayout } from "../../../pages/exportPageComponents";
+import { RecoveryPage } from "../../../pages/auth/RecoveryPage";
 
 export const RecoveryRoutes = () => {
   const { url } = useParams();
@@ -11,4 +12,4 @@ export const RecoveryRoutes = () => {
       </AuthLayout>
     </>
   );
-  };
+};

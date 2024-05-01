@@ -42,6 +42,16 @@ public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, Resul
         {
             post.Attachment = request.Attachment;
         }
+        
+        if (!string.IsNullOrEmpty(request.Location))
+        {
+            post.Location = request.Location;
+        }
+        
+        if (!string.IsNullOrEmpty(request.Category))
+        {
+            post.Category = request.Category;
+        }
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 

@@ -8,7 +8,12 @@ public class CreatePostCommand : IValidatableRequest<Result>
 {
     public string Title { get; set; }
     public string Content { get; set; }
+    
+    public string Category { get; set; }
+    
     public string? Attachment { get; set; }
+    
+    public string? Location { get; set; }
     
     public Guid UserId { get; set; }
 }

@@ -85,7 +85,7 @@ public class CommentController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> CreateComment([FromBody] DeleteCommentRequestModel requestModel)
+    public async Task<IActionResult> DeleteComment([FromBody] DeleteCommentRequestModel requestModel)
     {
         var request = new DeleteCommentCommand()
         {

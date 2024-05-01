@@ -22,22 +22,27 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
 
     public async Task<Result> Handle(FindPostsQuery request, CancellationToken cancellationToken)
     {
-        var searchQuery = request.SearchQuery.Trim().ToLowerInvariant();
+        var searchQuery = request.SearchQuery.Trim().ToLower();
         var page = request.Pagination.Page;
         var pageSize = request.Pagination.PageSize;
 
         var posts = await _dbContext.Posts
             .Include(p => p.Likes)
-            .Where(p => EF.Functions.FuzzyStringMatchLevenshtein(p.Title.ToLowerInvariant(), searchQuery) <= 3)
+            .Where(p => EF.Functions.FuzzyStringMatchLevenshtein(p.Title.ToLower(), searchQuery) <= 3)
             .Skip(page * pageSize)
             .Take(pageSize)
             .Select(p =>
                 new PostVm()
                 {
+                    Id = p.Id,
                     Title = p.Title,
                     Content = p.Content,
                     Attachment = p.Attachment,
                     LikesCount = p.Likes.Count,
+                    UserId = p.UserId,
+                    Location = p.Location,
+                    Category = p.Category,
+                    CreatedAt = p.CreatedAt,
                 })
             .ToListAsync(cancellationToken);
 

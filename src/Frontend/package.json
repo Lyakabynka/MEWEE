@@ -33,11 +33,15 @@
     "mui": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-i18next": "^14.1.0",
     "react-js-cron": "^4.1.0",
+    "react-notifications": "^1.7.4",
     "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
     "react-speech-recognition": "^3.10.0",
+    "react-swipeable-views": "^0.14.0",
+    "react-swipeable-views-utils": "^0.14.0",
+    "sass": "^1.75.0",
     "styled-components": "^6.1.8",
     "typescript": "^4.9.5",
     "typewriter-effect": "^2.21.0",
@@ -47,10 +51,10 @@
     "zustand": "^4.3.9"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings=0"
   },
   "eslintConfig": {
     "extends": [
@@ -73,6 +77,10 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
     "@types/js-cookie": "^3.0.3",
-    "@types/react-speech-recognition": "^3.9.2"
+    "@types/react-speech-recognition": "^3.9.2",
+    "@types/react-swipeable-views": "^0.13.5",
+    "@types/react-swipeable-views-utils": "^0.13.7",
+    "@typescript-eslint/parser": "^7.7.0",
+    "react-scripts": "^5.0.1"
   }
 }

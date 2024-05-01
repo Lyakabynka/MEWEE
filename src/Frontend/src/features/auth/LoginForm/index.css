@@ -7,6 +7,7 @@
 }
 
 .input-login {
+    background: rgba(255, 255, 255, 1);
     border-radius: 8px;
     border: none;
     outline: none;
@@ -14,7 +15,7 @@
     height: 40px;
     padding-left: 5px;
 }
-.input::placeholder {
+.input-login::placeholder {
     color: rgba(123, 123, 123, 1);
     text-align: justify;
     padding-left: 10px;
@@ -24,10 +25,16 @@
     color: rgba(37, 0, 92, 1);
     text-align: center;
 }
+.link:hover{
+    color: rgba(182, 122, 254, 1);
+}
+.link:active{
+    color: rgba(251, 165, 0, 1);
+}
 
 .login-style{
     position: relative;
-    width: 40%;
+    width: 45%;
     height: 48.19px;
     background: rgba(37, 0, 92, 1);
     border-radius: 10px;
@@ -35,6 +42,19 @@
     cursor: pointer;
     margin: 10px;
 }
+.login-style:hover{
+    background: rgba(182, 122, 254, 1);
+}
+
+.authorize{
+    color: rgba(182, 122, 254, 1);
+    position: relative;
+    z-index: 1;
+}
+.login-style:hover .authorize{
+    color: rgba(37, 0, 92, 1);
+}
+
 .login-style:active::after {
     content: "";
     position: absolute;
@@ -45,6 +65,7 @@
     background: rgba(16, 16, 16, 0.2);
     border-radius: 10px;
 }
+
 .label-error{
     background: red;
 }

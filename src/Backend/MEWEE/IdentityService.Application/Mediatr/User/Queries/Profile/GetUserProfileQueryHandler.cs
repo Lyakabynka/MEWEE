@@ -24,7 +24,13 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
                 Username = user.Username,
                 Email = user.Email,
                 Role = user.Role,
-                IsEmailConfirmed = user.IsEmailConfirmed
+                ProfileAvatar = user.ProfileAvatar,
+                IsEmailConfirmed = user.IsEmailConfirmed,
+                Workplace = user.Workplace,
+                Website = user.Website,
+                Status = user.Status,
+                FollowersCount = user.Followers.Count,
+                FollowingsCount = user.Followings.Count,
             })
             .FirstAsync(cancellationToken);
 

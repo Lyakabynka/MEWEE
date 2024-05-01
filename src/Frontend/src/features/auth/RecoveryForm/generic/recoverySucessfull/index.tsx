@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useErrors, useRecoveryStore, useThemeStore } from '../../../../../entities';
-import { SET_NEW_PASSWORD_SCHEMA } from '../../../../../shared';
 import { CircularProgress } from '@mui/material';
 import './index.css'
 
@@ -13,15 +12,15 @@ export const RecoverySuccessFulForm: React.FC<{ onNext: () => void }> = ({ onNex
   const [isActiveButton, setIsActiveButton] = useState(false);
   const buttonStyle = {
     backgroundColor: isActiveButton
-        ? currentTheme?.authPages.loginPage.buttonActiveBackground
+        ? currentTheme?.authPages.commonElements.buttonActiveBackground
         : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.loginPage.buttonHoverBackground
-            : currentTheme?.authPages.loginPage.buttonBackground,
+            ? currentTheme?.authPages.commonElements.buttonHoverBackground
+            : currentTheme?.authPages.commonElements.buttonBackground,
     color: isActiveButton
-        ? currentTheme?.authPages.loginPage.buttonActiveColor
+        ? currentTheme?.authPages.commonElements.buttonActiveColor
         : (isHoverButton && !isActiveButton)
-            ? currentTheme?.authPages.loginPage.buttonHoverColor
-            : currentTheme?.authPages.loginPage.buttonColor,
+            ? currentTheme?.authPages.commonElements.buttonHoverColor
+            : currentTheme?.authPages.commonElements.buttonColor,
 };
   return (
     <div className="recoverySucessfull-main-container">

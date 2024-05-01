@@ -13,5 +13,7 @@ public interface IApplicationDbContext
     
     DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
     
+    DbSet<Follower> Followers { get; set; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -3,6 +3,7 @@ export interface IUserData{
     username: string,
     email: string,
     role: string,
+    profileAvatar: string,
     isEmailConfirmed: boolean,
     platform: string
 }

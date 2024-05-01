@@ -3,8 +3,9 @@ import {API_URL} from "./endpoints";
 import {useAuthStore} from "../../entities";
 
 const $api = axios.create({
+    
     baseURL: API_URL,
-    //withCredentials: true
+    withCredentials: true
 });
 
 $api.interceptors.response.use((response) => {
@@ -26,6 +27,8 @@ $api.interceptors.response.use((response) => {
 
 $api.interceptors.request.use(function (config) {
     console.log('REQUEST', config);
+    //const token = document.cookie['accessToken'];
+    //config.headers.Authorization =  token ? `Bearer ${token}` : '';
     config.headers.set("Access-Control-Allow-Origin", "*");
     config.headers.set("Access-Control-Allow-Headers", "*");
     config.headers.set("Access-Control-Expose-Headers", "*");

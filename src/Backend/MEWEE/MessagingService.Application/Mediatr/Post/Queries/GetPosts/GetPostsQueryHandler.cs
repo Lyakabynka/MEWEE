@@ -26,10 +26,15 @@ public class GetPostsQueryHandler : IRequestHandler<GetPostsQuery, Result>
             .Select(p =>
                 new PostVm()
                 {
+                    Id = p.Id,
                     Title = p.Title,
                     Content = p.Content,
                     Attachment = p.Attachment,
                     LikesCount = p.Likes.Count,
+                    UserId = request.UserId,
+                    Location = p.Location,
+                    Category = p.Category,
+                    CreatedAt = p.CreatedAt
                 })
             .ToListAsync(cancellationToken);
 

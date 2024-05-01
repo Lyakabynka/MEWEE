@@ -6,31 +6,35 @@ declare module '@mui/material/styles' {
     authPages:{
       commonElements:{
         logoColorText: string;
-      },
-      loginPage: {
-        inputBackground: string;
-        lineColor: string;
-        lineColorText: string;
         buttonBackground: string;
         buttonColor: string;
         buttonHoverBackground: string;
         buttonHoverColor: string;
         buttonActiveBackground: string;
         buttonActiveColor: string;
+        inputBackground: string;
+        inputColor: string;
+        lineColor: string;
+        lineColorText: string;
+      },
+      loginPage: {
         linkColor: string;
         linkHoverColor: string;
         linkActiveColor: string;
       },
       registrationPage: {
-        inputBackground: string;
-        lineColor: string;
-        lineColorText: string;
-        buttonBackground: string;
-        buttonColor: string;
-        buttonHoverBackground: string;
-        buttonHoverColor: string;
-        buttonActiveBackground: string;
-        buttonActiveColor: string;
+      },
+      emailConfirmationPage: {
+        ColorText: string;
+        ColorHoverText: string;
+        ColorActiveText: string;
+      },
+      passwordChangePage: {
+        ColorText: string;
+      },
+      preferencesPage:{
+        colorText: string;
+        borderColor: string;
       },
     },
     mainPage:{
@@ -45,7 +49,7 @@ declare module '@mui/material/styles' {
         backgroundLanguage: string;
         hoverBackground: string;
         arrowBackground: string;
-        },
+      },
       header: {
         icon: string;
         hoverIcon: string;
@@ -54,7 +58,7 @@ declare module '@mui/material/styles' {
         colorText: string;
         inputTextColor: string;
         inputColorStroke: string;
-        },
+      },
       post: {
         icon: string;
         secondIcon: string;
@@ -62,7 +66,16 @@ declare module '@mui/material/styles' {
         colorText: string;
         secondColorText: string;
         thirdColorText: string;
+        comments: {
+          background: string;
+          userColorText: string;
+          colorText: string;
+          shAnswerColorText: string;
+          answerColorText: string;
+          inputBackground: string;
         },
+      },
+
     },
   }
 
@@ -70,31 +83,35 @@ declare module '@mui/material/styles' {
     authPages?:{
       commonElements?:{
         logoColorText?: string;
-      },
-      loginPage?: {
-        inputBackground?: string;
-        lineColor?: string;
-        lineColorText?: string;
         buttonBackground?: string;
         buttonColor?: string;
         buttonHoverBackground?: string;
         buttonHoverColor?: string;
         buttonActiveBackground?: string;
         buttonActiveColor?: string;
+        inputBackground?: string;
+        inputColor?: string;
+        lineColor?: string;
+        lineColorText?: string;
+      },
+      loginPage?: {
         linkColor?: string;
         linkHoverColor?: string;
         linkActiveColor?: string;
       },
       registrationPage?: {
-        inputBackground?: string;
-        lineColor?: string;
-        lineColorText?: string;
-        buttonBackground?: string;
-        buttonColor?: string;
-        buttonHoverBackground?: string;
-        buttonHoverColor?: string;
-        buttonActiveBackground?: string;
-        buttonActiveColor?: string;
+      },
+      emailConfirmationPage?: {
+        ColorText?: string;
+        ColorHoverText?: string;
+        ColorActiveText?: string;
+      },
+      passwordChangePage?: {
+        ColorText?: string;
+      },
+      preferencesPage?:{
+        colorText?: string;
+        borderColor?: string;
       },
     },
     mainPage:{
@@ -109,7 +126,7 @@ declare module '@mui/material/styles' {
         backgroundLanguage?: string;
         hoverBackground?: string;
         arrowBackground?: string;
-        },
+      },
       header?: {
         icon?: string;
         hoverIcon?: string;
@@ -118,7 +135,7 @@ declare module '@mui/material/styles' {
         colorText?: string;
         inputTextColor?: string;
         inputColorStroke?: string;
-        },
+      },
       post?: {
         icon?: string;
         secondIcon?: string;
@@ -126,7 +143,15 @@ declare module '@mui/material/styles' {
         colorText?: string;
         secondColorText?: string;
         thirdColorText?: string;
+        comments?: {
+          background?: string;
+          userColorText?: string;
+          colorText?: string;
+          shAnswerColorText?: string;
+          answerColorText?: string;
+          inputBackground?: string;
         },
+      },
     },
   }
 }
@@ -135,31 +160,35 @@ export const themes: Theme[] = [
     authPages:{
       commonElements:{
         logoColorText: '#25005C',
-      },
-      loginPage: {
-        inputBackground: 'white',
-        lineColor: '#C5C5CA',
-        lineColorText: '#6E6E73',
         buttonBackground: '#25005C',
         buttonColor: '#B67AFE',
         buttonHoverBackground: '#B67AFE',
         buttonHoverColor: '#25005C',
         buttonActiveBackground: '#B67AFE',
         buttonActiveColor: '#25005C',
+        inputBackground: 'white',
+        inputColor: 'black',
+        lineColor: '#C5C5CA',
+        lineColorText: '#6E6E73',
+      },
+      loginPage: {
         linkColor: '#25005C',
         linkHoverColor: '#B67AFE',
         linkActiveColor: '#FBA500',
       },
       registrationPage: {
-        inputBackground: 'white',
-        lineColor: '#C5C5CA',
-        lineColorText: '#6E6E73',
-        buttonBackground: '#25005C',
-        buttonColor: '#B67AFE',
-        buttonHoverBackground: '#B67AFE',
-        buttonHoverColor: '#25005C',
-        buttonActiveBackground: '#B67AFE',
-        buttonActiveColor: '#25005C',
+      },
+      emailConfirmationPage: {
+        ColorText: '#25005C',
+        ColorHoverText: '#25005CBF',
+        ColorActiveText: '#FBA500',
+      },
+      passwordChangePage: {
+        ColorText: '#25005C',
+      },
+      preferencesPage:{
+        colorText: '#25005C',
+        borderColor: '#25005C',
       },
     },
     mainPage:{
@@ -191,6 +220,14 @@ export const themes: Theme[] = [
         colorText: 'black',
         secondColorText:'#25005C',
         thirdColorText:'gray',
+        comments: {
+          background: 'white',
+          userColorText: 'black',
+          colorText: 'black',
+          shAnswerColorText: '#FBA500',
+          answerColorText: '#B67AFE',
+          inputBackground: 'white',
+        },
       },
     },
     palette: {
@@ -203,31 +240,35 @@ export const themes: Theme[] = [
     authPages:{
       commonElements:{
         logoColorText: '#B67AFE',
-      },
-      loginPage: {
-        inputBackground: '#302a37',
-        lineColor: '#6E6E73',
-        lineColorText: '#6E6E73',
         buttonBackground: '#B67AFE',
         buttonColor: '#25005C',
         buttonHoverBackground: '#25005C',
         buttonHoverColor: '#B67AFE',
         buttonActiveBackground: '#B67AFE',
         buttonActiveColor: '#25005C',
+        inputBackground: '#302a37',
+        inputColor: 'white',
+        lineColor: '#6E6E73',
+        lineColorText: '#6E6E73',
+      },
+      loginPage: {
         linkColor: '#FFFFFF',
         linkHoverColor: 'gray',
         linkActiveColor: '#FBA500',
       },
       registrationPage: {
-        inputBackground: '#302a37',
-        lineColor: '#C5C5CA',
-        lineColorText: '#6E6E73',
-        buttonBackground: '#B67AFE',
-        buttonColor: '#25005C',
-        buttonHoverBackground: '#25005C',
-        buttonHoverColor: '#B67AFE',
-        buttonActiveBackground: '#B67AFE',
-        buttonActiveColor: '#25005C',
+      },
+      emailConfirmationPage: {
+        ColorText: '#B67AFE',
+        ColorHoverText: '#B67AFEBF',
+        ColorActiveText: '#FBA500',
+      },
+      passwordChangePage: {
+        ColorText: '#B67AFE',
+      },
+      preferencesPage:{
+        colorText: '#B67AFE',
+        borderColor: '#B67AFE',
       },
     },
     mainPage: {
@@ -259,6 +300,14 @@ export const themes: Theme[] = [
         colorText: 'white',
         secondColorText:'#B67AFE',
         thirdColorText:'gray',
+        comments: {
+          background: '#2F2937',
+          userColorText: 'white',
+          colorText: 'white',
+          shAnswerColorText: '#FBA500',
+          answerColorText: '#B67AFE',
+          inputBackground: '#4e4955',
+        },
       },
     },
     palette: {

@@ -12,7 +12,18 @@ public class UserVm
     
     public UserRole Role { get; set; }
     
+    public string? ProfileAvatar { get; set; }
+    
     public bool IsEmailConfirmed { get; set; }
+    
+    public string? Workplace { get; set; }
+    public string? Website { get; set; }
+    public string? Status { get; set; }
+    
+    public string? Location { get; set; }
+    
+    public int FollowersCount { get; set; }
+    public int FollowingsCount { get; set; }
     
     public string UserAgent { get; set; }
 }

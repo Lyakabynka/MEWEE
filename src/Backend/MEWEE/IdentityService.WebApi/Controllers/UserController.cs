@@ -1,9 +1,13 @@
 ﻿using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
 using IdentityService.Application.Mediatr.User.Commands.CheckForgotPasswordCode;
 using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
+using IdentityService.Application.Mediatr.User.Commands.Follow;
 using IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
 using IdentityService.Application.Mediatr.User.Commands.Register;
 using IdentityService.Application.Mediatr.User.Commands.RestorePassword;
+using IdentityService.Application.Mediatr.User.Commands.Unfollow;
+using IdentityService.Application.Mediatr.User.Commands.UpdateProfile;
+using IdentityService.Application.Mediatr.User.Queries.Followers;
 using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityService.WebApi.Controllers;
 
-[Route("user")]
 public class UserController : ApiControllerBase
 {
     /// <summary>
@@ -26,7 +29,7 @@ public class UserController : ApiControllerBase
     /// <response code="409">User with provided credentials already exists</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [HttpPost("register")]
+    [HttpPost("user/register")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -47,13 +50,13 @@ public class UserController : ApiControllerBase
     /// </summary>
     /// <remarks>
     /// Sample request:
-    /// POST /user/profile
+    /// GET /user/profile
     /// </remarks>
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     [Authorize]
-    [HttpGet("profile")]
+    [HttpGet("user/profile")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -68,6 +71,119 @@ public class UserController : ApiControllerBase
     }
     
     /// <summary>
+    /// Updates users profile
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// PUT /user/profile
+    /// </remarks>
+    /// <param name="requestModel">UpdateUserProfileRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpPut("user/profile")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateUserProfile([FromBody] UpdateUserProfileRequestModel requestModel)
+    {
+        var request = new UpdateProfileCommand()
+        {
+            UserId = UserId,
+            
+            Workplace = requestModel.Workplace,
+            Website = requestModel.Website,
+            Location = requestModel.Location,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Follows some user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /follow-user
+    /// </remarks>
+    /// <param name="requestModel">FollowUserRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpPost("follow-user")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> FollowUser([FromBody] FollowUserRequestModel requestModel)
+    {
+        var request = new FollowCommand()
+        {
+            UserId = UserId,
+            FollowingUserId = requestModel.FollowingUserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Unfollows some user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// DELETE /unfollow-user
+    /// </remarks>
+    /// <param name="requestModel">FollowUserRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpDelete("unfollow-user")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UnfollowUser([FromBody] FollowUserRequestModel requestModel)
+    {
+        var request = new UnfollowCommand()
+        {
+            UserId = UserId,
+            FollowingUserId = requestModel.FollowingUserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Get followers some user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /followers
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("followers")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetFollowers()
+    {
+        var request = new GetFollowersQuery()
+        {
+            UserId = UserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
     /// Confirms user's email
     /// </summary>
     /// <remarks>
@@ -77,7 +193,7 @@ public class UserController : ApiControllerBase
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [HttpPost("confirm-email")]
+    [HttpPost("user/confirm-email")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -104,7 +220,7 @@ public class UserController : ApiControllerBase
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
     [Authorize]
-    [HttpPost("change-password")]
+    [HttpPost("user/change-password")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -131,7 +247,7 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
-    [HttpPost("forgot-password")]
+    [HttpPost("user/forgot-password")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -156,7 +272,7 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
-    [HttpPost("check-forgot-password")]
+    [HttpPost("user/check-forgot-password")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -182,7 +298,7 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
-    [HttpPost("restore-password")]
+    [HttpPost("user/restore-password")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

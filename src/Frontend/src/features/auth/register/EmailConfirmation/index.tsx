@@ -5,43 +5,22 @@ import { useAuthStore, useErrors, useThemeStore } from "../../../../entities";
 import { useFormik } from 'formik';
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { CodeItem } from '../../RecoveryForm/components/codeitem';
+import styles from "./email_confirmation.module.scss";
 
-export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
+export const EmailConfirmationForm: React.FC<{ onNext: () => void, onBack: () => void }> = ({ onNext, onBack }) => {
 
     const {t} = useTranslation();
-    const {currentTheme} = useThemeStore();
     const [errors, setErrors, setAutoClearErrors] = useErrors();
     const { confirmEmail, email, isLoading } = useAuthStore();
-    const [isHoverButton, setIsHoverButton] = useState(false);
-    const [isActiveButton, setIsActiveButton] = useState(false);
-    const [isHoverLink, setIsHoverLink] = useState(false);
-    const [isActiveLink, setIsActiveLink] = useState(false);
-  
-    const buttonStyle = {
-        backgroundColor: isActiveButton
-            ? currentTheme?.authPages.loginPage.buttonActiveBackground
-            : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.loginPage.buttonHoverBackground
-                : currentTheme?.authPages.loginPage.buttonBackground,
-        color: isActiveButton
-            ? currentTheme?.authPages.loginPage.buttonActiveColor
-            : (isHoverButton && !isActiveButton)
-                ? currentTheme?.authPages.loginPage.buttonHoverColor
-                : currentTheme?.authPages.loginPage.buttonColor,
-    };
-    const linkStyle = {
-        color: isActiveLink
-            ? currentTheme?.authPages.loginPage.linkActiveColor
-            : (isHoverLink && !isActiveLink)
-                ? currentTheme?.authPages.loginPage.linkHoverColor
-                : currentTheme?.authPages.loginPage.linkColor,
-    };
+    const [otp, setOtp] = useState(new Array(8).fill(''));
+
 
     const formik = useFormik(
     {
         initialValues: { code: '', },
 
-        onSubmit: () => { confirmEmail(onResponse, { email: email, code: formik.values.code}); }
+        onSubmit: () => { confirmEmail(onResponse, { email: email, code: otp.join("")}); }
     });
 
 
@@ -53,44 +32,24 @@ export const EmailConfirmationForm: React.FC<{ onNext: () => void }> = ({ onNext
             onNext();
     }
 
-    const inputStyle = {
-        backgroundColor: currentTheme?.authPages.loginPage.inputBackground,
-    };
     const codeError = formik.errors.code;
     return (
-        <div>
+        <div className={styles.div}>
             <form onSubmit={formik.handleSubmit}>
-            <div className="input-container">
-                            <label className={`label-style ${codeError ? 'label-error' : ''}`}>
-                                <input
-                                    required
-                                    autoComplete="code"
-                                    id="code"
-                                    placeholder={t('code') + '*'}
-                                    autoFocus
-                                    value={formik.values.code}
-                                    onChange={formik.handleChange}
-                                    className={`"text-style-1 input-login ${codeError ? 'input-error' : ''}`}
-                                    style={inputStyle}
-                                />
-                            </label>
-                            {formik.errors.code && <div className="error">{t(formik.errors.code)}</div>}
-                        </div>
-                        <button className="login-style text-style-2" type="submit"
-                style={buttonStyle}
-                onMouseEnter={() => setIsHoverButton(true)}
-                onMouseLeave={() => {
-                    setIsHoverButton(false);
-                    setIsActiveButton(false);
-                }}
-                onMouseDown={() => setIsActiveButton(true)}
-                onMouseUp={() => setIsActiveButton(false)}>{t('verify')+ " " +t('code')}
-        </button>
-        {isLoading && <CircularProgress></CircularProgress>}
+                <header>{t('confirm_email')}</header>
+                <main>
+                    <CodeItem otp={otp} setOtp={setOtp}/>
+                    {formik.errors.code && <div className={styles.error}>{t(formik.errors.code)}</div>}
+                </main>
+                <footer>
+                    <button type="submit">{t('verify') + " " + t('code')}</button>
+                    <button onClick={onBack}>{t('go_back')}</button>
+                </footer>
+                {isLoading && <CircularProgress></CircularProgress>}
             </form>
 
             {(errors && errors.length > 0) && errors.map((error, index) => (
-                <span key={index} className="error">{t(error)}</span>
+                <span key={index} className={styles.error}>{t(error)}</span>
             ))}
         </div>
     );

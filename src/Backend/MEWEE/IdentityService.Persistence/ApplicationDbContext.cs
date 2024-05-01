@@ -14,6 +14,8 @@ namespace IdentityService.Persistence
         public DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
         
         public DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
+        
+        public DbSet<Follower> Followers { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -21,6 +23,7 @@ namespace IdentityService.Persistence
         {
             modelBuilder.ApplyConfiguration(new RefreshSessionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new FollowConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

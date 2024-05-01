@@ -51,6 +51,11 @@ public class MessageHub : Hub
         await Clients.Caller.SendAsync("initializeSession", initSession, ct);
     }
 
+    public async Task JoinChat(Guid chatId)
+    {
+        await Groups.AddToGroupAsync(Context.ConnectionId, chatId.ToString());
+    }
+
     public async Task SendMessage(Guid chatId, SendMessageRequest request, CancellationToken ct)
     {
         if (UserId == Guid.Empty)

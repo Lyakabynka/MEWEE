@@ -4,6 +4,7 @@ using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
 using MessagingService.Application.Mediatr.PostLikes.Commands.CreatePostLike;
+using MessagingService.Application.Mediatr.PostLikes.Queries.GetPostLikes;
 using MessagingService.WebApi.Models;
 using MessagingService.WebApi.Models.Post;
 using Microsoft.AspNetCore.Authorization;
@@ -62,7 +63,7 @@ public class PostController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> CreatePost([FromBody] UpdatePostRequestModel requestModel)
+    public async Task<IActionResult> UpdatePost([FromBody] UpdatePostRequestModel requestModel)
     {
         var request = new UpdatePostCommand()
         {
@@ -162,6 +163,34 @@ public class PostController : ApiControllerBase
         return await Mediator.Send(request);
     }
     
+    /// <summary>
+    /// Gets likes of specific post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /posts-likes
+    /// </remarks>
+    /// <param name="requestModel">GetPostsRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("post-likes")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> GetPostLikes([FromBody] GetPostLikesRequestModel requestModel)
+    {
+        var request = new GetPostLikesQuery()
+        {
+            UserId = UserId,
+            PostId = requestModel.PostId
+        };
+        
+        return await Mediator.Send(request);
+    }
     
     /// <summary>
     /// Likes a post
