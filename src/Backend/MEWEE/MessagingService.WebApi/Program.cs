@@ -7,6 +7,10 @@ using MessagingService.Persistence;
 using MessagingService.WebApi;
 using MessagingService.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.OpenApi.Models;
 
 // Allow DateTime for postgres
@@ -22,28 +26,34 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddCustomConfigurations(builder.Configuration);
 
 builder.Services.AddAuthentication(config =>
-    {
-        config.DefaultAuthenticateScheme = 
-            JwtBearerDefaults.AuthenticationScheme;
-        config.DefaultChallengeScheme = 
-            JwtBearerDefaults.AuthenticationScheme;
-    }) 
-    .AddJwtBearer()
-    .AddCookie();
+{
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}) 
+.AddJwtBearer()
+.AddCookie();
 
 builder.Services.AddApplication();
 builder.Services.AddPersistence();
 
 builder.Services.AddCors(options =>
 {
-    // All clients (temporary)
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowAll",
+        x =>
+            x.WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
+
+    options.AddPolicy("SignalRCors", policy =>
     {
-        policy.AllowAnyOrigin();
+        policy.AllowCredentials();
+        policy.WithOrigins("http://localhost:5000", "https://localhost:5002","https://localhost:3000"); // Add your localhost origins here
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
     });
 });
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -55,7 +65,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
-//swagger
+// Swagger
 builder.Services.AddSwaggerGen(config =>
 {
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -82,7 +92,7 @@ using (var scope = app.Services.CreateScope())
     }
     catch(Exception ex)
     {
-        //TODO: refactor this
+        // TODO: refactor this
         Console.WriteLine(ex.Message);
     }
 }
@@ -90,14 +100,14 @@ using (var scope = app.Services.CreateScope())
 app.UseCustomExceptionHandler();
 
 app.UseAuthentication();
-app.UseAuthorization();
 
-app.UseCors("AllowAll");
+
+app.UseCors("AllowAll"); // Apply CORS policy globally
 
 app.UseSwagger();
 app.UseSwaggerUI(config =>
 {
-    // show swagger page using root Uri
+    // Show swagger page using root Uri
     config.RoutePrefix = string.Empty;
 
     config.SwaggerEndpoint("swagger/v1/swagger.json", "MEWEE MessagingService RestAPI");
@@ -107,6 +117,31 @@ app.MapControllers();
 
 app.MapGet("/", () => Results.Ok("Works!"));
 
-app.MapHub<MessageHub>("hubs/message");
+app.UseRouting();
+app.UseAuthorization();
+app.UseCors("SignalRCors"); // Apply CORS policy for SignalR
+
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.MapHub<MessageHub>("/hubs/message", options =>
+{
+    options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
+});
+
 
 app.Run();
