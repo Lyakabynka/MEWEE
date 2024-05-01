@@ -39,6 +39,8 @@ public class PostController : ApiControllerBase
             Title = requestModel.Title,
             Content = requestModel.Content,
             Attachment = requestModel.Attachment,
+            Category = requestModel.Category,
+            Location = requestModel.Location,
             UserId = UserId,
         };
         
