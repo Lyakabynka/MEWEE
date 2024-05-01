@@ -1,4 +1,5 @@
-﻿using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
+﻿using IdentityService.Application.Mediatr.User.Commands.AcceptFollow;
+using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
 using IdentityService.Application.Mediatr.User.Commands.CheckForgotPasswordCode;
 using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
 using IdentityService.Application.Mediatr.User.Commands.Follow;
@@ -8,6 +9,7 @@ using IdentityService.Application.Mediatr.User.Commands.RestorePassword;
 using IdentityService.Application.Mediatr.User.Commands.Unfollow;
 using IdentityService.Application.Mediatr.User.Commands.UpdateProfile;
 using IdentityService.Application.Mediatr.User.Queries.Followers;
+using IdentityService.Application.Mediatr.User.Queries.Followings;
 using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -178,6 +180,59 @@ public class UserController : ApiControllerBase
         var request = new GetFollowersQuery()
         {
             UserId = UserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Get followers some user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /followings
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("followings")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetFollowings()
+    {
+        var request = new GetFollowingsQuery()
+        {
+            UserId = UserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Get followers some user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /accept-follower
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpPost("accept-follower")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetFollowings([FromBody] AcceptFollowRequestModel requestModel)
+    {
+        var request = new AcceptFollowCommand()
+        {
+            UserId = UserId,
+            FollowerUserId = requestModel.FollowerUserId,
         };
         
         return await Mediator.Send(request);

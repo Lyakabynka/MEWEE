@@ -20,7 +20,8 @@ public class FollowCommandHandler : IRequestHandler<FollowCommand, Result>
         {
             Id = Guid.NewGuid(),
             UserId = request.UserId,
-            FollowingUserId = request.FollowingUserId
+            FollowingUserId = request.FollowingUserId,
+            IsPending = true,
         });
 
         await _dbContext.SaveChangesAsync(cancellationToken);
