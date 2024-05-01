@@ -57,7 +57,7 @@ public class UserController : ApiControllerBase
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [HttpGet("profile/{userId:guid}")]
+    [HttpGet("user/profile/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -93,6 +93,8 @@ public class UserController : ApiControllerBase
         var request = new UpdateProfileCommand()
         {
             UserId = UserId,
+            
+            ProfileAvatar = requestModel.ProfileAvatar,
             
             Workplace = requestModel.Workplace,
             Website = requestModel.Website,

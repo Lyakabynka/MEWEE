@@ -4,6 +4,7 @@ using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
 using MessagingService.Application.Mediatr.PostLikes.Commands.CreatePostLike;
+using MessagingService.Application.Mediatr.PostLikes.Commands.DeletePostLike;
 using MessagingService.Application.Mediatr.PostLikes.Queries.GetPostLikes;
 using MessagingService.WebApi.Models;
 using MessagingService.WebApi.Models.Post;
@@ -243,7 +244,7 @@ public class PostController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
     public async Task<IActionResult> DeletePostLike([FromBody] DeletePostLikeRequestModel requestModel)
     {
-        var request = new CreatePostLikeCommand()
+        var request = new DeletePostLikeCommand()
         {
             PostId = requestModel.PostId,
             UserId = UserId,
