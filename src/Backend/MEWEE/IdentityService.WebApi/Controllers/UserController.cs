@@ -39,7 +39,9 @@ public class UserController : ApiControllerBase
     {
         var request = new RegisterCommand()
         {
-            Username = requestModel.Username,
+            //Username = requestModel.Username,
+            FirstName = requestModel.FirstName,
+            SecondName = requestModel.SecondName,
             Password = requestModel.Password,
             Email = requestModel.Email.ToLower(),
         };

@@ -83,6 +83,8 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result>
         return Result.Create(new UserVm()
         {
             Id = user.Id,
+            FirstName = user.FirstName,
+            SecondName = user.SecondName,
             Username = user.Username,
             Email = user.Email,
             Role = user.Role,

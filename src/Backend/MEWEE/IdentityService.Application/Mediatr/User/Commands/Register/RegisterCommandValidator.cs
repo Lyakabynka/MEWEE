@@ -9,7 +9,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {
     public RegisterCommandValidator(IApplicationDbContext dbContext)
     {
-        RuleFor(c => c.Username)
+        RuleFor(c => c.FirstName)
             .Length(4, 20);
 
         RuleFor(c => c.Password)
@@ -31,14 +31,14 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
             })
             .WithMessage("error_invalid_email");
 
-        RuleFor(c => c.Username)
-            .MustAsync(async (username, cancellationToken) =>
-            {
-                return !await dbContext.Users
-                    .Where(user => user.Username == username)
-                    .AnyAsync(cancellationToken);
-            })
-            .WithMessage("error_username_exists");
+        // RuleFor(c => c.Username)
+        //     .MustAsync(async (username, cancellationToken) =>
+        //     {
+        //         return !await dbContext.Users
+        //             .Where(user => user.Username == username)
+        //             .AnyAsync(cancellationToken);
+        //     })
+        //     .WithMessage("error_username_exists");
         
         RuleFor(c => c.Email)
             .MustAsync(async (email, cancellationToken) =>

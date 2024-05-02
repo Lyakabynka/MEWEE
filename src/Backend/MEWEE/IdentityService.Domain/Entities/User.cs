@@ -4,6 +4,8 @@ namespace IdentityService.Domain.Entities;
 
 public class User : BaseEntity
 {
+    public string FirstName { get; set; }
+    public string? SecondName { get; set; }
     public string Username { get; set; }
     public string PasswordHash { get; set; }
 

@@ -21,10 +21,15 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
 
     public async Task<Result> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
+        
+        string suffix = GenerateRandomSuffix();
+        
         var user = new Domain.Entities.User()
         {
             Id = Guid.NewGuid(),
-            Username = request.Username,
+            FirstName = request.FirstName,
+            SecondName = request.SecondName,
+            Username = $"user{suffix}",
             Email = request.Email,
             PasswordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password, HashType.SHA512),
         };
@@ -42,5 +47,21 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result>
         
         return Result.Create(user);
         //return Result.Create(new { });
+    }
+    
+    private string GenerateRandomSuffix()
+    {
+        // You can adjust the length of the suffix as needed
+        const int suffixLength = 5;
+        Random random = new Random();
+        string characters = "0123456789"; // You can include more characters if needed
+        char[] suffix = new char[suffixLength];
+
+        for (int i = 0; i < suffixLength; i++)
+        {
+            suffix[i] = characters[random.Next(characters.Length)];
+        }
+
+        return new string(suffix);
     }
 }

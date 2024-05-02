@@ -28,6 +28,8 @@ public class GetFollowingsQueryHandler : IRequestHandler<GetFollowingsQuery, Res
             .Take(pageSize)
             .Select(f => new UserVm
             {
+                FirstName = f.User.FirstName,
+                SecondName = f.User.SecondName,
                 Username = f.User.Username,
                 Email = f.User.Email,
                 Role = f.User.Role,
