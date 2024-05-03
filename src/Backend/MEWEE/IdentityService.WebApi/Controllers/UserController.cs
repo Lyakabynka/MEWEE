@@ -59,11 +59,11 @@ public class UserController : ApiControllerBase
     /// <response code="200">Success</response>
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
-    [HttpGet("user/profile/{userId:guid}")]
+    [HttpGet("user/profile/{userId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetUsersProfile([FromRoute] Guid userId)
+    public async Task<IActionResult> GetUsersProfile([FromRoute] string userId)
     {
         var request = new GetUserProfileQuery()
         {

@@ -5,5 +5,5 @@ namespace IdentityService.Application.Mediatr.User.Queries.Profile;
 
 public class GetUserProfileQuery : IValidatableRequest<Result>
 {
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
 }

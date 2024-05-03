@@ -87,6 +87,7 @@ public class MessageHub : Hub
             UpdatedAt = request.CreatedAt,
             ChatId = chatId,
             UserId = UserId,
+            
         };
 
         chat.Messages.Add(message);

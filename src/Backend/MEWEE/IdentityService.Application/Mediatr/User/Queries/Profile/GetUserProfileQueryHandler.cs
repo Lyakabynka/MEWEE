@@ -17,10 +17,23 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
 
     public async Task<Result> Handle(GetUserProfileQuery request, CancellationToken cancellationToken)
     {
-        var userProfileVm = await _dbContext.Users
-            .Where(user => user.Id == request.UserId)
+        bool isGuid = Guid.TryParse(request.UserId, out Guid userGuid);
+    
+        var query = _dbContext.Users.AsQueryable();
+
+        if (isGuid)
+        {
+            query = query.Where(user => user.Id == userGuid);
+        }
+        else
+        {
+            query = query.Where(user => user.Username == request.UserId);
+        }
+
+        var userProfileVm = await query
             .Select(user => new UserVm
             {
+                Id = user.Id,
                 FirstName = user.FirstName,
                 SecondName = user.SecondName,
                 Username = user.Username,
@@ -31,10 +44,11 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
                 Workplace = user.Workplace,
                 Website = user.Website,
                 Status = user.Status,
+                Location = user.Location,
                 FollowersCount = user.Followers.Count,
                 FollowingsCount = user.Followings.Count,
             })
-            .FirstAsync(cancellationToken);
+            .FirstOrDefaultAsync(cancellationToken);
 
         return Result.Create(userProfileVm);
     }
