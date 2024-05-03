@@ -15,5 +15,7 @@ public interface IApplicationDbContext
     
     DbSet<Follower> Followers { get; set; }
     
+    DbSet<Photo> Photos { get; set; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

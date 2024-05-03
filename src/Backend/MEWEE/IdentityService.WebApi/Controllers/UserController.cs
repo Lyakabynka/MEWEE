@@ -1,7 +1,9 @@
 ﻿using IdentityService.Application.Mediatr.User.Commands.AcceptFollow;
+using IdentityService.Application.Mediatr.User.Commands.AddPhoto;
 using IdentityService.Application.Mediatr.User.Commands.ChangePassword;
 using IdentityService.Application.Mediatr.User.Commands.CheckForgotPasswordCode;
 using IdentityService.Application.Mediatr.User.Commands.ConfirmEmail;
+using IdentityService.Application.Mediatr.User.Commands.DeletePhotoCommand;
 using IdentityService.Application.Mediatr.User.Commands.Follow;
 using IdentityService.Application.Mediatr.User.Commands.ForgotPassword;
 using IdentityService.Application.Mediatr.User.Commands.Register;
@@ -236,6 +238,86 @@ public class UserController : ApiControllerBase
         {
             UserId = UserId,
             FollowerUserId = requestModel.FollowerUserId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Adds photo to user
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /user/photo
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpPost("user/photo")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AddPhoto([FromBody] AddPhotoRequestModel requestModel)
+    {
+        var request = new AddPhotoCommand()
+        {
+            UserId = UserId,
+            Photo = requestModel.Photo
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Delete user's photo
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// DELETE /user/photo
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpDelete("user/photo")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> DeletePhoto([FromBody] DeletePhotoRequestModel requestModel)
+    {
+        var request = new DeletePhotoCommand()
+        {
+            UserId = UserId,
+            PhotoId = requestModel.PhotoId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Get user's photos
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /user/photos
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("user/photos")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetPhotos()
+    {
+        var request = new DeletePhotoCommand()
+        {
+            UserId = UserId,
         };
         
         return await Mediator.Send(request);

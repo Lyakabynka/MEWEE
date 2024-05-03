@@ -27,5 +27,7 @@ public class UserVm
     public int FollowersCount { get; set; }
     public int FollowingsCount { get; set; }
     
+    public int PhotoCount { get; set; }
+    
     public string UserAgent { get; set; }
 }

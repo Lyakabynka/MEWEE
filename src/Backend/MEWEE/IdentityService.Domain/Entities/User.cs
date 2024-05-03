@@ -22,6 +22,7 @@ public class User : BaseEntity
     public List<Follower> Followers { get; set; }
     public List<Follower> Followings { get; set; }
     
+    public List<Photo> Photos { get; set; }
     
     public string? Workplace { get; set; }
     public string? Website { get; set; }

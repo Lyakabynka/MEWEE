@@ -16,6 +16,7 @@ namespace IdentityService.Persistence
         public DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
         
         public DbSet<Follower> Followers { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

@@ -47,6 +47,7 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
                 Location = user.Location,
                 FollowersCount = user.Followers.Count,
                 FollowingsCount = user.Followings.Count,
+                PhotoCount = user.Photos.Count,
             })
             .FirstOrDefaultAsync(cancellationToken);
 
