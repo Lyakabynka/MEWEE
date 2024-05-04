@@ -24,8 +24,11 @@ public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, Resul
             Content = request.Content.Trim(),
             Attachment = request.Attachment,
             Location = request.Location,
-            UserId = request.UserId,
-            Category = request.Category
+            Category = request.Category,
+            
+            AuthorId = request.AuthorId,
+            Type = request.Type,
+            HappeningAtUtc = request.HappeningAtUtc,
         };
         
         _dbContext.Posts.Add(post);

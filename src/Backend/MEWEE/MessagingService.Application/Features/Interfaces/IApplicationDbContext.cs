@@ -20,6 +20,7 @@ public interface IApplicationDbContext
     DbSet<Chat> Chats { get; set; }
     DbSet<ChatUser> ChatParticipants { get; set; }
     DbSet<Message> Messages { get; set; }
+    DbSet<Save> Saves { get; set; }
     
     DatabaseFacade Database { get; }
     

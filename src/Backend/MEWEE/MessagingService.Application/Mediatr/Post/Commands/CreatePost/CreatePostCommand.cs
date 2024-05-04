@@ -1,6 +1,7 @@
 ﻿using System;
 using MessagingService.Application.Features.Interfaces;
 using MessagingService.Application.Response;
+using MessagingService.Domain.Enums;
 
 namespace MessagingService.Application.Mediatr.Post.Commands.CreatePost;
 
@@ -15,5 +16,10 @@ public class CreatePostCommand : IValidatableRequest<Result>
     
     public string? Location { get; set; }
     
-    public Guid UserId { get; set; }
+    
+    public PostType Type { get; set; }
+    public Guid AuthorId { get; set; }
+    
+    //not null if Type == Event
+    public DateTime? HappeningAtUtc { get; set; }
 }

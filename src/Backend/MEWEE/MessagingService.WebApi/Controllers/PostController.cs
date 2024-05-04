@@ -1,5 +1,7 @@
 ﻿using MessagingService.Application.Mediatr.Post.Commands.CreatePost;
 using MessagingService.Application.Mediatr.Post.Commands.DeletePost;
+using MessagingService.Application.Mediatr.Post.Commands.SavePost;
+using MessagingService.Application.Mediatr.Post.Commands.UnsavePost;
 using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
@@ -42,7 +44,10 @@ public class PostController : ApiControllerBase
             Attachment = requestModel.Attachment,
             Category = requestModel.Category,
             Location = requestModel.Location,
-            UserId = UserId,
+            
+            AuthorId = requestModel.AuthorId,
+            Type = requestModel.Type,
+            HappeningAtUtc = requestModel.HappeningAtUtc
         };
         
         return await Mediator.Send(request);
@@ -74,7 +79,7 @@ public class PostController : ApiControllerBase
             Title = requestModel.Title,
             Content = requestModel.Content,
             Attachment = requestModel.Attachment,
-            UserId = UserId,
+            AuthorId = requestModel.AuthorId,
         };
         
         return await Mediator.Send(request);
@@ -102,7 +107,8 @@ public class PostController : ApiControllerBase
     {
         var request = new GetPostsQuery()
         {
-            UserId = requestModel.UserId
+            AuthorId = requestModel.AuthorId,
+            Type = requestModel.Type,
         };
         
         return await Mediator.Send(request);
@@ -132,7 +138,7 @@ public class PostController : ApiControllerBase
         var request = new DeletePostCommand()
         {
             Id = requestModel.Id,
-            UserId = UserId
+            AuthorId = requestModel.AuthorId,
         };
         
         return await Mediator.Send(request);
@@ -161,6 +167,64 @@ public class PostController : ApiControllerBase
         {
             SearchQuery = requestModel.SearchQuery,
             Pagination = requestModel.Pagination
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Saves a Post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /save-post
+    /// </remarks>
+    /// <param name="requestModel">SavePostRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("save-post")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> SavePost([FromBody] SavePostRequestModel requestModel)
+    {
+        var request = new SavePostCommand()
+        {
+            UserId = UserId,
+            PostId = requestModel.PostId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Saves a Post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /save-post
+    /// </remarks>
+    /// <param name="requestModel">UnsavePostRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("unsave-post")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> SavePost([FromBody] UnsavePostRequestModel requestModel)
+    {
+        var request = new UnsavePostCommand()
+        {
+            UserId = UserId,
+            PostId = requestModel.PostId,
         };
         
         return await Mediator.Send(request);

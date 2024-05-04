@@ -17,6 +17,7 @@ namespace MessagingService.Persistence
         public DbSet<Chat> Chats { get; set; }
         public DbSet<ChatUser> ChatParticipants { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Save> Saves { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

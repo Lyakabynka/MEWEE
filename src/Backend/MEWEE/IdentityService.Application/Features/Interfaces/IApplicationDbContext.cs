@@ -11,12 +11,16 @@ public interface IApplicationDbContext
     DbSet<RefreshSession> RefreshSessions { get; set; }
 
     DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
-    
+
     DbSet<ForgotPasswordCode> ForgotPasswordCodes { get; set; }
-    
+
     DbSet<Follower> Followers { get; set; }
-    
+
     DbSet<Photo> Photos { get; set; }
+
+    DbSet<Group> Groups { get; set; }
+
+    DbSet<GroupUser> GroupUsers { get; set; }
 
     DatabaseFacade Database { get; }
 

@@ -8,5 +8,5 @@ public class DeletePostCommand : IValidatableRequest<Result>
 {
     public Guid Id { get; set; }
 
-    public Guid UserId { get; set; }
+    public Guid AuthorId { get; set; }
 }

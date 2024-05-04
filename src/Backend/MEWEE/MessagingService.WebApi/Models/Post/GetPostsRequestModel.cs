@@ -1,6 +1,9 @@
-﻿namespace MessagingService.WebApi.Models.Post;
+﻿using MessagingService.Domain.Enums;
+
+namespace MessagingService.WebApi.Models.Post;
 
 public class GetPostsRequestModel
 {
-    public Guid UserId { get; set; }
+    public PostType Type { get; set; }
+    public Guid AuthorId { get; set; }
 }

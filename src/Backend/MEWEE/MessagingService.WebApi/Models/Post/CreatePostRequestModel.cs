@@ -1,4 +1,6 @@
-﻿namespace MessagingService.WebApi.Models.Post;
+﻿using MessagingService.Domain.Enums;
+
+namespace MessagingService.WebApi.Models.Post;
 
 public class CreatePostRequestModel
 {
@@ -8,4 +10,10 @@ public class CreatePostRequestModel
     
     public string Category { get; set; }
     public string? Location { get; set; }
+    
+    public PostType Type { get; set; }
+    public Guid AuthorId { get; set; }
+    
+    //not null if Type == Event
+    public DateTime? HappeningAtUtc { get; set; }
 }
