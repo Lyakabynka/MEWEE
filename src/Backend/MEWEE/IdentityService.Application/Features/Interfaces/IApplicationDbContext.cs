@@ -1,5 +1,6 @@
 ﻿using IdentityService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace IdentityService.Application.Features.Interfaces;
 
@@ -16,6 +17,8 @@ public interface IApplicationDbContext
     DbSet<Follower> Followers { get; set; }
     
     DbSet<Photo> Photos { get; set; }
-    
+
+    DatabaseFacade Database { get; }
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

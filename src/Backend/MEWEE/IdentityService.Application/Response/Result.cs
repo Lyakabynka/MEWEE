@@ -134,4 +134,17 @@ public class Result : ActionResult
 
         return new Result(problemDetails, statusCode);
     }
+    
+    public static Result FormInternalServerError(string detail = "Unexpected error on server side")
+    {
+        var problemDetails = new ProblemDetails()
+        {
+            Status = StatusCodes.Status401Unauthorized,
+            Type = "InternalServerError",
+            Title = "Internal Server Error",
+            Detail = detail
+        };
+
+        return new Result(problemDetails, StatusCodes.Status500InternalServerError);
+    }
 }
