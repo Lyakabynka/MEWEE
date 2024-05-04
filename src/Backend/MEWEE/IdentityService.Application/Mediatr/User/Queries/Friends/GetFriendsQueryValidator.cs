@@ -1,12 +1,12 @@
-﻿using System.Data;
-using FluentValidation;
+﻿using FluentValidation;
 using IdentityService.Application.Mediatr.Results.Shared.Pagination;
+using IdentityService.Application.Mediatr.User.Queries.Followers;
 
-namespace IdentityService.Application.Mediatr.User.Queries.Followers;
+namespace IdentityService.Application.Mediatr.User.Queries.Friends;
 
-public class GetFollowersQueryValidator : AbstractValidator<GetFollowersQuery>
+public class GetFriendsQueryValidator : AbstractValidator<GetFriendsQuery>
 {
-    public GetFollowersQueryValidator()
+    public GetFriendsQueryValidator()
     {
         RuleFor(q => q.UserId)
             .NotEqual(Guid.Empty);

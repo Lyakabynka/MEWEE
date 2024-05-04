@@ -18,14 +18,14 @@ public class GetFollowingsQueryHandler : IRequestHandler<GetFollowingsQuery, Res
 
     public async Task<Result> Handle(GetFollowingsQuery request, CancellationToken cancellationToken)
     {
-        var page = request.Pagination.Page;
-        var pageSize = request.Pagination.PageSize;
+       // var page = request.Pagination.Page;
+       // var pageSize = request.Pagination.PageSize;
         
         var followers = await _dbContext.Followers
             .Where(f => f.UserId == request.UserId)
             .Include(f=>f.User)
-            .Skip(page * pageSize)
-            .Take(pageSize)
+            //.Skip(page * pageSize)
+            //.Take(pageSize)
             .Select(f => new UserVm
             {
                 Id = f.User.Id,

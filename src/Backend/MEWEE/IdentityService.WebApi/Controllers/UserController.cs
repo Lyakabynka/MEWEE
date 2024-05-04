@@ -12,6 +12,7 @@ using IdentityService.Application.Mediatr.User.Commands.Unfollow;
 using IdentityService.Application.Mediatr.User.Commands.UpdateProfile;
 using IdentityService.Application.Mediatr.User.Queries.Followers;
 using IdentityService.Application.Mediatr.User.Queries.Followings;
+using IdentityService.Application.Mediatr.User.Queries.Friends;
 using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -176,20 +177,44 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     [Authorize]
-    [HttpGet("followers")]
+    [HttpGet("followers/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetFollowers()
+    public async Task<IActionResult> GetFollowers([FromRoute] Guid userId)
     {
         var request = new GetFollowersQuery()
         {
-            UserId = UserId,
+            UserId = userId,
         };
         
         return await Mediator.Send(request);
     }
-    
+    /// <summary>
+    /// Get mutual friends 
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /friends
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("friends/{userId:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetFriends([FromRoute] Guid userId)
+    {
+        var request = new GetFriendsQuery()
+        {
+            UserId = userId,
+        };
+        
+        return await Mediator.Send(request);
+    }
     /// <summary>
     /// Get followers some user
     /// </summary>
@@ -202,15 +227,15 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     [Authorize]
-    [HttpGet("followings")]
+    [HttpGet("followings/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetFollowings()
+    public async Task<IActionResult> GetFollowings([FromRoute] Guid userId)
     {
         var request = new GetFollowingsQuery()
         {
-            UserId = UserId,
+            UserId = userId,
         };
         
         return await Mediator.Send(request);

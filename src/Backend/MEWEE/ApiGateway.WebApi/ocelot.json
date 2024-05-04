@@ -105,6 +105,45 @@
       "DownstreamPathTemplate": "/user/profile"
     },
     {
+      "UpstreamPathTemplate" : "/followers/{userId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/followers/{userId}"
+    },
+    {
+      "UpstreamPathTemplate" : "/friends/{userId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/friends/{userId}"
+    },
+    {
+      "UpstreamPathTemplate" : "/following/{userId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/following/{userId}"
+    },
+    {
       "UpstreamPathTemplate" : "/user/register",
       "UpstreamHttpMethod": ["Post"],
 

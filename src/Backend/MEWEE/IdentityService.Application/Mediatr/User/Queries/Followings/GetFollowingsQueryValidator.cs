@@ -11,8 +11,8 @@ public class GetFollowingsQueryValidator : AbstractValidator<GetFollowingsQuery>
         RuleFor(q => q.UserId)
             .NotEqual(Guid.Empty);
         
-        RuleFor(x => x.Pagination)
-            .NotNull()
-            .SetValidator(new PaginationValidator());
+        // RuleFor(x => x.Pagination)
+        //     .NotNull()
+        //     .SetValidator(new PaginationValidator());
     }
 }

@@ -22,5 +22,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasOne(u => u.ForgotPasswordCode)
             .WithOne(fc => fc.User)
             .HasForeignKey<ForgotPasswordCode>(fc => fc.UserId);
+
     }
 }
