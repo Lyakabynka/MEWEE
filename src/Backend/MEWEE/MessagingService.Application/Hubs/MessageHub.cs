@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -16,6 +17,8 @@ namespace MessagingService.Application.Hubs;
 public class MessageHub : Hub
 {
     private Guid _userId = Guid.Empty;
+    private readonly Dictionary<string, HashSet<string>> chatGroups = new Dictionary<string, HashSet<string>>();
+
     private Guid UserId => _userId != Guid.Empty ? _userId 
         : _userId = Context?.User?.Identity?.IsAuthenticated is true
             ? Guid.Parse(Context.User.FindFirstValue("userId")!)
@@ -61,9 +64,21 @@ public class MessageHub : Hub
 
         if (chat is null)
             return;
-        
-        await Groups.AddToGroupAsync(Context.ConnectionId, chatId.ToString());
+
+        string cId = chatId.ToString();
+        if (!chatGroups.ContainsKey(chatId.ToString()))
+        {
+            chatGroups[cId] = new HashSet<string>();
+        }
+
+        if (!chatGroups[cId].Contains(Context.ConnectionId))
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, cId);
+            chatGroups[cId].Add(Context.ConnectionId); 
+        }
         var result = chat.Messages.ToArray().Select(x => new {  Content = x.Content, CreatedAt = x.CreatedAt, UserId = x.UserId });
+        //var result2 = chat.ChatUsers.ToArray().Select(x => new {  Content = x.Content, CreatedAt = x.CreatedAt, UserId = x.UserId });
+        
         await Clients.Group(chatId.ToString()).SendAsync("onJoined", arg1:result);
     }
 

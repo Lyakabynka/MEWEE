@@ -144,6 +144,32 @@
       "DownstreamPathTemplate": "/following/{userId}"
     },
     {
+      "UpstreamPathTemplate" : "/follow-user",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/follow-user"
+    },
+    {
+      "UpstreamPathTemplate" : "/unfollow-user",
+      "UpstreamHttpMethod": ["Delete"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/unfollow-user"
+    },
+    {
       "UpstreamPathTemplate" : "/user/register",
       "UpstreamHttpMethod": ["Post"],
 
