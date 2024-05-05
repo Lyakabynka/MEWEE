@@ -212,6 +212,33 @@
     },
 
     {
+      "UpstreamPathTemplate" : "/get-chats",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/get-chats"
+    },
+    {
+      "UpstreamPathTemplate" : "/get-conversation",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/get-conversation"
+    },
+
+    {
       "UpstreamPathTemplate" : "/posts",
       "UpstreamHttpMethod": ["Post"],
 

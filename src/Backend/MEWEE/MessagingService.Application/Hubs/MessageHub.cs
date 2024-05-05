@@ -28,7 +28,7 @@ public class MessageHub : Hub
         _dbContext = dbContext;
     }
 
-    public async Task InitializeSession(CancellationToken ct)
+    public async Task InitializeSession()
     {
         var initSession = await _dbContext.Chats
             .Include(c => c.ChatUsers)
@@ -46,36 +46,46 @@ public class MessageHub : Hub
                         c.Messages.Count(u => u.ReadByUsers.All(rcp => rcp.UserId != UserId)),
                     LastMessage = c.Messages.OrderByDescending(m => m.CreatedAt).FirstOrDefault(),
                 })
-            .ToListAsync(ct);
+            .ToListAsync();
 
-        await Clients.Caller.SendAsync("initializeSession", initSession, ct);
+        await Clients.Caller.SendAsync("initializeSession", initSession);
     }
 
     public async Task JoinChat(Guid chatId)
     {
+        var chat = await _dbContext.Chats
+            .AsTracking()
+            .Where(c => c.Id == chatId)
+            .Include(c => c.Messages)
+            .FirstOrDefaultAsync();
+
+        if (chat is null)
+            return;
+        
         await Groups.AddToGroupAsync(Context.ConnectionId, chatId.ToString());
+        var result = chat.Messages.ToArray().Select(x => new {  Content = x.Content, CreatedAt = x.CreatedAt, UserId = x.UserId });
+        await Clients.Group(chatId.ToString()).SendAsync("onJoined", arg1:result);
     }
 
-    public async Task SendMessage(Guid chatId, SendMessageRequest request, CancellationToken ct)
+
+    public async Task SendMessage(Guid chatId, string content, string createdAt)
     {
+        SendMessageRequest request = new SendMessageRequest() { Content = content, CreatedAt = DateTime.Parse(createdAt) }; 
+
         if (UserId == Guid.Empty)
         {
             return;
         }
 
-        //process with a queue ( later )
+        // Process with a queue (later)
         var chat = await _dbContext.Chats
             .AsTracking()
             .Where(c => c.Id == chatId)
             .Include(c => c.ChatUsers)
-            .FirstOrDefaultAsync(ct);
+            .Include(c => c.Messages)
+            .FirstOrDefaultAsync();
 
-        if (chat is null)
-        {
-            return;
-        }
-
-        if (chat.ChatUsers.All(cp => cp.UserId != UserId))
+        if (chat is null || string.IsNullOrWhiteSpace(content))
         {
             return;
         }
@@ -87,11 +97,17 @@ public class MessageHub : Hub
             UpdatedAt = request.CreatedAt,
             ChatId = chatId,
             UserId = UserId,
-            
         };
 
-        chat.Messages.Add(message);
+        _dbContext.Messages.Add(message);
+        await _dbContext.SaveChangesAsync(default);
+        // Save changes to the database
 
-        await Clients.Group(chatId.ToString()).SendAsync("receiveMessage", message, ct);
+        // Join the user to the chat room
+        await Groups.AddToGroupAsync(Context.ConnectionId, chatId.ToString());
+
+        // Send the message to all clients in the chat room
+        //var result = chat.Messages.ToArray().Select(x => );
+        await Clients.Group(chatId.ToString()).SendAsync("receiveMessage", arg1:new { Content = message.Content, CreatedAt = message.CreatedAt, UserId = message.UserId });
     }
 }

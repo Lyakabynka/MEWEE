@@ -6,23 +6,22 @@ using MessagingService.Application.Features.Interfaces;
 using MessagingService.Application.Response;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessagingService.Application.Mediatr.Chats.Queries.GetChats;
+namespace MessagingService.Application.Mediatr.Chats.Queries.GetConversation;
 
-public class GetChatsCommandHandler : IRequestHandler<GetChatsCommand, Result>
+public class GetConversationCommandHandler : IRequestHandler<GetConversationCommand, Result>
 {
     private readonly IApplicationDbContext _dbContext;
 
-    public GetChatsCommandHandler(IApplicationDbContext dbContext)
+    public GetConversationCommandHandler(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<Result> Handle(GetChatsCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(GetConversationCommand request, CancellationToken cancellationToken)
     {
         var chats = await _dbContext.Chats
-            .Include(c=>c.ChatUsers)
-            .Where(c => c.ChatUsers.Any(cu => cu.UserId == request.UserId))
-            .Include(c => c.Messages)
+            .Where(c=>c.Id == request.ChatId)
+            .Include(c=>c.Messages)
             .ToListAsync(cancellationToken);
         
         return Result.Create(chats);
