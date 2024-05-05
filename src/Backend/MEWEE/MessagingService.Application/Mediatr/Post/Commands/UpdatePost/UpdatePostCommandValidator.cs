@@ -28,7 +28,7 @@ public class UpdatePostCommandValidator : AbstractValidator<UpdatePostCommand>
             .NotEmpty()
             .MaximumLength(4096);
 
-        RuleFor(c => c.UserId)
+        RuleFor(c => c.AuthorId)
             .NotEqual(Guid.Empty);
 
         RuleFor(c => c.Attachment)

@@ -23,7 +23,7 @@ public class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, Resul
             .Where(p => p.Id == request.Id)
             .FirstAsync(cancellationToken);
 
-        if (post.UserId != request.UserId)
+        if (post.AuthorId != request.AuthorId)
         {
             return Result.FormForbidden();
         }

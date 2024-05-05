@@ -17,6 +17,9 @@ namespace IdentityService.Persistence
         
         public DbSet<Follower> Followers { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupUser> GroupUsers { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

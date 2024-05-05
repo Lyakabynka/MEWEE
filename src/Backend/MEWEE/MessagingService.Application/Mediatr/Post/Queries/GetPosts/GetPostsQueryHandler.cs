@@ -22,7 +22,7 @@ public class GetPostsQueryHandler : IRequestHandler<GetPostsQuery, Result>
     {
         var posts = await _dbContext.Posts
             .Include(p => p.Likes)
-            .Where(p => p.UserId == request.UserId)
+            .Where(p => p.AuthorId == request.AuthorId)
             .Select(p =>
                 new PostVm()
                 {
@@ -31,10 +31,13 @@ public class GetPostsQueryHandler : IRequestHandler<GetPostsQuery, Result>
                     Content = p.Content,
                     Attachment = p.Attachment,
                     LikesCount = p.Likes.Count,
-                    UserId = request.UserId,
                     Location = p.Location,
                     Category = p.Category,
-                    CreatedAt = p.CreatedAt
+                    CreatedAt = p.CreatedAt,
+                    
+                    Type = p.Type,
+                    AuthorId = request.AuthorId,
+                    HappeningAtUtc = p.HappeningAtUtc
                 })
             .ToListAsync(cancellationToken);
 

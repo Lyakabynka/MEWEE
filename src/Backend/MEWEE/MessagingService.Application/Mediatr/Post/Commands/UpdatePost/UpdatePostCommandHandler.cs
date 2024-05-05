@@ -22,7 +22,7 @@ public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, Resul
     {
         var post = await _dbContext.Posts.Where(p => p.Id == request.Id).FirstAsync(cancellationToken);
 
-        if (post.UserId != request.UserId)
+        if (post.AuthorId != request.AuthorId)
         {
             return Result.FormForbidden();
         }

@@ -39,7 +39,7 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
                     Content = p.Content,
                     Attachment = p.Attachment,
                     LikesCount = p.Likes.Count,
-                    UserId = p.UserId,
+                    AuthorId = p.AuthorId,
                     Location = p.Location,
                     Category = p.Category,
                     CreatedAt = p.CreatedAt,

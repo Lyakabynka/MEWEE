@@ -32,6 +32,8 @@ public class User : BaseEntity
     
     public ConfirmationCode? ConfirmationCode { get; set; }
     public ForgotPasswordCode? ForgotPasswordCode { get; set; }
+    
+    public List<GroupUser> GroupUsers { get; set; }
 }
 
 

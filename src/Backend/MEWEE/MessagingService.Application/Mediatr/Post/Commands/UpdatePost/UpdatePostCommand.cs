@@ -14,5 +14,5 @@ public class UpdatePostCommand : IValidatableRequest<Result>
     public string? Location { get; set; }
     public string? Category { get; set; }
     
-    public Guid UserId { get; set; }
+    public Guid AuthorId { get; set; }
 }

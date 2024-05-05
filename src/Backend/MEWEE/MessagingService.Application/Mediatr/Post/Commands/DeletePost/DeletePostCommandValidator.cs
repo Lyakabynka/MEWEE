@@ -20,7 +20,7 @@ public class DeletePostCommandValidator : AbstractValidator<DeletePostCommand>
             })
             .WithMessage("post_does_not_exist");
 
-        RuleFor(c => c.UserId)
+        RuleFor(c => c.AuthorId)
             .NotEqual(Guid.Empty);
     } 
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentValidation;
+using MessagingService.Domain.Enums;
 
 namespace MessagingService.Application.Mediatr.Post.Commands.CreatePost;
 
@@ -14,7 +15,7 @@ public class CreatePostCommandValidator : AbstractValidator<CreatePostCommand>
             .NotEmpty()
             .MaximumLength(4096);
 
-        RuleFor(c => c.UserId)
+        RuleFor(c => c.AuthorId)
             .NotEqual(Guid.Empty);
 
         RuleFor(c => c.Attachment)
@@ -29,5 +30,11 @@ public class CreatePostCommandValidator : AbstractValidator<CreatePostCommand>
 
         RuleFor(c => c.Category)
             .NotNull();
+
+        When(c => c.Type == PostType.Event, () =>
+        {
+            RuleFor(c => c.HappeningAtUtc)
+                .NotNull();
+        });
     }
 }
