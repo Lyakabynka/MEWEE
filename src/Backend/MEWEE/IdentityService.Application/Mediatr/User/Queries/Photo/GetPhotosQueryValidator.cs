@@ -9,7 +9,7 @@ public class GetPhotosQueryValidator : AbstractValidator<GetPhotosQuery>
     {
         RuleFor(c => c.UserId).NotEqual(Guid.Empty);
 
-        RuleFor(c => c.Pagination)
-            .SetValidator(new PaginationValidator());
+        // RuleFor(c => c.Pagination)
+        //     .SetValidator(new PaginationValidator());
     }
 }

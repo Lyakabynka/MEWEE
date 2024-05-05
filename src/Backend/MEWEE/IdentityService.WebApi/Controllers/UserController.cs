@@ -13,6 +13,7 @@ using IdentityService.Application.Mediatr.User.Commands.UpdateProfile;
 using IdentityService.Application.Mediatr.User.Queries.Followers;
 using IdentityService.Application.Mediatr.User.Queries.Followings;
 using IdentityService.Application.Mediatr.User.Queries.Friends;
+using IdentityService.Application.Mediatr.User.Queries.Photo;
 using IdentityService.Application.Mediatr.User.Queries.Profile;
 using IdentityService.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -150,7 +151,7 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     [Authorize]
-    [HttpDelete("unfollow-user")]
+    [HttpPost("unfollow-user")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -340,7 +341,7 @@ public class UserController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetPhotos()
     {
-        var request = new DeletePhotoCommand()
+        var request = new GetPhotosQuery()
         {
             UserId = UserId,
         };

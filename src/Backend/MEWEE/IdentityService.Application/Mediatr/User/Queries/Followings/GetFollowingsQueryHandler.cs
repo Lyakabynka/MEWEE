@@ -23,26 +23,28 @@ public class GetFollowingsQueryHandler : IRequestHandler<GetFollowingsQuery, Res
         
         var followers = await _dbContext.Followers
             .Where(f => f.UserId == request.UserId)
-            .Include(f=>f.User)
+            //.Include(f => f.IsPending)
+            .Include(f=>f.FollowingUser)
             //.Skip(page * pageSize)
             //.Take(pageSize)
-            .Select(f => new UserVm
+            .Select(f => new
             {
-                Id = f.User.Id,
-                FirstName = f.User.FirstName,
-                SecondName = f.User.SecondName,
-                Username = f.User.Username,
-                Email = f.User.Email,
-                Role = f.User.Role,
-                ProfileAvatar = f.User.ProfileAvatar,
-                IsEmailConfirmed = f.User.IsEmailConfirmed,
-                Workplace = f.User.Workplace,
-                Website = f.User.Website,
-                Status = f.User.Status,
-                Location = f.User.Location,
-                FollowersCount = f.User.Followers.Count,
-                FollowingsCount = f.User.Followings.Count,
-                PhotoCount = f.User.Photos.Count,
+                Id = f.FollowingUser.Id,
+                FirstName = f.FollowingUser.FirstName,
+                SecondName = f.FollowingUser.SecondName,
+                Username = f.FollowingUser.Username,
+                Email = f.FollowingUser.Email,
+                Role = f.FollowingUser.Role,
+                ProfileAvatar = f.FollowingUser.ProfileAvatar,
+                IsEmailConfirmed = f.FollowingUser.IsEmailConfirmed,
+                Workplace = f.FollowingUser.Workplace,
+                Website = f.FollowingUser.Website,
+                Status = f.FollowingUser.Status,
+                IsPending = f.IsPending,
+                Location = f.FollowingUser.Location,
+                FollowersCount = f.FollowingUser.Followers.Count,
+                FollowingsCount = f.FollowingUser.Followings.Count,
+                PhotoCount = f.FollowingUser.Photos.Count,
             })
             .ToListAsync(cancellationToken);
 

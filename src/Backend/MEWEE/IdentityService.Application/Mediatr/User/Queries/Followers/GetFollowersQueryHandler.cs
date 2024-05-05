@@ -22,10 +22,11 @@ public class GetFollowersQueryHandler : IRequestHandler<GetFollowersQuery, Resul
         
         var followers = await _dbContext.Followers
             .Where(f => f.FollowingUserId == request.UserId)
+            //.Include(f => f.IsPending)
             .Include(f=>f.User)
             //.Skip(page * pageSize)
             //.Take(pageSize)
-            .Select(f => new UserVm
+            .Select(f => new
             {
                 Id = f.User.Id,
                 FirstName = f.User.FirstName,
@@ -38,6 +39,7 @@ public class GetFollowersQueryHandler : IRequestHandler<GetFollowersQuery, Resul
                 Workplace = f.User.Workplace,
                 Website = f.User.Website,
                 Status = f.User.Status,
+                IsPending = f.IsPending,
                 Location = f.User.Location,
                 FollowersCount = f.User.Followers.Count,
                 FollowingsCount = f.User.Followings.Count,
