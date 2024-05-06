@@ -219,7 +219,7 @@ public class PostController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> SavePost([FromBody] UnsavePostRequestModel requestModel)
+    public async Task<IActionResult> UnsavePost([FromBody] UnsavePostRequestModel requestModel)
     {
         var request = new UnsavePostCommand()
         {

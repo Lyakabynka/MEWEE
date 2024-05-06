@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessagingService.Application.Mediatr.Post.Commands.UnsavePost;
 
-public class UnsavePostCommandHandler : IRequestHandler<SavePostCommand, Result>
+public class UnsavePostCommandHandler : IRequestHandler<UnsavePostCommand, Result>
 {
     private readonly IApplicationDbContext _dbContext;
 
@@ -19,7 +19,7 @@ public class UnsavePostCommandHandler : IRequestHandler<SavePostCommand, Result>
         _dbContext = dbContext;
     }
     
-    public async Task<Result> Handle(SavePostCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(UnsavePostCommand request, CancellationToken cancellationToken)
     {
         await _dbContext.Saves
             .Where(s => s.UserId == request.UserId && s.PostId == request.PostId)

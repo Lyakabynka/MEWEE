@@ -248,6 +248,19 @@
       ],
       "DownstreamPathTemplate": "/post"
     },
+    {
+      "UpstreamPathTemplate" : "/save-post",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/save-post"
+    },
 
     {
       "UpstreamPathTemplate" : "/post",

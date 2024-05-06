@@ -22,7 +22,7 @@ public class SavePostCommandValidator : AbstractValidator<SavePostCommand>
                 RuleFor(c => c.PostId)
                     .MustAsync(async (postId, ct) =>
                     {
-                        return !await dbContext.Posts.Where(c => c.Id == postId).AnyAsync(ct);
+                        return await dbContext.Posts.Where(c => c.Id == postId).AnyAsync(ct);
                     });
             });
     }
