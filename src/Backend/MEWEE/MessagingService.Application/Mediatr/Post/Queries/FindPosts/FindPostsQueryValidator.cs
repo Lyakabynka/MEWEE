@@ -8,7 +8,7 @@ public class FindPostsQueryValidator : AbstractValidator<FindPostsQuery>
     public FindPostsQueryValidator()
     {
         RuleFor(x => x.SearchQuery)
-            .NotEmpty();
+            .NotNull();
 
         RuleFor(x => x.Pagination)
             .NotNull()
