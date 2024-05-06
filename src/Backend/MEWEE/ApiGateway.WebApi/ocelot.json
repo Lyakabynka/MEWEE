@@ -196,6 +196,45 @@
       "DownstreamPathTemplate": "/follow-user"
     },
     {
+      "UpstreamPathTemplate" : "/create-group",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/create-group"
+    },
+    {
+      "UpstreamPathTemplate" : "/delete-group",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/delete-group"
+    },
+    {
+      "UpstreamPathTemplate" : "/groups",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/groups"
+    },
+    {
       "UpstreamPathTemplate" : "/unfollow-user",
       "UpstreamHttpMethod": ["Post"],
 
