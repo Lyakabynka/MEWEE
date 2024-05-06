@@ -52,6 +52,14 @@ public class MessageHub : Hub
             .ToListAsync();
 
         await Clients.Caller.SendAsync("initializeSession", initSession);
+        await Clients.Others.SendAsync("userOnline", UserId);
+    }
+
+    public override async Task OnDisconnectedAsync(Exception? exception)
+    {
+        await Clients.Others.SendAsync("userOffline", UserId);
+        
+        await base.OnDisconnectedAsync(exception);
     }
 
     public async Task JoinChat(Guid chatId)
