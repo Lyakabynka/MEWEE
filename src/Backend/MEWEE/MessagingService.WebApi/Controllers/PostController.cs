@@ -5,6 +5,7 @@ using MessagingService.Application.Mediatr.Post.Commands.UnsavePost;
 using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
+using MessagingService.Application.Mediatr.Post.Queries.GetSavedPosts;
 using MessagingService.Application.Mediatr.PostLikes.Commands.CreatePostLike;
 using MessagingService.Application.Mediatr.PostLikes.Commands.DeletePostLike;
 using MessagingService.Application.Mediatr.PostLikes.Queries.GetPostLikes;
@@ -225,6 +226,35 @@ public class PostController : ApiControllerBase
         {
             UserId = UserId,
             PostId = requestModel.PostId,
+        };
+        
+        return await Mediator.Send(request);
+    }
+    
+    /// <summary>
+    /// Saves a Post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /saved-posts
+    /// </remarks>
+    /// <param name="requestModel">GetSavedPostsRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("saved-posts")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> UnsavePost([FromBody] GetSavedPostsRequestModel requestModel)
+    {
+        var request = new GetSavedPostsQuery()
+        {
+            UserId = UserId,
+            SavedPostId = requestModel.PostId,
         };
         
         return await Mediator.Send(request);
