@@ -26,25 +26,45 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
         var page = request.Pagination.Page;
         var pageSize = request.Pagination.PageSize;
 
-        var posts = await _dbContext.Posts
-            .Include(p => p.Likes)
-            .Where(p => EF.Functions.FuzzyStringMatchLevenshtein(p.Title.ToLower(), searchQuery) <= 3)
-            .Skip(page * pageSize)
-            .Take(pageSize)
-            .Select(p =>
-                new PostVm()
-                {
-                    Id = p.Id,
-                    Title = p.Title,
-                    Content = p.Content,
-                    Attachment = p.Attachment,
-                    LikesCount = p.Likes.Count,
-                    AuthorId = p.AuthorId,
-                    Location = p.Location,
-                    Category = p.Category,
-                    CreatedAt = p.CreatedAt,
-                })
-            .ToListAsync(cancellationToken);
+        var posts = searchQuery == string.Empty
+            ? await _dbContext.Posts
+                .Include(p => p.Likes)
+                .OrderByDescending(p => p.CreatedAt)
+                .Skip(page * pageSize)
+                .Take(pageSize)
+                .Select(p =>
+                    new PostVm()
+                    {
+                        Id = p.Id,
+                        Title = p.Title,
+                        Content = p.Content,
+                        Attachment = p.Attachment,
+                        LikesCount = p.Likes.Count,
+                        AuthorId = p.AuthorId,
+                        Location = p.Location,
+                        Category = p.Category,
+                        CreatedAt = p.CreatedAt,
+                    })
+                .ToListAsync(cancellationToken)
+            : await _dbContext.Posts
+                .Include(p => p.Likes)
+                .Where(p => EF.Functions.FuzzyStringMatchLevenshtein(p.Title.ToLower(), searchQuery) <= 3)
+                .Skip(page * pageSize)
+                .Take(pageSize)
+                .Select(p =>
+                    new PostVm()
+                    {
+                        Id = p.Id,
+                        Title = p.Title,
+                        Content = p.Content,
+                        Attachment = p.Attachment,
+                        LikesCount = p.Likes.Count,
+                        AuthorId = p.AuthorId,
+                        Location = p.Location,
+                        Category = p.Category,
+                        CreatedAt = p.CreatedAt,
+                    })
+                .ToListAsync(cancellationToken);
 
         return Result.Create(posts);
     }
