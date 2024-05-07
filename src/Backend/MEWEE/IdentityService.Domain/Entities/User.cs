@@ -13,7 +13,7 @@ public class User : BaseEntity
 
     public UserRole Role { get; set; } = UserRole.User;
 
-    public string? ProfileAvatar { get; set; }
+    public string? Avatar { get; set; }
     
     public bool IsEmailConfirmed { get; set; } = false;
 

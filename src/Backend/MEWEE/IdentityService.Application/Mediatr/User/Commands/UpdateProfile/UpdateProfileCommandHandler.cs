@@ -22,7 +22,7 @@ public class UpdateProfileCommandHandler : IRequestHandler<UpdateProfileCommand,
 
         if (request.ProfileAvatar != null)
         {
-            user.ProfileAvatar = request.ProfileAvatar;
+            user.Avatar = request.ProfileAvatar;
         }
 
         if (request.Workplace != null)

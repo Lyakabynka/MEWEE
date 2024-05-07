@@ -34,7 +34,7 @@ public class GetFollowersQueryHandler : IRequestHandler<GetFollowersQuery, Resul
                 Username = f.User.Username,
                 Email = f.User.Email,
                 Role = f.User.Role,
-                ProfileAvatar = f.User.ProfileAvatar,
+                ProfileAvatar = f.User.Avatar,
                 IsEmailConfirmed = f.User.IsEmailConfirmed,
                 Workplace = f.User.Workplace,
                 Website = f.User.Website,

@@ -1,6 +1,6 @@
 ﻿namespace IdentityService.WebApi.Models.Group;
 
-public class CreateGroupRequestModel
+public class JoinGroupRequestModel
 {
     public Guid GroupId { get; set; }
     

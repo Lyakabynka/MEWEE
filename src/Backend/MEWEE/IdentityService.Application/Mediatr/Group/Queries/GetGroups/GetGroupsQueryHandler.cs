@@ -19,7 +19,7 @@ public class GetGroupsQueryHandler : IRequestHandler<GetGroupsQuery, Result>
         var groups = await _dbContext.GroupUsers
             .Where(gu => gu.UserId == request.UserId)
             .Include(gu=>gu.Group)
-            .Select(gu => gu.Group)
+            .Select(gu => new { Group = gu.Group, Members = gu.Group.Users})
             .ToListAsync(cancellationToken);
 
         return Result.Create(groups);

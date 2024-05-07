@@ -39,7 +39,7 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
                 Username = user.Username,
                 Email = user.Email,
                 Role = user.Role,
-                ProfileAvatar = user.ProfileAvatar,
+                Avatar = user.Avatar,
                 IsEmailConfirmed = user.IsEmailConfirmed,
                 Workplace = user.Workplace,
                 Website = user.Website,

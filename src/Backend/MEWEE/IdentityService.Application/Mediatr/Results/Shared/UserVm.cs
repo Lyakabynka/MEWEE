@@ -14,7 +14,7 @@ public class UserVm
     
     public UserRole Role { get; set; }
     
-    public string? ProfileAvatar { get; set; }
+    public string? Avatar { get; set; }
     
     public bool IsEmailConfirmed { get; set; }
     

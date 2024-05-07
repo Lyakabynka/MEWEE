@@ -45,7 +45,7 @@ public class GetFriendsQueryHandler : IRequestHandler<GetFriendsQuery, Result>
                 Username = u.Username,
                 Email = u.Email,
                 Role = u.Role,
-                ProfileAvatar = u.ProfileAvatar,
+                Avatar = u.Avatar,
                 IsEmailConfirmed = u.IsEmailConfirmed,
                 Workplace = u.Workplace,
                 Website = u.Website,

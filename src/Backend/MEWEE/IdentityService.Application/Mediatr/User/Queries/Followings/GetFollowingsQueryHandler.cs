@@ -35,7 +35,7 @@ public class GetFollowingsQueryHandler : IRequestHandler<GetFollowingsQuery, Res
                 Username = f.FollowingUser.Username,
                 Email = f.FollowingUser.Email,
                 Role = f.FollowingUser.Role,
-                ProfileAvatar = f.FollowingUser.ProfileAvatar,
+                ProfileAvatar = f.FollowingUser.Avatar,
                 IsEmailConfirmed = f.FollowingUser.IsEmailConfirmed,
                 Workplace = f.FollowingUser.Workplace,
                 Website = f.FollowingUser.Website,

@@ -105,6 +105,19 @@
       "DownstreamPathTemplate": "/user/profile"
     },
     {
+      "UpstreamPathTemplate" : "/get-group/{userId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/get-group/{userId}"
+    },
+    {
       "UpstreamPathTemplate" : "/user/photo",
       "UpstreamHttpMethod": ["Post"],
 
@@ -181,6 +194,19 @@
         }
       ],
       "DownstreamPathTemplate": "/following/{userId}"
+    },
+    {
+      "UpstreamPathTemplate" : "/join-group",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/join-group"
     },
     {
       "UpstreamPathTemplate" : "/follow-user",
@@ -313,6 +339,19 @@
         }
       ],
       "DownstreamPathTemplate": "/post"
+    },
+    {
+      "UpstreamPathTemplate" : "/get-post-save",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/get-post-save"
     },
     {
       "UpstreamPathTemplate" : "/chat",
