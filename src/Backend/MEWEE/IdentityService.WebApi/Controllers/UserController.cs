@@ -10,6 +10,7 @@ using IdentityService.Application.Mediatr.User.Commands.Register;
 using IdentityService.Application.Mediatr.User.Commands.RestorePassword;
 using IdentityService.Application.Mediatr.User.Commands.Unfollow;
 using IdentityService.Application.Mediatr.User.Commands.UpdateProfile;
+using IdentityService.Application.Mediatr.User.Queries.FindGroupAndUsers;
 using IdentityService.Application.Mediatr.User.Queries.Followers;
 using IdentityService.Application.Mediatr.User.Queries.Followings;
 using IdentityService.Application.Mediatr.User.Queries.Friends;
@@ -477,6 +478,32 @@ public class UserController : ApiControllerBase
             NewPassword = requestModel.NewPassword,
         };
 
+        return await Mediator.Send(request);
+    }
+    /// <summary>
+    /// Find Users and Groups
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /find-groups-and-users
+    /// </remarks>
+    /// <param name="requestModel">FindGroupsAndUsersRequestModel with necessary fields</param>
+    /// <response code="200">Success</response>
+    /// <response code="409">User with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [HttpPost("find-groups-and-users")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Register([FromBody] FindGroupsAndUsersRequestModel requestModel)
+    {
+        var request = new FindGroupAndUsersQuery()
+        {
+            SearchQuery = requestModel.SearchQuery,
+            Pagination = requestModel.Pagination
+        };
+        
         return await Mediator.Send(request);
     }
 }
