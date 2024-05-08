@@ -336,15 +336,15 @@ public class UserController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     [Authorize]
-    [HttpGet("user/photos")]
+    [HttpGet("user/photos/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetPhotos()
+    public async Task<IActionResult> GetPhotos([FromRoute] Guid userId)
     {
         var request = new GetPhotosQuery()
         {
-            UserId = UserId,
+            UserId = userId,
         };
         
         return await Mediator.Send(request);

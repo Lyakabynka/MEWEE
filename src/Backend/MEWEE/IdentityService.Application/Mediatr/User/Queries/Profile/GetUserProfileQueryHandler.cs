@@ -29,7 +29,7 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery,Re
         {
             query = query.Where(user => user.Username == request.UserId);
         }
-
+        
         var userProfileVm = await query
             .Select(user => new UserVm
             {

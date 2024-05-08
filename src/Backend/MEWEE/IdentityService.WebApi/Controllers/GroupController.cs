@@ -83,16 +83,17 @@ public class GroupController : ApiControllerBase
     /// <response code="401">Unauthorized</response>
     /// <response code="400">Invalid parameters</response>
     /// <response code="406">Invalid parameters</response>
-    [HttpGet("groups")]
+    [HttpGet("groups/{category}")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
-    public async Task<IActionResult> GetGroups()
+    public async Task<IActionResult> GetGroups([FromRoute] string category)
     {
         var request = new GetGroupsQuery()
         {
+            Category = category,
             UserId = UserId,
         };
         
