@@ -144,7 +144,7 @@
       "DownstreamPathTemplate": "/followers/{userId}"
     },
     {
-      "UpstreamPathTemplate" : "/user/photos",
+      "UpstreamPathTemplate" : "/user/photos/{userId}",
       "UpstreamHttpMethod": ["Get"],
 
       "DownstreamScheme": "http",
@@ -154,7 +154,7 @@
           "Port": 8080
         }
       ],
-      "DownstreamPathTemplate": "/user/photos"
+      "DownstreamPathTemplate": "/user/photos/{userId}"
     },
     {
       "UpstreamPathTemplate" : "/followings/{userId}",
@@ -248,7 +248,7 @@
       "DownstreamPathTemplate": "/delete-group"
     },
     {
-      "UpstreamPathTemplate" : "/groups",
+      "UpstreamPathTemplate" : "/groups/{category}",
       "UpstreamHttpMethod": ["Get"],
 
       "DownstreamScheme": "http",
@@ -258,7 +258,7 @@
           "Port": 8080
         }
       ],
-      "DownstreamPathTemplate": "/groups"
+      "DownstreamPathTemplate": "/groups/{category}"
     },
     {
       "UpstreamPathTemplate" : "/unfollow-user",
