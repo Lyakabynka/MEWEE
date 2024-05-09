@@ -90,6 +90,24 @@ public class MessageHub : Hub
         await Clients.Group(chatId.ToString()).SendAsync("onJoined", arg1:result);
     }
 
+    public async Task SendMessageToUser(Guid userId, string content, string createdAt)
+    {
+        if (UserId == Guid.Empty || userId == Guid.Empty)
+        {
+            return;
+        }
+
+        // Process with a queue (later)
+        var chat = await _dbContext.Chats
+            .AsTracking()
+            .Where(c => c.ChatUsers.Any(x => x.UserId == userId))
+            .FirstOrDefaultAsync();
+
+        if (chat is null)
+            return;
+
+        await SendMessage(chat.Id, content, createdAt);
+    }
 
     public async Task SendMessage(Guid chatId, string content, string createdAt)
     {

@@ -299,7 +299,33 @@
       ],
       "DownstreamPathTemplate": "/user/confirm-email"
     },
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      "UpstreamPathTemplate" : "/get-post/{postId}",
+      "UpstreamHttpMethod": ["Get"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.messagingservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/get-post/{postId}"
+    },
     {
       "UpstreamPathTemplate" : "/post",
       "UpstreamHttpMethod": ["Post"],

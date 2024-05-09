@@ -4,6 +4,7 @@ using MessagingService.Application.Mediatr.Post.Commands.SavePost;
 using MessagingService.Application.Mediatr.Post.Commands.UnsavePost;
 using MessagingService.Application.Mediatr.Post.Commands.UpdatePost;
 using MessagingService.Application.Mediatr.Post.Queries.FindPosts;
+using MessagingService.Application.Mediatr.Post.Queries.GetPost;
 using MessagingService.Application.Mediatr.Post.Queries.GetPosts;
 using MessagingService.Application.Mediatr.Post.Queries.GetSavedPosts;
 using MessagingService.Application.Mediatr.PostLikes.Commands.CreatePostLike;
@@ -116,6 +117,32 @@ public class PostController : ApiControllerBase
         return await Mediator.Send(request);
     }
     
+    /// <summary>
+    /// Get specific post
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// GET /get-post/:id
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="409">Post with provided credentials already exists</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    [Authorize]
+    [HttpGet("get-post/{postId:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> GetPost([FromRoute] Guid postId)
+    {
+        var request = new GetPostQuery()
+        {
+            PostId = postId
+        };
+        
+        return await Mediator.Send(request);
+    }
     
     /// <summary>
     /// Deletes specific post
