@@ -9,6 +9,7 @@ public class UpdateProfileCommand : IValidatableRequest<Result>
     
     public string? ProfileAvatar { get; set; }
     
+    public string? Username { get; set; }
     public string? Workplace { get; set; }
     public string? Website { get; set; }
     public string? Status { get; set; }

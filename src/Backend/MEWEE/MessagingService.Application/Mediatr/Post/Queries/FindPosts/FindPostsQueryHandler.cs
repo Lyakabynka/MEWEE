@@ -72,3 +72,4 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
         return Result.Create(posts);
     }
 }
+

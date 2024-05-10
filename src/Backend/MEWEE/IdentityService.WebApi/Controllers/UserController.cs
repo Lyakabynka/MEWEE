@@ -101,8 +101,9 @@ public class UserController : ApiControllerBase
         {
             UserId = UserId,
             
+            Username = requestModel.Username,
             ProfileAvatar = requestModel.ProfileAvatar,
-            
+            Status = requestModel.Status,
             Workplace = requestModel.Workplace,
             Website = requestModel.Website,
             Location = requestModel.Location,

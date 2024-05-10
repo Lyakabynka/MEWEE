@@ -6,4 +6,5 @@ public enum PostType
     Group = 2,
     Event = 3,
     News = 4,
+    Announcement = 5,
 }

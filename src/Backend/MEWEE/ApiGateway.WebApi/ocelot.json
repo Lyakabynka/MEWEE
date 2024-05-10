@@ -209,6 +209,19 @@
       "DownstreamPathTemplate": "/join-group"
     },
     {
+      "UpstreamPathTemplate" : "/find-groups-and-users",
+      "UpstreamHttpMethod": ["Post"],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "mewee.identityservice",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/find-groups-and-users"
+    },
+    {
       "UpstreamPathTemplate" : "/unjoin-group",
       "UpstreamHttpMethod": ["Post"],
 

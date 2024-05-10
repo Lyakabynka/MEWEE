@@ -34,6 +34,11 @@ public class UpdateProfileCommandHandler : IRequestHandler<UpdateProfileCommand,
         {
             user.Website = request.Website;
         }
+        
+        if (request.Username != null)
+        {
+            user.Username = request.Username;
+        }
 
         if (request.Status != null)
         {
