@@ -17,14 +17,16 @@ public class JoinGroupCommandHandler : IRequestHandler<JoinGroupCommand, Result>
 
     public async Task<Result> Handle(JoinGroupCommand request, CancellationToken cancellationToken)
     {
-        await _dbContext.GroupUsers.AddAsync(new GroupUser()
+        
+        _dbContext.GroupUsers.Add(new GroupUser()
         {
             UserId = request.UserId,
             GroupId = request.GroupId,
             Role = GroupUserRole.User,
 
         });
+        await _dbContext.SaveChangesAsync(cancellationToken);
         
-        return Result.Create(new {});
+        return Result.Create(new { Joined = true});
     }
 }

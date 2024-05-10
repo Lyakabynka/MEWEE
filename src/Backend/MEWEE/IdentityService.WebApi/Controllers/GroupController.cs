@@ -2,6 +2,7 @@
 using IdentityService.Application.Mediatr.Group.Commands.CreateGroup;
 using IdentityService.Application.Mediatr.Group.Commands.DeleteGroup;
 using IdentityService.Application.Mediatr.Group.Commands.JoinGroup;
+using IdentityService.Application.Mediatr.Group.Commands.UnJoinGroup;
 using IdentityService.Application.Mediatr.Group.Queries.GetGroup;
 using IdentityService.Application.Mediatr.Group.Queries.GetGroups;
 using IdentityService.WebApi.Models.Group;
@@ -145,6 +146,33 @@ public class GroupController : ApiControllerBase
     public async Task<IActionResult> JoinGroup([FromBody] JoinGroupRequestModel requestModel)
     {
         var request = new JoinGroupCommand()
+        {
+            UserId = UserId,
+            GroupId = requestModel.GroupId
+        };
+        
+        return await Mediator.Send(request);
+    }
+    /// <summary>
+    /// Unfollow a Group
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    /// POST /unjoin-groups
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="401">Unauthorized</response>
+    /// <response code="400">Invalid parameters</response>
+    /// <response code="406">Invalid parameters</response>
+    [HttpPost("unjoin-group")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+    public async Task<IActionResult> UnJoinGroup([FromBody] JoinGroupRequestModel requestModel)
+    {
+        var request = new UnJoinGroupCommand()
         {
             UserId = UserId,
             GroupId = requestModel.GroupId

@@ -40,9 +40,11 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
                         Content = p.Content,
                         Attachment = p.Attachment,
                         LikesCount = p.Likes.Count,
+                        HappeningAtUtc = p.HappeningAtUtc,
                         AuthorId = p.AuthorId,
                         Location = p.Location,
                         Category = p.Category,
+                        Type = p.Type,
                         CreatedAt = p.CreatedAt,
                     })
                 .ToListAsync(cancellationToken)
@@ -62,6 +64,7 @@ public class FindPostsQueryHandler : IRequestHandler<FindPostsQuery, Result>
                         AuthorId = p.AuthorId,
                         Location = p.Location,
                         Category = p.Category,
+                        Type = p.Type,
                         CreatedAt = p.CreatedAt,
                     })
                 .ToListAsync(cancellationToken);

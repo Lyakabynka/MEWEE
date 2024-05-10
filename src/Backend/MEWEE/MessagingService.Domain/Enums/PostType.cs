@@ -2,7 +2,8 @@
 
 public enum PostType
 {
-    User,
-    Group,
-    Event,
+    User= 1,
+    Group = 2,
+    Event = 3,
+    News = 4,
 }
