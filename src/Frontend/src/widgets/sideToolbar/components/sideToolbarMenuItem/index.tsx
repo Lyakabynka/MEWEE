@@ -1,59 +1,34 @@
 import React, { useState } from "react";
-import { useThemeStore } from "../../../../entities";
-import "./index.css";
+import styles from "./side_toolbar_menu_item.module.scss"
 
 interface SideToolbarMenuItemProps {
-  title: string;
-  icon: React.ReactNode;
-  isVisible: boolean;
-  onNavigate: () => void;
+    title: string;
+    icon: React.ReactNode;
+    isVisible: boolean;
+    onNavigate: () => void;
+    isActive: boolean;
 }
 
 export const SideToolbarMenuItem: React.FC<SideToolbarMenuItemProps> = ({
-  title,
-  icon,
-  isVisible,
-  onNavigate
-}) => {
-  const { currentTheme } = useThemeStore();
-  const [backgroundColor, setBackgroundColor] = useState("transparent");
-  const [hoverTextColor, setHoverTextColor] = useState("");
-  const [hoverIconColor, setHoverIconColor] = useState("");
+                                                                            title,
+                                                                            icon,
+                                                                            isVisible,
+                                                                            onNavigate,
+                                                                            isActive
+                                                                        }) => {
 
-  return (
-    <div
-      className={`item ${isVisible ? "" : "icon-centered"}`}
-      style={{ background: backgroundColor }}
-      onClick={onNavigate}
-      onMouseEnter={() => {
-        setBackgroundColor(
-          currentTheme?.mainPage.sideBar.hoverBackground || ""
-        );
-        setHoverTextColor("white" || "");
-        setHoverIconColor(currentTheme?.mainPage.sideBar.hoverIcon || "");
-      }}
-      onMouseLeave={() => {
-        setBackgroundColor("transparent");
-        setHoverTextColor("");
-        setHoverIconColor("");
-      }}
-    >
-      <div
-        className="icon-container"
-        style={{ color: hoverIconColor || currentTheme?.mainPage.sideBar.icon }}
-      >
-        {icon}
-      </div>
-      {isVisible && (
-        <span
-          className={"text-block"}
-          style={{
-            color: hoverTextColor || currentTheme?.mainPage.sideBar.colorText,
-          }}
-        >
+
+    return (
+        <div className={`${styles.item} ${isVisible ? "" : styles.icon_centered} 
+        ${isActive ? styles.active : ""}`} onClick={onNavigate}>
+            <div className={styles.icon_container}>
+                {icon}
+            </div>
+            {isVisible && (
+                <span className={styles.text_block}>
           {title}
         </span>
-      )}
-    </div>
-  );
+            )}
+        </div>
+    );
 };

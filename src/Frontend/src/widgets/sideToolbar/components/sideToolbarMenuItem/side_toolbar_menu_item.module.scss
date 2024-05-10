@@ -1,0 +1,32 @@
+.text_block{
+  font-family: Geometria, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.item{
+  cursor: pointer;
+  height: 38px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--mainPage_sideBar_colorText);
+
+  &:hover{
+    background-color: var(--mainPage_sideBar_hoverBackground);
+    color: white;
+  }
+}
+.icon_centered{
+  justify-content: center;
+}
+.icon_container{
+  height: 24px;
+  width: 24px;
+}
+
+.active{
+  background-color: #fba500 !important;
+  color: white !important;
+}

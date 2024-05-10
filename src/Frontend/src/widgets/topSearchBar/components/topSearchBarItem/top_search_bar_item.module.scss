@@ -1,0 +1,15 @@
+.div{
+  height: 24px;
+  width: 24px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: var(--mainPage_header_icon);
+
+  &:hover{
+    opacity: var(--mainPage_header_hoverIcon);
+  }
+
+  &:active{
+    color: var(--mainPage_header_activeIcon);
+  }
+}

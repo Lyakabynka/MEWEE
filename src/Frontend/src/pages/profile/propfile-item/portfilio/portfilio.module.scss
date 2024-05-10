@@ -6,17 +6,22 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
-    > div {
+    .sub_div1_item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       max-width: 20.31rem;
-      background-color: white;
+      background-color: var(--colorVariation_white_302a37);
       border-radius: 10px;
       padding: 1rem;
       > div:first-child {
-        display: flex;
-        align-items: center;
-        margin-bottom: 2rem;
-        > img {
-          margin-right: 1rem;
+        > div {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2rem;
+          > img {
+            margin-right: 1rem;
+          }
         }
       }
       > div:last-child {
@@ -33,9 +38,9 @@
       display: flex;
       flex-wrap: wrap;
       > div {
-        margin: 1rem;
         > img {
-          width: 350px;
+          width: 320px;
+          margin-right: 2rem;
         }
       }
     }

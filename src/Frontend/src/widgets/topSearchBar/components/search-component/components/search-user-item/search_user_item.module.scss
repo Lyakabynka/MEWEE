@@ -1,0 +1,56 @@
+.div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover{
+    background: var(--mainPage_chat_secondBackgroundHover);
+  }
+  > div:first-child{
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    border-radius: 50% !important;
+    > img{
+
+      object-fit: cover;
+      width: 26px;
+      height: 26px;
+      border-radius: 50% !important;
+      margin-right: 0.5rem;
+    }
+    > h2{
+      font-size: 0.8rem;
+      font-family: "Geometria", sans-serif;
+      color: var(--mainPage_header_colorText);
+    }
+    > h5{
+      margin-top: 0.13rem;
+      margin-left: 0.5rem;
+      font-size: 0.5rem;
+      font-family: "Geometria", sans-serif;
+      color: var(--mainPage_header_colorText);
+    }
+  }
+  > div:last-child{
+    display: flex;
+    align-items: center;
+    width: 0.7rem;
+    margin-right: 0.5rem;
+    svg{
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      color: var(--mainPage_header_icon);
+
+      &:hover{
+        opacity: var(--mainPage_header_hoverIcon);
+      }
+
+      &:active{
+        color: var(--mainPage_header_activeIcon);
+      }
+    }
+  }
+}

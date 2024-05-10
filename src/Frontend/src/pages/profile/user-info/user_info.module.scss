@@ -1,35 +1,51 @@
 .div {
-  color: #25005c;
-  padding: 0 2rem;
+  color: var(--colorVariation__25005c_white);
+  font-family: "Geometria", sans-serif;
   .sub_div1 {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: var(--colorVariation_white_302a37);
     border-radius: 10px;
-    padding-top: 8rem;
-    margin-bottom: 1rem;
+    padding: 6rem 1rem 1rem 1rem;
+    margin: 6rem 0 3rem 0;
     .avatar {
       position: absolute;
       top: -100px;
-      left: 20%;
+      width: 12.6rem;
+      height: 12.6rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 0;
     }
     .user_name {
-      > h1 {
-        margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      > div {
+        height: 1rem;
+        display: flex;
+        gap: 10px;
+        h1 {
+          color: var(--colorVariation__25005c_white);
+          font-size: 1rem;
+        }
       }
       > div {
+        margin-top: 1rem;
         display: flex;
         justify-content: center;
         color: #9c9c9c;
-        margin-bottom: 1rem;
       }
     }
     .folowers {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 1rem;
       margin-bottom: 1rem;
+      justify-content: space-evenly;
       > div {
         text-align: center;
         > h3 {
@@ -37,25 +53,41 @@
         }
       }
       > div:first-child {
-        margin-right: 3rem;
       }
     }
     .folow_button {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
       margin-bottom: 3rem;
       > button {
-        background-color: #25005c;
-        color: white;
+        cursor: pointer;
+        background-color: var(--colorVariation__25005c_b67afe);
+        font-family: "Geometria", sans-serif;
+        color: var(--colorVariation_b67afe_25005c);
         border: none;
         border-radius: 10px;
-        padding: 1rem 4rem;
+        padding: 1rem 3rem;
         margin-right: 1rem;
+      }
+      > div{
+        color: var(--colorVariation__25005c_b67afe) !important;
+        > svg{
+          cursor: pointer;
+          &:hover{
+            opacity: 0.75;
+          }
+
+          &:active{
+            color: #fba500;
+          }
+        }
       }
     }
   }
   .sub_div2 {
-    background-color: white;
+    background-color: var(--colorVariation_white_302a37);
     border-radius: 10px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -70,14 +102,57 @@
     }
   }
   .gallery {
-    background-color: white;
-    padding: 1rem 2rem;
+    background-color: var(--colorVariation_white_302a37);
+    padding: 1rem 0;
+    text-align: center;
+    max-height: 330px;
+    overflow-y: scroll;
+    height: 100%;
+    cursor: default;
     > h2 {
-      margin-bottom: 1rem;
+
+      font-size: 1.7rem;
     }
     > div {
       display: flex;
       justify-content: center;
     }
   }
+}
+
+.gallery_img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem !important;
+  max-width: 40% !important;
+  background-color: var(--colorVariation_e1dcf670_615b6e30);
+  border-radius: 10px;
+}
+
+.gallery_button{
+  border: none;
+  outline: none;
+  background: none;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Geometria", sans-serif;
+  cursor: pointer;
+  color: var(--colorVariation__25005c_white);
+  &:hover{
+    opacity: 0.75;
+  }
+
+  &:active{
+    color: #fba500;
+  }
+}
+
+.gallery_image{
+  width: 110px !important;
+  height: 110px !important;
+  min-width: 110px !important;
+  min-height: 110px !important;
+  object-fit: cover;
 }

@@ -1,219 +1,229 @@
-.header-content
-{
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    padding: 50px;
+.header-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 50px;
 }
-.header-content > div
-{
-    width: 100%;
-    height: 80vh;
-    background-image: url("./images/main.png");
-    background-size:contain;
-    background-position:top;
-    background-repeat: no-repeat;
+.header-content > div {
+  width: 100%;
+  height: 80vh;
+  background-image: url("./images/main.png");
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
 }
-.header-logo
-{
-    width: 10vw;
-    height: 10vw;
+.header-logo {
+  width: 10vw;
+  height: 10vw;
 }
 
 .form-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    margin-top: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .avatar-container {
-    margin: 8px;
-    background-color: white;
-    padding: 8px;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+  margin: 8px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
 }
 
-.input-group{
-    display: flex;
+.input-group {
+  display: flex;
 }
 
 .input-container {
-    position: relative;
-    width: 100%;
-    margin: 5px 10px 10px 10px;
+  position: relative;
+  width: 100%;
+  margin: 5px 10px 10px 10px;
 }
-.agree-with-policy-container{
-    margin: 17px 10px 10px 0;
-    width: 40%;
+.agree-with-policy-container {
+  margin: 17px 10px 10px 0;
+  width: 40%;
 }
 .error {
-    color: red;
-    font-family: Geometria;
-    font-size: 0.75em;
-    font-weight: 400;
-    line-height: 0.944em;
-    margin: 10px 0px 0px 5px;
+  color: red;
+  font-family: Geometria;
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 0.944em;
+  margin: 10px 0px 0px 5px;
 }
 
 .link-container {
-    text-align: left;
-    margin-left: 15px;
+  text-align: left;
+  margin-left: 15px;
 }
-.buttons-container
-{
-    display: flex;
-    gap:10px;
-    justify-content: space-between;
-    margin-bottom: 16px;
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .link-container a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .button-c {
-    cursor: pointer;
-    text-align: center;
-    width: 100%;
-    background-color: #512693;
-    padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #512693;
+  color: white;
+  border: 2px solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(251, 165, 0, 0),
+      rgba(251, 165, 0, 1)
+    )
+    1;
+  border-radius: 10px 0px 10px 10px;
+  clip-path: polygon(0% 100%, 85% 100%, 100% 0%, 0% 0%);
+  padding: 1rem 0;
 }
-.button-c a{
-    text-decoration: none;
-    color:white;
+
+.button-c:last-child {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 15% 0%);
+  border-radius: 0px 10px 10px 0;
+  border-image: linear-gradient(
+      to right,
+      rgba(251, 165, 0, 1),
+      rgba(251, 165, 0, 0)
+    )
+    1;
 }
+
+.button-c > a {
+  text-decoration: none;
+}
+.button-c:hover {
+  background: rgba(182, 122, 254, 1);
+  color: rgba(37, 0, 92, 1);
+}
+
 .loading-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
 }
 
-.login-reg-btn
-{
-    flex: 6;
-    padding: 2px;
-    -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+.login-reg-btn {
+  flex: 6;
+  padding: 2px;
+  -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+}
+.login-login-btn {
+  flex: 4;
+  margin-left: 15px;
+  padding: 2px;
+  clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
+}
+.login-buttons-container {
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+}
+.login-buttons-container > button {
+  font-family: "Geometria-Bold", sans-serif;
+  height: 44px;
+  background-color: #25005c;
+  color: #8d54e2;
+  border: 0;
 
+  cursor: pointer;
 }
-.login-login-btn
-{
-    flex: 4;
-    margin-left: 15px;
-    padding: 2px;
-    clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
+.login-buttons-container > button:hover {
+  background-color: #512693;
 }
-.login-buttons-container
-{
-    margin-top: 8%;
-    display: flex;
-    align-items: center;
+.login-or-block {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
-.login-buttons-container > button
-{
-    font-family: 'Geometria-Bold', sans-serif;
-    height: 44px;
-    background-color: #25005C;
-    color: #8d54e2;
-    border:0;
-
-    cursor: pointer;
+.login-or-block > div {
+  border: 1px solid #c5c5ca;
+  width: 100%;
 }
-.login-buttons-container > button:hover
-{
-    background-color: #512693;
+.login-or-block > span {
+  font-family: "Geometria", sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.login-or-block
-{
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
+.login-fields-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
-.login-or-block > div
-{
-    border: 1px solid #C5C5CA;
-    width: 100%;
-}
-.login-or-block > span
-{
-    font-family: 'Geometria', sans-serif;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.login-fields-container
-{
-    margin-top: 10px;
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-}
-.login-glogin-btn
-{
-    margin-top: 2vw;
-    margin-bottom: 2vw;
+.login-glogin-btn {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
 }
 .login-fields-container > div > input[type="text"],
 .login-fields-container > input[type="text"],
-.login-fields-container > div > input[type="password"]
-{
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    border: 2px solid purple;
-    outline: 0;
-    padding-left: 10px;
+.login-fields-container > div > input[type="password"] {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  outline: 0;
+  padding-left: 10px;
 }
-.fio-container
-{
-    width: 100%;
-    display: flex;
-    gap: 20px;
+.fio-container {
+  width: 100%;
+  display: flex;
+  gap: 20px;
 }
 
 .password-input {
-    position: relative;
-    height: 40px;
-    padding-right: 35px;
+  position: relative;
+  height: 40px;
+  padding-right: 35px;
 }
 .show-password-toggle {
-    position: absolute;
-    top: 23px;
-    right: 9px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    background-size: cover;
-    @media (max-width: 768px) {
-        top: calc(23px - 1px);
-        right: 6px;
-        width: 20px;
-        height: 20px;
-    }
+  position: absolute;
+  top: 23px;
+  right: 9px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  @media (max-width: 768px) {
+    top: calc(23px - 1px);
+    right: 6px;
+    width: 20px;
+    height: 20px;
+  }
 }
-.password-icon-default{
-    background-image: url("./images/icon_default.svg");
+.password-icon-default {
+  background-image: url("./images/icon_default.svg");
 }
-.password-icon-active{
-    background-image: url("./images/icon_active.png");
+.password-icon-active {
+  background-image: url("./images/icon_active.png");
 }
 /*.show-password-toggle:hover{*/
 /*    background-image: url("./images/icon_hover.png");*/
 /*}*/
 
-.text-style-1{
-    font-family: Geometria, sans-serif;
-    font-size: 0.75em;
-    font-weight: 400;
-    line-height: 0.944em;
+.text-style-1 {
+  font-family: Geometria, sans-serif;
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 0.944em;
 }
-.text-style-2{
-    font-family: Geometria, sans-serif;
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 1.10em;
+.text-style-2 {
+  font-family: Geometria, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.1em;
 }

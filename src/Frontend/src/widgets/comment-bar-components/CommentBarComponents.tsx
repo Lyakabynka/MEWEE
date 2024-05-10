@@ -3,27 +3,29 @@ import { CommentBarPropsTypes, commentDataTypes } from "../widget.interface";
 import CustomInput from "../сommon/custom-input/CustomInput";
 import styles from "./comment_bar_components.module.scss";
 import CommentBarItem from "./CommentBarItem";
-import { ReactComponent as CloseIcon } from "../../assets/image/icons/CloseIcon.svg"
-import CloseIcon2 from "../../assets/image/icons/CloseIcon.svg"
+import { ReactComponent as CloseIcon } from "../../assets/image/icons/CloseIcon.svg";
+import CloseIcon2 from "../../assets/image/icons/CloseIcon.svg";
 import { useCommentStore } from "../../entities/sharedStores/useCommentStore";
 import { EMPTY_GUID } from "../../shared/exportSharedMorules";
+import { useTranslation } from "react-i18next";
 
 const CommentBarComponents: FC<CommentBarPropsTypes> = ({
   id,
   hiden,
   appearance,
   commentDataRender,
-  onUpdated
+  onUpdated,
 }) => {
+  const {t} = useTranslation(); 
   const [replyTo, setReplyTo] = useState<any>(null);
   const [replyToId, setReplyToId] = useState<string>("");
   const { createComment } = useCommentStore();
-  
+
   const handleGetReplies = (replyCommentId: string) => {
     if (!commentDataRender || !Array.isArray(commentDataRender)) {
       return [];
     }
-  
+
     const findReplies = (parentId: string): commentDataTypes[] => {
       const replies: commentDataTypes[] = [];
       for (const comment of commentDataRender) {
@@ -35,15 +37,14 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
       }
       return replies;
     };
-  
+
     return findReplies(replyCommentId);
   };
-  const resetReplyTo = () =>
-  {
+  const resetReplyTo = () => {
     setReplyTo(null);
-    setReplyToId(EMPTY_GUID)
-  }
-  
+    setReplyToId(EMPTY_GUID);
+  };
+
   const handleSubmit = (input: string) => {
     resetReplyTo();
     const replyId = replyToId ?? "00000000-0000-0000-0000-000000000000";
@@ -57,12 +58,12 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
   };
 
   const onResponse = (errors: string[]) => {
-    if(errors.length === 0) {
+    if (errors.length === 0) {
       onUpdated();
     }
     console.log(errors);
   };
-  
+
   return (
     <>
       {hiden === id && (
@@ -76,24 +77,33 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
           }
         >
           {commentDataRender &&
-            commentDataRender.map((item: commentDataTypes) => 
-              item.replyCommentId === EMPTY_GUID && (
-                <CommentBarItem 
-                  parent={null}
-                  key={item.id} 
-                  item={item} 
-                  onReply={handleOnReply} 
-                  replies={handleGetReplies(item.id)}
-                />
-              )
+            commentDataRender.map(
+              (item: commentDataTypes) =>
+                item.replyCommentId === EMPTY_GUID && (
+                  <CommentBarItem
+                    parent={null}
+                    key={item.id}
+                    item={item}
+                    onReply={handleOnReply}
+                    replies={handleGetReplies(item.id)}
+                  />
+                )
             )}
           {replyTo !== null && (
             <div className={styles.reply}>
-              <span>Replying to... {replyTo.username}</span>
-              <CloseIcon onClick={resetReplyTo}/>
+              <span>{t("replying_to")}</span>
+              <span style={{color:'gray'}}>{replyTo.username}</span>
+              <div>
+                <CloseIcon onClick={resetReplyTo} />
+              </div>
             </div>
           )}
-          <CustomInput onSubmit={handleSubmit} />
+          <CustomInput
+            inputTypes="commentBar"
+            onSubmit={handleSubmit}
+            placeHolder="Lorem ipsum..."
+          />
+
         </div>
       )}
     </>

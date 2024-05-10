@@ -19,6 +19,13 @@ export const NAME = {
     REQUIRED_MESSAGE: 'error_password_required',
     NO_MATCH_MESSAGE: 'error_nomatch_password',
   };
+  export const GROUP_NAME = {
+    MIN_LENGTH: { value: 1, message: 'error_group_name_too_short' },
+    MAX_LENGTH: { value: 15, message: 'error_group_name_too_long' },
+
+    REQUIRED_MESSAGE: 'error_group_name_required',
+    INCORRECT_FORMAT_MESSAGE: 'error_invalid_group_name',
+  };
 
   export const EMAIL = {
     MIN_LENGTH: { value: 1, message: 'error_email_too_short' },

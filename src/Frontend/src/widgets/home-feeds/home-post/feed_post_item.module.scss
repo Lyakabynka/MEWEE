@@ -1,4 +1,48 @@
 @import "src/mixins.scss";
+.forwardToContainer {
+
+  position: absolute;
+  max-width: max-content;
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 150px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add the shadow */
+  padding: 0.5rem;
+  right: 4rem;
+  bottom: 6rem;
+  display: grid; /* Set the display property to grid */
+  grid-template-columns: repeat(3, 1fr); /* Define three equal-sized columns */
+  grid-template-rows: repeat(3, 1fr); /* Define three equal-sized rows */
+  
+  > div {
+  cursor: pointer;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > img
+    {
+      object-fit: cover;
+      border-radius: 50%;
+      
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #a8a8a8; /* Color of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
 
 .div {
   display: flex;
@@ -9,47 +53,66 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
-    padding: 1.25rem;
+    border-radius: 20px;
+    padding: 2rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    max-width: 50rem;
     z-index: 5;
-    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.5);
+    background-color: var(--mainPage_post_background);
+    > span
+    {
+      font-family: "Geometria-Bold", sans-serif;
+      font-weight: bold;
+      margin: 15px;
+      margin-left: 0;
+      margin-top: 0;
+    }
     > header {
       display: flex;
       justify-content: space-between;
       .header_div {
         display: flex;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        align-items: center;
         > div:first-child {
-          width: 3.75rem;
-          height: 3.75rem;
+          width: 4rem;
+          height: 4rem;
           border-radius: 50%;
           overflow: hidden;
           background-color: white;
           > img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit:cover; /* Scale the image to be as large as possible while maintaining its aspect ratio and cropping to fit its container */
+            
             display: block;
           }
         }
         > div:last-child {
           display: flex;
           flex-direction: column;
-          font-size: 0.9vw;
+          font-size: 0.8rem;
           margin-left: 0.9rem;
           > span:first-child {
+            margin-top: 1rem;
             font-family: "Geometria-Bold", sans-serif;
-            font-size: 1.2vw;
+            font-size: 1rem;
+            color: var(--mainPage_post_colorText);
           }
-          > span:last-child {
+          > .span_date {
             font-family: "Geometria", sans-serif;
-            font-size: 1vw;
+            font-size: 0.9rem;
             color: gray;
           }
           > div {
-            font-family: "Geometria-Bold", sans-serif;
+            font-family: "Geometria", sans-serif;
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--mainPage_post_secondColorText);
           }
         }
       }
@@ -64,10 +127,41 @@
       > div {
         width: 100%;
         max-width: 100%;
-        > img {
-          width: 100%;
-          height: auto;
-          max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >div:first-child {
+          position: relative;
+          width: 47rem;
+          max-width: 47rem;
+          height: 25.875rem;
+          max-height: 25.875rem;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          border-radius: 10px;
+
+          >div:first-child {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            max-height: 25.875rem;
+            background-size: cover;
+            background-position: center;
+            filter: blur(14px);
+            z-index: -1;
+          }
+
+          > img{
+            object-fit: contain;
+            width: 100%;
+            height: 25.875rem;
+            max-height: 25.875rem;
+          }
         }
       }
       .feed_post_video {
@@ -75,13 +169,23 @@
       }
     }
     .footer {
-      > p,
+      
+      margin-top: 1rem;
       > span {
         font-family: "Geometria", sans-serif;
-      }
-      > p {
+        font-size: 1.5rem;
         font-weight: bold;
+        color: var(--mainPage_post_colorText);
+      }
+      > div {
+        margin-top: 0.7rem;
+        font-family: Geometria, sans-serif;
+        font-size: 0.8rem;
         margin-bottom: 2rem;
+        color: var(--mainPage_post_colorText);
+        word-wrap: break-word;
+      
+        
       }
       .span {
         color: gray;
@@ -89,42 +193,40 @@
       .nav {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        > button {
-          border: 1px solid #b67afe;
-          font-family: "Geometria", sans-serif;
-          border-radius: 20px;
-          background-color: transparent;
-          color: #b67afe;
-          padding: 0.5rem 3rem;
-          @include hover-scale;
-        }
+        align-items: flex-start;
         > div {
-          display: flex;
-          align-items:flex-start;
-          gap: 15px;
-          margin-right: 0.9rem;
-          > div 
-          {
+          > div{
+            max-width: 126px;
             display: flex;
-            flex-direction: column;
-            > span
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 0.4rem;
+            > div
             {
-              font-family: "Geometria", sans-serif;
-              text-align: center;
-              font-size: 1.1vw;
-              color: var(--mainPage_post_colorText);
-            }
-            > img {
-            @include hover-scale;
+              display: flex;
+              flex-direction: column;
+              > span {
+                font-family: "Geometria", sans-serif;
+                text-align: center;
+                font-size: 0.6rem;
+                color: var(--mainPage_post_colorText);
+              }
+              > svg {
+                width: 32px;
+                height: 32px;
+                @include hover-scale;
+
+                &:hover{
+                  opacity: var(--mainPage_post_secondHoverIcon);
+                }
+              }
             }
           }
-          > img {
-            @include hover-scale;
-          }
-          
         }
       }
     }
+  }
+  ._sub_div_box_shadow {
+    box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.2);
   }
 }

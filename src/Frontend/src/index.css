@@ -6,7 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 code {
@@ -71,3 +71,13 @@ p {
 /* * {
   outline: 1px solid green;
 } */
+
+/*ЭТО ПЕРЕОПРЕДЕЛЕНИЕ СТИЛЕЙ MUI ДЛЯ SWITCH ПЕРЕКЛЮЧАТЕЛЕЙ SETTING PAGE*/
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+  color: #25005c !important;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked
+  + .MuiSwitch-track {
+  background-color: #d7b9fb !important;
+}

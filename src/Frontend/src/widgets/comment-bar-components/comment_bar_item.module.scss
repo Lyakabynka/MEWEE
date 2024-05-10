@@ -7,16 +7,16 @@ section
     align-items: center;
     margin-bottom: 1rem;
 
-
     > header
     {
       display: flex;
     
-      max-width: 50px;
       > img {
         margin-right: 1rem;
         border-radius: 50%;
-        width: 50px;
+        width: 60px;
+        object-fit: cover;
+        height: 60px;
       }
     }
     > main

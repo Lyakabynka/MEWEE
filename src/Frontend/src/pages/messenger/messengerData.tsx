@@ -1,6 +1,4 @@
-
-import CommentWriterAvatar from "../../assets/image/CommentWriterAvatar.png"
-
+import CommentWriterAvatar from "../../assets/image/CommentWriterAvatar.png";
 
 export const modalChatsDataLink = [
   {
@@ -28,7 +26,8 @@ export const dialogData = [
     id: 1,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     valueMessage: "5",
     newMessade: true,
@@ -38,7 +37,8 @@ export const dialogData = [
     id: 2,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     valueMessage: "5",
     newMessade: true,
@@ -48,7 +48,8 @@ export const dialogData = [
     id: 3,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     valueMessage: "5",
     newMessade: true,
@@ -58,7 +59,8 @@ export const dialogData = [
     id: 4,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     newMessade: false,
     check: false,
@@ -67,7 +69,8 @@ export const dialogData = [
     id: 5,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     newMessade: false,
     check: false,
@@ -76,9 +79,20 @@ export const dialogData = [
     id: 6,
     avatar: CommentWriterAvatar,
     name: "Tyler Right",
-    lastMessage: "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d...",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
     time: "15:48",
     newMessade: false,
     check: false,
   },
-]
+  {
+    id: 7,
+    avatar: CommentWriterAvatar,
+    name: "Tyler Right",
+    lastMessage:
+      "Regular visits to the veterinarian help to monitor the condition of the teeth, skin, coat, eyes, ears and other organs, which helps to maintain the d goggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggoggog",
+    time: "15:48",
+    newMessade: false,
+    check: false,
+  },
+];

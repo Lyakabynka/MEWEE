@@ -7,6 +7,12 @@ export const EMAIL_VALIDATION = Yup.string()
   .matches(C.EMAIL.REGEX, C.EMAIL.INCORRECT_FORMAT_MESSAGE)
   .required(C.EMAIL.REQUIRED_MESSAGE);
 
+  export const GROUP_NAME_VALIDATION = Yup.string()
+  .min(C.GROUP_NAME.MIN_LENGTH.value, C.GROUP_NAME.MIN_LENGTH.message)
+  .max(C.GROUP_NAME.MAX_LENGTH.value, C.GROUP_NAME.MAX_LENGTH.message)
+  .matches(/^[a-zA-Z0-9]+$/, C.GROUP_NAME.INCORRECT_FORMAT_MESSAGE)
+  .required(C.GROUP_NAME.REQUIRED_MESSAGE);
+
 export const USERNAME_VALIDATION = Yup.string()
   .min(C.NAME.MIN_LENGTH.value, C.NAME.MIN_LENGTH.message)
   .max(C.NAME.MAX_LENGTH.value, C.NAME.MAX_LENGTH.message)

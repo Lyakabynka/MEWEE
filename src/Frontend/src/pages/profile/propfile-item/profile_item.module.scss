@@ -1,17 +1,64 @@
 @import "src/mixins.scss";
 
+.add_post_container
+{
+  cursor: pointer;
+  width: 100%;
+  height: 4rem;
+  border-radius: 10px;
+border-top: 2px dashed gray;
+border-right: 2px dashed gray;
+border-bottom:2px dashed gray;
+border-left: 2px dashed gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+> span
+{
+  font-family: serif;
+  vertical-align: middle;
+  text-align: center;
+}
+}
+.groups_container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.groups_add_btn
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  border-radius: 20px;
+  padding: 0 2rem;
+  background-color: var(--colorVariation_white_302a37);
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover{
+    background-color: var(--mainPage_settings_hoverOption);
+  }
+}
 .div {
-  color: #25005c;
-  padding-right: 1rem;
+  color: var(--colorVariation__25005c_white);
+  font-family: "Geometria", sans-serif;
+  padding: 1rem;
   > ul {
+    
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
+    background-color: var(--colorVariation_white_302a37);
     border-radius: 10px;
     padding: 1.5rem 4rem;
-    margin-bottom: 2rem;
+    margin: 5rem 0 2rem 0;
     .li {
       display: flex;
       align-items: center;
@@ -29,6 +76,20 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
+      >div{
+        color: var(--colorVariation_black_b67afe);
+        > svg{
+          cursor: pointer;
+
+          &:hover{
+            opacity: 0.75;
+          }
+
+          &:active{
+            color: #fba500;
+          }
+        }
+      }
     }
   }
 }

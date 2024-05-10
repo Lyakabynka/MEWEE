@@ -1,3 +1,4 @@
+import { EnumPostType } from "../../entities";
 import { postDataTypes } from "../post-show/dataPostShow.interface";
 
 export interface modalPostDataLinkTypes {
@@ -8,5 +9,6 @@ export interface modalPostDataLinkTypes {
 }
 
 export interface FeedPostPropsTypes {
+  type?: EnumPostType;
   posts: postDataTypes[] | null;
 }

@@ -39,7 +39,8 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
     validationSchema: REGISTER_SCHEMA,
     onSubmit: () => {
       register(onResponse, {
-        username: formik.values.username + " " + formik.values.surname,
+        firstName: formik.values.username,
+        secondName: formik.values.surname,
         email: formik.values.email,
         password: formik.values.password,
       });
@@ -49,8 +50,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
   const onResponse = (_errors: string[]) => {
     setAutoClearErrors(_errors);
 
-    if (_errors.length == 0)
-      onNext();
+    if (_errors.length == 0) onNext();
   };
 
   const usernameError = formik.touched.username && formik.errors.username;
@@ -73,8 +73,13 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
         <main>
           <div className={styles.main_div_1}>
             <div>
-              <label className={`${styles.label} ${usernameError ? styles.label_error : ""}`}>
+              <label
+                className={`${styles.label} ${
+                  usernameError ? styles.label_error : ""
+                }`}
+              >
                 <input
+                  autoComplete="firstName"
                   type="text"
                   id="username"
                   name="username"
@@ -82,7 +87,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                   value={formik.values.username}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`${usernameError ? styles.input_error : ''}`}
+                  className={`${usernameError ? styles.input_error : ""}`}
                 />
               </label>
               {formik.touched.username && formik.errors.username && (
@@ -90,8 +95,13 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
               )}
             </div>
             <div>
-              <label className={`${styles.label} ${surnameError ? styles.label_error : ""}`}>
+              <label
+                className={`${styles.label} ${
+                  surnameError ? styles.label_error : ""
+                }`}
+              >
                 <input
+                  autoComplete="surname"
                   type="text"
                   id="surname"
                   name="surname"
@@ -99,7 +109,7 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                   value={formik.values.surname}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`${surnameError ? styles.input_error : ''}`}
+                  className={`${surnameError ? styles.input_error : ""}`}
                 />
               </label>
               {formik.touched.surname && formik.errors.surname && (
@@ -109,7 +119,11 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
           </div>
           <div className={styles.main_div_2}>
             <div>
-              <label className={`${styles.label} ${emailError ? styles.label_error : ""}`}>
+              <label
+                className={`${styles.label} ${
+                  emailError ? styles.label_error : ""
+                }`}
+              >
                 <input
                   type="email"
                   id="email"
@@ -128,7 +142,11 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
           </div>
           <div className={styles.main_div_3}>
             <div>
-              <label className={`${styles.label} ${passwordError ? styles.label_error : ""}`}>
+              <label
+                className={`${styles.label} ${
+                  passwordError ? styles.label_error : ""
+                }`}
+              >
                 <input
                   type={showPassword.password ? "text" : "password"}
                   id="password"
@@ -140,10 +158,11 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                   className={`${passwordError ? styles.input_error : ""}`}
                 />
                 <span
-                  className={`${styles.show_password_toggle} ${showPassword.password
-                    ? styles.password_icon_active
-                    : styles.password_icon_default
-                    }`}
+                  className={`${styles.show_password_toggle} ${
+                    showPassword.password
+                      ? styles.password_icon_active
+                      : styles.password_icon_default
+                  }`}
                   onClick={() => togglePasswordVisibility("password")}
                 />
               </label>
@@ -153,7 +172,10 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
             </div>
             <div>
               <label
-                className={`${styles.label} ${confirmPasswordError ? styles.label_error : ""}`}>
+                className={`${styles.label} ${
+                  confirmPasswordError ? styles.label_error : ""
+                }`}
+              >
                 <input
                   type={showPassword.confirm_password ? "text" : "password"}
                   id="confirm_password"
@@ -162,30 +184,33 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
                   value={formik.values.confirm_password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`${confirmPasswordError ? styles.input_error : ""}`}
+                  className={`${
+                    confirmPasswordError ? styles.input_error : ""
+                  }`}
                 />
                 <span
-                  className={`${styles.show_password_toggle} ${showPassword.confirm_password
-                    ? styles.password_icon_active
-                    : styles.password_icon_default
-                    }`}
+                  className={`${styles.show_password_toggle} ${
+                    showPassword.confirm_password
+                      ? styles.password_icon_active
+                      : styles.password_icon_default
+                  }`}
                   onClick={() => togglePasswordVisibility("confirm_password")}
                 />
               </label>
               {formik.touched.confirm_password &&
                 formik.errors.confirm_password && (
-                  <div className={styles.error}>{t(formik.errors.confirm_password)}</div>
+                  <div className={styles.error}>
+                    {t(formik.errors.confirm_password)}
+                  </div>
                 )}
             </div>
           </div>
         </main>
         <footer>
           <section>
-            <button type="submit">
-              {t("register-me")}
-            </button>
-            {isLoading && <CircularProgress size={"1rem"} ></CircularProgress>}
-            </section>
+            <button type="submit">{t("register-me")}</button>
+            {isLoading && <CircularProgress size={"1rem"}></CircularProgress>}
+          </section>
           <input
             type="checkbox"
             id="policyAgree"
@@ -205,9 +230,15 @@ export const RegisterForm: React.FC<{ onNext: () => void }> = ({ onNext }) => {
         </footer>
       </form>
       <nav>
-        {(errors && errors.length > 0) && errors.map((error, index) => (
-          <PopUpError text={t(error)} marginLeft="0.5rem"></PopUpError>
-        ))}
+        {errors &&
+          errors.length > 0 &&
+          errors.map((error, index) => (
+            <PopUpError
+              key={index}
+              text={t(error)}
+              marginLeft="0.5rem"
+            ></PopUpError>
+          ))}
       </nav>
     </div>
   );

@@ -116,7 +116,7 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
               </div>
             </div>
           </div>
-          <CustomModalIcon id={0} links={modalPostDataLink} />
+          {/* <CustomModalIcon id={0} links={modalPostDataLink} /> */}
         </header>
         <main className={styles.main}>
           {dataObject.attachment ? (
@@ -151,7 +151,7 @@ const Post: FC<postDataProps> = ({ dataObject }) => {
                 onClick={() => handleCommentClick(dataObject.id)}
                 src={CommentPostIcon}
               />
-              <span>({comments ? comments.length : 0})</span>
+              <span>({comments ? (comments.length > 0 ? comments.length-1 : 0) : 0})</span>
             </div>
           </nav>
         </footer>

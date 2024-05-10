@@ -1,3 +1,3 @@
 export interface IAuthPageProps {
-    setActiveAuthNav: (isActive: boolean) => void;
+  setActiveAuthNav: (isActive: boolean) => void;
 }

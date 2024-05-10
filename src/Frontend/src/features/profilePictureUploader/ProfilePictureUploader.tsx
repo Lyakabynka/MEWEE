@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 import { encryptImage } from "../../entities/sharedStores/post-utils";
-import { useAuthStore } from "../../entities";
+import { useAuthStore, useUserStore } from "../../entities";
+import styles from "./profile_picture_uploader.module.scss"
+import {useTranslation} from "react-i18next";
 
 const ProfilePictureUploader = () => {
+  const { t } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
-const {updateProfile} = useAuthStore();
+const {updateProfile} = useUserStore();
+console.log("ok");
   const handleDrop = async (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
     if (rejectedFiles.length > 0) {
       // Handle rejected files if needed
       return;
     }
-    
     const file = acceptedFiles[0];
     const reader = new FileReader();
 
@@ -37,9 +40,9 @@ const {updateProfile} = useAuthStore();
         <div {...getRootProps()} style={dropzoneStyle}>
           <input {...getInputProps()} />
           {image ? (
-            <img src={image} alt="Uploaded" style={imageStyle} />
+              <p className={styles.text}>{t("successfully")}</p>
           ) : (
-            <p>+</p>
+            <p className={styles.text}>{t("load_it")}</p>
           )}
         </div>
       )}
@@ -51,10 +54,9 @@ const dropzoneStyle: React.CSSProperties = {
   border: "2px dashed #cccccc",
   borderRadius: "4px",
   padding: "5px",
-  margin:"5px",
+  margin:"0",
   textAlign: "center",
   cursor: "pointer",
-  
 };
 
 const imageStyle: React.CSSProperties = {

@@ -6,11 +6,13 @@ import { useAuthStore } from "./useAuthStore";
 import { get } from "http";
 
 interface ICreatePostRequest {
+  authorId: string | undefined;
   title: string;
   content: string;
   attachment: string;
   location: string;
   category: string;
+  type: number;
 }
 
 interface IPoststore {
@@ -19,7 +21,11 @@ interface IPoststore {
 
   createPost: (callback: ResponseCallback, request: ICreatePostRequest) => Promise<void>;
   getPosts: (callback: ResponseCallback, id: any) => Promise<void>;
-  findPosts: (callback: ResponseCallback, query: string, pagination: any) => Promise<void>;
+  getPost: (callback: ResponseDataCallback, id: any) => Promise<void>;
+  savePost: (callback: ResponseDataCallback, postId: string) => Promise<void>;
+  unsavePost: (callback: ResponseCallback, postId: string) => Promise<void>;
+  getSavePost: (callback: ResponseDataCallback, postId: string) => Promise<void>;
+  findPosts: (callback: ResponseDataCallback, query: string, pagination: any, setLocal?:boolean) => Promise<void>;
   likePost: (callback: ResponseCallback, postId: string) => Promise<void>;
   unLikePost: (callback: ResponseCallback, postId: string) => Promise<void>;
   getPostLikes: (callback: ResponseDataCallback, postId: string) => Promise<void>;
@@ -34,12 +40,10 @@ export const usePostsStore = create<IPoststore>((set) => ({
     set({ isLoading: true });
     try {
       const response = await $api.post<any>(ENDPOINTS.USER.POST, request);
-      //console.log(response);
 
-      callback(pErrors(response.data.errors));
 
       if (response?.status == 200) {
-        //console.log(response.data);
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }
@@ -55,14 +59,12 @@ export const usePostsStore = create<IPoststore>((set) => ({
     set({ isLoading: true });
 
     try {
-      const response = await $api.post<any>(ENDPOINTS.USER.GET_POSTS, { userId: id });
-      //console.log(response);
+      const response = await $api.post<any>(ENDPOINTS.USER.GET_POSTS, { AuthorId: id, Type: 0 });
 
-      callback(pErrors(response.data.errors));
 
       if (response?.status == 200) {
-        //console.log(response.data);
         set({ posts: response.data });
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }
@@ -73,7 +75,84 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
     set({ isLoading: false });
   },
-  findPosts: async (callback: ResponseCallback, query: string, pagination: any) => {
+  getPost: async (callback: ResponseDataCallback, id: any) => {
+
+    set({ isLoading: true });
+
+    try {
+      const response = await $api.get<any>(ENDPOINTS.USER.GET_POST +`/${id}`);
+
+
+      if (response?.status == 200) {
+        callback(response.data, []);
+      } else {
+        callback(null, pErrors(response.data.errors));
+      }
+    } catch (error: any) {
+      callback(null, pErrors(['unknown_error']));
+
+    }
+
+    set({ isLoading: false });
+  },
+  savePost: async (callback: ResponseDataCallback, postId: string) => {
+
+    set({ isLoading: true });
+
+    try {
+      const response = await $api.post<any>(ENDPOINTS.USER.SAVE_POST, { PostId: postId });
+
+      if (response?.status == 200) {
+        callback(response.data, []);
+      } else {
+        callback(null, pErrors(response.data.errors));
+      }
+    } catch (error: any) {
+      callback(null, pErrors(['unknown_error']));
+
+    }
+
+    set({ isLoading: false });
+  },
+  unsavePost: async (callback: ResponseCallback, postId: string) => {
+
+    set({ isLoading: true });
+
+    try {
+      const response = await $api.post<any>(ENDPOINTS.USER.UNSAVE_POST, { PostId: postId });
+
+      if (response?.status == 200) {
+        callback([]);
+      } else {
+        callback(pErrors(response.data.errors));
+      }
+    } catch (error: any) {
+      callback(pErrors(['unknown_error']));
+
+    }
+
+    set({ isLoading: false });
+  },
+  getSavePost: async (callback: ResponseDataCallback, postId: string) => {
+
+    set({ isLoading: true });
+
+    try {
+      const response = await $api.post<any>(ENDPOINTS.USER.GET_POST_SAVE, { PostId: postId });
+
+      if (response?.status == 200) {
+        callback(response.data, []);
+      } else {
+        callback(null, pErrors(response.data.errors));
+      }
+    } catch (error: any) {
+      callback(null, pErrors(['unknown_error']));
+
+    }
+
+    set({ isLoading: false });
+  },
+  findPosts: async (callback: ResponseDataCallback, query: string, pagination: any, setLocal=true) => {
     set({ isLoading: true });
     set({ posts: null });
 
@@ -83,13 +162,15 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
 
       if (response?.status == 200) {
-        //console.log(response.data);
+        console.log(response.data);
+        if(setLocal)
         set({ posts: response.data });
+        callback(response.data, []);
       } else {
-        callback(pErrors(response.data.errors));
+        callback(null, pErrors(response.data.errors));
       }
     } catch (error: any) {
-      callback(pErrors(['unknown_error']));
+      callback(null, pErrors(['unknown_error']));
 
     }
 
@@ -98,15 +179,15 @@ export const usePostsStore = create<IPoststore>((set) => ({
     set({ isLoading: false });
   },
   likePost: async (callback: ResponseCallback, postId: string) => {
+    console.log("like-post");
     set({ isLoading: true });
 
     try {
       const response = await $api.post<any>(ENDPOINTS.HOME.LIKE_POST, { postId: postId });
-      console.log(response);
-
-
+    
       if (response?.status == 200) {
         console.log(response.data);
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }
@@ -122,11 +203,10 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
     try {
       const response = await $api.post<any>(ENDPOINTS.HOME.UNLIKE_POST, { postId: postId });
-      console.log(response);
-
+    
 
       if (response?.status == 200) {
-        console.log(response.data);
+        callback([]);
       } else {
         callback(pErrors(response.data.errors));
       }
@@ -144,11 +224,8 @@ export const usePostsStore = create<IPoststore>((set) => ({
 
     try {
       const response = await $api.post<any>(ENDPOINTS.HOME.GET_POST_LIKES, { postId: postId, pagination: { page: 1, pageSize: 0 } });
-      console.log(response);
-
-
+      
       if (response?.status == 200) {
-        console.log(response.data);
         callback(response.data, pErrors(response.data.errors));
       } else {
         callback(null, pErrors(response.data.errors));

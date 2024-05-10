@@ -10,11 +10,12 @@
 
   .smile_icon {
     position: absolute;
+    z-index: 999;
     right: 0px;
     bottom: 3.125rem;
     max-width: 16.56rem;
     max-height: 9.625rem;
-    background-color: white;
+    background-color: var(--colorVariation_white_302a37);
     border-radius: 10px;
     box-shadow: 0px 8px 10px 5px rgba(0, 0, 0, 0.2);
     overflow: auto;
@@ -53,8 +54,20 @@
   }
   > div {
     display: flex;
-    > img {
+    align-items: center;
+    justify-content: center;
+    > svg{
+      width: 24px;
+      height: 24px;
       @include hover-scale;
+      color: var(--mainPage_post_secondIcon);
+
+      &:hover{
+        opacity: var(--mainPage_post_secondHoverIcon);
+      }
+      &:active{
+        color: var(--mainPage_post_secondActiveIcon);
+      }
     }
   }
 }

@@ -1,0 +1,9 @@
+.CustomSwitch {
+  .MuiSwitch-thumb {
+    background-color: var(--mainPage_settings_inputBackground);
+  }
+
+  .MuiSwitch-input:checked + .MuiSwitch-thumb {
+    background-color: var(--mainPage_settings_borderColor);
+  }
+}

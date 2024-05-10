@@ -9,10 +9,25 @@
 }
 
 .image_box {
+  border-radius: 20px;
+  object-fit: cover;
   height: 255px;
   max-width: 400px;
   width: 100%;
   display: block;
   overflow: hidden;
   margin: 0.5rem;
+}
+.rimage_box {
+  border-radius: 20px;
+  object-fit: cover;
+  height: 255px;
+  max-width: 400px;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  margin: 0.5rem;
+  -webkit-filter:  brightness(65%) contrast(129%) grayscale(0%) hue-rotate(0deg) invert(0%) opacity(100%) saturate(165%) sepia(50%);
+          filter:  brightness(65%) contrast(129%) grayscale(0%) hue-rotate(0deg) invert(0%) opacity(100%) saturate(165%) sepia(50%);
+  mix-blend-mode: none;
 }

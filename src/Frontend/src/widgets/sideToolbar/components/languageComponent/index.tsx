@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./index.css";
+import styles from "./language_component.module.scss"
 import { useTranslation } from "react-i18next";
 import { useThemeStore } from "../../../../entities";
 export const LanguageComponent = () => {
   const { t, i18n } = useTranslation();
-  const { currentTheme } = useThemeStore();
 
   const [currentLanguage, setCurrentLanguage] = useState<string>(() => {
     const storedLanguage = localStorage.getItem("language");
@@ -21,39 +20,17 @@ export const LanguageComponent = () => {
   };
 
   return (
-    <div className="drop_up">
-      <span
-        className="drop_span"
-        style={{ color: currentTheme?.mainPage?.sideBar?.secondColorText }}
-      >
+    <div className={styles.drop_up}>
+      <span className={styles.drop_span}>
         {currentLanguage.toUpperCase()}
       </span>
-      <div
-        className="drop_up-content"
-        style={{
-          backgroundColor: currentTheme?.mainPage?.sideBar?.backgroundLanguage,
-        }}
-      >
-        <span
-          onClick={() => changeLanguage("ua")}
-          style={{
-            color:
-              currentLanguage === "ua"
-                ? currentTheme?.mainPage?.sideBar?.hoverAndActiveText
-                : currentTheme?.mainPage?.sideBar?.secondColorText,
-          }}
-        >
+      <div className={styles.drop_up_content}>
+        <span onClick={() => changeLanguage("ua")}
+          className={currentLanguage === "ua" ? styles.active : styles.dont_active}>
           UA
         </span>
-        <span
-          onClick={() => changeLanguage("en")}
-          style={{
-            color:
-              currentLanguage === "en"
-                ? currentTheme?.mainPage?.sideBar?.hoverAndActiveText
-                : currentTheme?.mainPage?.sideBar?.secondColorText,
-          }}
-        >
+        <span onClick={() => changeLanguage("en")}
+          className={currentLanguage === "en" ? styles.active : styles.dont_active}>
           EN
         </span>
       </div>

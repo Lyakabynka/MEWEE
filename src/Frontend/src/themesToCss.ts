@@ -5,7 +5,7 @@ import { Theme } from '@mui/material/styles';
 
 function setThemeVariables(currentTheme: Theme | null, prefix = '') {
     const root = document.documentElement;
-    const validSections = ['authPages', 'mainPage'];
+    const validSections = ['authPages', 'mainPage', 'colorVariation'];
 
     const processTheme = (theme: Record<string, unknown>, parentPrefix = '') => {
         Object.entries(theme).forEach(([key, value]) => {

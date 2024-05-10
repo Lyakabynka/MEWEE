@@ -1,24 +1,13 @@
 import { FC, useEffect } from "react";
-import { useAuthStore, usePostsStore } from "../../../entities";
-import { Box, CircularProgress } from "@mui/material";
+import { EnumPostType, useAuthStore, usePostsStore } from "../../../entities";
+import { Box, CircularProgress, Grid } from "@mui/material";
 import News from "./news/News";
+import { FeedPost } from "../../../features/exportFeaturesComponents";
 
-export const HomeNews: FC = () => {
-  const { getPosts } = usePostsStore();
-  const {id} = useAuthStore();
-  //console.log(id)
-  let data = null;
-  useEffect(() => {
-    getPosts(onResponse, id); // Fetch posts when component mounts
-  }, []);
-
-  const onResponse = (errors: string[]) => {
-
-    //console.log(errors);
-  };
+export const HomeNews: FC<{ posts: any }> = ({ posts }) => {
   return (
-    <div className="home-news-generic-container">
-      <News posts={data} />
-    </div>
+    <Grid item >
+      <FeedPost type={EnumPostType.News} posts={posts} />
+    </Grid>
   );
 };

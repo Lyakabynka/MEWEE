@@ -17,6 +17,9 @@ export interface modalDialogsDataLinkTypes {
 }
 
 export interface dialogsDataPropTypes {
+  onOpenChat: (chatId: string) => void;
   dialogData: dialogDataTypes[];
-  modalDialogsData: modalDialogsDataLinkTypes[];
+  modalDialogsData?: modalDialogsDataLinkTypes[];
+  sideBarType: boolean;
+  openChat: boolean;
 }

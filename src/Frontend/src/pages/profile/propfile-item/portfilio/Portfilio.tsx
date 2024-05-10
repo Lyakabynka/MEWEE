@@ -18,12 +18,14 @@ const Portfilio: FC<portfilioDataPropsTypes> = ({
           {portfilioData &&
             portfilioData.map((item: portfilioDataTypes) => {
               return (
-                <div key={item.id}>
+                <div className={styles.sub_div1_item} key={item.id}>
                   <div>
-                    <img src={item.reviewsUserAvatar} />
-                    <h2>{item.reviewsUserName}</h2>
+                    <div>
+                      <img src={item.reviewsUserAvatar} />
+                      <h2>{item.reviewsUserName}</h2>
+                    </div>
+                    <h3>{item.reviews}</h3>
                   </div>
-                  <h3>{item.reviews}</h3>
                   <div>
                     {item.reviewsStar &&
                       item.reviewsStar.map((subItem: reviewsStarTypes) => {

@@ -1,6 +1,6 @@
 @import "src/mixins.scss";
 
-.div{
+.div {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -11,40 +11,42 @@
     margin-right: 1.25rem;
     margin-left: 1.25rem;
 
-    .header_div{
+    .header_div {
       border: 1px solid var(--authPages_commonElements_lineColor);
       width: 100%;
     }
-    .header_span{
-      font-family: 'Geometria', sans-serif;
+    .header_span {
+      font-family: "Geometria", sans-serif;
       margin-left: 0.625rem;
       margin-right: 0.625rem;
       color: var(--authPages_commonElements_lineColorText);
     }
   }
-  .main{
+  .main {
     display: flex;
-    div:first-child{
+    div:first-child {
       position: relative;
       width: 100%;
       margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
-      label{
-        input{
-          padding: 12px 12px 12px 5px;
+      label {
+        input {
+          width: 14.4rem;
+          padding-left: 1rem;
         }
       }
     }
-    div:last-child{
+    div:last-child {
       position: relative;
       width: 100%;
       margin: 0.3125rem 0.625rem 0.625rem 0.625rem;
-      label{
-        input{
-          padding: 12px 2.19rem 12px 5px;
+      label {
+        input {
           position: relative;
+          width: 14.4rem;
+          padding-left: 1rem;
         }
 
-        span{
+        span {
           position: absolute;
           top: 23px;
           right: 9px;
@@ -63,30 +65,27 @@
       }
     }
   }
-  footer{
-    section
-    {
+  footer {
+    section {
       display: flex;
       align-items: center;
     }
-    nav
-    {
+    nav {
       margin-left: 10px;
     }
-    button{
+    button {
       position: relative;
-      width: 45%;
-      height: 3rem;
       background: var(--authPages_commonElements_buttonBackground);
       color: var(--authPages_commonElements_buttonColor);
       border-radius: 10px;
       border: none;
       cursor: pointer;
-      margin: 0.625rem;
       font-family: Geometria, sans-serif;
       font-size: 1rem;
       font-weight: 700;
-      line-height: 1.10em;
+      line-height: 1.1em;
+      padding: 1rem 4rem;
+      margin: 0.625rem;
 
       &:hover {
         background-color: var(--authPages_commonElements_buttonHoverBackground);
@@ -94,7 +93,9 @@
       }
 
       &:active {
-        background-color: var(--authPages_commonElements_buttonActiveBackground);
+        background-color: var(
+          --authPages_commonElements_buttonActiveBackground
+        );
         color: var(--authPages_commonElements_buttonActiveColor);
       }
 
@@ -109,10 +110,10 @@
         border-radius: 10px;
       }
     }
-    .div_link{
+    .div_link {
       text-align: left;
       margin-left: 0.94rem;
-      a{
+      a {
         text-decoration: none;
         color: var(--authPages_loginPage_linkColor);
         font-family: Geometria, sans-serif;
@@ -130,14 +131,18 @@
   }
 }
 
-.label{
+.label {
   display: block;
-  background: linear-gradient(91.54deg, rgba(37, 0, 92, 0.7) 0%, rgba(151, 71, 255, 0.7) 100%);
+  background: linear-gradient(
+    91.54deg,
+    rgba(37, 0, 92, 0.7) 0%,
+    rgba(151, 71, 255, 0.7) 100%
+  );
   padding: 2px;
   border-radius: 10px;
   width: 100%;
 
-  input{
+  input {
     background: var(--authPages_commonElements_inputBackground);
     color: var(--authPages_commonElements_inputColor);
     border-radius: 8px;
@@ -147,34 +152,31 @@
     padding: 12px 12px 12px 5px;
     font-family: Geometria, sans-serif;
     font-size: 0.75rem;
-
   }
 }
 
-.label_error{
+.label_error {
   background: red !important;
 }
 
-.input_error{
+.input_error {
   color: red !important;
   font-weight: 700 !important;
-  &::placeholder{
+  &::placeholder {
     color: red !important;
   }
 }
 
-.password_icon_default{
+.password_icon_default {
   background-image: url("../AuthHeaderForm/images/icon_default.svg");
 }
-.password_icon_active{
+.password_icon_active {
   background-image: url("../AuthHeaderForm/images/icon_active.png");
 }
 
-.error{
+.error {
   color: red;
   font-family: Geometria, sans-serif;
   font-size: 0.75rem;
   margin: 0.625rem 0 0 0.3125rem !important;
 }
-
-

@@ -50,7 +50,7 @@ const News: FC<FeedPostPropsTypes> = ({ posts }) => {
       {posts &&
         posts.map((item: postDataTypes) => {
           return (
-            <div className={styles.div}>
+            <div key={item.id} className={styles.div}>
               <div
                 className={styles.sub_div}
                 style={{
@@ -67,7 +67,7 @@ const News: FC<FeedPostPropsTypes> = ({ posts }) => {
                       {item.username}
                     </h3>
                   </div>
-                  <CustomModalIcon id={0} links={modalPostDataLink} />
+                  {/* <CustomModalIcon id={0} links={modalPostDataLink} /> */}
                 </header>
                 <main className={styles.main}>
                   {isImage(item.imageUrl) ? (

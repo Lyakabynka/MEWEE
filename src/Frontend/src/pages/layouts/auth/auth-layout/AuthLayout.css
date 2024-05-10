@@ -1,0 +1,72 @@
+.auth-page-container {
+  display: flex;
+}
+@font-face {
+  font-family: "LogoFont";
+  src: url("../../../../assets/fonts/logofont.otf") format("opentype");
+}
+@font-face {
+  font-family: "Geometria";
+  src: url("../../../../assets/fonts/Geometria.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Geometria-Bold";
+  src: url("../../../../assets/fonts/Geometria-Bold.ttf") format("truetype");
+}
+
+.auth-main-container {
+  position: relative;
+  max-width: 1260px;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+.auth-top-content {
+  display: flex;
+}
+.auth-content-holder {
+  width: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-right: 100px;
+  padding-top: 3rem;
+}
+.auth-title-holder {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.auth-title-text {
+  font-family: "LogoFont", sans-serif;
+  color: #25005c;
+  font-size: 48px;
+}
+.auth-sub-title-text {
+  font-family: "Geometria", sans-serif;
+  color: gray;
+  font-size: 10px;
+  margin-bottom: 2rem;
+}
+
+.language-switch-container {
+  position: absolute;
+  right: 1.5vw;
+  bottom: 1.2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.trapezoid {
+  width: 200px;
+  border-top: 2rem solid blue;
+  border-right: 1rem solid transparent;
+}
+
+@media (max-width: 900px) {
+  .auth-page-container {
+    flex-direction: column;
+  }
+}

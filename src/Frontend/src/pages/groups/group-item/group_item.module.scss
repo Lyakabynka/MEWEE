@@ -2,11 +2,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  > h2{
+    font-family: "Geometria", sans-serif;
+    color: var(--colorVariation_black_white);
+  }
+  >svg {
+    cursor: pointer;
+    color: var(--colorVariation_black_white);
+
+    &:hover{
+      opacity: 0.75;
+    }
+
+    &:active{
+      color: #fba500;
+    }
+  }
 }
 
 .div {
   position: relative;
-  background-color: white;
+  background-color: var(--colorVariation_white_302a37);
   border-radius: 16px;
   margin: 0.5rem;
   > img {
@@ -32,6 +48,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    padding: 1rem 0.8rem;
   }
 }
 
@@ -46,15 +63,30 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0.5rem 0;
+
+    >div:first-child {
+      margin-top: 1.4rem;
+    }
+    > div:last-child {
+      margin-bottom: 1.4rem;
+    }
   }
   > img {
-    width: 134px;
-    height: 130px;
-    margin-right: 1rem;
+    width: 150px !important;
+    height: 150px !important;
+    margin-right: 1rem !important;
+    border-radius: 16px !important;
+    object-fit: cover;
   }
   .modal_button {
     position: absolute;
     top: 0;
     right: 1rem;
   }
+}
+
+
+.div_group_title{
+  color: var(--colorVariation_black_white);
+  font-family: "Geometria", sans-serif;
 }

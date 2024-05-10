@@ -1,0 +1,56 @@
+.div{
+  position: relative;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: var(--mainPage_chat_fourIcon);
+  > svg{
+    &:hover{
+      opacity: var(--mainPage_header_hoverIcon);
+    }
+  }
+  > div{
+    position: absolute;
+    left: 0;
+    border-radius: 10px;
+    top: 100%;
+    box-shadow: 1px 1px 7.6px 0px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    white-space: nowrap;
+    > div{
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 0.8rem 0.65rem 0.8rem;
+      background: var(--mainPage_chat_background);
+
+      &:hover{
+        background-color: var(--mainPage_chat_backgroundHover);
+      }
+      > div:first-child {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--mainPage_chat_icon);
+        > svg{
+          width: 24px;
+          height: 24px;
+        }
+      }
+      > div:last-child{
+        font-family: Geometria, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--mainPage_chat_icon);
+      }
+    }
+    > div:last-child {
+      border-radius: 0 0 10px 10px;
+    }
+    > div:first-child {
+      border-radius: 10px 10px 0 0;
+    }
+  }
+}

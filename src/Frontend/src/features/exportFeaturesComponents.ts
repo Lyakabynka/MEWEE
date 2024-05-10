@@ -1,5 +1,5 @@
-export { AuthHeaderForm } from "./auth/AuthHeaderForm";
-export { LoginForm } from "./auth/LoginForm";
+export { AuthHeaderForm } from "./auth/AuthHeaderForm/AuthHeaderForm";
+export { LoginForm } from "./auth/LoginForm/LoginForm";
 export { RegisterForm } from "./auth/register/RegisterForm";
 export { HomePage } from "../pages/home/HomePage";
 export { PlanCard } from "./plans/PlanCard";

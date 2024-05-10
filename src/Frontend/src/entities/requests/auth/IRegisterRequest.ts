@@ -1,5 +1,6 @@
 export interface IRegisterRequest {
-    username: string;
+    firstName: string;
+    secondName: string;
     email: string;
     password: string;
 }

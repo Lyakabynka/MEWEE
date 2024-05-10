@@ -7,14 +7,39 @@ export const ENDPOINTS = {
         LOGOUT: `${API_URL}/auth/logout`,
         //CHECK_EMAIL: `https://65f7919db4f842e80885b525.mockapi.io/auth/check-email/check-email`,
     },
+    GROUPS: {
+        CREATE_GROUP: `${API_URL}/create-group`,
+        DELETE_GROUP: `${API_URL}/delete-group`,
+        GET_GROUPS: `${API_URL}/groups`,
+        GET_GROUP: `${API_URL}/get-group`,
+        JOIN_GROUP: `${API_URL}/join-group`,
+        UNJOIN_GROUP: `${API_URL}/unjoin-group`,
+    },
     USER :{
         REGISTER: `${API_URL}/user/register`,
         GET_PROFILE_DATA: `${API_URL}/user/profile`,
-        UPDATE_PROFILE_DATA: `${API_URL}/user/update-profile`,
+        UPDATE_PROFILE_DATA: `${API_URL}/user/profile`,
         CONFIRM_EMAIL: `${API_URL}/user/confirm-email`,
         GET_POSTS: `${API_URL}/posts`,
+        GET_POST: `${API_URL}/get-post`,
+        SAVE_POST: `${API_URL}/save-post`,
+        GET_POST_SAVE: `${API_URL}/get-post-save`,
+        UNSAVE_POST: `${API_URL}/unsave-post`,
         POST: `${API_URL}/post`,
         CREATE_CHAT: `${API_URL}/chat`,
+        GET_CHATS: `${API_URL}/get-chats`,
+        GET_CONVERSATION: `${API_URL}/get-conversation`,
+        GET_FOLLOWERS: `${API_URL}/followers`,
+        GET_FOLLOWINGS: `${API_URL}/followings`,
+        GET_FRIENDS: `${API_URL}/friends`,
+        
+        
+        FOLLOW_USER: `${API_URL}/follow-user`,
+        UNFOLLOW_USER: `${API_URL}/unfollow-user`,
+        FIND_PEOPLE: `${API_URL}/find-groups-and-users`,
+
+        UPLOAD_PHOTO_TO_PROFILE: `${API_URL}/user/photo`,
+        GET_PROFILE_GALLERY: `${API_URL}/user/photos`,
     },
     POST:
     {

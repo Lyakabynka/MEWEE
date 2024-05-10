@@ -1,0 +1,22 @@
+.div{
+  padding: 0 0.5rem 0 1rem;
+  background-color: var(--mainPage_settings_background);
+  margin-bottom: 1rem;
+  border-radius: 7px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--mainPage_settings_colorText);
+  cursor: pointer;
+  font-family: "Geometria", sans-serif;
+  > div{
+    color: var(--mainPage_settings_icon);
+    width: 32px;
+    height: 32px;
+    > svg{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -17,9 +17,11 @@ interface IAuthStore {
   isLoggedIn: boolean;
 
   id: string | null;
+  firstName: string | null;
+  secondName: string | null;
   username: string | null;
   email: string | null;
-  profileAvatar: string | null;
+  avatar: string | null;
   role: string | null;
   isEmailConfirmed: boolean | null;
   platform: string | null;
@@ -35,15 +37,9 @@ interface IAuthStore {
     callback: ResponseCallback,
     params: IConfirmEmailRequest
   ) => Promise<void>;
-  getProfile: (callback: ResponseDataCallback,
-    userId: string
-  ) => Promise<void>;
 
   logout: () => Promise<void>;
 
-  updateProfile: (callback: ResponseCallback,
-    profileAvatarData: string
-  ) => Promise<void>;
 
   clearAuth: () => void;
 }
@@ -53,9 +49,11 @@ export const useAuthStore = create<IAuthStore>()(
     (set, get) => ({
       isLoading: false,
       id: null,
+      firstName: null,
+      secondName: null,
       username: null,
       email: null,
-      profileAvatar: null,
+      avatar: null,
       role: null,
       platform: null,
       isEmailConfirmed: null,
@@ -84,9 +82,11 @@ export const useAuthStore = create<IAuthStore>()(
             set({
               id: userData?.id,
               username: userData?.username,
+              firstName: userData?.firstName,
+              secondName: userData?.secondName,
               email: userData?.email,
               role: userData?.role,
-              profileAvatar: userData?.profileAvatar,
+              avatar: userData?.avatar,
               isEmailConfirmed: userData?.isEmailConfirmed,
               platform: userData?.platform,
             });
@@ -161,23 +161,6 @@ export const useAuthStore = create<IAuthStore>()(
         set({ isLoading: false });
       },
 
-      getProfile: async (callback: ResponseDataCallback, userId: string) => {
-
-        try {
-          const response = await $api.get<any>(ENDPOINTS.USER.GET_PROFILE_DATA + `/${userId}`);
-
-          if (response?.status === 200) {
-            callback(response.data, []);
-          } else {
-            callback(null, pErrors(response.data.errors));
-          }
-        } catch (error: any) {
-          callback(null, pErrors(['unknown_error']));
-
-        }
-        set((state) => ({ ...state, isLoading: false }));
-      },
-
       logout: async () => {
         console.log("oki");
         await $api.delete<any>(ENDPOINTS.AUTH.LOGOUT, {
@@ -186,28 +169,6 @@ export const useAuthStore = create<IAuthStore>()(
 
         const { clearAuth } = get();
         clearAuth();
-      },
-      updateProfile: async (
-        callback: ResponseCallback,
-        profileAvatarData: string
-      ) => {
-        try {
-          const response = await $api.post<any>(
-            ENDPOINTS.USER.UPDATE_PROFILE_DATA,
-            { ProfileAvatar: profileAvatarData },
-            { withCredentials: true }
-          );
-          if (response?.status == 200) {
-            callback([]);
-          } else {
-            callback(pErrors(response.data.errors));
-          }
-        } catch (error: any) {
-          callback(pErrors(['unknown_error']));
-
-        }
-
-        set({ isLoading: false });
       },
 
       clearAuth: () => {

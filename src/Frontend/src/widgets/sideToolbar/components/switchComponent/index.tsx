@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import "./index.css";
+import styles from "./switch_component.module.scss"
 import { useThemeStore } from "../../../../entities";
 
 export const SwitchComponent = () => {
-  const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme } =
-    useThemeStore();
-
-  return (
-    <label className="switch">
-      <input
-        type="checkbox"
-        className="switch_input"
-        checked={currentThemeIndex === 1}
-        onClick={cycleThemes}
-      />
-      <span className="switch_slider"></span>
-    </label>
-  );
+    const handleGog = () => {
+        const gog = "";
+    };
+    const { currentTheme, currentThemeIndex, cycleThemes, getCurrentTheme } = useThemeStore();
+    return (
+        <label className={styles.switch}>
+            <input
+                type="checkbox"
+                className={styles.switch_input}
+                onChange={handleGog}
+                checked={currentThemeIndex === 1}
+                onClick={cycleThemes}
+            />
+            <span className={styles.switch_slider}></span>
+        </label>
+    );
 };

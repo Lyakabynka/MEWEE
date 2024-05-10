@@ -1,0 +1,15 @@
+.div{
+  position: relative;
+  height: 100%;
+  > div {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Geometria", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--mainPage_post_colorText);
+    pointer-events: none;
+  }
+}

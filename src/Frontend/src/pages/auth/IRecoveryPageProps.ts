@@ -1,3 +1,3 @@
 export interface IRecoveryPageProps {
-    url: string | undefined;
+  url: string | undefined;
 }

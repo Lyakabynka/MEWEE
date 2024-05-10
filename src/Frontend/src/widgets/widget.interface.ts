@@ -7,13 +7,15 @@ export interface ButtonPropsTypes {
 export interface modalPostDataLinkTypes {
   id: number;
   icons: any;
+  customSymbols?: string;
+  onClick: ()=>void;
   url: string;
   text: string;
 }
 
 export interface CustomModalIconPropsTypes {
   id: number;
-  links: modalPostDataLinkTypes[];
+  links?: modalPostDataLinkTypes[];
 }
 
 export interface commentDataTypes {
@@ -41,6 +43,7 @@ export interface smileDataTypes {
 
 export interface imagesDataTypes {
   id: string;
+  content: string;
   imgPath1: any;
   imgPath2: any;
 }
@@ -53,5 +56,6 @@ export interface videoDataTypes {
 
 export interface photoVideoSlidersPropTypes {
   title?: string;
+  retouch?: boolean;
   sliderData: imagesDataTypes[];
 }

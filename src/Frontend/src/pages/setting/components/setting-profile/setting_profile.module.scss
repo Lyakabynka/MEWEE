@@ -1,0 +1,127 @@
+
+.div{
+  position: relative;
+  height: 85%;
+}
+
+.div_settings{
+  padding: 0 1rem;
+  cursor: default;
+  > div{
+    width: 100%;
+    background-color: var(--mainPage_settings_background);
+    padding: 0.5rem 1rem;
+    height: 65px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      >h2{
+        font-family: "Geometria", sans-serif;
+        color: var(--mainPage_settings_colorText);
+      }
+    }
+  }
+}
+
+.div_link{
+  > div{
+
+    > div{
+      margin-top: 0.4rem;
+      margin-left: 0.3rem;
+      position: relative;
+
+      &:hover .hide_div {
+        display: block;
+      }
+      > p{
+        font-size: 0.75rem;
+        color: var(--mainPage_settings_colorText);
+      }
+    }
+  }
+  > input{
+    width: 45%;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 7px;
+    border: 1px solid var(--mainPage_settings_borderColor);
+    padding: 0.3rem;
+    font-family: "Geometria", sans-serif;
+    color: var(--mainPage_settings_colorText);
+    background-color: var(--mainPage_settings_inputBackground);
+  }
+}
+
+.div_status{
+  .selectContainer {
+    position: relative;
+    .customSelect {
+      border: 1px solid var(--mainPage_settings_borderColor);
+      border-radius: 7px;
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      min-width: 15rem;
+      font-size: 1.1rem;
+      min-height: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      padding-left: 0.5rem;
+      font-family: "Geometria", sans-serif;
+      color: var(--mainPage_settings_colorText);
+      background-color: var(--mainPage_settings_inputBackground);
+      &:hover {
+        border-radius: 7px 7px 0 0;
+      }
+      .optionsContainer {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        outline: 1px solid var(--mainPage_settings_borderColor);
+        border-radius: 0 0 7px 7px;
+        background-color: var(--mainPage_settings_inputBackground);
+        .option {
+          padding: 0.4rem;
+          cursor: pointer;
+
+          &:hover{
+            background-color: var(--mainPage_settings_hoverOption);
+          }
+        }
+      }
+    }
+
+    .customSelect:hover .optionsContainer {
+      display: block;
+    }
+  }
+}
+
+.hide_div{
+  display: none;
+  box-shadow: 1px 1px 7.6px 0px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  padding: 0.3rem 0.2rem;
+  margin-bottom: 0.7rem;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  border-radius: 7px;
+  width: 12rem;
+  font-size: 0.7rem;
+  color: var(--mainPage_settings_colorText);
+  background-color: var(--mainPage_settings_inputBackground);
+  font-family: "Geometria", sans-serif;
+  white-space: normal;
+}

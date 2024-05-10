@@ -1,0 +1,133 @@
+.toolbar_block_container,
+.toolbar_prof_block_container,
+.toolbar_items_block_container,
+.toolbar_settings_block_container {
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--mainPage_sideBar_background);
+}
+
+.toolbar_block_container{
+  background-color: var(--mainPage_sideBar_secondBackground);
+  cursor: pointer;
+}
+
+.toolbar_generic_content {
+  padding-top: 16px;
+  margin-left: 3vw;
+  width: min-content;
+}
+.toolbar_block_container img {
+  width: 100%;
+}
+.toolbar_main_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.toolbar_fio_title,
+.toolbar_fio_second {
+  font-size: 0.9rem;
+  font-family: "Geometria", sans-serif;
+  font-weight: bold;
+}
+.toolbar_fio_second {
+  font-weight: normal;
+  font-size: 0.7rem;
+}
+.toolbar_profile_main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.toolbar_list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.toolbar_list > div {
+  border-radius: 20px;
+  display: flex;
+  padding: 15px;
+  width: 100%;
+}
+.toolbar_prof_block_container,
+.toolbar_items_block_container,
+.toolbar_settings_block_container {
+  margin-top: 0;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.toolbar_items_block_container {
+  padding: 15px 10px 211px 10px;
+  position: relative;
+}
+.toolbar_settings_block_container {
+  padding: 16px;
+  display: flex;
+  background-color: var(--mainPage_sideBar_background);
+}
+.toolbar_profile_info_container {
+  margin-left: 1rem;
+  font-size: 14px;
+  color: var(--mainPage_sideBar_secondColorText);
+  display: flex;
+  flex-direction: column;
+}
+.toolbar_logo,
+.toolbar_logo_another {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 30px;
+}
+.toolbar_logo_another {
+  padding: 13px;
+}
+.toolbar_profile_image {
+  margin-left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+
+
+  background-color: white;
+}
+.toolbar_profile_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+}
+.toolbar_tools_container {
+  display: flex;
+  gap: 5px;
+}
+
+.arrow_block {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px 0 10px 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--mainPage_sideBar_arrowBackground);
+}
+.arrow_icon {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}

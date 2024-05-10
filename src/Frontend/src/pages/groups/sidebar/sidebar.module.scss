@@ -9,8 +9,9 @@
       display: flex;
       align-items: center;
       border-radius: 20px;
-      background-color: white;
-      color: #b67afe;
+      background-color: var(--colorVariation_white_302a37);
+      color: var(--colorVariation_b67afe_white);
+      font-family: "Geometria", sans-serif;
       padding-left: 2rem;
       margin-bottom: 1rem;
       @include hover-scale;

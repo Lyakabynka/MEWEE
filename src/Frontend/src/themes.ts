@@ -3,6 +3,19 @@
 import { Theme, createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Theme {
+    colorVariation:{
+      white_302a37: string;
+      black_white: string;
+      black_b67afe: string;
+      gray_a8a8a8: string;
+      b67afe_white: string;
+      b67afe_25005c: string;
+      _25005c_white: string;
+      _25005c_b67afe: string;
+      _25005c_fba500: string;
+      d6ceffbf_53258bbf: string;
+      e1dcf670_615b6e30: string;
+    },
     authPages:{
       commonElements:{
         logoColorText: string;
@@ -58,10 +71,34 @@ declare module '@mui/material/styles' {
         colorText: string;
         inputTextColor: string;
         inputColorStroke: string;
+        colorPlaceholder: string;
+      },
+      chat:{
+        icon: string;
+        secondIcon: string;
+        thirdIcon: string;
+        background: string;
+        backgroundHover: string;
+        secondBackground: string;
+        fourIcon: string;
+        colorText: string;
+        secondBackgroundHover: string;
+        thirdBackground: string;
+        secondColorText: string;
+      },
+      settings:{
+        icon: string;
+        background: string;
+        colorText: string;
+        inputBackground: string;
+        borderColor: string;
+        hoverOption: string;
       },
       post: {
         icon: string;
         secondIcon: string;
+        secondHoverIcon: string;
+        secondActiveIcon: string;
         background: string;
         colorText: string;
         secondColorText: string;
@@ -74,12 +111,36 @@ declare module '@mui/material/styles' {
           answerColorText: string;
           inputBackground: string;
         },
+        addPost: {
+          icon: string;
+          hoverIcon: string;
+          activeIcon: string;
+          colorText: string;
+          colorTextOther: string;
+          background: string;
+          inputBackground: string;
+          inputPlaceholder: string;
+        },
       },
 
     },
   }
 
   interface ThemeOptions {
+    colorVariation?:{
+      white_302a37?: string;
+      black_white?: string;
+      black_b67afe?: string;
+      gray_a8a8a8?: string;
+      b67afe_white?: string;
+      b67afe_25005c?: string;
+      _25005c_white?: string;
+      _25005c_b67afe?: string;
+      _25005c_fba500?: string;
+      d6ceffbf_53258bbf?: string;
+      e1dcf670_615b6e30?: string;
+
+    },
     authPages?:{
       commonElements?:{
         logoColorText?: string;
@@ -135,10 +196,34 @@ declare module '@mui/material/styles' {
         colorText?: string;
         inputTextColor?: string;
         inputColorStroke?: string;
+        colorPlaceholder?: string;
+      },
+      chat?:{
+        icon?: string;
+        secondIcon?: string;
+        thirdIcon?: string;
+        background?: string;
+        backgroundHover?: string;
+        secondBackground?: string;
+        fourIcon?: string;
+        colorText?: string;
+        secondBackgroundHover?: string;
+        thirdBackground?: string;
+        secondColorText?: string;
+      }
+      settings?:{
+        icon?: string;
+        background?: string;
+        colorText?: string;
+        inputBackground?: string;
+        borderColor?: string;
+        hoverOption?: string;
       },
       post?: {
         icon?: string;
         secondIcon?: string;
+        secondHoverIcon?: string;
+        secondActiveIcon?: string;
         background?: string;
         colorText?: string;
         secondColorText?: string;
@@ -151,12 +236,35 @@ declare module '@mui/material/styles' {
           answerColorText?: string;
           inputBackground?: string;
         },
+        addPost?: {
+          icon?: string;
+          hoverIcon?: string;
+          activeIcon?: string;
+          colorText?: string;
+          colorTextOther?: string;
+          background?: string;
+          inputBackground?: string;
+          inputPlaceholder?: string;
+        },
       },
     },
   }
 }
 export const themes: Theme[] = [
   createTheme({
+    colorVariation:{
+      white_302a37: 'white',
+      black_white: 'black',
+      black_b67afe: 'black',
+      gray_a8a8a8: 'gray',
+      b67afe_white: '#b67afe',
+      b67afe_25005c: '#b67afe',
+      _25005c_white: '#25005c',
+      _25005c_b67afe: '#25005c',
+      _25005c_fba500: '#25005c',
+      d6ceffbf_53258bbf: '#d6ceffbf',
+      e1dcf670_615b6e30: '#e1dcf670',
+    },
     authPages:{
       commonElements:{
         logoColorText: '#25005C',
@@ -212,10 +320,34 @@ export const themes: Theme[] = [
         colorText: 'black',
         inputTextColor: 'gray',
         inputColorStroke: 'red',
+        colorPlaceholder: 'gray',
+      },
+      chat:{
+        icon: '#B67AFE',
+        secondIcon: '#EC0C0C',
+        thirdIcon: '#000000',
+        background: 'white',
+        backgroundHover: '#E9E4FF',
+        secondBackground: 'white',
+        fourIcon: '#FBA500',
+        colorText: 'gray',
+        secondBackgroundHover: '#E9E4FF',
+        thirdBackground: '#E9E4FF',
+        secondColorText: 'gray',
+      },
+      settings:{
+        icon: '#25005C',
+        background: 'white',
+        colorText: '#25005C',
+        inputBackground: 'white',
+        borderColor: '#25005C',
+        hoverOption: '#e1dcf6',
       },
       post: {
         icon: '#25005C',
         secondIcon: '#B67AFE',
+        secondHoverIcon: '0.75',
+        secondActiveIcon: '#FBA500',
         background: 'white',
         colorText: 'black',
         secondColorText:'#25005C',
@@ -228,6 +360,16 @@ export const themes: Theme[] = [
           answerColorText: '#B67AFE',
           inputBackground: 'white',
         },
+        addPost: {
+          icon: 'black',
+          hoverIcon: '0.75',
+          activeIcon: '#FBA500',
+          colorText: '#25005C',
+          colorTextOther: '#25005C',
+          background: '#D6CEFFBF',
+          inputBackground: 'white',
+          inputPlaceholder: 'black',
+        },
       },
     },
     palette: {
@@ -237,6 +379,19 @@ export const themes: Theme[] = [
     },
   }),
   createTheme({
+    colorVariation:{
+      white_302a37: '#302a37',
+      black_white: 'white',
+      black_b67afe: '#b67afe',
+      gray_a8a8a8: '#a8a8a8',
+      b67afe_white: 'white',
+      b67afe_25005c: '#25005c',
+      _25005c_white: 'white',
+      _25005c_b67afe: '#b67afe',
+      _25005c_fba500: '#fba500',
+      d6ceffbf_53258bbf: '#53258bbf',
+      e1dcf670_615b6e30: '#615b6e30',
+    },
     authPages:{
       commonElements:{
         logoColorText: '#B67AFE',
@@ -292,10 +447,35 @@ export const themes: Theme[] = [
         colorText: 'white',
         inputTextColor: 'gray',
         inputColorStroke: 'yellow',
+        colorPlaceholder: 'white',
+      },
+      chat:{
+        icon: 'white',
+        secondIcon: 'white',
+        thirdIcon: 'white',
+        background: '#B67AFE',
+        backgroundHover: '#f9cd5a',
+        secondBackground: '#de4363',
+        fourIcon: '#B67AFE',
+        colorText: '#c0c0c0',
+        secondBackgroundHover: '#645e72',
+        thirdBackground: '#B67AFE',
+        secondColorText: 'white',
+      },
+      settings:{
+        icon: 'white',
+        background: '#302a37',
+        colorText: 'white',
+        inputBackground: '#4e4955',
+        borderColor: '#B67AFE',
+        hoverOption: '#615b6e',
+
       },
       post: {
         icon: '#B67AFE',
         secondIcon: '#B67AFE',
+        secondHoverIcon: '0.75',
+        secondActiveIcon: '#FBA500',
         background: '#302a37',
         colorText: 'white',
         secondColorText:'#B67AFE',
@@ -307,6 +487,16 @@ export const themes: Theme[] = [
           shAnswerColorText: '#FBA500',
           answerColorText: '#B67AFE',
           inputBackground: '#4e4955',
+        },
+        addPost: {
+          icon: 'white',
+          hoverIcon: '0.75',
+          activeIcon: '#FBA500',
+          colorText: '#FBA500',
+          colorTextOther: 'white',
+          background: '#5d3985',
+          inputBackground: '#735694',
+          inputPlaceholder: 'white',
         },
       },
     },
