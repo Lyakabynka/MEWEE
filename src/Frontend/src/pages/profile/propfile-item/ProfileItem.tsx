@@ -127,21 +127,21 @@ const ProfileItem: FC<{profileButtonsData:any,  profileData: any, photos: any, p
           {(activeItemId === 5 && photos) && (
             <div className={styles.sliders_div}>
               <div className={styles.div_title}>
-                <h1>Недавні</h1>
+                <h1>{t("recent")}</h1>
                 <div><ProfileItemFilter/></div>
               </div>
               <PhotoVideoSliders sliderData={photos} />
-              <PhotoVideoSliders retouch={true} title={"Ретуш"} sliderData={photos} />
+              <PhotoVideoSliders retouch={true} title={t("retouch")} sliderData={photos} />
             </div>
           )}
           {(activeItemId === 6 && photos) && (
             <div className={styles.sliders_div}>
               <div className={styles.div_title}>
-                <h1>Недавні</h1>
+                <h1>{t("recent")}</h1>
                 <div><ProfileItemFilter/></div>
               </div>
               <PhotoVideoSliders sliderData={photos} />
-              <PhotoVideoSliders retouch={true} title={"Ретуш"} sliderData={photos} />
+              <PhotoVideoSliders retouch={true} title={t("retouch")} sliderData={photos} />
             </div>
           )}
         </div>

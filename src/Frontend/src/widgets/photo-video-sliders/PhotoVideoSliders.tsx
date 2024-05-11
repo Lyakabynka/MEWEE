@@ -13,6 +13,7 @@ import {
 } from "../widget.interface";
 import styles from "./photo_video_sliders.module.scss";
 import DecryptedImg from "../../pages/profile/DecryptedImg";
+import {useTranslation} from "react-i18next";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -37,6 +38,7 @@ const SwipeableTextMobileStepper: FC<photoVideoSlidersPropTypes> = ({
   const handleStepChange = (step: number) => {
     setActiveStep(step);
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -74,8 +76,9 @@ const SwipeableTextMobileStepper: FC<photoVideoSlidersPropTypes> = ({
                 size="small"
                 onClick={handleNext}
                 disabled={activeStep === maxSteps - 1}
+                className={styles.button}
               >
-                Next
+                {t('next')}
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowLeft />
                 ) : (
@@ -84,13 +87,13 @@ const SwipeableTextMobileStepper: FC<photoVideoSlidersPropTypes> = ({
               </Button>
             }
             backButton={
-              <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              <Button size="small" onClick={handleBack} disabled={activeStep === 0} className={styles.button}>
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowRight />
                 ) : (
                   <KeyboardArrowLeft />
                 )}
-                Back
+                {t('back')}
               </Button>
             }
           />

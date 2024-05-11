@@ -34,6 +34,13 @@ const NewsItem: FC<{ item: any }> = ({ item }) => {
                     <div className={styles.subdiv}>
                         <div className={styles.titlediv}>
                             <span>{item.title}</span>
+                            <span style={{
+    display: 'inline-block',
+    maxWidth: '250px', // Adjust the maximum width as needed
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
+}}>{item.content}</span>
                         </div>
                         <div className={styles.button_section}>
                             <CustomButton text={t('more')} onClick={() => {

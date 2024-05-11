@@ -101,7 +101,7 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
           <CustomInput
             inputTypes="commentBar"
             onSubmit={handleSubmit}
-            placeHolder="Lorem ipsum..."
+            placeHolder={t('add_comment_placeholder')}
           />
 
         </div>

@@ -211,12 +211,12 @@ const UserInfo: FC<{
                             <div className={styles.folowers}>
                                 <div>
                                     <h2>{followersCount}</h2>
-                                    <h3>Підписників</h3>
+                                    <h3>{t('subscribers')}</h3>
                                 </div>
                                 {profileType === EnumProfileType.User && (
                                     <div>
                                         <h2>{followings.length}</h2>
-                                        <h3>Відстежується</h3>
+                                        <h3>{t('tracked')}</h3>
                                     </div>
                                 )}
                             </div>
@@ -253,7 +253,7 @@ const UserInfo: FC<{
                                     {userData.status && (
                                         <li key={"ProfileLovely"}>
                                             <img src={ProfileLovely} />
-                                            <h5>{t(userData.status)}</h5>
+                                            <h5>{userData.status}</h5>
                                         </li>
                                     )}
                                     {userData.website && (

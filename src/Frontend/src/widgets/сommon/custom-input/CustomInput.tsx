@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from "react";
+import React, { FC, useState, useRef } from "react";
 import { ReactComponent as EmojiIcon } from "../../../assets/image/icons/EmojiIcon.svg";
 import { ReactComponent as SentIcon } from "../../../assets/image/icons/SentIcon.svg";
 import AddCircle from "../../../assets/image/icons/AddCircle.svg";
@@ -35,6 +35,13 @@ const CustomInput: FC<CustomInputProps> = ({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      formik.handleSubmit();
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       cvalue: "",
@@ -55,10 +62,10 @@ const CustomInput: FC<CustomInputProps> = ({
             <input
               type="file"
               id="fileInput"
-              ref={fileInputRef} // Привязка рефа
-              className="hidden-input" // Скрытие элемента
+              ref={fileInputRef}
+              className="hidden-input"
               name="uploadedFile"
-              style={{ display: "none" }} // Скрываем input
+              style={{ display: "none" }}
             />
             <img src={AddCircle} onClick={handleAddCircleClick} />{" "}
             {/* Добавляем обработчик клика */}
@@ -73,6 +80,7 @@ const CustomInput: FC<CustomInputProps> = ({
           value={formik.values.cvalue}
           onChange={formik.handleChange}
           placeholder={placeHolder}
+          onKeyDown={handleKeyDown}
         />
 
         <div>
