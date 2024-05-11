@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import { AuthRoutes } from "../exportWigetComponents";
-import { RecoveryRoutes } from "../exportWigetComponents";
+import { AuthRoutes } from "./auth/AuthRoutes";
+import { RecoveryRoutes } from "./auth/RecoveryRoutes";
 const RegLogRouting: FC = () => {
     return (
         <Routes>
