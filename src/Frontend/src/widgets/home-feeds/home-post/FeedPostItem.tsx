@@ -95,8 +95,8 @@ export const FeedPostItem: FC<{ item: postDataTypes, appearance?: boolean, type?
 
     if (errors.length == 0) {
       setComments(data);
-      if (!appearance)
-        handleCommentClick(item.id)
+      // if (!appearance)
+      //   handleCommentClick(item.id)
     }
   }
   const onPostSaveResponse = (data: boolean, errors: string[]) => {
@@ -130,7 +130,7 @@ export const FeedPostItem: FC<{ item: postDataTypes, appearance?: boolean, type?
       setAuthor(data);
       console.log("now me:", data);
       modalPostDataLink[0].onClick = () => navigate('/profile/' + data.username),
-        data.avatar && decryptImage(data.avatar).then(setAvatar).catch(console.error);
+      data.avatar && decryptImage(data.avatar).then(setAvatar).catch(console.error);
     }
   };
   const onGroupResponse = (data: any, errors: string[]) => {
@@ -140,7 +140,7 @@ export const FeedPostItem: FC<{ item: postDataTypes, appearance?: boolean, type?
       console.log(data);
 
       modalPostDataLink[0].onClick = () => navigate('/group/' + data.group.nickname),
-        data.group.avatar && decryptImage(data.group.avatar).then(setAvatar).catch(console.error);
+      data.group.avatar && decryptImage(data.group.avatar).then(setAvatar).catch(console.error);
     }
   };
   const onGetFriendsResponse = (data: any, errors: string[]) => {
@@ -189,6 +189,9 @@ export const FeedPostItem: FC<{ item: postDataTypes, appearance?: boolean, type?
   }
   useEffect(() => {
 
+    if(appearance === false)
+      setCommentsHiden(item.id);
+
     updatePost();
 
   }, []);
@@ -199,144 +202,144 @@ export const FeedPostItem: FC<{ item: postDataTypes, appearance?: boolean, type?
     getFriends(onGetFriendsResponse, id??"");
   }
   const handleForwardMessageToUser = (userId: string) =>
-    {
-      setIsProcessing(true);
-      const now = new Date();
-      const formattedDate = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-  
-      sendMessageToUser(userId, 'postId:'+item.id, formattedDate);
-      setTimeout(() => {
-        setIsProcessing(false);
-      }, 1000);
-    }
+  {
+    setIsProcessing(true);
+    const now = new Date();
+    const formattedDate = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
+    sendMessageToUser(userId, 'postId:'+item.id, formattedDate);
+    setTimeout(() => {
+      setIsProcessing(false);
+    }, 1000);
+  }
 
   // Check if currentTheme exists before accessing custom values
   const CustomBox = currentTheme?.components?.MuiIcon;
   // const fio = username?.split(' ');
   return (
-    <>
-      {!hidden && (
-        <div className={styles.div} style={{ flexDirection: appearance ? 'column' : 'row' }} >
+      <>
+        {!hidden && (
+            <div className={styles.div} style={{ flexDirection: appearance ? 'column' : 'row' }} >
 
-          <div
-            className={commentsHiden === null ? styles.sub_div : `${styles.sub_div} ${styles._sub_div_box_shadow}`}
-            style={{ width: appearance ? '100%' : '60%' }}
-          >
-            {type === EnumPostType.News && <span>{item.title}</span>}
-            {type !== EnumPostType.News && (
-              <header>
-                <div className={styles.header_div}>
-                  <div>
-                    <img src={avatar === "" ? "" : avatar} />
-                  </div>
-                  <div>
-                    <span>{author !== null ? (author.firstName ?? author.title) : ""}</span>
-                    <span className={styles.span_date}>{formatTime(item.createdAt)}</span>
-                    <div>
-                      <LocationIcon />
-                      <span>{item.location}</span>
-                    </div>
-                  </div>
-                </div>
-                <div style={{padding: "1.5rem 0.3rem"}}>
-                  <CustomModalIcon id={0} links={modalPostDataLink} />
-                </div>
-
-              </header>
-            )}
-            <main className={styles.main}>
-              {item.attachment && (
-                <div>
-                  <div>
-                    <div style={{ backgroundImage: `url(${imageSrc})` }}></div>
-                    <img src={imageSrc} alt="Post Image" />
-                  </div>
-                </div>
-              )}
-            </main>
-            <footer className={styles.footer}>
-              {showForwardTo && (
-                <div style={{display:'flex'}}>
-                  <div className={styles.forwardToContainer}>
-                    {isUserStoreLoading && <CircularProgress></CircularProgress>}
-                    {friends && friends.map((item: any) => {
-
-                      return (
-                        <>
-                        <div onClick={() => {handleForwardMessageToUser(item.id)}}>
-                          <DecryptedImg  content={item.avatar}></DecryptedImg>
-                          <span>{item.username}</span>
+              <div
+                  className={commentsHiden === null ? styles.sub_div : `${styles.sub_div} ${styles._sub_div_box_shadow}`}
+                  style={{ width: appearance ? '100%' : '60%' }}
+              >
+                {type === EnumPostType.News && <span style={{margin:'1rem', marginLeft:0}}>{item.title}</span>}
+                {type !== EnumPostType.News && (
+                    <header>
+                      <div className={styles.header_div}>
+                        <div>
+                          <img src={avatar === "" ? "" : avatar} />
                         </div>
-                        </>
-                      );
-                    }
-                  )}
+                        <div>
+                          <span>{author !== null ? (author.firstName ?? author.title) : ""}</span>
+                          <span className={styles.span_date}>{formatTime(item.createdAt)}</span>
+                          <div>
+                            <LocationIcon />
+                            <span>{item.location}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{padding: "1.5rem 0.3rem"}}>
+                        <CustomModalIcon id={0} links={modalPostDataLink} />
+                      </div>
 
-                  </div>
-                  {isProcessing && <CircularProgress size={"1rem"}></CircularProgress>}
-                </div>
-              )}
-              {type === EnumPostType.Feeds && <span>{item.title}</span>}
-              <div>{showFullContent ? (item?.content || '') : (item?.content?.slice(0, 90) || '')}</div>
-              <nav className={styles.nav} style={!showButton ? { justifyContent: 'flex-end' } : {}}>
-                {showButton && (
-                  <CustomButton text={showFullContent ? t("less") : t("more")} onClick={handleClickShow} />
+                    </header>
                 )}
-                <div>
-                  <div>
-                    {type !== EnumPostType.News && (
+                <main className={styles.main}>
+                  {item.attachment && (
                       <div>
-                        <LikePostIcon onClick={handleLikePost}
-                          style={{
-                            color: isLiked ? currentTheme?.mainPage.post.secondActiveIcon
-                              :
-                              currentTheme?.mainPage.post.secondIcon
-                          }} />
-                        {!isLoading && <span>{item.likesCount}</span>}
+                        <div>
+                          <div style={{ backgroundImage: `url(${imageSrc})` }}></div>
+                          <img src={imageSrc} alt="Post Image" />
+                        </div>
                       </div>
-                    )}
-                    {type === EnumPostType.News && (
-                      <div>
-                        <SaveHomeModalIcon onClick={handleLikePost}
-                          style={{
-                            color: isLiked ? currentTheme?.mainPage.post.secondActiveIcon
-                              :
-                              currentTheme?.mainPage.post.secondIcon
-                          }} />
+                  )}
+                </main>
+                <footer className={styles.footer}>
+                  {showForwardTo && (
+                      <div style={{display:'flex'}}>
+                        <div
+                            className={`${friends && friends.length > 0 ? styles.forwardToContainer : styles.no_friends} ${styles.forwardToContainer}`}>
+                          {isUserStoreLoading && <CircularProgress></CircularProgress>}
+                          {friends && friends.length > 0 ? (
+                              friends.map((item: any) => (
+                                  <div onClick={() => {
+                                    handleForwardMessageToUser(item.id)
+                                  }}>
+                                    <DecryptedImg content={item.avatar}></DecryptedImg>
+                                    <span>{item.username}</span>
+                                  </div>
+                              ))
+                          ) : (
+                              <div>{t('add_friends_post')}</div>
+                          )}
+                        </div>
+                        {isProcessing && <CircularProgress size={"1rem"}></CircularProgress>}
                       </div>
+                  )}
+                  {type === EnumPostType.Feeds && <span>{item.title}</span>}
+                  <div>{showFullContent ? (item?.content || '') : (item?.content?.slice(0, 90) || '')}</div>
+                  <nav className={styles.nav} style={!showButton ? { justifyContent: 'flex-end' } : {}}>
+                    {showButton && (
+                        <CustomButton text={showFullContent ? t("less") : t("more")} onClick={handleClickShow} />
                     )}
-
                     <div>
-                      <SentIcon
-                        onClick={handleForwardMessage}
-                        style={{ color: currentTheme?.mainPage.post.secondIcon }} />
-                    </div>
-                    {type !== EnumPostType.News &&
                       <div>
-                        <CommentPostIcon onClick={() => handleCommentClick(item.id)}
-                          style={{
-                            color: commentsHiden ? currentTheme?.mainPage.post.secondActiveIcon
-                              :
-                              currentTheme?.mainPage.post.secondIcon
-                          }}
-                        />
-                        <span>{comments ? (comments.length > 0 ? comments.length : 0) : 0}</span>
+                        {type !== EnumPostType.News && (
+                            <div>
+                              <LikePostIcon onClick={handleLikePost}
+                                            style={{
+                                              color: isLiked ? currentTheme?.mainPage.post.secondActiveIcon
+                                                  :
+                                                  currentTheme?.mainPage.post.secondIcon
+                                            }} />
+                              {!isLoading && <span>{item.likesCount}</span>}
+                            </div>
+                        )}
+                        {type === EnumPostType.News && (
+                            <div>
+                              <SaveHomeModalIcon onClick={handleLikePost}
+                                                 style={{
+                                                   color: isLiked ? currentTheme?.mainPage.post.secondActiveIcon
+                                                       :
+                                                       currentTheme?.mainPage.post.secondIcon
+                                                 }} />
+                            </div>
+                        )}
+
+                        <div>
+                          <SentIcon
+                              onClick={handleForwardMessage}
+                              style={{ color: currentTheme?.mainPage.post.secondIcon }} />
+                        </div>
+                        {type !== EnumPostType.News &&
+                            <div>
+                              <CommentPostIcon onClick={() => handleCommentClick(item.id)}
+                                               style={{
+                                                 color: commentsHiden ? currentTheme?.mainPage.post.secondActiveIcon
+                                                     :
+                                                     currentTheme?.mainPage.post.secondIcon
+                                               }}
+                              />
+                              <span>{comments ? (comments.length > 0 ? comments.length : 0) : 0}</span>
+                            </div>
+                        }
                       </div>
-                    }
-                  </div>
-                </div>
-              </nav>
-            </footer>
-          </div>
-          <CommentBarComponents
-            id={item.id}
-            appearance={appearance}
-            hiden={commentsHiden}
-            commentDataRender={comments}
-            onUpdated={onCommentsUpdated}
-          />
-        </div>
-      )}
-    </>
+                    </div>
+                  </nav>
+                </footer>
+              </div>
+              <CommentBarComponents
+                  id={item.id}
+                  appearance={appearance}
+                  hiden={commentsHiden}
+                  commentDataRender={comments}
+                  onUpdated={onCommentsUpdated}
+              />
+            </div>
+        )}
+      </>
   );
 };

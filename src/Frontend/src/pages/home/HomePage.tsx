@@ -33,10 +33,10 @@ export const HomePage: React.FC = () => {
 
       {(posts && news) && (
         <Grid container direction="row">
-          <Grid item sm={8}>
+          <Grid item sm={8} style={{width:'100%'}}>
             <HomeFeed posts={posts} />
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={4} style={{width:'100%'}}>
             <HomeNews posts={news} />
           </Grid>
         </Grid>

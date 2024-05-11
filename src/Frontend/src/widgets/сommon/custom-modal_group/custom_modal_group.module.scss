@@ -1,0 +1,117 @@
+.div{
+  position: relative;
+  > div:first-child {
+    cursor: pointer;
+    padding: 0.2rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    &:hover{
+      opacity: var(--mainPage_header_hoverIcon);
+    }
+    > div {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-bottom: 0.2rem;
+    }
+  }
+}
+
+.menu{
+  position: absolute;
+  border-radius: 10px;
+  top: 0;
+  right: 100%;
+  box-shadow: 1px 1px 7.6px 0px rgba(0, 0, 0, 0.25);
+  margin: 0.125rem;
+  z-index: 999;
+  >div{
+    padding: 0.4rem;
+    cursor: pointer;
+    > div{
+      display: flex;
+      align-items: center;
+      padding: 0.25rem 0.4rem 0.25rem 0.4rem;
+      > div:first-child {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--mainPage_chat_icon);
+        > svg{
+          width: 24px;
+          height: 24px;
+        }
+      }
+      > div:last-child{
+        font-family: Geometria, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--mainPage_chat_icon);
+      }
+    }
+  }
+  > div:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+  > div:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+.menu > div:nth-child(-n+5) {
+  &:hover{
+    background-color: var(--mainPage_chat_backgroundHover);
+  }
+}
+
+.menu > div:nth-child(-n+3) {
+  background: var(--mainPage_chat_background);
+}
+
+.menu > div:nth-child(n+4) {
+  background: var(--mainPage_chat_secondBackground);
+}
+
+.fullscreen_message {
+  position: fixed;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--mainPage_post_background);
+  padding: 1.5rem;
+  border-radius: 10px;
+  z-index: 1000;
+  font-weight: bold;
+  font-family: Geometria, sans-serif;
+  color: red;
+  cursor: default;
+  > div:first-child {
+    font-size: 1rem;
+  }
+  > div:last-child {
+    margin-top: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > button{
+      padding: 0.3rem 1.5rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-weight: 500;
+      font-family: Geometria, sans-serif;
+      background-color: red;
+
+      &:hover{
+        background-color: #F14065;
+      }
+    }
+
+  }
+}

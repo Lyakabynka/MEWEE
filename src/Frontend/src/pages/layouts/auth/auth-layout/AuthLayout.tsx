@@ -11,7 +11,7 @@ export const AuthLayout: React.FC<{
   children: React.ReactNode;
   isAuthNavActive: boolean;
 }> = ({ children, isAuthNavActive }) => {
-  const { t } = useTranslation(); // Call useTranslation hook
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { currentTheme } = useThemeStore();
 

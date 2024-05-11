@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import DecryptedImg from "../../profile/DecryptedImg";
 import { useAuthStore, useUserStore } from "../../../entities";
 import { modalPostDataLinkTypes } from "../../../widgets/widget.interface";
+import CustomModalGroup from "../../../widgets/сommon/custom-modal_group/CustomModalGroup";
 
 const GroupItem: FC<dataGroupItemPropTypes> = ({ data, category }) => {
   const [friends, setFriends] = useState<any>(null);
@@ -126,7 +127,8 @@ const GroupItem: FC<dataGroupItemPropTypes> = ({ data, category }) => {
                   </div>
                 </div>
                 <div className={styles.modal_button}>
-                  <CustomModalIcon id={item.id} links={modalPostDataLink} />
+                  <CustomModalGroup />
+                  {/*<CustomModalIcon id={item.id} links={modalPostDataLink} />*/}
                 </div>
               </div>
             </Grid>

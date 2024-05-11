@@ -49,7 +49,7 @@ const Profile: FC<{}> = ( ) => {
           <Grid item md={3} sm={12}>
             <UserInfo onFollow={()=>{}} profileType={EnumProfileType.User}  userData={profileData} gallery={gallery} onPhotoUploaded={refreshGallery} />
           </Grid>
-          <Grid item md={8} sm={12}>
+          <Grid item md={9} sm={12}>
             <ProfileItem profileButtonsData={profileButtonsData} photos={gallery} profileType={EnumProfileType.User} profileData={profileData} friends={friends} />
           </Grid>
         </Grid>

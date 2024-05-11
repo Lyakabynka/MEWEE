@@ -92,7 +92,7 @@ const CommentBarComponents: FC<CommentBarPropsTypes> = ({
           {replyTo !== null && (
             <div className={styles.reply}>
               <span>{t("replying_to")}</span>
-              <span style={{color:'gray'}}>{replyTo.username}</span>
+              <span className={styles.reply_user}>{replyTo.username}</span>
               <div>
                 <CloseIcon onClick={resetReplyTo} />
               </div>

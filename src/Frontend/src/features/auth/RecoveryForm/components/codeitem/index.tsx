@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import "./index.css";
+import styles from "./code_item.module.scss";
 
 interface CodeItemProps {
   otp: string[];
@@ -81,7 +81,7 @@ export const CodeItem: React.FC<CodeItemProps> = ({ otp, setOtp }) => {
   }
 
   return (
-    <div className="otp-area">
+    <div className={styles.otp_area}>
       {otp.map((data, i) => {
         return (
           <input

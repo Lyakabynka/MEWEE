@@ -1,5 +1,6 @@
-import { FC, useEffect, useState } from "react";
-import LikeComentIcon from "../../assets/image/icons/LikeComentIcon.svg";
+import React, { FC, useEffect, useState } from "react";
+import { ReactComponent as LikeComentIcon } from "../../assets/image/icons/LikeComentIcon.svg";
+import { ReactComponent as IconHeart } from "../../assets/image/icons/IconHeart.svg";
 import { CommentBarPropsTypes, commentDataTypes } from "../widget.interface";
 import CustomInput from "../сommon/custom-input/CustomInput";
 import styles from "./comment_bar_item.module.scss";
@@ -18,7 +19,7 @@ const CommentBarItem: FC<{
   const [isLoading, setIsLoading] = useState(true);
   const [author, setAuthor] = useState<any>(null);
   const [avatar, setAvatar] = useState<any>(null);
-
+  const [likeOn, setLikeOn] = useState<boolean>(false);
   const [isRepliesHidden, setIsRepliesHidden] = useState(true); // Initially hidden
 
   useEffect(() => {
@@ -101,7 +102,11 @@ const CommentBarItem: FC<{
                 >
                   <p>{t("reply")}</p>
                 </a>
-                <img src={LikeComentIcon} />
+                {!likeOn ? (
+                    <LikeComentIcon onClick={() => setLikeOn(prevVolumeOff => !prevVolumeOff)}/>
+                    ) :
+                    <IconHeart onClick={() => setLikeOn(prevVolumeOff => !prevVolumeOff)}/>
+                }
               </div>
             </div>
           </main>

@@ -139,7 +139,7 @@
     .input_message {
       position: relative;
       display: flex;
-      border: 2px solid #25005c;
+      border: 2px solid var(--colorVariation__25005c_b67afe);
       border-radius: 10px;
       padding: 0.5rem;
       background-color: var(--mainPage_post_comments_inputBackground);

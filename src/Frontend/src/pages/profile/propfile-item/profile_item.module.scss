@@ -48,9 +48,9 @@ border-left: 2px dashed gray;
 .div {
   color: var(--colorVariation__25005c_white);
   font-family: "Geometria", sans-serif;
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
   > ul {
-    
+
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -63,10 +63,17 @@ border-left: 2px dashed gray;
       display: flex;
       align-items: center;
       @include hover-scale;
+      > h5{
+        font-size: 1.1rem;
+      }
     }
     ._li_active {
+      margin-top: 0.1rem;
       border-bottom: 1px solid #fba500;
       color: #fba500;
+      >h5{
+        font-size: 1.2rem;
+      }
     }
   }
   .sliders_div {

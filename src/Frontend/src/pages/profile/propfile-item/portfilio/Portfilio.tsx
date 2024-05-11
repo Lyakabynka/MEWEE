@@ -6,14 +6,16 @@ import {
   sertificateTypes,
 } from "../../profileData.interface";
 import styles from "./portfilio.module.scss";
+import {useTranslation} from "react-i18next";
 const Portfilio: FC<portfilioDataPropsTypes> = ({
   portfilioData,
   setificateData,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <div className={styles.div}>
-        <h1>Відгуки від моїх клієнтів</h1>
+        <h1>{t('reviews_clients')}</h1>
         <div className={styles.sub_div1}>
           {portfilioData &&
             portfilioData.map((item: portfilioDataTypes) => {
@@ -26,7 +28,7 @@ const Portfilio: FC<portfilioDataPropsTypes> = ({
                     </div>
                     <h3>{item.reviews}</h3>
                   </div>
-                  <div>
+                  <div style={{marginTop:"1rem"}}>
                     {item.reviewsStar &&
                       item.reviewsStar.map((subItem: reviewsStarTypes) => {
                         return (
@@ -41,7 +43,7 @@ const Portfilio: FC<portfilioDataPropsTypes> = ({
             })}
         </div>
         <div className={styles.sub_div2}>
-          <h1>Відгуки від моїх клієнтів</h1>
+          <h1>{t('certificates_diplomas')}</h1>
           <div>
             {setificateData &&
               setificateData.map((item: sertificateTypes) => {

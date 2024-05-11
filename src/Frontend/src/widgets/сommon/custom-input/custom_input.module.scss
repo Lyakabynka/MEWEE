@@ -3,7 +3,7 @@
 .div {
   position: relative;
   display: flex;
-  border: 2px solid #25005c;
+  border: 2px solid var(--colorVariation__25005c_b67afe);
   border-radius: 10px;
   padding: 0.5rem;
   background-color: var(--mainPage_post_comments_inputBackground);
@@ -36,6 +36,7 @@
     display: block;
   }
   > button {
+    font-family: "Geometria", sans-serif;
     background-color: #fba500;
     color: white;
     border: none;
@@ -51,6 +52,11 @@
     outline: none;
     background-color: var(--mainPage_post_comments_inputBackground);
     color: var(--mainPage_post_comments_colorText);
+    font-family: "Geometria", sans-serif;
+
+    &::placeholder {
+      color: var(--colorVariation_gray_a8a8a8);
+    }
   }
   > div {
     display: flex;

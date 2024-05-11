@@ -26,11 +26,11 @@ const NewsItem: FC<{ item: any }> = ({ item }) => {
         <Grid item md={3}>
             {item && (
                 <div className={styles.div}>
-                    <div className={styles.imagediv}>
                     {item.attachment && (
-                        <DecryptedImg borderRadius="20px" size="100%" content={item.attachment}></DecryptedImg>
+                        <div className={styles.imagediv}>
+                            <DecryptedImg borderRadius="20px" size="100%" content={item.attachment}></DecryptedImg>
+                        </div>
                     )}
-                    </div>
                     <div className={styles.subdiv}>
                         <div className={styles.titlediv}>
                             <span>{item.title}</span>
