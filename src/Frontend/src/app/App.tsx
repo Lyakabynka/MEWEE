@@ -3,11 +3,11 @@ import { useSignalRStore, useThemeStore } from "../entities";
 import { useAuthStore } from "../entities";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { themes } from "../themes";
+import { Routing } from "../widgets/exportWigetComponents";
 import { Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "./App.css";
 import { setThemeVariables } from "../themesToCss";
-import { Routing } from "../widgets/routing/Routing";
 import RegLogRouting from "../widgets/routing/RegLogRouting";
 
 const App: React.FC = () => {
